@@ -1,0 +1,389 @@
+﻿S.No.,Developer Name,CEO Name ,Office Address,Office Contact No.,Mobile No. ,E Mail,Total Project capacity (MW),Project Location,Project Tehsil/Taluka,Project District,Project Logitude,Project Latitude,"Projects in Solar Park
+(Yes/No), If yes mention Solar Park name",,Type (Ground Mounted/Rooftop/Other),Type of Module (Thin/Poly/Mono/Other),Module Make,Scheme (Central /State Scheme),Mode of sale of power(captive/PPA/Third party sale),Tenure of PPA,Substation Name,Substation Voltage Level,Feeder Name,Feeder Voltage,Commissioned AC Capacity (MW) ,Commissioned DC Capacity (MWp) ,Date of Commissioning ,"Remark,if any",FY
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+1,"Sri Power
+Generation Ltd ",Mr. G G Chowdary,"18 Ilabs Centre,
+Building -3,
+Madhapur,
+HYDERABAD –
+500 081",040-40384444,9849061482,info@sripower.in,2,Chervi (V),Satyavedu (M),Chittoor,79.982,13.528,No,NA,Ground Mounted,,,MNRE-Grid Interactive Demonstration Scheme,PPA ,,,,,,2,2,18.03.2011,Yet to be received ,2010-11
+2,Sri Power Generation (India) Pvt. Ltd,Mr. G G Chowdary,"18 iLabs Centre, Bldge No. 3, Madhapur, Hyderabad- 500081",040-40384444,9849061482,gg@sripower.in,1,Kuttagullu ,Kadiri,Ananthapuramu,78.141,14.165,No,NA,Ground mounted,Poly Crystalline &Thin Film,1. Poly Crystalline- Titan. 2. Thin Film- Abound,"JNNSM, Govt. of India (RPSSGP)",PPA,25 Years , Kuttagulla ,33/11KV,Sri Power ,11KV,1,1,14.01.2012,,2011-12
+3,Amrit Jal Ventures Pvt Ltd,Sathish Kumar,1-7-293 M.G Road Secunderabad,040-71204284,9949552505,satish.j@gatiinfra.com,1,Kutagullu,Kadiri,Ananthapuramu,78.916,14.944,No,NA,Ground Mounted,Thin,Tianwei,"JNNSM, Govt. of India (RPSSGP)",PPA,25 Years, Kuttagulla ,33/11KV,Kutagulla,33/11KV,1,1,07.03.2012,-,2011-12
+4,Kishore Electro Infra Pvt. Ltd,,"G1, Vishwanath Towers,Sawarkar ngar, Nacharam, HYDERABAD",040-2717452,9440289000,audit@kishoreindustries.com,1,Peerecharla,Guntur Rural,Guntur ,80.352,16.289,No,NA,Ground Mounted,Poly Cryatalline,XL Energy Ltd,"JNNSM, Govt. of India (RPSSGP)",PPA,25 Years,Nallapadu,33/11,"Polytechnic College
+Nallapadu",11 KV,1,1,13.03.2012,-,2011-12
+5,Gajanan Financial Services Pvt. Ltd.,Sri. Girish Gelli,"8-2-268/2/B/1, ROAD NO 2 BANJARA HILLS HYDERABAD TG 500034",040-40247059,"8686076808 (Mr. A. Ravi Chander, Site Incharge) &9849032121 (Sri. Girish Gelli)","atpl_gnn@yahoo.co. in, gajsolar@gmail.com",1,Laddagiri,Kodumur,Kurnool,77.878,15.634,No,NA,Ground Mounted,Poly Crystalline,"Solar Semi Conductor, Hyderabad","JNNSM, Govt. of India (RPSSGP)",PPA,25 Years,Laddagiri,33/11 ,Gajanan,11 KV,1,1,14.03.2012,,2011-12
+6,APIIC Ltd,ZONAL MANAGER,"APIIC O/o THE ZONAL MANAGER  Industrial park Bellary Road,Anantapuramu-515004",08554-270973,9848175457,zm.atp.apiic@nic.in,1,"Industrial Park,Gooty",Gooty,Ananthapuramu,77.6,15.1,No,NA,Ground mounted,Ploy Crystalline,Photon Energy,"JNNSM, Govt. of India (RPSSGP)",PPA,25 Years,Gooty Industrial Estate,33/11KV,APIIC Solar feeder,11KV,1,1,15.03.2012,,2011-12
+7,Sai Sudhir Energy Limited,M V  Raghava Reddy,"401,G.Pelite,8-2-283/4,Road No.14,Banjarahills, Hyderabad-500034",040-23543470,8978779552,umapathisweeti@gmail.com,5,T.Veeravaram,Rayadurg,Ananthapuramu,76.952,14.761,No,NA,Ground mounted,Thin Film,Solar Frontier,Central,PPA,25 Years,Rayadurg,33/132KV,SaiSudhir Energy Ltd,33KV,5,5.5,05.01.2012,,2011-12
+8,"Walwhan 
+Solar AP Ltd. (Welspun Solar Pvt Ltd)","Mahesh
+ Pranjpe","ADC park, muddanuru road , Pulivendula , Kadapa dist. ",9030531255,9030531255,"suresh.giri@
+tatapower.com",5,Pulivendula,"Puliven
+dula",YSR Kadapa ,78.238,14.463,No,NA,Ground mounted,Thin Film,Solar frontier ,Central,PPA,25 Years,"
+ Pulivendula",33/132/220KV,Welspun ,33 KV,5,5.5,31.12.201,,2011-12
+9,Rithwik Projects Pvt Ltd,C.S.Bansal,"Plot No.34&39, Navodaya Colony, Road No:02 , Banjara Hills, Hyderabad-500034",040-49113333,"8978343232 , 9652003333",jayaprakash.yeallapu@rithwikprojects.com  govardhan.gummalla@rithwikprojects.com,5,Kadiri,Kadiri,Ananthapuramu,78.144,14.163,No,NA,Ground mounted,Poly Crystalline,Waaree,Central,PPA,25 Years,Kadiri,132/33 KV,Rithwik Feeder,33 KV,5,5,25.04.2012,,2012-13
+10, SaiSudhir Energy Limited,M V  Raghava Reddy,"401,G.Pelite,8-2-283/4,Road No.14,Banjarahills, Hyderabad-500034",040-23543470,8978779552,umapathisweeti@gmail.com,20,Borampalli,Kalyandurg,Ananthapuramu,77.181,14.587,No,NA,Ground mounted,Thin Film,Solar Frontier,Central,PPA,25 Years,Kalyandurg,33/132/220 KV,SaiSudhir Energy Ltd,33KV,20,22,26.04.2013,,2013-14
+11,B.G.Channappa,Mr. Dhanya Kumar Channappa,"No. 135/ A-35, 9th Main, R.M.V Extn Sadashiva Nagar, Bangalore, Pin No. 560080, India",,9900246161,dhanya@purizonenergy.com,4,"Gowriganipalli, Manepalli",Lepakshi,Ananthapuramu,77.5,13.7°,No,NA,Ground mounted,Mono Crystallaine,Emmvee,State,Third Party Sale,NA,Sreekantapuram,33/11 KV ,B.G.Channappa,33KV,4,5.004,22.04.2013,,2013-14
+12,Valuelabs LLP,Arjun Rao,"Plot no #41, Hitec City, Phase II, Hyderabad 500081",040 66239000,8099068183,"anil.kambam@valuelabs.com
+sivaram.meuga@valuelabs.com",5,Maddimadugu,Nallacheruvu,Ananthapuramu,78.172,13.99,No,NA,Ground mounted,Poly Crystalline,Hanwa Solar One ,State,Captive Use,NA,Nallacheruvu ,33KV/11KV,Nallacheruvu Feeder,33KV,5,5.1,24.04.2013,,2013-14
+13,SEI SriRam Power Pvt. Ltd(M/s. Emmvee Energy Private Limited),Mr. Ram Prasad N,"#1131/A, Sai Square Building, Road No. 36,
+Jubilee Hills, Hyderabad- 500033,
+Telangana State, India",040-40301000,"9959552119, 9959552017, 9100533429;",subbaraju.p@greenkogroup.com; seshagirirao.n@greenkogroup.com; ramprasad.n@greenkogroup.com,10,"Gowriganipalli, Manepalli",Lepakshi,Ananthapuramu,"77'33'32""","13'43'40""",No,NA,Ground mounted,Poly & Mono Crystalline,Emmvee,State,Third party sale,NA,Lepakshi , 33/11 KV,Solar ,33 KV,10,10.9,04.05.2013,,2013-14
+14,M/s The KCP Limited,,", “Ramakrishna Buildings”, No.2, Dr.P.V.Cherian Crescent, Egmore, Chennai – 600 008",44 66772600,,corporate@kcp.co.in,1,Muktyala,Jaggayyapet (M), Krishna District,Between 80º 0’ to  80º 05’ East,Between 16º 50’ to  16º 55’ North,No,,Groundmount,Ploy,SOLAR SEMICONDUCTOR,,KCP INHOUSE CAPTIVE,NA,KCP 132KV SS,132KV/6.6KV,KCP,132KV,1,1.15,06.07.2013,,2013-14
+15,Sri City Power Private Limited,,"18 Ilabs Centre, Building -3, Madhapur, HYDERABAD – 500 081",,,,3,Chervi,Satyavedu,Chittoor,79.982,13.528,No,NA,Ground Mounted,,,State,Third Party Sale,,,,,,3,,29.10.2013,,2013-14
+16,Trimax Sands Pvt Ltd,V.H Rafi Ahammed(Sr.Vice president -Operations),"Vatsavalasa (Vil), Gara Mandal, SRIKAKULAM",9177771329,9704928886,rafi.ahammed@trimexsands.com,1,Vatsavalasa,Gara ,Srikakulam,84 ⁰ ,18.3,No,NA,Ground Mounted ,Poly Crystalline,RENESOLA,State,Captive Use,NA,Ampolu ,132 KV/33 KV,TRIMEX SANDS PVT LTD,33 KV,1,1,26.03.2014,,2013-14
+17,Solarays Eco Energy Inc,Mr. Rakesh Kanthraj,"No. 1028, 25th Main, 39th Cross, 4T Block, Jayanagar, Bangalore, Pin No. 560041",NA,8105319795,rakesh.kanthraj@gmail.com,2,Beechiganipalli ,Beechiganipalli,Ananthapuramu,77.5°,13.9,Yes,NA,Ground mounted,Poly Crystalline,Emmvee,State,Third Party Sale,NA,Manesamundram,33/11KV,Solarays Eco Energy Inc,33KV,2,2.004,22.05.2014,,2014-15
+18,Meda Sreedhar,Mr. Meda Sreedhar,"Sumo Pinnacle, IInd Floor, # 539, 9th Cross, S Kariyappa Road, 7th Block, Jayanagar, Bangalore, Pin Code 560070, Karnataka, India",NA,9008983355,ms@sumotech.in,2,Beechiganipalli,Beechiganipalli,Ananthapuramu,77.5,13.9,Yes,NA,Ground mounted,Poly Crystalline,Emmvee,State,Third Party Sale,NA,Manesamundram,33/11KV,Meda Sreedhar,33KV,2,2.004,22.05.2014,,2014-15
+19,"NSS Solar Power
+(M/s Prakash Motors)","Mr. Jayaprakash K 
+(Partner)","No.714, Samrudhi Plaza, 3rd floor, Bangalore Nethralaya, 5th D Cross, 2nd Block, HRBR Layout, Kalyannagar, Bangalore-560043, Karnataka, India.",8043233301,9880552028,Jayaprakash.K@EMMVEE.IN,1,Beechiganipalli,Beechiganipalli,Ananthapuramu,77.5,13.9,Yes,NA,Ground mounted,Poly Crystalline,Emmvee,State,Third Party Sale,NA,Manesamundram,33/11KV,"NSS Solar Power
+(Prakash Motors)",33KV,1,1.002,29.04.2014,Ownership changed from M/s. Prakash Motors,2014-15
+20,"NSS Solar Power
+(M/s Prakash Agencies)","Mr. Jayaprakash K 
+(Partner)","No.714, Samrudhi Plaza, 3rd floor, Bangalore Nethralaya, 5th D Cross, 2nd Block, HRBR Layout, Kalyannagar, Bangalore-560043, Karnataka, India.",8043233301,9880552028,Jayaprakash.K@EMMVEE.IN,1,Vangalapally,Beechiganipalli,Ananthapuramu,77.5°,13.9,Yes,NA,Ground mounted,Poly Crystalline,Emmvee,State,Third Party Sale,NA,Manesamundram,33/11KV,"NSS Solar Power
+(M/s Prakash Agencies)",33KV,1,1.002,29.04.2014,Ownership changed from M/s. Prakash Agencies,2014-15
+21,SEI Sri Power Pvt.Ltd(M/s. Emmvee Photovoltaic Power  Private Limited),Mr. Ram Prasad N,"#1131/A, Sai Square Building, Road No. 36,
+Jubilee Hills, Hyderabad- 500033,
+Telangana State, India",040-40301000,"9959552119, 9959552017, 9100533429;",subbaraju.p@greenkogroup.com; seshagirirao.n@greenkogroup.com; ramprasad.n@greenkogroup.com,10,Beechaganipalli,Hindupur,Ananthapuramu,"77'51'70""","13'94'50""",No,NA,Ground mounted,Poly & Mono Crystalline,Emmvee,State ,Third Party Sale,NA,Manesamudram , 33/11 KV,10 MW Solar  Park,33 KV,10,10.7,30.05.2014,,2014-15
+22,"Southern Rocks
+ & Minerals Pvt Ltd",Mr.Subbareddy,"Cheruvukommu palem Road
+Pellur (V)
+Ongole 
+Prakasam Dist",9849913592,9949316199,"srmfactory@yahoo.com
+anjale.shyam@gmail.com",1,Pelluru,Ongole,Prakasam,80.045,15.451,No,NA,Ground  mounted,Mono Crystalline,BOSCH,State ,Captive Use,NA,"Cheruvukommu 
+palem",33/11 KV,"Southern Solar 
+Feeder",11 KV,1,1.03,30.04.2014,,2014-15
+23,The Andhra Sugars Ltd,Chiarman & Managing Director,"Anhra Sugars Ltd, Kovvuru,West Godavai Dt. 534350",08813-231597,, info.tnk@theandhrasugars.com ,2.5,Kovvur,Kovvur,West Godavari,81⁰.73' 79,17.01,No,NA,Ground mounted,Poly Crystalline,"Canadian Solar 
+Tata Solar",State,Captive Use,NA,Kovvur,132/33KV,"Anhra Sugars Ltd, Kovvur",33 KV,2.5,3.5,21.06.2014,,2014-15
+24,Indira Power Pvt Ltd,D.Hemanth Reddy,"No.1644E,H-Block Sarayu Apts., 14th Street,16th Main Road,Anna Nagar West,
+Chennai-600040",044-26163891,9840890393,cs@indirapower.co.in,0.7,Karur,TADA,SPSR NELLORE,80.052,13.553,No,NA,Ground mounted,Poly Crystalline ,"WAREE,
+Shan solar",State,Captive power,NA,"B.V Palem 
+",33/11 KV,Indira Power,11KV,0.7,0.7,30.06.2014,,2014-15
+25,Megha Engineering And Infra Structure (Formerly MEIL Green Power Ltd),N M Venugopal,"Megha Engineering and infrastructure limited,Regd.office:S-2,Technocrats industrial estate(T.I.E),Balanagar,Hyderabad - 500037",4044336700,9676999067,nmvenugopal@meilgroup.com,50,Nagalapuram,Peddavaduguru,Ananthapuramu,77.69,14.94,No,NA,Solar Thermal,NA,NA,Central,PPA,25,Nagalapuram,132 KV,Gooty-AnanthapurDC Line,132 KV,50,NA,04.11.2014,-,2014-15
+26,Savitha Renewable Energy Pvt Ltd,,"4-4-105, 3/1 Chandramoulinagar,
+GUNTUR – 522 007.",,7330905888,savithasolarenergy@gmail.com,1,Kamepalli Brahmanapalli,Piduguralla,Guntur ,,,No,NA,Ground Mounted,Poly Cryatalline,Canadian Solar,State,PPA,25 Years,Brahmanapalli,33/11 KV,"Kondamodu
+Feeder",11 KV,1,-,19.01.2015,,2014-15
+27,Arkha Solar Pvt. Ltd,K.Srinivas 040-23001230,"Elakolanu (V), Rangampeta (M), E.G.Dist.",040-23001230,"Elakolanu (V), Rangampeta (M), E.G.Dist.",ramnath@armstrongenergyglobal.com,1,Elakolanu,Rangampet,East Godavari,,,No,NA,Ground Mounted,,,State,Third Party Sale,NA,,,,,1,,01.01.2015,,2014-15
+28,Amaravathi Textiles Pvt Ltd (Solar Division),KANDIMALLA SRINIVASA RAO,"Nellore Palem (Village),(Post), Atmakur (Mandal).SPSR Nellore (District). PIN:524322",9704035557,9989623665,atplele@yahoo.com ; manohar.kancharla111@gmail.com,5,Nellorepalem,Atmakur,SPSR Nellore,79.617,14.617,No,NA,Ground Mounted,Poly Crystalline,RENUSOLA & JINKO SOLAR,State,PPA,25 Years,"Nellore Palem,Atmakur",132KV/33KV,Amaravathi solar,33 KV,5,5.4,31.03.2015,,2014-15
+29,Varshini Exim Pvt Ltd,Mr. K. Meher Srinivas,"Door No.1594, Prasanthi Nagar, Khadi Colony, Tirupati-517501",8897094339,8897094339,mail_varshini@rediffmail.com,2.4,Nagari Madugu-SS(V),Voyalpadu(M),Chittoor,78.706,13.701,No,NA,Ground Mounted,Poly Crstalline,Canadian Solar,State ,Third Party Sale,NA,NagariMadugu,33KV,,,2.4,2.6,13.04.2015,,2015-16
+30,Bharathi Solar Power Pvt Ltd,,Guntur,,9394157799,bharathisolarpower@gmail.com,1,Nidumukula,Tadikonda,Guntur ,80.412,16.455,No,NA,Ground Mounted,Poly Cryatalline,Canadian Solar,State,Captive Use,NA,Nidumukkala,33/11 KV,Nidumukkala,11 KV,1,,30.06.2014,,2014-15
+31, Sri Laxmi Venkateswara Green Energy Pvt Ltd,,"D No. 13-37, Peda Gandhi Bomma Centre, Nuzvid-521 201",9440989089,,csguntur@gmail.com,1,Morasapudi, Nuziveedu, Krishna ,80.891,16.75,NoNA,Sri Lakshmi Venkateswara green energy pvt ltd,Ground mounted,Poly Crystalline,RENESOLA,STATE,PPA,20,MORSAPUDI,33/132 KV,,33KV,1,1,30.06.2014,,2014-15
+32,Abhedya Power private limited , S D Vivekananda,"D.no-74-12-8A Radha Krishna residency patamata,vijayawada ",9490769769,94407 47885,abhedyapower@gmail.com ,2,Ubicherla,Nallacheruvu ,Ananthapuramu,78.137,13.986,No,NA,Ground mounted,Mono crystalline,Reno sola,State ,PPA,20 Years,Ubhicherla ,33/11,Kadiri Divn,11 KV,2,2,08.08.2014,,2014-15
+33,SEI Sri Ram Power Pvt.Ltd (M/s Emmvee Energy Pvt Ltd),Mr. Ram Prasad N,"#1131/A, Sai Square Building, Road No. 36,
+Jubilee Hills, Hyderabad- 500033,
+Telangana ",040-40301000,"9959552119, 9959552017, 9100533429;",subbaraju.p@greenkogroup.com; seshagirirao.n@greenkogroup.com; ramprasad.n@greenkogroup.com,5.4,Gowriganapalli,Hindupur,Ananthapuramu,,,No,NA,Ground mounted,Poly Crystalline,Emmvee,State,Third Party Sale,NA,Sreekantapur , 33/11 KV,5.40 Solar ,33 KV,5.4,,17.07.2015,,2015-16
+34,Vuddanda Solar Projects (P) Ltd,Mr. M.Blakrishna Reddy,"4A, Ramnivas Apartments, STV Nagar, Tirupathi, AP",9849047005,9849047005,vuddandasolrpower@gmail.com,3,Chinthamakulapalli,Sadum ,Chittoor,78.822,13.616,No,NA,Ground mounted,Poly Crystalline,Canadian Solar,State ,Third Party Sale,NA,Palamanda,33/11 KV,,,3,3.3,01.10.2015 ,,2015-16 
+35, Sri Sai Achyuth Energy Pvt Ltd,Sri. C. Sankar Reddy,"H.No. 45/142-47-4-2, Plot No. 29, Road No.2, Ramalingeswara Nagar, Kurnool - 518003",7013294949 & 9490693554,7013294949 & 9490693554,carsrreddy@gmail.com,5,Jagadurthy,Dhone,Kurnool,"77.52'54.88""","15.26'59.78""N",No,NA,Ground mounted,Poly Crystalline,HTAAE,State,Third Party Sale,NA,Jagadurthy,33/11 KV,Jagadurthy,33 KV,5,5.5,18.10.2015,,2015-16
+36,Maddimadugu Power Pvt Ltd                    (Rajaratna Energy Holdings Pvt Ltd),K.Prasad Reddy,"H.No:1-98/6/J/26/NR,Jubilee Enclave,Madhapur,Hyderabad-500081.",040-38123707,8142537431,pavanreddy2011@gmail.com,5,Maddimadugu,Nallacheruvu,Ananthapuramu,"78°08'47.4""","14°00'43.2""",No,NA,Ground mounted,Poly Crystalline,Renesola,State,PPA,25 Years,Ubhicherla,33/11 KV ,Maddimadugu,33KV,5,5.55,19.11.2015,,2015-16
+37,Sri Vijaya Visakha Milk Producers Co.Ltd,"Sri.S.V.Ramana,
+M.D",Visakhapatnam,"(0891) 2517230, 2517290, 2517555/ ",9959499895,md@visakhadairy.com; electrical@visakhadairy.com,1.65,Malicherla,Vizianagaram,Vizianagaram,83.387,18.079,No,NA,Ground mounted,Poly Crystaline,Canadian Solar,State,Captive Use,NA,Vantithidi  ,33/132 KV,Visakha Milk Producers,33 KV,1.65,1.65,27.11.2015,,2015-16
+38,Amaravathi Textiles Pvt Ltd (Solar Division),Kandimalla Srinivasa Rao,"Nellore Palem (Village),(Post), Atmakur (Mandal).SPSR Nellore (District). PIN:524322",9704035557,9989623665,atplele@yahoo.com ; manohar.kancharla111@gmail.com,5,Nellorepalem,Atmakur,SPSR Nellore,79.617,14.617,No,NA,Ground mounted,Poly Crystalline,RENUSOLA & JINKO SOLAR,State,PPA,25 Years,",Nellore Palem,Atmakur",132/33KV,Amaravathi Solar,33 KV,5,5.7,28.11.2015,,2015-16
+39,"Prgathi 
+Group",Mr. Y A Hari Kishore,"S No 28/2,2nd
+ Floor, Cunningham Rd, Vasanth Nagar, Bengaluru, Karnataka 560052","095385 56666
+","095385 56666
+",info@pragathigroup.net,2,Kanupade,Chintalapudi,West Godavari,81.014,17.038,No,NA,Ground mounted,Poly Crystalline,Canidian Solar,State,"Third Party
+ Sale",NA,Chintalapudi,33/132 KV,"Pragathi
+ Group Solar",33KV,2,2.2,31.12.2015,,2015-16
+40,GRT Jewellers (INDIA) Pvt.Ltd.,Veeramani.M,"21 Coats road, T Nagar, Chennai-600017",044-23461515,9566100888,veeramani.m@grtjewels.com,6,Veerabommanahalli,Amarapuram,Ananthapuramu,77.044,14.02,No,NA,Ground mounted,Poly Crystalline,Canadian Solar,State,PPA,25 Years,Jammalabanda ,132/33 KV,GRT Solar,33KV,6,7.47,05.01.2016,No,2015-16
+41,Bright Solar Renewable Energy Pvt. Ltd.,Mr. Basant Jain,"7th Floor, WeWork, Raheja Platinum, Sag Baug Road, off, Andheri - Kurla Rd, Marol, Andheri East, Mumbai, Maharashtra 400059",9377756205,9789829137,s.vigneshwaran@mahindra.com,10,Basavanahalli,Amarapuram,Ananthapuramu,77.045923°,14.02548°,No,NA,Ground mounted,Poly Crystalline,TRINA,State,PPA,25 Years,Jammalabanda, 132/33 KV,Bright 33KV,33 KV,10,12.505,05.01.2016,,2015-16
+42,Palnadu Solar Power Pvt Ltd,Mr JD Seelam,"Pllot no.3, Sai Towers, 4th line Brundavan Gardens, Guntur.",,,jdseelam@yahoo.co.in,5,Inumella,Ipuru,Guntur ,"16⁰17'39.23"" ","79⁰48'49.49""",No,NA,Ground mounted,Poly Cryatalline,DAQO Solar,State,PPA,25 Years,Chejerla,33/11 KV,"Chejerla
+Piduguralla",33 KV,5,5.6,31.3.2016,-,2015-16
+43,"Renew Solar Energy
+ (Karanataka) Pvt. Ltd.",Mr.Parag,"ReNew Power, Commercial Block-1, Zone 6, Golf Course Road, Phase V, Gurugram, - 122009",+91 124 4896670/80,9949813030,info@renewpower.in,21,Tarulapadu,Tarlapadu,Prakasam,"79⁰15'38.26"" ","15⁰38'39.24""",No,NA,Ground mounted,Poly Crystalline,Hareon Solar,State,PPA,25 Years,Cumbum ,132/33 KV,33 KV Renew Solar ,33 KV,21,21,08.03.2016,NIL,2015-16
+44,Renew Energy (Karnataka) Pvt Ltd,Mr.Parag,"#408, 4th floor, Ashok Bhoopal Chambers, SP Road, Secunderabad-500003","Mr Ishan Nagpal,9560003515","Mr Ishan Nagpal,9560003515",info@renewpower.i n,39,Chagi,Adoni,Kurnool,77.265,15.527,No,NA,Ground mounted,Poly Crystalline,Hareon Solar,State,PPA,25 years,Adoni,132KV/33      KV,Renew Power,132 KV,39,46.8,08.03.2016,,2015-16
+45,"Walwhan 
+Renewable Energy Ltd. (M/s Welspun Renewable Energy Ltd)","Mahesh 
+Pranjpe","Near lomada village, simhadripuram mandalam , balapanur, pulivendula , kadapa dist. AP",9030531255,9030531255,"suresh.giri@
+tatapower.com",30,Lomada,"simhadripuram
+ mandal",YSR Kadapa ,78.208,14.609,No,NA,Ground mounted,Thin film & Poly Crystalline,"Solar frontier 
+& JA solar",State,PPA,25 Years, Balapanur,33/132KV,Welspun ,132 KV,30,32.248,08.03.2016,,2015-16
+46,Ushodaya Enterprises Pvt. Ltd,G. Rajendra Babu,"Ushodaya Enterprises Pvt. Ltd., SP-1 Building, Ramoji Fil City, Anajpur (v), Abdullapurmet (Md.), Ranga Reddy (Dist.), Rtelangana - 501512",040-22232223,8008001234,rajendrababu@eenadu.net     kogantinaveen@eenadu.net,5,Tadimarri,Tadimarri,Ananthapuramu,77.842,14.565,No,NA,Ground mounted,Mono Crystalline,REC,State,"Captive/
+Third party sale",NA,"Tadimarri 
+",33KV,Ushodaya,33 KV,5,5,23.03.2016,,2015-16
+47,Azure Power India Pvt Ltd,Mr.Hariharan,"No:8,L.S.C,Madangir Pushp Vihar,New Delhi-110062",,96420 09392,,50,Vemulapadu,Yadiki,Ananthapuramu,"77°50'27.6""","15°01'23.1""",No,NA,Ground mounted,,,State,PPA,25 Years,Tadipatri ,220/33KV,Azure,132 KV,50,,28.03.2016,,2015-16
+48,Aarohi Solar Private Limited (Acme Cleantech Solutions Pvt Ltd),Mr Ankur Kumar,"Plot No: 152,  Sector-44, Gurgaon-122002 (Haryana), India",0124-7117000,"09177344215, 09966629387","planthead.hindupur.solar@acme.in, pradeep.tholety@acme.in, ashutosh.singh@acme.in, operations.hindupur.solar@acme.in, mvsreddy@acme.in",50,Hindupur,"Roddam mandal,penukonda Taluk",Ananthapuramu,77.481,13.977,No,NA,Ground mounted,Thin Film,Solar Frontier,State,PPA,25 Years,Hindupur ,220/132/33KV,Aarohi Solar Pvt Ltd,132 KV,50,50.494,29.03.2016,,2015-16
+49,Welspun Renewable Energy Pvt Ltd,Sri. Mahesh Paranjpe,"Tata Power Renewable Energy Ltd., Corporate Centre, 34 Sant Tukaram Road, Carnac Bunder, Mumbai 400 009, Maharashtra, India",2267171512,",02267171512 and 9959083311 (Mr. Venkata Ramana, Site Incharge)",b.venkataramanaiah@tatapower.com,70,Banaganapalli,Banagana- palli,Kurnool,78.193,15.24,No,NA,Ground mounted,Poly Crystalline,GCL,State,PPA,25 Years,Vemulapadu,33/132KV,Vemula-padu,132KV,70,74.74,30.03.2016,,2015-16
+50,EAAMA Estates Pvt Ltd ,"Sri.E.Sagar,
+C.E.O","#50-121-14/1, Balaya Sastry Layout, Seethammadhara, Vishakapatnam - 530 013",0891-2575787,8944258444,md@eaama.in,3,GR Valasa,Badamgi,Vizianagaram,83.345,18.473,No,NA,Ground mounted,Poly Crystaline,ReneSola,State,PPA,25 Years,Gajarayunivalasa ,33/11 KV,EEMA solar,33 KV,3,3,30.03.2016,,2015-16
+51,New Era Enviro ventures mahaboobnagar Pvt ltd,Mr.Sudheer Moola,"Namarta Estate,Greenlands,Ameerpet Road,Hyderabad-500 016",,9848994412,subbaraju.p@greenkogroup.com; seshagirirao.n@greenkogroup.com; ramprasad.n@greenkogroup.com,10,Bandapalli,Ramapur,YSR Kadapa ,,,No,NA,Ground mounted,Poly Crystalline, GCL&PSS,State,PPA,20 Years,"Bandapalii,Ramapuram,Rayachoty",132/33 KV,New Era,33 KV,10,,30.03.2016,,2015-16
+52,Hindupur Solar Park Pvt Ltd. (First Solar Power India Pvt Ltd),D Srinivasa Rao,"7-1-414/A&A1, Srinivasa Colony East, SR nagar, Ameerpet, Hyderabad-500038",040-42607960,9849008815,srinivasa.rao@vector-green.com,40,Beechiganipalli and Seagipalli,Parigi,Ananthapuramu,77° 29' 50.2'' ,13° 56' 05.8'',No,NA,Ground mounted,Thin Film,First Solar,State,PPA,25,Beechiganipalli,33/132 KV,HSPPL Solar ,132 KV,40,48.007,31.03.2016,,2015-16
+53,ACME Clean Tech (Dayanidhi Solar Power Pvt Ltd),Mr Ankur Kumar,"Plot No 152, Sector 44, Gurgaon - 122002",,9990399839,"info@acme.in, mvsreddy@acme.in",40,Morsanapalli & Gunjarlapalli ,Kuppam,Chittoor,12° 52' 23.38'' ,78° 23' 01.30'' ,,,,,,,,,,,,,40,,31.03.2016,,2015-16
+54,ACME Clean Tech (Vishwatma Solar Energy Pvt Ltd),Mr Sandeep Kashyap,"Plot no. 152, Sector-44, Gurgaon -122002",0124711-7000,9911299530,sandeep.kashyap@acme.in,10,Kadivella,Yemmiganur,Kurnool,77.49,15.679,No,NA,Ground mounted,Poly Crystalline,"BYD, Talesun",State,PPA,25 Years,Yemmiganur,33/132KV,ACME Vishwathma,33 KV,10,10,31.03.2016,,2015-16
+55,ACME Clean Tech (Niranjana Solar Energy Pvt Ltd),Sandeep Kashyap,"Plot no. 152, Sector-44, Gurgaon -122002",0124711-7000,9911299530,sandeep.kashyap@acme.in,20,Puchakaya Mada,Pattikonda,Kurnool,77.493,15.36,No,NA,Ground mounted,Poly Crystalline,"BYD,Talesun",State,PPA,25 Years,Pattikonda,132KV,Niranjana,33  KV,20,20.1,31.03.2016,,2015-16
+56,ACME Clean Tech (M/s.Vishwatma Solar Energy Pvt Ltd),Sandeep Kashyap,"Plot no. 152, Sector-44, Gurgaon -122002",0124711-7000,9911299530,sandeep.kashyap@acme.in,20,Kadivella,Yemmiganur,Kurnool,77.49,15.679,No,NA,Ground mounted,Poly Crystalline,"BYD, Talesun",State,PPA,25 Years,Yemmiganur,33/132 KV,ACME Vishwathma,132 KV,20,30,20.04.2016,,2016-17
+57,NTPC,,"NTPC,New Delhi","11 24360100, 24387000, 24387001",,ntpccc@ntpc.co.in,200,NP Kunta,NP Kunta,Ananthapuramu,,,Yes,Ananthapuramu Ultra Mega Solar Park-I,Ground mounted,Poly Crystalline,,Central,PPA,25 Years,N.P. Kunta,220/400 KV,NTPC,220 KV,200,,15.04.2016,,2016-17
+58,First Solar Power India Pvt Ltd (Hindupur Solar Park Pvt Ltd) (Vector Green Energy Pvt.Ltd. ),D Srinivasa Rao,"7-1-414/A&A1, Srinivasa Colony East, SR nagar, Ameerpet, Hyderabad-500038",040-42607960,9849008815,srinivasa.rao@vector-green.com,20,Nelapalli,Peddapanjani,Chittoor,78° 4010,13° 1931,No,NA,Ground mounted,Thin Film,First Solar,State Policy,PPA ,25 Years,Punganur,132 KV,Solar Feeder-1 to 4,33 KV,20,24,28.06.2016              ,,2016-17
+59,"ACME JAISALMER 
+Solar Power Pvt Ltd","Sandeep 
+Kashyap","Plot no. 152, 
+Sector-44, Gurgaon -122002",0124711-7000,9911299530,"sandeep.kashyap
+@acme.in",20,"Pothuk
+urupalli",Rayachoti,YSR Kadapa ,78.784,14.112,No,NA,Ground mounted,Poly Crystalline,BYD,State,PPA,25 Years,"
+Rayachoti",33/132KV,ACME,33kV,20,25,12.05.2016,,2016-17
+60,Waneep Solar Pvt Ltd (Hero FutureEnergies ltd),Sunil Jain ,"Plot No: 201, First Floor, Okhla Industrail Estate, Phase-III, New Delhi -110020",9909643210,9494099722,kolevenkata.muni@herofutureenergies.com,25,Marrimakulapalli,Guramkonda ,Chittoor,78.6,13.8,No,NA,Ground mounted,Poly Crystalline,Waaree,State,PPA,25 Years,Gurramkonda,132/33KV,Waree,132KV,25,27.4,24.05.2016                    (4.17 MW)                                     &                            29.09.2016                  (20.83 MW),,2016-17
+61,First Solar Power India Pvt Ltd (Hindupur Solar Park Pvt Ltd) (Vector Green energy Pvt. Ltd),D Srinivasa Rao ,"7-1-414/A&A1, Srinivasa Colony East, SR nagar, Ameerpet, Hyderabad-500038",040-42607960,9849008815,srinivasa.rao@vector-green.com,20,Nelapalli,Peddapanjani,Chittoor,78° 4010,13° 1931,No,NA,Ground mounted,Thin Film,First Solar,State,PPA,25 Years,Punganur,132kV,Solar Feeder-1 to 4,33kV,20,24,09.05.2016              ,,2016-17
+62,SSR Agro Energy,Mr. S.Venkata Ramana Reddy,"1/5, Gajulapelluru Village, B N Kandriga Mandal, B N Kandriga, Chittoor, Andhra Pradesh-517640",9840071668,9840071668,rasaafoods@gmail.com,1,Gajulapellore (V),BN Kandriga(M),Chittoor,79.877,13.699,No,NA,Ground mounted,Poly Crystalline,Sri Savitr Solar,State Policy,Third Party Sale,NA,B.N.Kandirga,33 KV,,,1,1,09.04.2016    ,,2016-17
+63,Sumeru Energy Pvt Ltd,"Sri. Anil V, Director","Garden Towers, Masab Tank,Flat No: 210,Mahara Block,Hyderabad","Anil V, Director, 9949555875",9949555875,sumeruenergy@gmail.com,1,Jagadurthy,Dhone,Kurnool,77.889,15.461,No,NA,Ground mounted,Poly Crystalline,HT-SAAE,State,PPA,20 Years,Jagadurthy,33/11 KV,Jagadurthy,33 KV,1,1.2,23.06.2016,,2016-17
+64,M/s. Creamline Dairy Products Ltd,,,,,,1,P.Gudipadu,S.N Padu,Prakasam,,,No,NA,Rooftop,,,State,Captive Use,NA,Uppalapadu,132/33KV,Chimakurthy,33KV,1,1,01.07.2016,,2016-17
+65,New & Renewable Energy Development Corpn of AP Ltd (NREDCAP),VC& Managing Director,NREDCAP - Tadepalli,0863-2347650,9440359597,vc@nredcap.in,1,Golllavanitippa,Bhimavaram Rural,West Godavari,"81 19' 19.5"" ",16⁰  52' 26',No,NA,Canal Top,Ploy Crystalline,BHEL,Central ,PPA,25 Years,"
+Gollavanitippa",33/11KV,Gollavanitippa,11 KV,1,1.1,07.07.2016,-,2016-17
+66,VBC Renewable Energy Pvt Ltd,"Sri.V.Tejaswi Prasad,
+M.D","Plotno.19,Doctors Colony, Pedawaltair, Visakhapatnam-530003,AP",0891-2558586,8008999242,vbcsolar@gmail.com,3,Garividi,Gurla,Vizianagaram,83.509,18.287,No,NA,Ground mounted,Poly Crystaline,Trina solar,State,PPA,25 Years,Garividi ,33/220 KV,VBC Solar,33 KV,3,3,20.07.2016,,2016-17
+67,Varshini Exim Pvt Ltd,Mr. K. Meher Srinivas,"Door No.1594, Prasanthi Nagar, Khadi Colony, Tirupati-517501",8897094339,8897094339,mail_varshini@rediffmail.com,0.6,Nagari Madugu SS,Voyalpadu,Chittoor,78.706,13.701,No,NA,Ground mounted,Poly Crystalline,Canadian Solar,State ,Third Party Sale,NA,NagariMadugu,11/33KV,Varshini,33 KV,0.6,0.7,12.08.2016,,2016-17
+68,NTPC                                                                            ,Bikesh Ogra,"Universal majestic, 9th Floor, P.L. Lkhande Marg, Chembur (west), Mumbai - 400043",,7904424162,krmohan@ntpc.co.in,50,NP Kunta,NP Kunta,Ananthapuramu,78.17,14.12,YES ,Ananthapuramu Ultra Mega Solar Park-I,Ground mounted,Poly Crystalline,WAREE,Central,PPA,25 Years,NP Kunta,220/400 KV,"2,15,216",220 KV,50,50,29.07.2016,,2016-17
+69,Visakhapatnam Port Trust,Visakhapatnam Port Trust,"Visakhapatnam Port Trust, Town Kotha Road, Visakhapatnam",0891 2873404,9948298307,kamaraju_pandiri@yahoo.co.in,10,Port Trust,Visakhapatnam,Visakhapatnam,83.219,17.688,No,NA,Ground mounted,Poly Crystalline,"Renosolar, Schtten,Raisen",State,Capative/ Third party sale,NA,Gnanapuram,132/33KV,VPT solar plant(VSP-1375),33KV,10,10,18.08.2016,,2016-17
+70,Sree Jaya Jyothi Cements Pvt Ltd.,BC Gurivi Reddy,"Yenakandla Village, Banaganapali Mandal, Enakandla, Kurnool, Andhra Pradesh - 518124","7660013042 (Sri. Gurivi Reddy, Site Incharge)","7660013042 (Sri. Gurivi Reddy, Site Incharge)",gurivireddy.b@myhomegroup.in,1,Yanakandla,Banagana palli,Kurnool,78.2,15.4,No,NA,Ground mounted,Poly Crystalline,Canadian Solar,State,Captive Use,NA, Banaganapalli,33/132KV,"Sree Jaya Jyothi Cements Pvt Ltd., SC NO: KNL326",132 KV,1,1.2,24.08.2016,,2016-17
+71,Sprouts Solar Energy Pvt Ltd,N Ravi Kumar,"#401,Indra Imperia ,Above Yes Bank ,Opp Ramanthapur Lake,Ramanthapur, Habsiguda, Hyderabad  – 500 013,Ph:+91 8309154730 LL:040-2970 0557",040-2970 0557,8309154730,sproutsenergy@gmail.com,2,Pamulapadu,Pamulapadu,Kurnool,78.485,15.807,No,NA,Ground mounted,Poly Crystalline,HT-SAAE,State,PPA,20 Years,Pamulapadu ,33/11 KV,Sprouts Energy,33KV,2,2,08.09.2016,,2016-17
+72,Ushodaya Enterprises Pvt. Ltd,G. Rajendra Babu,"Ushodaya Enterprises Pvt. Ltd., SP-1 Building, Ramoji Fil City, Anajpur (v), Abdullapurmet (Md.), Ranga Reddy (Dist.), Rtelangana - 501512",040-22232223,8008001234,rajendrababu@eenadu.net     kogantinaveen@eenadu.net,5,Tadimarri,Tadimarri,Ananthapuramu,77.813,14.537,No,NA,Ground mounted,Mono Crystalline,REC,State,"Captive/
+Third party sale",NA,Tadimarri ,11/33 KV,Ushodaya,33 KV,5,5,22.09.2016,,2016-17
+73,Sumeru Energy Pvt Ltd," Sri. Anil V, Director","Garden Towers, Masab Tank,Flat No: 210,Mahara Block,Hyderabad",9949555875,9949555875,sumeruenergy@gmail.com,4,Jagadurthy,Dhone,Kurnool,77.889,15.461,No,NA,Ground mounted,Poly Crystalline,HT-SAAE,State,PPA,20Years,Jagadurthy,33/11 KV,Jagadurthy,33 KV,4,4.8,22.09.2016,,2016-17
+74,Narasimha Swamy Solar  Generations Pvt Ltd,B.Diwakar Reddy,"28/1070,Sai Baba Nagar, Nandyal,Kurnool district-518502",9849112177,9849112177,diwakareddy369@gmail.com,5,Peravali,Singanamala,Ananthapuramu,77° 47' 23'',14° 47' 6'',No,NA,Ground mounted,Poly Crystalline,Canadian solar,State,Third Party Sale,NA,Peravali,33/11  KV,Nainipalli,11KV,5,5.2,26.09.2016,,2016-17
+75,"Yaswanth 
+Solar Energy (Pvt) Ltd. ","K. Nageswara 
+reddy ","Kottapally, 
+Muddanur (M), Kadapa dist.",9440429119,9440429119,"nageswarareddy@
+gmail.com ",1,"Kotta
+pally",Muddanur ,YSR Kadapa ,,,No,NA,Ground mounted,Poly Crystalline,Renesola,State,PPA (Pooled Power Cost),10 Years,"
+Muddanur",11/33 KV,,33 KV,1,1.1,01.10.2016,,2016-17
+76,APGENCO,"Director, APGENCO ","APGENCO Vidyut Soudha, Gunadala, Vijayawada.","8333820657, 040-23317661",-,ce_hpc@apgenco.gov.in,5.99,Gollagudem,Unguturu,West Godavari,81⁰.35,16.86,No,NA,Ground mounted,Mono Crystalline,JA Solar,Central (Canal Bund),PPA,25 Years,"
+Gollagudem",33/11KV,Gollagudem,33 KV,5.99,5.99,19.11.2016,,2016-17
+77,Repal Renewables Pvt. Ltd.,Srinivasan Viswanathan,"VEH Global India Pvt Ltd. Level- 1, N- Heights, Plot No- 38, Phase- 2, Siddiq Nagar, Hi-Tec City, Hyderabad, Telangana- 500081.
+",4067846101,9533422106,VAheerYadav@vibrantenergyholdings.com,4.9,Tanakallu,Tanakallu,Ananthapuramu,78.181,13.905,No,NA,Ground mounted,Poly Crystalline,LDK / GCEL,State,Captive Use,NA,Gunjuvaripalli,33 / 132KV,,33KV,4.9,5,19.11.2016,,2016-17
+78,"Sri Varahalakshmi Narasimha Swamy Devasthanam, Simhachalam",Executive Officer,"Simhachalam,Visakhapatnam District",9705922257,, info@siriussolarenergy.com/endow-eosvlnsd@gov.in,1,Simhachalam,Simhachalam,Visakhapatnam,83.27,17.77,No,NA,Ground mounted,Poly Crystalline,Sirius Solar,State,Captive Use,NA,Pine Apple Colony,33/11 KV,Goshala solar power plant simhachalam, 11 KV,1,1,03.02.2017,,2016-17
+79,Tirumala Tirupathi Devasthanams,Executive Officer,"Tirumala Tirupathi Devasthanams, Administrative Building,  Tirupathi - 517501",0877-2264270/4212,,eottd@tirumala.org,3,Kasavaripalli ,Thamballapalle ,Chittoor,,,No,NA,Ground Mounted,Poly Crystalline,Vikram Solar,State,Captive Use,NA,,,,,3,,02.02.2017,,2016-17
+80,Kanti Brothers oils Pvt. Limited,Mr.Kantilal Shah,"Kallur,Kurnool District","91-8518-
+289302",9440293305,solar.kantibro@gmail.com,3,Kallur,Kalluru,Kurnool,78.5,15.83,No,NA,Ground mounted,Poly Crystalline,Canadian Solar ,State,Captive Use & Third Party Sale,NA,Radio Station SS,33 /11 KV , Kalluru ,33KV ,3,3.008,11.02.2017,,2016-17
+81,Sri Chakra Cements Pvt. Ltd.,Mr. Krishna Mohan,"Dr.No.6-3-668/10/66, Durga Nagar Colony, Punjagutta, Hyderabad - 500 082",9618001202,9618001202,dwarakasripathi@gmail.com,2,Perindesam,KVB Puram ,Chittoor,79.733,13.593,No,NA,Ground mounted,Poly Crystalline,Canadian Solar,State,Captive Use,NA,Ragigunta SS,33 KV,,,2,3,09.02.2017,,2016-17
+82,SBG Cleantech ProjectCo Private Limited,Mr. Raman Nanada,"1st Floor, Worldmark-2, Asset Area-8, Hospitality District, Aerocity, NH – 8, Delhi-110037",011-49218000,09441172477 (Sri. Mohan Kumar),info@sbenergy.com,182,Gani,Gadivemula and Orvakal,Kurnool,78.287,15.673,Yes, Kurnool Ultra Mega Solar Park,Ground mounted,Poly Crystalline,Trina,Central,PPA,25 Years,Gani,220/400 KV,,220 KV,182,236.6,27.02.2017,,2016-17
+83, IFMR,,"Sree City, Kalahasti",,,enq@ifmr.ac.in; aswin.v@ifmr.ac.in,0.5,Sree City,Kalahasti,Chittoor,,,No,NA,Ground mounted,,,State,Captive Use,NA,,,,,0.5,,10.03.2017,,2016-17
+84,SVR Corporation Pvt Ltd,Mr.R.Uday Kumar Reddy,"#19-4-4G, STV Nagar, Tirupati",9010345555,9010345555,ruday555@gmail.com,2,Jillelamanda,KV Palli(M),Chittoor,,,No,NA,Ground mounted,Poly Crystalline,Canadian Solar,State,Third Party Sale,NA,Jillelamanda ,11/33 KV,,,2,2,15.03.2017,,2016-17
+85,SSR Agro Energy,Mr. S.Venkata Ramana Reddy,"1/5, Gajulapelluru Village, B N Kandriga Mandal, B N Kandriga, Chittoor, Andhra Pradesh-517640",9840071668,9840071668,rasaafoods@gmail.com,1,Gajulapellore (V),BN Kandriga(M),Chittoor,79.877,13.699,No,NA,Ground mounted,Poly Crystalline,Sri Savitr Solar,State Policy,Third Party Sale,NA,B.N.Kandirga,33 KV,,,1,1,15.03.2017,,2016-17
+86,SBG Cleantech ProjectCo Private Limited,Mr. Raman Nanada,"1st Floor, Worldmark-2, Asset Area-8, Hospitality District, Aerocity, NH – 8, Delhi-110037",011-49218000,09441172477 (Sri. Mohan Kumar),info@sbenergy.com,68,Gani,Gadivemula and Orvakal,Kurnool,,,Yes,Kurnool Ultra Mega Solar Park,Ground mounted,Poly Crystalline,Trina,Central,PPA,25 Years,Gani,220/400 KV,,220 KV,68,88.4,22.03.2017,,2016-17
+87,Nateems Green Energy Pvt Ltd,,"2-9/5/6, Venkata sai gateway, Greenland colony, Gachibowli,Hyderabad",,9493383658,sloya@vibrantenergyholdings.com ,9.9,Kadiridevarapalli ,Kambadur,Ananthapuramu,,,No,NA,Ground mounted,,,State,Third Party Sale,NA,,,,,9.9,,24.03.2017,,2016-17
+88,SBG Cleantech ProjectCo Private Limited,Mr. Raman Nanada,"1st Floor, Worldmark-2, Asset Area-8, Hospitality District, Aerocity, NH – 8, Delhi-110037",011-49218000,09441172477 (Sri. Mohan Kumar),info@sbenergy.com,100,Gani,Gadivemula and Orvakal,Kurnool,78.287,15.673,Yes,Kurnool Ultra Mega Solar Park,Ground mounted,Poly Crystalline,Trina,Central,PPA,25 Years,Gani,220/400 KV,,220 KV,100,130,29.03.2017,,2016-17
+89,GSL Educational Sociey,G. Rajesh,"Mallampudi, Rajanagaram (M), East Godavari Dist ",9989151918 / 8008705099,8008705099,,1.5,Mallampudi,Rajanagaram,East Godavari,"81o55'47""","16o52'52""",No,NA,Ground mounted,Poly Crystalline,Access Solar,State,Captive Use,NA,Rajanagarm,11/33 KV,Dedicated GSL,33 KV,1.5,1.6,31.03.2017,,2016-17
+90,Cyber Village Solutions (P) Ltd,Rambabu,"Flat No. 601, SV Sai Srinivasam, Main Road, Moosapet, Hyderabad 500 018",-,7032831893,cvspvtltd@gmail.com,3.65,Yeleswaram,Yeleswaram,East Godavari,82.097,17.281,No,NA,Ground mounted,Poly Crystalline,REC,State,Third Party Sale,NA,Yeleswaram,33/11 KV,Cyber Village ,33/11 KV,3.65,,31.03.2017,,2016-17
+91,Divyesh Power Pvt Ltd (Greenko),Mr. Ram Prasad N,"#1131/A, Sai Square Building, Road No. 36,
+Jubilee Hills, Hyderabad- 500033,
+Telangana State, India",040-40301000,"9959552119, 9959552017, 9100533429;",subbaraju.p@greenkogroup.com; seshagirirao.n@greenkogroup.com; ramprasad.n@greenkogroup.com,50,Gani,Gadivemula,Kurnool,"78°15'31.7""E","15°39'22.7""N",Yes,Kurnool Ultra Mega Solar Park,Ground mounted,Ploy Crystalline,"TRINA,RISEN,GCL",Central,PPA,25 Years,Gani,400/220 kV,,220 KV,50,81.6,31.03.2017,,2016-17
+92,SEI Baskar Power Private Limited (Greenko),Mr. Ram Prasad N,"#1131/A, Sai Square Building, Road No. 36,
+Jubilee Hills, Hyderabad- 500033,
+Telangana State, India",040-40301000,"9959552119, 9959552017, 9100533429;",subbaraju.p@greenkogroup.com; seshagirirao.n@greenkogroup.com; ramprasad.n@greenkogroup.com,50,Gani,Gadivemula,Kurnool,"78°15'32.2""E","15°39'24.3""N",Yes,Kurnool Ultra Mega Solar Park,Ground mounted,Ploy Crystalline,"TRINA,RISEN,GCL",Central,PPA,25 Years,Gani,400/220 kV,,220 KV,50,81.6,31.03.2017,,2016-17
+93,Shreyas Renewable Energy Pvt Ltd (Greenko),Mr. Ram Prasad N,"#1131/A, Sai Square Building, Road No. 36,
+Jubilee Hills, Hyderabad- 500033,
+Telangana State, India",040-40301000,"9959552119, 9959552017, 9100533429;",subbaraju.p@greenkogroup.com; seshagirirao.n@greenkogroup.com; ramprasad.n@greenkogroup.com,50,Gani,Gadivemula,Kurnool,"78°15'27.3""E","15°39'30.0""N",Yes,Kurnool Ultra Mega Solar Park,Ground mounted,Ploy Crystalline,"TRINA,RISEN,GCL",Central,PPA,25 Years,Gani,400/220 kV,,220 KV,50,81.6,31.03.2017,,2016-17
+94,Zuvan Energy Pvt Ltd (Greenko),Mr. Ram Prasad N,"#1131/A, Sai Square Building, Road No. 36,
+Jubilee Hills, Hyderabad- 500033,
+Telangana State, India",040-40301000,"9959552119, 9959552017, 9100533429;",subbaraju.p@greenkogroup.com; seshagirirao.n@greenkogroup.com; ramprasad.n@greenkogroup.com,50,Gani,Gadivemula,Kurnool,"78°15'38.2""E","15°39'29.0""N",Yes,Kurnool Ultra Mega Solar Park,Ground mounted,Ploy Crystalline,"TRINA,RISEN,GCL",Central,PPA,25 Years,Gani,400/220 kV,,220 KV,50,81.6,31.03.2017,,2016-17
+95,Aarish Solar Power Pvt Ltd (Greenko),Mr. Ram Prasad N,"#1131/A, Sai Square Building, Road No. 36,
+Jubilee Hills, Hyderabad- 500033,
+Telangana State, India",040-40301000,"9959552119, 9959552017, 9100533429;",subbaraju.p@greenkogroup.com; seshagirirao.n@greenkogroup.com; ramprasad.n@greenkogroup.com,50,Gani,Gadivemula,Kurnool,"78°16'02.1""E","15°39'32.9""N",Yes,Kurnool Ultra Mega Solar Park,Ground mounted,Ploy Crystalline,"TRINA,RISEN,GCL",Central,PPA,25 Years,Gani,400/220 kV,,220 KV,50,81.6,31.03.2017,,2016-17
+96,Pratyash Renewable Pvt Ltd (Greenko),Mr. Ram Prasad N,"#1131/A, Sai Square Building, Road No. 36,
+Jubilee Hills, Hyderabad- 500033,
+Telangana State, India",040-40301000,"9959552119, 9959552017, 9100533429;",subbaraju.p@greenkogroup.com; seshagirirao.n@greenkogroup.com; ramprasad.n@greenkogroup.com,50,Gani,Gadivemula,Kurnool,"78°14'26.2""E","15°40'34.8""N",Yes,Kurnool Ultra Mega Solar Park,Ground mounted,Ploy Crystalline,"TRINA,RISEN,GCL",Central,PPA,25 Years,Gani,400/220 kV,,220 KV,50,81.6,31.03.2017,,2016-17
+97,Elena Tenewable Energy Pvt Ltd (Greenko),Mr. Ram Prasad N,"#1131/A, Sai Square Building, Road No. 36,
+Jubilee Hills, Hyderabad- 500033,
+Telangana State, India",040-40301000,"9959552119, 9959552017, 9100533429;",subbaraju.p@greenkogroup.com; seshagirirao.n@greenkogroup.com; ramprasad.n@greenkogroup.com,50,Gani,Gadivemula,Kurnool,"78°14'46.2""E","15°40'41.2""N",Yes,Kurnool Ultra Mega Solar Park,Ground mounted,Ploy Crystalline,"TRINA,RISEN,GCL",Central,PPA,25 Years,Gani,400/220 kV,,220 KV,50,81.6,31.03.2017,,2016-17
+98,Aashman Energy Pvt Ltd (Greenko),Mr. Ram Prasad N,"#1131/A, Sai Square Building, Road No. 36,
+Jubilee Hills, Hyderabad- 500033,
+Telangana State, India",040-40301000,"9959552119, 9959552017, 9100533429;",subbaraju.p@greenkogroup.com; seshagirirao.n@greenkogroup.com; ramprasad.n@greenkogroup.com,50,Gani,Gadivemula,Kurnool,"78°14'40.4""E","15°40'42.3""N",Yes,Kurnool Ultra Mega Solar Park,Ground mounted,Ploy Crystalline,"TRINA,RISEN,GCL",Central,PPA,25 Years,Gani,400/220 kV,,220 KV,50,81.6,31.03.2017,,2016-17
+99,SEI Mihir Energy  Private Limited (Greenko),Mr. Ram Prasad N,"#1131/A, Sai Square Building, Road No. 36,
+Jubilee Hills, Hyderabad- 500033,
+Telangana State, India",040-40301000,"9959552119, 9959552017, 9100533429;",subbaraju.p@greenkogroup.com; seshagirirao.n@greenkogroup.com; ramprasad.n@greenkogroup.com,50,Gani,Gadivemula,Kurnool,"78°15'32.2""E","15°40'59.5""N",Yes,Kurnool Ultra Mega Solar Park,Ground mounted,Ploy Crystalline,"TRINA,RISEN,GCL",Central,PPA,25 Years,Gani,400/220 kV,,220 KV,50,81.6,31.03.2017,,2016-17
+100,SEI Enerstar Renewable Energy Pvt Ltd (Greenko),Mr. Ram Prasad N,"#1131/A, Sai Square Building, Road No. 36,
+Jubilee Hills, Hyderabad- 500033,
+Telangana State, India",040-40301000,"9959552119, 9959552017, 9100533429;",subbaraju.p@greenkogroup.com; seshagirirao.n@greenkogroup.com; ramprasad.n@greenkogroup.com,50,Gani,Gadivemula,Kurnool,"78°15'12.1""E","15°40'49.2""N",Yes,Kurnool Ultra Mega Solar Park,Ground mounted,Ploy Crystalline,"TRINA,RISEN,GCL",Central,PPA,25 Years,Gani,400/220 kV,,220 KV,50,81.6,31.03.2017,,2016-17
+101,Repal Renewables Pvt. Limited,Mr. Rajesh,"2-9/5/6, Venkata sai gateway, Greenland colony, Gachibowli",040 40301000,9989884808,rajesh@armstrongenergyglobal.in,5.1,Thanakallu,Thanakallu,Ananthapuramu,,,No,NA,Ground mounted,,,State,Third Pary Sale,NA,,,,,5.1,,30.03.2017,,2016-17
+102,Nateems Green Energy Pvt Ltd,Mr.Rajesh,"2-9/5/6, Venkata sai gateway, Greenland colony, Gachibowli", 040-23001230,9989884808,sloya@vibrantenergyholdings.com ,10,Garividi,Garividi,Vizianagaram,,,No,NA,Ground mounted,,,State,Third Party Sale,NA,,,,,10,,31.03.2017,,2016-17
+103,Repal Renewables Pvt. Ltd.,Srinivasan Viswanathan,"VEH Global India Pvt Ltd. Level- 1, N- Heights, Plot No- 38, Phase- 2, Siddiq Nagar, Hi-Tec City, Hyderabad, Telangana- 500081.
+",4067846101,9533422106,VAheerYadav@vibrantenergyholdings.com,10,Komatikuntla,Tadipatri,Ananthapuramu,77.982,14.768,No,NA,Ground mounted,Poly Crystalline,GCEL,State,Third Party Sale,NA,Komatikuntla,33 / 132 KV,,33KV,10,11.019,31.03.2017,,2016-17
+104,"B.G.Channappa, Class-I, K.P.W.D.Contractor ",K.P.W.D.Contractor," No.135/A-35, 9th Main, R.M.V. Extension, Sadashivanagar,Bangalore - 560 080 ",,,bgc.abd@gmail.com; pavana@purizoenergy.com,2,"Gowriganipalli, Manepalli",Lepakshi,Ananthapuramu,,,No,NA,Ground mounted,,,State,Third Party Sale,NA,,,,,2,,31.03.2017,,2016-17
+105,Vyshaka Solar Energy Systems Pvt Ltd,Mr.Sahith Reddy,"#19-9-3E/7, Jaya Nagar, Tiruchanur Road, Tirupati 517503",9704500007,9704500007,ppalreddy050@gmail.com,2,"Nuthanakaluva SS, MV Palli(V)",KV Palli(M),Chittoor,79.014,13.869,No,NA,Ground mounted,Poly Crystalline,Hanwei,State,Third Party Sale,NA,KV Palli ,11/33 KV,,,2,2,31.03.2017,,2016-17
+106,Tirumala Tirupathi Devasthanams,Executive Officer,"Tirumala Tirupathi Devasthanams, Administrative Building,  Tirupathi - 517501",0877-2264270/4212,,eottd@tirumala.org,7,Kasavaripalli ,Thamballapalle ,Chittoor,,,No,NA,Ground mounted,,,State,Captive Use,NA,,,,,7,,31.03.2017,,2016-17
+107,Repal Renewables Pvt. Limited,,"Timiteru Burjivalasa, Garbham(M), Vizianagaram Dist",,,,6,"Timiteru, Burjivalasa",Garbham,Vizianagaram,,,No,NA,,,,State Policy,Third Party Sale,,,,,,6,,31.03.2017,,2016-17
+108,Azure Power India Pvt Ltd,Mr. Ranjit Gupta ,"Azure Power, 3rd Floor,Asset 301-304, Worldmark 3, Aerocity, New Delhi -110037","8374321707     (Mr Manohar Reddy, Site Incharge)",9391187432,"operationsho@azurepower.com,",50,Gani,Gadivemula and Orvakal,Kurnool,78.279,16.659,Yes,Kurnool Ultra Mega Solar Park,Ground mounted,Poly Cryystalline,Waree ,Central,PPA,25 Years ,Gani,220/400 KV,,220 KV,50,65.275,20.04.2017,,2017-18
+109,Aurobindo Pharma Ltd,"Mr. I. Srinivasa Ramachander Rao,","Aurobindo Pharma Limited,
+Water Mark Building, Plot No. 11, Survey no.9,
+Kondapur, Hitech City,
+Hyderabad – 500 084
+Telangana, India.",040-66725100,9963550899,info@aurobindo.com  & isrrao@aurobindo.com,30,Pydi Bheemvaram,Ranasthalam,Srikakulam,83.649°E,18.138°N,No,NA,Ground mounted,Poly Crystalline,Trina Solar,State,Captive Use,, Pydibhimavaram,33/132 KV,Aurobindo Pharma Ltd Solar Power Plant,132 KV,30,32.08,21.05.2017,,2017-18
+110,Azure Power India Pvt Ltd,Mr. Ranjit Gupta ,"Azure Power, 3rd Floor,Asset 301-304, Worldmark 3, Aerocity, New Delhi -110037","8374321707     (Mr Manohar Reddy, Site Incharge)",9391187432,"operationsho@azurepower.com,",50,Gani,Gadivemula and Orvakal,Kurnool,78.279,16.659,Yes,Kurnool Ultra Mega Solar Park,Ground mounted,Poly Crystalline,Waree,Central,PPA,25 Years,Gani,220/400 KV,,220 KV,50,64.95,26.05.2017,,2017-18
+111,"SRDD Energy
+(OPC) Pvt.Ltd.",S.Ramesh,"333/11,
+Galaxy apartments.
+2nd avenue,
+annanagar,
+chennai-600040",8369600970,8369600970,srddenergy@gmail.com ,1,Manganellore,Sullurpet ,SPSR Nellore,79.911099 E,13.754592 N,No,NA,Ground mounted,Poly Crystalline,Canadian solar ,State,Third Party Sale,NA,Manganellore ,11/333 KV,SRDD Energy,33 KV,1,1.1,21.06.2017,,2017-18
+112,Prayatna Developers Pvt Ltd (ADANI),Sri. Anil Gupta,"4th Floor, Eastwing, Adani Corporate House, Shantigram, S.G.Highway, Ahmedabad  382412, Gujarat,India","Anil Gupta, 9099011151",9099011151,saaket.parikh@adani.com,20,Gani,Gadivemula,Kurnool,78.3,15.7,Yes,Kurnool Ultra Mega Solar Park,Ground mounted,Poly Crystalline,ADANI,Central,PPA,25 Years,Gani,220/400 KV,,220 KV,20,,15.07.2017,,2017-18
+113, Prayatna Developers Pvt Ltd (ADANI),Sri. Anil Gupta,"4th Floor, Eastwing, Adani Corporate House, Shantigram, S.G.Highway, Ahmedabad  382412, Gujarat,India",91 79 2555 8396,9099011151,saaket.parikh@adani.com,30,Gani,Gadivemula,Kurnool,78.3,15.7,Yes,Kurnool Ultra Mega Solar Park,Ground mounted,Poly Crystalline,ADANI,Central,PPA,25 Years,Gani,220/400 KV,,220 KV,30,68.56,28.06.2017,,2017-18
+114,SEI Arushi Pvt ltd,Mr. Ram Prasad N,"#1131/A, Sai Square Building, Road No. 36,
+Jubilee Hills, Hyderabad- 500033,
+Telangana State, India",040-40301000,"9959552119, 9959552017, 9100533429;",subbaraju.p@greenkogroup.com; seshagirirao.n@greenkogroup.com; ramprasad.n@greenkogroup.com,30,Nagareddipalli,Kadiri,Ananthapuramu,"78°04'04.7""E","14°13'02.0""N",No,NA,Ground mounted,Poly Crystalline,"JA SOLAR
+RISEN",State,PPA,25 Years,Kutagulla,132/33 KV,SEI Arushi Pvt Ltd,132 KV,30,32.99,28.10.2017,,2017-18
+115,SEI Green Flash Pvt.Ltd,Ch. Anil Kumar,"1131/A, Sai Square, Road No.36, jubilee Hills, Hyderabad - 500033",040-40301000,9100533429,info@greenkogroup.com,30,Adurupalli,Chejarla,SPSR Nellore,"79°35'31.90""E","14°29'48.07""N",No,NA,Ground mounted,Poly Crystalline,Jinko,State,PPA,25years,Adurupalli,132/33kV,,132kV,30,41.01,27.10.2017,,2017-18
+116,Greenko solar power(Dharmavaram)Ltd (Formerly Known as Rain Coke Ltd),Mr. Ram Prasad N,"#1131/A, Sai Square Building, Road No. 36,
+Jubilee Hills, Hyderabad- 500033,
+Telangana State, India",040-40301000,"9959552119, 9959552017, 9100533429;",subbaraju.p@greenkogroup.com; seshagirirao.n@greenkogroup.com; ramprasad.n@greenkogroup.com,22,Kunuthuru,Dharmavaram,Ananthapuramu,"77°40'09.0""E","14°27'23.3""N",No,NA,Ground mounted,Poly Crystalline,RISEN,State,PPA,25yrs,Dharmavaram,132/33 KV,Rain Coke Ltd,33 KV,22,24.194,07.11.2017,,2017-18
+117,Amplus Andhra Power Pvt Ltd,,"6th Floor, The Palm Square, Golf Course Road Extn, Sector-66, Gugoan 122102","9581989581
+7382050291",," benarjee.tappeti@Amplussolar.com
+kiran.parimi@amplussolar.com",2,Eedupugallu ,Kankipadu , Krishna ,80.75° E,16.48° N,No,NA,Ground mounted,Poly Crystalline,Trina Solar,State,Third Party Sale,NA,Edupugallu,11/33 KV,33KV Edupugallu,33KV,2,2.47,30.12.2017,,2017-18
+118,Sri Chakra Cements Pvt. Ltd.,Mr. Krishna Mohan,"Dr.No.6-3-668/10/66, Durga Nagar Colony, Punjagutta, Hyderabad - 500 082",9618001202,9618001202,dwarakasripathi@gmail.com,3,Perindesam,KVB Puram ,Chittoor,79.733,13.593,No,NA,Ground mounted,Poly Crystalline,Canadian Solar,State,Captive Use,NA,Ragigunta SS,33 KV,,,3,3,9.3.2018,,2017-18
+119,Arkha Solar Power Pvt Ltd,Srinivasan Viswanathan,"VEH Global India Pvt Ltd. Level- 1, N- Heights, Plot No- 38, Phase- 2, Siddiq Nagar, Hi-Tec City, Hyderabad, Telangana- 500081.
+",4067846101,9533422106,VAheerYadav@vibrantenergyholdings.com,10,Thanakallu,Kadiri,Ananthapuramu,78.179,13.907,No,NA,Ground mounted,Poly Crystalline,GCEL,State Scheme,Captive,,Gunjuvaripalli,33 / 132KV,,33KV,10,10,02.04.2018,,2018-19
+120,SB Solar Services Pvt Ltd,Mr.Ramanand ,"SB Energy private Limited,World mark-II,Aerocity NH-8,New delhi-110037",1149217999,9030416814,narendrababu.purilla@sbenergy.com,2,Shakunala,Orvakal,Kurnool,78.1547.5,15.427.3,No,NA,Ground Mounted,Poly Crystalline,"Trina,jollywood,gcl,longi,ja solar",State,PPA,12 years,Chowtkur,11/33 KV,Solar plant line,33 KV,2,2,21.03.2019,,2018-19
+121,Odysseus Logos LLP,Abhimanyu,"ODYSSEUS LOGOS LLP 3-29-8-1-1, H.NO.453, NTR STREET, KRISHNA NAGAR, GUNTUR",7382722644,8897300488,"lavuabhimanyu@gmail.com , machapavan005@gmail.com",2,Gandlaparty,Rapthasu,Ananthapuramu,"77°32'20.44572""","14°32'0.77748"" ",No,NA,Ground mounted,Poly Crystalline,Canadian solar,State,Captive Use,NA,Gandlaparty,11/33 KV,Hampapuram,33 KV,2,2.2,30.12.2018,,2018-19
+122,Azure Power Thiry Six Pvt.Ltd.,Ranjit Gupta,"Azure Power, Assest 301-304 & 307, World mark -3, Aerocity, Newdelhi- 110037",+91 11 49409800,9133316439,harinadha.reddy@azurepower.com,50,Veligallu,Galiveedu,YSR Kadapa ,78.44,14.02,Yes,Ananthapuramu Ultra Mega Solar Park-I,Ground mounted,Poly Crystalline,"Q-cell, Hanwha",Central,PPA,25 Years,NP Kunta,220/400KV,Azure 7A & 7B,220 KV,50,59.2,30.04.2018,,2018-19
+123,Waneep Solar Pvt Ltd (Hero Future Energies ltd),Sunil Jain,"202,Okhla Industrial Estate PH-III,New Delhi-20,India ",9.1115E+11,8554992344,ramakanth.reddy@herofutureenergies.com,25,O G Kuppam ,Nagari,Chittoor,79.6,13.3,No,NA,Ground mounted,Poly Crystalline /Mono Crystalline,Waaree,State,PPA,25 Years,Nagari,33/132/220 KV,Waaneep Solar,33 KV,25,29.7,24.05.2018    (4.00MW)                                     &                            02.08.2018 (21.00MW),,2018-19
+124,"ACME Karnal
+Solar Power Pvt Ltd","Sandeep 
+Kashyap","Plot no. 152, Sector-44, 
+Gurgaon -122002",0124711-7000,9911299530,"sandeep.kashyap@
+acme.in",50,Thumukunta,Galiveedu,YSR Kadapa ,78.457,14.111,Yes,Ananthapuramu Ultra Mega Solar Park-I,Ground mounted,Poly Crystalline,"Risen, Talesun, Znshine, 
+Lihgtway, CECEP",Central,PPA,25 Years,"NP Kunta 
+",220/400 KV,,220 KV,50,67.7,14.06.2018,,2018-19
+125,"ACME Hisar
+Solar Power Pvt Ltd","Sandeep 
+Kashyap","Plot no. 152,
+ Sector-44, Gurgaon -122002",0124711-7000,9911299530,"sandeep.kashyap
+@acme.in",50,Thumukunta,Galiveedu,YSR Kadapa ,78.463,14.102,Yes,Ananthapuramu Ultra Mega Solar Park-I,Ground mounted,Poly Crystalline,"Risen, Talesun,
+ Znshine, Adani",Central,PPA,25 Years,"NP Kunta 
+",220/400 KV,,220 KV,50,67.7,14.06.2018,,2018-19
+126,FRV Andhra Pradesh Solar Farm-I Pvt.Ltd.,Mr.Sushil Vohra,"Suite 276,The Leela Ambience Guragaon Hotel&Residences,Ambience Island,NH-8,Gurgoan-122002",,9650498777,"guiomar.gimenez
+@frv.com",50,Velligallu,Galiveedu,YSR Kadapa ,78.43,14.024,Yes,Ananthapuramu Ultra Mega Solar Park-I,Ground mounted,Mono crystalline,Longi,Central,PPA,25 Years,"NP Kunta 
+",220/400 KV,8A & 8B,220 KV,50,70,14.06.2018,,2018-19
+127,Tata Power Renewable Energy Ltd,"Mahesh
+ Paranjpe","Tata Power Renewable Energy limited., 
+34, Sant Tukaram Mark, Carnac,  
+Masjid Bunder, Mumbai 400009 ",,9248089452,solai@tatapower.com,50,Thumukunta,Galiveedu,YSR Kadapa ,78.17,14.12,Yes,Ananthapuramu Ultra Mega Solar Park-I,Ground mounted,Poly,Yingli,Central,PPA,25 Years,"NP Kunta 
+",220/400 KV,TATA 4A & 4B,220 KV,50,65,14.06.2018,,2018-19
+128,Tata Power Renewable Energy Ltd,"Mahesh 
+Paranjpe","Tata Power Renewable Energy limited., 
+34, Sant Tukaram Mark, Carnac,  
+Masjid Bunder, Mumbai 400009 ",,9248089452,solai@tatapower.com,50,Thumukunta,Galiveedu,YSR Kadapa ,78.17,14.12,Yes,Ananthapuramu Ultra Mega Solar Park-I,Ground mounted,Thin,First Solar,Central,PPA,25 Years,"NP Kunta 
+",220/400 KV,TATA 5A & 5B,220 KV,50,63,15.06.2018,,2018-19
+129,Slylandro Power Pvt Ltd,,"42-1-48 Thurpu Kammapalem,Near ramalayam,Ongole- 523001 ",,,anjaiahassociates@gmail.com,2.4,Kakarla,Marripadu,Prakasam,,,No,NA,Ground mounted,,,State,Third Party Sale,NA,,,,,2.4,,18.06.2018,,2018-19
+130,"ACME
+Bhiwadi Solar Power Pvt Ltd","Sandeep 
+Kashyap","Plot no. 152, Sector-44, 
+Gurgaon -122002",0124711-7000,9911299530,"sandeep.
+kashyap@acme.in",50,Thumukunta,Galiveedu,YSR Kadapa ,78.463,14.084,Yes,Ananthapuramu Ultra Mega Solar Park-I,Ground mounted,Poly Crystalline,"Znshine, Risen, 
+Lightway",Central,PPA,25 Years,"NP Kunta 
+",220/400 KV,,220 KV,50,67.7,01.07.2018,,2018-19
+131,"IOCL
+Kadapa","N. Ravi 
+Shankar","Kadapa 
+near Apsrtc work shop",9384938726,,"ravishankarn
+@indianoil.in",3,Puttampalli,Kadapa,YSR Kadapa ,"78.52'32""","14.26'26""",No,NA,Ground mounted,Poly Crystalline,HHV Solar,State,Captive Use,NA,"IDA 33/11 KV 
+Kadapa",11/33 KV,IOCL ,33KV,3,3.003,18.07.2018,,2018-19
+132,Subramanya Solar Power Projects LLP,Mr. Vijay Kumar,"6-3-668/10/66, Durga Nagar Colony,Punjagutta ,Hyderabad- 500082",9618001202,9618001202,dwarakasripathi@gmail.com,2,Perindesam (V),KVB Puram (M),Chittoor,79.733,13.593,No,NA,Ground mounted,Poly Crystalline,Canadian Solar,State,Captive Use,NA,Ragigunta SS,11/33 KV,,,2,2,11.08.2018,,2018-19
+133,Greater Visakhapatnam Smart City Corporation Ltd ,GVMC Commissioner,"GVSCCL,Room No : 306,Tenneti Bhavan,Ramnagar,Viskhapatnam- 530002",Office Assistant : K .Appa Rao .8106455030,8106455030,manager@gvsccl.in,2,Mudasaralova,Visakakhapatnam,Visakhapatnam,83.175,17.46,No,NA,Floating,Poly Crystalline,ZN SHINE,State,Captive Use,NA,PINEAPPLE COLONY SS,11/33 KV,2 MW SOLAR FEEDER,33 KV,2,2,18.08.2018,,2018-19
+134,FRV Andhra Pradesh Solar Farm-I Pvt.Ltd.,Mr.Sushil Vohra,"Suite 276,The Leela Ambience Guragaon Hotel&Residences,Ambience Island,NH-8,Gurgoan-122002",,9650498777,"guiomar.gimenez
+@frv.com",50,Thumukunta,Galiveedu,YSR Kadapa ,78.459,14.112,Yes,Ananthapuramu Ultra Mega Solar Park-I,Ground mounted,Poly Crystalline,TRINA SOLAR,Central,PPA,25 Years,"
+NP Kunta 
+",220/400 KV,,220 KV,50,68,29.09.2018,,2018-19
+135,"B.P.G.R. Electrical Contractors& Engineers Private Ltd.,",B.Gopal Reddy,"#6-350, BGR Complex, Azad Nagar, Kalyandurg Road, Ananthapur (A.P)",08554-270171,"9440286171, 9031313108","bpgrsolar171@gmail.com , mikebhargav@gmail.com",3,Englibanda,Gooty,Ananthapuramu,,,No,NA,Ground mounted,Thin Film,Candian solar,State,Third Party Sale,NA,Thodapadu,11/33 KV,Pedda Vaduguru,,3,3.3,22.11.2018,,2018-19
+136,"Andhra Pradesh Power Generation Corportaion Limited (APGENCO)
+",Sri.P.Rafi Ahmed  Executive Engineer 400MW Solar Power Plant,"Office of the Executive Engineer  400MW Solar Plant Plant, Talaricheruvu, APGENCO, TADIPATRI",8558223904,9493123904,"pahes.de@apgenco.gov.in  
+
+
+solarpowerproject.tdpt@gmail.com",250,Talaricheruvu,Tadipatri,Ananthapuramu,78.1,15.0° ,Yes,Anathapuramu Ultra Mega Solar Park-II,Ground mounted,Poly Crystalline,"Vikram Solar 
+zhijiang Trunsun, ChinaWuxi Suntech
+Power Co. Ltd, China,Anhui Schutten 
+Solar Power Co. Ltd, China
+
+
+
+
+
+",Central,PPA,25 Years,Talaricheruvu,200/400 KV,,220  KV,250,,30.12.2018,,2018-19
+137,Sree Jaya Jyothi Cements Pvt Ltd.,BC Gurivi Reddy,"Yenakandla Village, Banaganapali Mandal, Enakandla, Kurnool, Andhra Pradesh - 518124","7660013042 (Sri. Gurivi Reddy, Site Incharge)","7660013042 (Sri. Gurivi Reddy, Site Incharge)",gurivireddy.b@myhomegroup.in,10,Yanakandla,Banaganapalli,Kurnool,78.2,15.4,No,NA,Ground mounted,,,State,Captive Use,NA, Banaganapalli,,,,10,,31.01.2019,,2018-19
+138,APGENCO,Sri.P.Rafi Ahmed  Executive Engineer 400MW Solar Power Plant,"Office of the Executive Engineer  400MW Solar Plant Plant, Talaricheruvu, APGENCO, TADIPATRI",8558223904,9493123904,"pahes.de@apgenco.gov.in  
+
+
+solarpowerproject.tdpt@gmail.com",150,Talaricheruvu,Tadipatri,Ananthapuramu,79.1,15.0° ,Yes,Anathapuramu Ultra Mega Solar Park-II,Ground mounted,Poly Crystalline,"1. M/s Vikram Solar Limited, Kolkata, India
+2. M/s zhijiang Trunsun, China
+3. M/s Wuxi Suntech
+Power Co. Ltd, China
+4.M/s Anhui Schutten 
+Solar Power Co. Ltd, China
+
+
+
+
+
+",Central,PPA,25,Talaricheruvu,220/400 KV,,220 KV,150,,12.02.2019,,2018-19
+139,M/s. My Home Industries Pvt. Ltd,,"9th floor, Block -3, My Home Hub, 
+Madhapur, Hyderabad - 500 081 
+Ph: 040 66929655
+",040-66929770,,jagadish@myhomegroup.in,4,Mulakapalli,Yelamanchili,Visakhapatnam,,,No,NA,Ground Mounted,,,State,Captive Use,NA,,,,,4,4.6,20.02.2019,,2018-19
+140,Sprint Exports Pvt Ltd,"Sri.G.Pavan Kumar,
+M.D","#10-50-84/C, Sun Towers, Waltair Main Road, Visakhapatnam-530 002",0981 2501116,9849723532,vijay@sprintexports.com,2,V.Krishna Puram,Dathirajeru,Vizianagaram,83.363,18.392,No,NA,Ground mounted,Poly Crystaline,"JinKo solar,
+Canadian solar",State,Captive Use,NA,Komatipalli,11/33 KV,Sprint Solar,33 KV,2,2,22.03.2019,,2018-19
+141,Powermech Infra Ltd,G V Raghu Ram,"2nd Floor, Lohia towers, Patamata, Vijayawada 520010",91771-27878,91771-27878,gvr@pmilinfra.net,1.7,Peda Alavalapadu,Peda Cherlopalle,Prakasam ,79.6228⁰,15.3275⁰,No,NA,Ground mounted,Poly Crystalline,HTSAAE - Chinese,State,Captive Use,NA,Pedda Alavalapadu,33/11 KV,Kanigiri,33 KV,1.7,2,23.03.2019,,2018-19
+142, Alufluoride Ltd,,"Mulagada,Mindi,Visakhapatnam",,8912548567,contact@alufluoride.com,1.6,Polepalli,Butchiyyapeta,Visakhapatnam,,,No,NA,Ground mounted,,,State,Captive User,NA,,,,,1.6,,26.03.2019,,2018-19
+143,Engie Solar (Solaire Direct)  ,Amit Jain,"203, Pentagon 3, Magarpatta City, Hadapsar Pune 411013",0206686 4719,9810062441,"amit.jain@
+engie.com",200,"Ramachandrapalle, Ponnampalle, Talamanchipatanam",Mylavaram ,YSR Kadapa ,,,Yes,Kadapa Ultra Solar Park ,Ground mounted,Poly Crystalline,Jinko Solar,Central,PPA,25 Years,Talamanchipatnam (Jamalamadugu),220/400 KV,,220 KV,200,240,03.05.2019,,2019-20
+144,Bharathi Polymers India Pvt.Ltd,,"8-2-626, Road No.10, Relience Majestic Building, Banjara Hills, Hyderabad-500 034",,9676831515,srinivas.v@vicat.com,1,Ippatla,Lingala,YSR Kadapa,,,No,,Ground mounted,,,,Captive User,NA,,,,,1,,22.06.2019,,2019-20
+145,Sree Godavari Kraft Papers Pvt Ltd ,M.Satyanarayana,"Dr.No.46-16-17, Danavaipeta, Rajahmundry            533 103",9949640999,9949640999,godavaripapers@yahoo.com,3,kadalur,D.Herial mandal ,Ananthpuramu,"13040'11.78""N","80000'36.48""E",No,,Ground mounted,POLY,CANADIAN SOLAR,STATE,Captive User,NA,SOMALAOURAM,33 / 11  KV,dedicated feeder,,3,3.3,19.11.2019,,2019-20
+146,SB Energy Solar Private Limited,Raman Nanda,"1st Floor , WorldMark 2 , Aerocity,New Delhi -110020",011-49218000,9599229219,raman@sbenergy.com,237.5,NP KUNTA,NP KUNTA,ANANTHAPUR,"78 O 26 '04.6"" E","13O  59' 35.9""N",Yes,Ananthapuramu Ultra Mega Solar park-I,Ground Mounted,Poly,Risen&Suntech,Central,PPA,25 Years,"PSS-04 ,APSPCL(33KV/220KV)  connected to   PGCIL NPKUNTA GSS-(220KV/400KV)",PSS-04 33KV/220KV;GSS-220KV/400KV,PSS-04 Feeder,220 KV,237.5,356.25,20.12.19,,2019-20
+147,"M/s Greater Visakhapatnam Smart City Corporation Ltd., (GVSCCL)",,"Regd.office: C/O GVMC, Room No.306, Tenneti Bhavan, Asilmetta Junction, Visakhapatnam-530002",,9603336622,visakhapatnamsmartcity@gmail.com,1,Mudasaralova,Visakhapatnam,Visakhapatnam,,,No,NA,Ground mounted,,,State,Captive,,,,,,1,,31.01.2020,,2019-20
+148,Engie Solar (Solaire Direct)  ,Amit Jain,"203, Pentagon 3, Magarpatta City, Hadapsar Pune 411013",0206686 4719,9810062441,"amit.jain@
+engie.com",50,"Ramachandrapalle, Ponnampalle, Talamanchipatanam",Mylavaram ,YSR Kadapa ,,,Yes,Kadapa Ultra Solar Park ,Ground mounted,Poly Crystalline,Jinko Solar,Central,PPA,25 Years,Talamanchipatnam (Jamalamadugu),220/400 KV,,220 KV,50,50,08.02.2020,,2019-20
+149,SB Energy Solar Private Limited,Raman Nanda,"1st Floor , WorldMark 2 , Aerocity,New Delhi -110020",011-49218000,9599229219,raman@sbenergy.com,12.5,NP KUNTA,NP KUNTA,ANANTHAPUR,"78 O 26 '04.6"" E","13O  59' 35.9""N",Yes,Ananthapuramu Ultra Mega Solar park-I,Ground Mounted,Poly,Risen&Suntech,Central,PPA,25 Years,"   PGCIL SS,
+ NP KUNTA ",220/400 KV,PSS-04 Feeder,220 KV,12.5,,11.03.2020,,2019-20
+150,Chitturi Projects pvt Ltd,Ch. Narendra,"Villa No.5, Hanging gardens,Lanco hills, Manikonda, Hyderabad.",7997999899,,chitturi99@yahoo.com,1,Nagasamudram,Kaligiri,Nellore,79.98,14.98,No,NA,Ground mounted,"Poly crystalline,330Wp",Renew Sys,State,51% captive and 49% third party sale,Basireddy palem,Vinjamururu,33 KV,33KV,33 KV,1,1.056,19.03.2020,,2019-20
+151,Aditya Birla Renewable SPV 1 LTd,Surajit Chanda,"A-4, Aditya Birla Centre, S.K.Aheri Marg, Worli, Mumbai 400 030",9873722454,,abrespv@adityabirla.com,8.75,Dudyala,Sambepalli,YSR Kadapa ,"78°50'53.08""E","13°57'29.96""N",No,NA,Ground mounted,Poly Crystalline,,State,Captive,25 years,Sambepalli SS,132/33 KV,Sambepalli SS,33 KV,8.75,9.629,14.05.2020,,2020-21
+152,M/s Natems Solar Power Private Limited,Praveen Reddy,,9989884808,,,9.89,Komatikuntla,Putlur,Ananthapuramu,,,No,NA,Ground Mounted,,,,Captive,,Komatikuntla,33/132 KV,,33 KV,9.89,,19.06.2020,,2020-21
+153,"M/s Tirupati Smart City Corporation Limited, Tirupati ",,"Tirupati Municipal Corporation, Tilak Road, East Tirupati - 517501, Chittoor district, Andhra Pradesh
+",9849906679,,,4,Rampuram,Srikalahasti,Chittoor,,,No,NA,Ground Mounted,,,,Captive,NA,Bonu Palli,33/11 KV,,33 KV,4,,20.06.2020,,2020-21
+154,M/s Mondelez India Foods Private Limited,,"Central Express Way, Sector 25 Sri City,
+Varadiapalem, Satyavedu (M), Chittoor Dist, 
+Andhra Pradesh - 517544.  
+",,9884814109,sandeep.talgaaonkar@mdlz.com,2,Varadhaipalem,Satyavedu,Chittoor,,,No,NA,,,,,Captive,NA,Chervi,,Mondelez,132 KV,2,,27.06.2020,,2020-21
+155,M/s Sree Lalitha Parameswari Spinning Mills Pvt.Ltd,,"1st Floor, Tirumalal Complex, 
+4/2,Brodipet, Guntur - 522 002
+
+",9951332119,,md@slpspinningmills.com,8,Bongaravulapadu,Varikuntapadu,Nellore,,,No,NA,Ground Mounted,,,,Captive,NA,Thurpurompidodia,33/11 KV,,33 KV,8,,06.07.2020,,2020-21
+156,"M/s Greater Visakhapatnam Smart City Corporation Ltd., (GVSCCL)",,"Regd.office: C/O GVMC, Room No.306, Tenneti Bhavan, Asilmetta Junction, Visakhapatnam-530002",,9603336622,visakhapatnamsmartcity@gmail.com,1.5,Krishnapuram,S Kota ,Vizianagaram,,,No,NA,Ground mounted,,,State,Captive,,Pothanapalli SS,33/11 KV,,,1.5,,08.07.2020,,2020-21
+157,M/s Vasantha Industries Limited,,"Thimmapuram Village, Edlapadu Mandal,
+Guntur Dist.
+",,9989050699,vasanthaspinnersltd@yahoo.co.in,8,Thimmapuram ,Edlapadu ,Guntur ,,,No,NA,Ground Mounted,,,State,Captive,,Chilakalurupeta SS,,,,8,,03.08.2020,,2020-21
+158, Alufluoride Ltd,,"Mulagada,Mindi,Visakhapatnam",,8912548567,contact@alufluoride.com,1.4,Polepalli,Butchiyyapeta,Visakhapatnam,,,No,NA,Ground mounted,,,State,Captive User,NA,33 KV Polepalli SS,,,33KV ,1.4,,19.08.2020,,2020-21
+159,ONGC ,,"Room no: SC-12, Second floor, Godavari Bhavan, ONGC, Rajahmundry, AP state, Pin code: 533106",8832494205,9490168547,kumar_boddudeva@ongc.co.in,5,Tatipaka,Razole,East Godavari,81.897719,16.503719,NO,NA,Ground mounted(Agri-solar),Poly/Multi Crystalline,Premier Solar Systems Limited,NA,Captive User,25 years , Nagaram sub-station,33KV/11KV,ONGC Bay solar,33KV,5,6,29.08.2020,,2020-21
+160,"M/s Ravali Spinners Pvt.Ltd, ",,"Beside HN-5, Khandavalli Post, Tanuku, West Godavari - 534 330 ",,9848870153,info@rspl.ind.in,1.98,Khandavalli,Peravali,West Godavari,,,No,NA,Ground Mounted,,,,Captive User,,Ravali Switching Station,132/33KV,,33KV,1.98,,14.09.2020,,2020-21
+161,Arunodaya TechSolar Power Projects Private Limited,K. Sreedhara Babu,"TF-4, Empire Square Building, Road no.36, Jubilee Hills, Hyderabad-500 033",91-4029565910,7674933118,sreedhara.korukonda@cleantechsolar.com,5,Kudluru,D. Hirehal,Ananthapuramu,"76°54'40.22""E","14°51'53.53""N",No,NA,Ground mounted,Multi crystaline,Trina,State,Third Party Sale,NA,Godiselapalli SS,33/11 KV,Arunodaya,33KV,5,5.502,03.10.2020,,2020-21
+162,JSW Energy Limited,,"Bandra Kurla Complex, (East) Mumbai - 400 051",91-2242861000,6281539945,ramanjaneya.k@jsw.in,5,Bilakalagudur,Gadivemula,Kurnool,"78°26'23.0""E","15°41'12.6""N",No,NA,Ground Mounted,Poly Crystaline,Vikram Solar,State,Captive,NA,Bilakalagudur Lilo SS,220/11 KV,JSW,11KV,5,6.812,03.11.2020,,2020-21
+163,Ayana Ananthapuramu Solar Private Limted,,,,8800554749,narayanan@ayanapower.com; ,50,NP Kunta,NP Kunta,Ananthapuramu,"78°26'08.8""E","14°01'56.4""N",Yes,Ananthapuramu Ultra Mega Solar park-I,Ground Mounted,Poly Crystaline,,Central,PPA,25 years,NP Kunta,220/400 KV,,220 KV,50,,14.10.2020,,2020-21
+164,Sprng Agnitra Pvt. Ltd.,,,,7391941866; 9963333103,"janardhanareddy@sprngenergy.com; ""rajasekharam@sprngenergy.com; ",54,NP Kunta,NP Kunta,Ananthapuramu,"78°26'08.8""E","14°01'56.4""N",Yes,Ananthapuramu Ultra Mega Solar Park-I,Ground Mounted,Poly Crystaline,,Central,PPA,25 years,N.P Kunta,220/400 KV,,200 KV,54,,11.11.2020,,2020-21
+165,Bharati Cement Corporation Pvt Ltd,M Sai Ramesh,"Nallalingayapalli- Village, 
+Kamalapuram - Mandal,
+YSR Kadapa - District,
+Andhra Pradesh- 516289",-8562307989,-8985002030,sairamesh.m@vicat.com,8,Nallalingayapalli,Kamalapuram,YSR Kadapa,78.34.188N,14.34.524N,No,NA,Ground Mounted,Poly Crystaline,Renewsys,State,Captive,NA,132KV/33KV Bharathi Cement Nallalingayapalli ,132/33 KV,Bharathi Cement,132 KV,8,10,07.12.2020,,2020-21
+166,Ayana Ananthapuramu Solar Private Limted,,,,8800554749,narayanan@ayanapower.com; ,100,NP Kunta,NP Kunta,Ananthapuramu,"78°26'08.8""E","14°01'56.4""N",Yes,Ananthapuramu Ultra Mega Solar park-I,Ground Mounted,Poly Crystaline,,Central,PPA,25 years,N.P Kunta,220/400 KV,,220KV,100,,21.12.2020,,2020-21
+167,Sprng Agnitra Pvt. Ltd.,,,,7391941866; 9963333103,"janardhanareddy@sprngenergy.com; ""rajasekharam@sprngenergy.com; ",98,NP Kunta,NP Kunta,Ananthapuramu,"78°26'08.8""E","14°01'56.4""N",Yes,Ananthapuramu Ultra Mega Solar Park-I,Ground Mounted,Poly Crystaline,,Central,PPA,25 years,N.P Kunta,220/400 KV,,220 KV,98,,09.01.2021,,2020-21
+168,Ayana Ananthapuramu Solar Private Limted,,,,8800554749,narayanan@ayanapower.com; ,100,NP Kunta,NP Kunta,Ananthapuramu,"78°26'08.8""E","14°01'56.4""N",Yes,Ananthapuramu Ultra Mega Solar park-I,Ground Mounted,Poly Crystaline,,Central,PPA,25 years,N.P Kunta,220/400 KV,,220 KV,100,,08.03.2021,,2020-21
+169,Sprng Agnitra Pvt. Ltd.,,,,7391941866; 9963333103,"janardhanareddy@sprngenergy.com; ""rajasekharam@sprngenergy.com; ",76.5,NP Kunta,NP Kunta,Ananthapuramu,"78°26'08.8""E","14°01'56.4""N",Yes,Ananthapuramu Ultra Mega Solar Park-I,Ground Mounted,Poly Crystaline,,Central,PPA,25 years,N.P Kunta,220/400 KV,,220 KV,76.5,,20.04.2021,,2021-22
+170,Sprng Agnitra Pvt. Ltd.,,,,7391941866; 9963333103,"janardhanareddy@sprngenergy.com; ""rajasekharam@sprngenergy.com; ",21.5,NP Kunta,NP Kunta,Ananthapuramu,"78°26'08.8""E","14°01'56.4""N",Yes,Ananthapuramu Ultra Mega Solar Park-I,Ground Mounted,Poly Crystaline,,Central,PPA,25 years,N.P Kunta,220/400 KV,,220 KV,21.5,,04.06.2021,,2021-22
+171,"M/s Garrison Engineer
+( M/s Military Engineer Services)
+",,"INS Kalinga Complex (NAVY),
+Bheemunipatnam, Visakhapatnam-531 163",08933-228962,,gepnavykalinga-ap@nic.in,2,INS Kalinga,Bheemunipatnam,Visakhapatnam,,,No,NA,Ground Mounted,,,State,Captive Use,NA,132KV Anandapuram Sub Station,33/11 KV,INS Kalinga,33KV,2,,19.06.2021,,2021-22
+172,Kanti Brothers oils Pvt. Limited,Mr.Kantilal Shah,"Kallur,Kurnool District","91-8518-
+289302",9440293305,solar.kantibro@gmail.com,1,Kallur,Kallur,Kurnool,,,No,NA,Ground mounted,,,State,Captive Use ,NA,,33 /11 KV , Kalluru ,33KV ,1,,31.07.2021,,2021-22
+173,Kanti Brothers oils Pvt. Limited,Mr.Kantilal Shah,"Kallur,Kurnool District","91-8518-
+289302",9440293305,solar.kantibro@gmail.com,2,Kallur,Kallur,Kurnool,,,No,NA,Ground mounted,,,State,Third Party Sale,NA,,33 /11 KV , Kalluru ,33KV ,2,,31.07.2021,,2021-22
+174,M/s. NTPC Limited,,,,,,25,Simhadri,Simhadri,"Visakhapatnam,",,,No,NA,,,,,Captive Use,NA,,,,,25,,21.08.2021,,2021-22
+175,M/s Ultratech Cement Ltd,,"Bhogasamudram (V), Tadipatri (M),
+Ananthapur District",,,,9.375,Bhogasamudram,Tadipatri,Ananthapuramu,,,No,NA,Ground Mounted,,,State,In-House Captive,NA,220 KV Gooty Sub station,,,220 KV,9.375,,30.09.2021,,2021-22
+176,M/s Hero Moto Corp Limited,,"Industrial Park, Madhanapalem (V), Satyavedu (M), Chittoor District",,,manohara.chelluru@heromotocorp.com,2.08,Sricity,Satyavedu,Chittoor,,,No,NA,Ground Mounted,,,State,Captive Use,NA,Cherivi Sub Station,132/33 KV,,33KV,2.08,2.5,04.01.2022,,2021-22
+177,M/s Silica Ceramica (P) Limited ( Prism Johnson Limited),,"H & R Johnson (India) Division, 305, Laxmi Niwas Apartments, Ameerpet, Hyderabad",,7799775985,balla.ram@hrjohnsonindia.com,1.2,Narayanapuram,Unguturu,West Godavari,,,No,NA,Ground Mounted,,Canadian Solar,State,In-House Captive,NA,,,,,1.2,1.5,28.01.2022,,2021-22
+178,Aditya Birla Renewable  LTd,Surajit Chanda,"A-4, Aditya Birla Centre, S.K.Aheri Marg, Worli, Mumbai 400 030",9873722454,,abrespv@adityabirla.com,11.25,Dudyala,Sambepalli,YSR Kadapa ,"78°50'53.08""E","13°57'29.96""N",No,NA,Ground mounted,Poly Crystalline,,State,Captive,NA,Sambepalli SS,132/33 KV,Sambepalli SS,33 KV,11.25,12.362,03.03.2022,,2021-22
+179,M/s. Ananthapur Energy Projects Private Limited,,"Vijayawada, NTR District",,,,8.4,Gandhikovur,Chakryapeta,Annamayya District,,,,NA,,,,,Captive,NA,,,,,8.4,,01.06.2022,,2022-23
+180,M/s. Amara Raja Batteries Limited,,"Karakambadi, Tirupati, Tirupati District- 517520",9000711129,,gjm@amararaja.com,50,Vadepalli ,Aragonda ,Chittoor,,,,NA,,,,,Captive,NA,,,,,50,,10.06.2022,,2022-23
+181,M/s. Precot Limited,,"SF.No: 559/4, D Block, 4th floor, Hanudev Info park, Nava India Road, Udaiyampalayam, Coimbatore District-641028",9994449412,9666151960,varadaraj@precot.com,3.2,Kodigenahalli,Parigi,Ananthapur,,,,NA,,,,,Captive,NA,,,,,3.2,4,24.06.2022,,2022-23
+182,M/s. Greater Visakhapatnam Municipal Corporation,GVMC Commissioner,"GVSCCL,Room No : 306,Tenneti Bhavan,Ramnagar,Viskhapatnam- 530002",Office Assistant : K .Appa Rao .8106455030,8106455030,manager@gvsccl.in,2.415,"Meghadhrigadda Reservoir, Narava (Floating Solar Project)",Pendurthy,Visakhapatnam,,,,NA,,,,,Captive,NA,,,,,2.415,,30.06.2022,,2022-23
+183,M/s. Coastal Corporation Limited,Venkata Satyanaryana,"15-1-37/3, Nowroji Road, Maharanipet, Visakhapatnam - 530002",0891-2567118,9346386668,info@coastalcorp.co.in,3.06,Daleswaram,Kanchili,Srikakulam,,,,NA,,,,,Captive,NA,,,,,3.06,3.6,19.07.2022,,2022-23
+184,M/s. Dalmia Cements (Bharath) Ltd,Mallikarjun,"Chinnakomerla (V), Mylavaram (M), Kadapa District-516433",-,9908577761,s.mallikarjun@dalmiacement.com,16.08,Chinnakomerla,Mylavaram ,Kadapa,,,No,NA,,,,,Captive,NA,Jammalamadugu SS,132/33 KV,Jammalamadugu SS,132KV,16.08,13.4,10.08.2022,,2022-23
+185,"Sri Durga Malleswara Swamy Vari Devasthanam, Vijayawada",Executive Officer,"Indrakeeladri, Vijayawada, NTR District",-,7660007662,,1,Pathapadu,Vijayawada Rural,Krishna,,,No,NA,,,,,Captive,NA,Nunna SS,33/11KV,Surampalli Feeder,33KV,1,1,05.09.2022,,2022-23
+186,M/s. FP Solar Shakti Pvt Ltd,"Director, Giridhar Babu Inampudi","Plot No.46, H.No.4-9-10, HMT Nagar, Hyderabad",,040-27158865,cs@fourthpartner.co,13.2,Gandikovvur,Chakrayapeta,YSR,,,No,NA,,,,,Captive,NA,Chakrayapeta SS,220/132/33 KV,,220KV,13.2,,26.12.2022,,2022-23
+,TOTAL,,,,,,4271.27,,,,,,,,,,,,,,,,,,4271.27,,,,
