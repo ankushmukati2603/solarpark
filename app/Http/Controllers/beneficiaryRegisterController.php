@@ -180,6 +180,7 @@ class beneficiaryRegisterController extends Controller
         return view('UserLogInType');
     }
     public function adminLogIn(){
+        // MNRE Login Page
         return view('mnreLogin');
     }
     public function SeciLogIn(){
