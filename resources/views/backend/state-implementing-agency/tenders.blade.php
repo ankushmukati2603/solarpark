@@ -81,7 +81,6 @@
                             @endforeach
                         </table>
                     </div>
-
                     {{ $tenderList->links() }}
                 </div>
             </div>
