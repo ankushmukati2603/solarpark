@@ -35,11 +35,12 @@
         <td colspan=2 align="center" bgcolor="#558ED5"><b> Reverse Auction <br>(if applicable) </b></td>
         <td colspan=3 align="center" bgcolor="#E6B9B8"><b> Tender Cancelled, if any </b></td>
         <td colspan=3 align="center" bgcolor="#D7E4BD"><b> Details of Selected Bidders </b></td>
-
+        <td colspan=3 align="center" bgcolor="#77933C"><b> Details of Tariffs Discovered<br>(Rs/kWh) </b>
+        </td>
         <td colspan=6 align="center" bgcolor="#B3A2C7"><b> Signing of PSA </b></td>
         <td colspan=4 align="center" bgcolor="#B3A2C7"><b> Signing of PPA </b></td>
         <td colspan=5 align="center"><b> Commissioning Detail</b></td>
-        <td colspan=10 align="center"><b> Commissioned Detail</b></td>
+        <td colspan=7 align="center"><b> Commissioned Detail</b></td>
         <td rowspan=3 align="center"><b> Remark, if any </b></td>
     </tr>
     <tr>
@@ -60,9 +61,9 @@
         <td rowspan=2 align="center"><b> Name of Company </b></td>
         <td rowspan=2 align="center"><b> Capacity (MW) </b></td>
         <td rowspan=2 align="center"><b> Date of LoI/LoA </b></td>
-        <!-- <td rowspan=2 align="center"><b> Highest Tariff </b></td>
+        <td rowspan=2 align="center"><b> Highest Tariff </b></td>
         <td rowspan=2 align="center"><b> Lowest Tariff </b></td>
-        <td rowspan=2 align="center"><b> Weighted Average </b></td> -->
+        <td rowspan=2 align="center"><b> Weighted Average </b></td>
 
         <td rowspan=2 align="center"><b> Date of PSA </b></td>
         <td rowspan=2 align="center"><b> Capacity (MW) </b></td>
@@ -84,7 +85,7 @@
         <td rowspan=2 align="center"><b> Actual Commissioning Date </b></td>
         <td rowspan=2 align="center"><b> Actual commissioned Capacity(MW) </b></td>
 
-        <td rowspan=2><b>Project in Solar Park</b></td>
+
         <td rowspan=2><b>Project Type</b></td>
         <td rowspan=2><b>Type of Module</b></td>
         <td rowspan=2><b>Module Make</b></td>
@@ -92,8 +93,6 @@
         <td rowspan=2><b>Substation Voltage Level (KV)</b></td>
         <td rowspan=2><b>Feeder Name</b></td>
         <td rowspan=2><b>Feeder Voltage (KV)</b></td>
-        <td rowspan=2><b>Commissioned AC Capacity (MW) </b></td>
-        <td rowspan=2><b>Commissioned DC Capacity (MWp)</b></td>
     </tr>
     <tr>
         <td align="center"><b> Village </b></td>
@@ -133,7 +132,9 @@
         <td align="center" rowspan="{{$tdata['project_count']}}" valign=middle>{{$tdata['bidder_capacity'] ?? '--'}}
         </td>
         <td align="center" rowspan="{{$tdata['project_count']}}" valign=middle>{{$tdata['loa_date'] ?? '--'}}</td>
-
+        <td rowspan="{{$tdata['projectCount']}}" align="center" valign=middle> {{$tdata['costMaxPPA'] ?? '--'}} </td>
+        <td rowspan="{{$tdata['projectCount']}}" align="center" valign=middle> {{$tdata['costMinPPA'] ?? '--'}} </td>
+        <td rowspan="{{$tdata['projectCount']}}" align="center" valign=middle> {{$tdata['avgCostPPA'] ?? '--'}}</td>
         <td align="center" valign=middle>{{$tdata['ppa_psa_date'] ?? '--'}}</td>
         <td align="center" valign=middle>{{$tdata['ppa_psa_capacity'] ?? '--'}} </td>
         <td align="center" valign=middle>{{$tdata['state'] ?? '--'}} </td>
@@ -167,9 +168,7 @@
             @endforeach
 
         </td>
-        <td>{{$tdata['commissioned_details']['have_solar_project'] ?? '--'}}
-            @if(($tdata['commissioned_details']['have_solar_project'] ?? '')=='Yes') <br> Project Name
-            {{ $tdata['commissioned_details']['solar_park_name'] ?? '--'}} @endif</td>
+
         <td>{{$tdata['commissioned_details']['project_type'] ?? '--'}}</td>
         <td>{{$tdata['commissioned_details']['module_type'] ?? '--'}}</td>
         <td>{{$tdata['commissioned_details']['module_make'] ?? '--'}}</td>
@@ -177,8 +176,6 @@
         <td>{{$tdata['commissioned_details']['substation_voltage'] ?? '--'}}</td>
         <td>{{$tdata['commissioned_details']['feeder_name'] ?? '--'}}</td>
         <td>{{$tdata['commissioned_details']['feeder_voltage'] ?? '--'}}</td>
-        <td>{{$tdata['commissioned_details']['ac_voltage'] ?? '--'}}</td>
-        <td>{{$tdata['commissioned_details']['dc_voltage'] ?? '--'}}</td>
 
         <td align="center" valign=middle> <br> </td>
     </tr>
@@ -231,20 +228,13 @@
                 style="display: block;border-bottom: 1px dashed #ccc;">{{$comCapacity->actual_commissioned_capacity}}</span>
             @endforeach
         </td>
-        <td>{{$comissionedDataRecord['have_solar_project'] ?? '--'}}
-            @if(($comissionedDataRecord['have_solar_project'] ?? '')=='Yes') <br> Project Name
-            {{ $comissionedDataRecord['solar_park_name'] ?? '--'}} @endif
-
-        </td>
-        <td>{{$comissionedDataRecord['project_type'] ?? '--'}}</td>
+        <td>{{$comissionedDataRecord['project_type'] ?? '--'}} sdjkghsd</td>
         <td>{{$comissionedDataRecord['module_type'] ?? '--'}}</td>
         <td>{{$comissionedDataRecord['module_make'] ?? '--'}}</td>
         <td>{{$comissionedDataRecord['substation_name'] ?? '--'}}</td>
         <td>{{$comissionedDataRecord['substation_voltage'] ?? '--'}}</td>
         <td>{{$comissionedDataRecord['feeder_name'] ?? '--'}}</td>
         <td>{{$comissionedDataRecord['feeder_voltage'] ?? '--'}}</td>
-        <td>{{$comissionedDataRecord['ac_voltage'] ?? '--'}}</td>
-        <td>{{$comissionedDataRecord['dc_voltage'] ?? '--'}}</td>
         <td align="center" valign=middle> <br> </td>
     </tr>
     @endif
@@ -300,11 +290,6 @@
             @endforeach
 
         </td>
-        <td>{{$bidData['commissioned_details']['have_solar_project'] ?? '--'}}
-            @if(($bidData['commissioned_details']['have_solar_project'] ?? '')=='Yes') <br> Project Name :
-            {{ $bidData['commissioned_details']['solar_park_name'] ?? '--'}} @endif
-
-        </td>
         <td>{{$bidData['commissioned_details']['project_type'] ?? '--'}}</td>
         <td>{{$bidData['commissioned_details']['module_type'] ?? '--'}}</td>
         <td>{{$bidData['commissioned_details']['module_make'] ?? '--'}}</td>
@@ -312,8 +297,6 @@
         <td>{{$bidData['commissioned_details']['substation_voltage'] ?? '--'}}</td>
         <td>{{$bidData['commissioned_details']['feeder_name'] ?? '--'}}</td>
         <td>{{$bidData['commissioned_details']['feeder_voltage'] ?? '--'}}</td>
-        <td>{{$bidData['commissioned_details']['ac_voltage'] ?? '--'}}</td>
-        <td>{{$bidData['commissioned_details']['dc_voltage'] ?? '--'}}</td>
 
 
         <td align="center" valign=middle> <br> </td>
@@ -370,12 +353,6 @@
             @endforeach
 
         </td>
-        <td>{{$comissionedData['have_solar_project'] ?? '--'}}
-            @if(($comissionedData['have_solar_project'] ?? '')=='Yes') <br> Project Name :
-            {{ $comissionedData['solar_park_name'] ?? '--'}} @endif
-
-
-        </td>
         <td>{{$comissionedData['project_type'] ?? '--'}}</td>
         <td>{{$comissionedData['module_type'] ?? '--'}}</td>
         <td>{{$comissionedData['module_make'] ?? '--'}}</td>
@@ -383,8 +360,6 @@
         <td>{{$comissionedData['substation_voltage'] ?? '--'}}</td>
         <td>{{$comissionedData['feeder_name'] ?? '--'}}</td>
         <td>{{$comissionedData['feeder_voltage'] ?? '--'}}</td>
-        <td>{{$comissionedData['ac_voltage'] ?? '--'}}</td>
-        <td>{{$comissionedData['dc_voltage'] ?? '--'}}</td>
         <td align="center" valign=middle> <br> </td>
     </tr>
     @endif

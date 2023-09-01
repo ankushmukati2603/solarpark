@@ -86,7 +86,7 @@
 
                 </div>
             </div>
-            <span id="exceldata" style="display:none;"></span>
+            <span id="exceldata" style="display:none1;"></span>
     </main>
 </section>
 <!-- </section> -->
@@ -107,7 +107,7 @@ $('#reportExcel').on('click', function() {
                 $('#exceldata').html('Error');
             } else {
                 $('#exceldata').html(data.result);
-                ExportToExcel('xlsx');
+                // ExportToExcel('xlsx');
             }
         }
     });

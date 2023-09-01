@@ -35,12 +35,11 @@
         <td colspan=2 align="center" bgcolor="#558ED5"><b> Reverse Auction <br>(if applicable) </b></td>
         <td colspan=3 align="center" bgcolor="#E6B9B8"><b> Tender Cancelled, if any </b></td>
         <td colspan=3 align="center" bgcolor="#D7E4BD"><b> Details of Selected Bidders </b></td>
-        <td colspan=3 align="center" bgcolor="#77933C"><b> Details of Tariffs Discovered<br>(Rs/kWh) </b>
-        </td>
+
         <td colspan=6 align="center" bgcolor="#B3A2C7"><b> Signing of PSA </b></td>
         <td colspan=4 align="center" bgcolor="#B3A2C7"><b> Signing of PPA </b></td>
         <td colspan=5 align="center"><b> Commissioning Detail</b></td>
-        <td colspan=7 align="center"><b> Commissioned Detail</b></td>
+        <td colspan=10 align="center"><b> Commissioned Detail</b></td>
         <td rowspan=3 align="center"><b> Remark, if any </b></td>
     </tr>
     <tr>
@@ -61,9 +60,9 @@
         <td rowspan=2 align="center"><b> Name of Company </b></td>
         <td rowspan=2 align="center"><b> Capacity (MW) </b></td>
         <td rowspan=2 align="center"><b> Date of LoI/LoA </b></td>
-        <td rowspan=2 align="center"><b> Highest Tariff </b></td>
+        <!-- <td rowspan=2 align="center"><b> Highest Tariff </b></td>
         <td rowspan=2 align="center"><b> Lowest Tariff </b></td>
-        <td rowspan=2 align="center"><b> Weighted Average </b></td>
+        <td rowspan=2 align="center"><b> Weighted Average </b></td> -->
 
         <td rowspan=2 align="center"><b> Date of PSA </b></td>
         <td rowspan=2 align="center"><b> Capacity (MW) </b></td>
@@ -85,7 +84,7 @@
         <td rowspan=2 align="center"><b> Actual Commissioning Date </b></td>
         <td rowspan=2 align="center"><b> Actual commissioned Capacity(MW) </b></td>
 
-
+        <td rowspan=2><b>Project in Solar Park</b></td>
         <td rowspan=2><b>Project Type</b></td>
         <td rowspan=2><b>Type of Module</b></td>
         <td rowspan=2><b>Module Make</b></td>
@@ -93,6 +92,8 @@
         <td rowspan=2><b>Substation Voltage Level (KV)</b></td>
         <td rowspan=2><b>Feeder Name</b></td>
         <td rowspan=2><b>Feeder Voltage (KV)</b></td>
+        <td rowspan=2><b>Commissioned AC Capacity (MW) </b></td>
+        <td rowspan=2><b>Commissioned DC Capacity (MWp)</b></td>
     </tr>
     <tr>
         <td align="center"><b> Village </b></td>
@@ -135,9 +136,7 @@
 
         </td>
         <td align="center" rowspan="<?php echo e($tdata['project_count']); ?>" valign=middle><?php echo e($tdata['loa_date'] ?? '--'); ?></td>
-        <td rowspan="<?php echo e($tdata['projectCount']); ?>" align="center" valign=middle> <?php echo e($tdata['costMaxPPA'] ?? '--'); ?> </td>
-        <td rowspan="<?php echo e($tdata['projectCount']); ?>" align="center" valign=middle> <?php echo e($tdata['costMinPPA'] ?? '--'); ?> </td>
-        <td rowspan="<?php echo e($tdata['projectCount']); ?>" align="center" valign=middle> <?php echo e($tdata['avgCostPPA'] ?? '--'); ?></td>
+
         <td align="center" valign=middle><?php echo e($tdata['ppa_psa_date'] ?? '--'); ?></td>
         <td align="center" valign=middle><?php echo e($tdata['ppa_psa_capacity'] ?? '--'); ?> </td>
         <td align="center" valign=middle><?php echo e($tdata['state'] ?? '--'); ?> </td>
@@ -171,7 +170,10 @@
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
         </td>
+        <td><?php echo e($tdata['commissioned_details']['have_solar_project'] ?? '--'); ?>
 
+            <?php if(($tdata['commissioned_details']['have_solar_project'] ?? '')=='Yes'): ?> <br> Project Name
+            <?php echo e($tdata['commissioned_details']['solar_park_name'] ?? '--'); ?> <?php endif; ?></td>
         <td><?php echo e($tdata['commissioned_details']['project_type'] ?? '--'); ?></td>
         <td><?php echo e($tdata['commissioned_details']['module_type'] ?? '--'); ?></td>
         <td><?php echo e($tdata['commissioned_details']['module_make'] ?? '--'); ?></td>
@@ -179,6 +181,8 @@
         <td><?php echo e($tdata['commissioned_details']['substation_voltage'] ?? '--'); ?></td>
         <td><?php echo e($tdata['commissioned_details']['feeder_name'] ?? '--'); ?></td>
         <td><?php echo e($tdata['commissioned_details']['feeder_voltage'] ?? '--'); ?></td>
+        <td><?php echo e($tdata['commissioned_details']['ac_voltage'] ?? '--'); ?></td>
+        <td><?php echo e($tdata['commissioned_details']['dc_voltage'] ?? '--'); ?></td>
 
         <td align="center" valign=middle> <br> </td>
     </tr>
@@ -231,13 +235,21 @@
                 style="display: block;border-bottom: 1px dashed #ccc;"><?php echo e($comCapacity->actual_commissioned_capacity); ?></span>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </td>
-        <td><?php echo e($comissionedDataRecord['project_type'] ?? '--'); ?> sdjkghsd</td>
+        <td><?php echo e($comissionedDataRecord['have_solar_project'] ?? '--'); ?>
+
+            <?php if(($comissionedDataRecord['have_solar_project'] ?? '')=='Yes'): ?> <br> Project Name
+            <?php echo e($comissionedDataRecord['solar_park_name'] ?? '--'); ?> <?php endif; ?>
+
+        </td>
+        <td><?php echo e($comissionedDataRecord['project_type'] ?? '--'); ?></td>
         <td><?php echo e($comissionedDataRecord['module_type'] ?? '--'); ?></td>
         <td><?php echo e($comissionedDataRecord['module_make'] ?? '--'); ?></td>
         <td><?php echo e($comissionedDataRecord['substation_name'] ?? '--'); ?></td>
         <td><?php echo e($comissionedDataRecord['substation_voltage'] ?? '--'); ?></td>
         <td><?php echo e($comissionedDataRecord['feeder_name'] ?? '--'); ?></td>
         <td><?php echo e($comissionedDataRecord['feeder_voltage'] ?? '--'); ?></td>
+        <td><?php echo e($comissionedDataRecord['ac_voltage'] ?? '--'); ?></td>
+        <td><?php echo e($comissionedDataRecord['dc_voltage'] ?? '--'); ?></td>
         <td align="center" valign=middle> <br> </td>
     </tr>
     <?php endif; ?>
@@ -293,6 +305,12 @@
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
         </td>
+        <td><?php echo e($bidData['commissioned_details']['have_solar_project'] ?? '--'); ?>
+
+            <?php if(($bidData['commissioned_details']['have_solar_project'] ?? '')=='Yes'): ?> <br> Project Name :
+            <?php echo e($bidData['commissioned_details']['solar_park_name'] ?? '--'); ?> <?php endif; ?>
+
+        </td>
         <td><?php echo e($bidData['commissioned_details']['project_type'] ?? '--'); ?></td>
         <td><?php echo e($bidData['commissioned_details']['module_type'] ?? '--'); ?></td>
         <td><?php echo e($bidData['commissioned_details']['module_make'] ?? '--'); ?></td>
@@ -300,6 +318,8 @@
         <td><?php echo e($bidData['commissioned_details']['substation_voltage'] ?? '--'); ?></td>
         <td><?php echo e($bidData['commissioned_details']['feeder_name'] ?? '--'); ?></td>
         <td><?php echo e($bidData['commissioned_details']['feeder_voltage'] ?? '--'); ?></td>
+        <td><?php echo e($bidData['commissioned_details']['ac_voltage'] ?? '--'); ?></td>
+        <td><?php echo e($bidData['commissioned_details']['dc_voltage'] ?? '--'); ?></td>
 
 
         <td align="center" valign=middle> <br> </td>
@@ -356,6 +376,13 @@
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
         </td>
+        <td><?php echo e($comissionedData['have_solar_project'] ?? '--'); ?>
+
+            <?php if(($comissionedData['have_solar_project'] ?? '')=='Yes'): ?> <br> Project Name :
+            <?php echo e($comissionedData['solar_park_name'] ?? '--'); ?> <?php endif; ?>
+
+
+        </td>
         <td><?php echo e($comissionedData['project_type'] ?? '--'); ?></td>
         <td><?php echo e($comissionedData['module_type'] ?? '--'); ?></td>
         <td><?php echo e($comissionedData['module_make'] ?? '--'); ?></td>
@@ -363,6 +390,8 @@
         <td><?php echo e($comissionedData['substation_voltage'] ?? '--'); ?></td>
         <td><?php echo e($comissionedData['feeder_name'] ?? '--'); ?></td>
         <td><?php echo e($comissionedData['feeder_voltage'] ?? '--'); ?></td>
+        <td><?php echo e($comissionedData['ac_voltage'] ?? '--'); ?></td>
+        <td><?php echo e($comissionedData['dc_voltage'] ?? '--'); ?></td>
         <td align="center" valign=middle> <br> </td>
     </tr>
     <?php endif; ?>
