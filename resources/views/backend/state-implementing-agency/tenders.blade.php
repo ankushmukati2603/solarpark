@@ -34,6 +34,10 @@
                                 <th>Action</th>
                             </tr>
                             @foreach($tenderList as $tender)
+                            <?php
+                            $countLocations=\App\Models\SelectedBidderProject::where('tender_id',$tender->id)->count();
+                            $countCommissionedLocations=\App\Models\SelectedBidderProject::where('tender_id',$tender->id)->whereNotNull('commissioned_details')->count();
+                            ?>
                             <tr>
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{ $tender->tender_no }}</td>
@@ -51,17 +55,25 @@
                                     @elseif($tender->tender_status==3)
                                     <span class="badge bg-primary">Implemented</span>
                                     @elseif($tender->tender_status==4)
+                                    @if($countLocations>$countCommissionedLocations) <span class="badge bg-success">
+                                        Partially Commissioned</span>
+                                    @else
                                     <span class="badge bg-success">Commissioned</span>
+                                    @endif
+
                                     @elseif($tender->tender_status==5)
                                     <span class="badge bg-danger">Cancelled</span>
                                     @else
 
                                     @endif
 
+
                                 </td>
-                                <td>@if($tender->tender_status !=4)<a
+                                <td>
+                                    @if($tender->tender_status !=4 || $countLocations>$countCommissionedLocations)<a
                                         href=" {{URL::to(Auth::getDefaultDriver().'/Tenders/Edit/'.$tender->id)}}">Edit</a>
                                     |@endif
+
                                     <a
                                         href=" {{URL::to(Auth::getDefaultDriver().'/TenderPreview/'.base64_encode($tender->id))}}">View</a>
                                 </td>

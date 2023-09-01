@@ -1,5 +1,5 @@
-@extends('layouts.masters.backend')
-@section('content')
+
+<?php $__env->startSection('content'); ?>
 
 <main id="main" class="main">
     <section class="section dashboard form_sctn">
@@ -8,9 +8,9 @@
                 <div class="pagetitle col-xl-12">
                     <h1>Cancel Tender</h1>
                     <hr style="color: #959595;">
-                    <form action="{{URL::to(Auth::getDefaultDriver().'/CancelTender')}}" method="POST">
-                        @csrf
-                        @include('backend/state-implementing-agency/tenderSearch')
+                    <form action="<?php echo e(URL::to(Auth::getDefaultDriver().'/CancelTender')); ?>" method="POST">
+                        <?php echo csrf_field(); ?>
+                        <?php echo $__env->make('backend/state-implementing-agency/tenderSearch', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                         <table class="table table-bordered" style="display:none" id="reversTable">
                             <tr>
                                 <th width="20%">Cancelled Date <span class="text-danger">*</span></th>
@@ -49,7 +49,7 @@
                             </tr>
                             <tr style="display:none" id="submit_form">
                                 <td colspan="4">
-                                    <input type="hidden" id="page_type" name="page_type" value="{{$page ?? ''}}">
+                                    <input type="hidden" id="page_type" name="page_type" value="<?php echo e($page ?? ''); ?>">
                                     <input type="submit" name="submit" id="submit" value="Save" class="btn btn-success">
                                 </td>
                             </tr>
@@ -63,8 +63,8 @@
 </main>
 
 
-@endsection
-@push('backend-js')
+<?php $__env->stopSection(); ?>
+<?php $__env->startPush('backend-js'); ?>
 <script>
 $('#cancel_type').on('change', function() {
     $('.cap_awd').hide();
@@ -102,7 +102,8 @@ $("#cancel_capacity").blur(function() {
 
 });
 </script>
-<script type="text/javascript" src="{{asset('public/js/form_custom.js')}}"></script>
-<script src="{{asset('public/js/custom.js')}}"></script>
+<script type="text/javascript" src="<?php echo e(asset('public/js/form_custom.js')); ?>"></script>
+<script src="<?php echo e(asset('public/js/custom.js')); ?>"></script>
 
-@endpush
+<?php $__env->stopPush(); ?>
+<?php echo $__env->make('layouts.masters.backend', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp\htdocs\solar_park\resources\views/backend/state-implementing-agency/cancelTender.blade.php ENDPATH**/ ?>

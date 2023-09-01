@@ -294,6 +294,7 @@
                             <th>LTOA Operationalization Date</th>
                             <th>Status of Transmisison line from <br>
                                 project site to Sub stattion (By Developer)</th>
+                            <th>Interconnection Point/S/S <br> voltage level</th>
                         </tr>
 
                         @foreach($bidderProjectLocationData as $bidder)
@@ -307,6 +308,7 @@
                             <td>{{$bidder->status_lta ?? 'NA'}}</td>
                             <td>{{ $bidder->ltoa_date ? date('d M Y', strtotime($bidder->ltoa_date)) : 'NA'}}</td>
                             <td>{{$bidder->status_transmisison_line ?? 'NA'}}</td>
+                            <td>{{$bidder->interconnection_vol_level ?? '--'}}</td>
                         </tr>
 
                         @endforeach
@@ -337,10 +339,17 @@
                             <th>Substation Voltage Level (KV)</th>
                             <th>Feeder Name</th>
                             <th>Feeder Voltage (KV)</th>
+                            <th>Projects in Solar Park</th>
+                            <th>Commissioned AC Capacity</th>
+                            <th>Commissioned DC Capacity</th>
                         </tr>
 
                         @foreach($bidderProjectLocationData as $bidder)
                         @php $commissionedData = json_decode($bidder->commissioned_details, true);
+                        $solarprojectname="NA";
+                        if(($commissionedData['have_solar_project'] ?? '')=='Yes'){
+                        $solarprojectname=$commissionedData['solar_park_name'];
+                        }
                         @endphp
 
                         <tr>
@@ -356,6 +365,11 @@
                             <td>{{$commissionedData['substation_voltage'] ?? 'NA'}}</td>
                             <td>{{$commissionedData['feeder_name'] ?? 'NA'}}</td>
                             <td>{{$commissionedData['feeder_voltage'] ?? 'NA'}}</td>
+                            <td>{{ $commissionedData['have_solar_project'] ?? 'NA'}}<br> Project Name :
+                                {{$solarprojectname}}
+                            </td>
+                            <td>{{ $commissionedData['ac_voltage'] ?? 'NA'}}</td>
+                            <td>{{ $commissionedData['dc_voltage'] ?? 'NA'}}</td>
                         </tr>
 
                         @endforeach

@@ -31,11 +31,13 @@ class UnderImplementationController extends Controller
                 'status_lta.*' => 'required',
                 'ltoa_date.*' => 'required',
                 'status_transmisison_line.*' => 'required',
+                'interconnection_vol_level.*' => 'required',
             ],[
                 'status_stage_two.*.required'=>'This field is required',
                 'status_lta.*.required'=>'This field is required',
                 'ltoa_date.*.required'=>'This field is required',
                 'status_transmisison_line.*.required'=>'This field is required',
+                'interconnection_vol_level.*.required'=>'This field is required',
             ]
             );
             if ($validation->fails()){  //check all validations are fine, if not then redirect and show error messages
@@ -47,6 +49,7 @@ class UnderImplementationController extends Controller
                 $SelectedBidderProject->status_lta=$request->status_lta[$i];
                 $SelectedBidderProject->ltoa_date=$request->ltoa_date[$i];
                 $SelectedBidderProject->status_transmisison_line=$request->status_transmisison_line[$i];
+                $SelectedBidderProject->interconnection_vol_level=$request->interconnection_vol_level[$i];
                 $SelectedBidderProject->save();
                 //Tender Timeline
                 if($i==0){
@@ -86,6 +89,7 @@ class UnderImplementationController extends Controller
                         <th>Status of LTA & target region <span class="text-danger">*</span></th>
                         <th>LTOA operationalization date <span class="text-danger">*</span></th>
                         <th>Status of Transmisison line from <br> project site to Sub stattion (by developer)<span class="text-danger">*</span></th>
+                        <th>Interconnection Point/S/S voltage level <span class="text-danger">*</span></th>
                         
                     </tr>';
             foreach($selectedBidderProjectData as $data){$i++;
@@ -126,6 +130,10 @@ class UnderImplementationController extends Controller
                         </select>
                         <span name="status_transmisison_line.'.($i-1).'"></span>
                     </td>
+                    <td>
+                        <input type="text" name="interconnection_vol_level[]" id="interconnection_vol_level" value="" class="form-control" placeholder="Enter Interconnection Point/S/S voltage level" />
+                        <span name="interconnection_vol_level.'.($i-1).'"></span>
+                    </td>
                 </tr>';
                 if($i==count($selectedBidderProjectData)){
                     $result.='<tr>
@@ -143,6 +151,7 @@ class UnderImplementationController extends Controller
                 <td>'.$data->status_lta.'</td>
                 <td>'.date("d M Y",strtotime($data->ltoa_date)).'</td>
                 <td>'.$data->status_transmisison_line.'</td>
+                <td>'.$data->interconnection_vol_level.'</td>
                 </tr>';
             }
             
@@ -170,6 +179,9 @@ class UnderImplementationController extends Controller
                 'substation_voltage.*' => 'required',
                 'feeder_name.*' => 'required',
                 'feeder_voltage.*' => 'required',
+                'have_solar_project.*' => 'required',
+                'ac_voltage.*' => 'required',
+                'dc_voltage.*' => 'required',
             ],[
                 'project_type.*.required'=>'This field is required',
                 'module_type.*.required'=>'This field is required',
@@ -178,6 +190,9 @@ class UnderImplementationController extends Controller
                 'substation_voltage.*.required'=>'This field is required',
                 'feeder_name.*.required'=>'This field is required',
                 'feeder_voltage.*.required'=>'This field is required',
+                'have_solar_project.*.required'=>'This field is required',
+                'ac_voltage.*.required'=>'This field is required',
+                'dc_voltage.*.required'=>'This field is required',
             ]
             );
             if ($validation->fails()){  //check all validations are fine, if not then redirect and show error messages
@@ -193,6 +208,10 @@ class UnderImplementationController extends Controller
                 $arrayData['substation_voltage']=$request->substation_voltage[$i];
                 $arrayData['feeder_name']=$request->feeder_name[$i];
                 $arrayData['feeder_voltage']=$request->feeder_voltage[$i];
+                $arrayData['have_solar_project']=$request->have_solar_project[$i];
+                $arrayData['ac_voltage']=$request->ac_voltage[$i];
+                $arrayData['dc_voltage']=$request->dc_voltage[$i];
+                $arrayData['solar_park_name']=$request->solar_park_name[$i];
 
                 $commissionedDetail=SelectedBidderProject::findOrFail($request->id[$i]); 
                 $commissionedDetail->commissioned_details=json_encode($arrayData);
@@ -224,9 +243,9 @@ class UnderImplementationController extends Controller
         $result='';
         $i=0;
         if($selectedBidderProjectData->isNotEmpty()){
-            $result='<hr/><table class="table table-bordered tenderBlock" id="ppaTbale">
+            $result='<hr/><table class="table table-bordered tenderBlock table-responsive" id="ppaTbale">
                     <tr class="bg-primary text-light">
-                        <th colspan="9">
+                        <th colspan="12">
                             <h4>Tender Commissioned Details</h4>
                         </th>
                     </tr>
@@ -238,9 +257,12 @@ class UnderImplementationController extends Controller
                         <th>Module Make <span class="text-danger">*</span></th>
                         <th>Substation Name <span class="text-danger">*</span></th>
                         <th>Substation Voltage Level (KV) <span class="text-danger">*</span></th>
+                        
                         <th>Feeder Name <span class="text-danger">*</span></th>
                         <th>Feeder Voltage (KV)<span class="text-danger">*</span></th>
-                        
+                        <th>Projects in Solar Park <span class="text-danger">*</span></th>
+                        <th>Commissioned AC Capacity <span class="text-danger">*</span></th>
+                        <th>Commissioned DC Capacity <span class="text-danger">*</span></th>
                     </tr>';
             foreach($selectedBidderProjectData as $data){$i++;
                 if($data->commissioned_details=='')
@@ -300,10 +322,31 @@ class UnderImplementationController extends Controller
                                 value="">
                                 <span name="feeder_voltage.'.($i-1).'"></span>
                         </td>
+                        <td>
+                            <select name="have_solar_project[]" id="have_solar_project_select'.($i-1).'"  class="form-control">
+                                <option value="">~~Select~~</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                            <input type="text" name="solar_park_name[]" id="solar_park_name'.($i-1).'" class="form-control" placeholder="Leave blank if No" value="NA" />
+                            <span name="have_solar_project.'.($i-1).'"></span>
+                        </td>
+                        <td>
+                            <input  type="number" step="any" class="form-control"
+                                id="ac_voltage" placeholder="AC Voltage" name="ac_voltage[]"
+                                value="">
+                                <span name="ac_voltage.'.($i-1).'"></span>
+                        </td>
+                        <td>
+                            <input  type="number" step="any" class="form-control"
+                                id="dc_voltage" placeholder="DC Voltage" name="dc_voltage[]"
+                                value="">
+                                <span name="dc_voltage.'.($i-1).'"></span>
+                        </td>
                     </tr>';
                     if($i==count($selectedBidderProjectData)){
                         $result.='<tr>
-                            <td colspan="9">
+                            <td colspan="12">
                                 <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-success">
                             </td>
                         </tr>';
@@ -311,6 +354,10 @@ class UnderImplementationController extends Controller
                 }
                 else{
                     $commissionedData=json_decode($data->commissioned_details,true);
+                    $solarprojectname="NA";
+                    if($commissionedData['have_solar_project']=='Yes'){
+                        $solarprojectname=$commissionedData['solar_park_name'];
+                    }
                     // dd($commissionedData);
                     $result.='<tr>
                     <td class="row-index">'.$data->project_title.'</td>
@@ -322,6 +369,9 @@ class UnderImplementationController extends Controller
                     <td>'.$commissionedData['substation_voltage'].'</td>
                     <td>'.$commissionedData['feeder_name'].'</td>
                     <td>'.$commissionedData['feeder_voltage'].'</td>
+                    <td>'.$commissionedData['have_solar_project'].'<br> Project Name : '.$solarprojectname.'</td>
+                    <td>'.$commissionedData['ac_voltage'].'</td>
+                    <td>'.$commissionedData['dc_voltage'].'</td>
                     </tr>';
                 }
             

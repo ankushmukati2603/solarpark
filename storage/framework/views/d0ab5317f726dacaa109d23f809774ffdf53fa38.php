@@ -296,6 +296,7 @@
                             <th>LTOA Operationalization Date</th>
                             <th>Status of Transmisison line from <br>
                                 project site to Sub stattion (By Developer)</th>
+                            <th>Interconnection Point/S/S <br> voltage level</th>
                         </tr>
 
                         <?php $__currentLoopData = $bidderProjectLocationData; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bidder): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -309,6 +310,7 @@
                             <td><?php echo e($bidder->status_lta ?? 'NA'); ?></td>
                             <td><?php echo e($bidder->ltoa_date ? date('d M Y', strtotime($bidder->ltoa_date)) : 'NA'); ?></td>
                             <td><?php echo e($bidder->status_transmisison_line ?? 'NA'); ?></td>
+                            <td><?php echo e($bidder->interconnection_vol_level ?? '--'); ?></td>
                         </tr>
 
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -339,10 +341,17 @@
                             <th>Substation Voltage Level (KV)</th>
                             <th>Feeder Name</th>
                             <th>Feeder Voltage (KV)</th>
+                            <th>Projects in Solar Park</th>
+                            <th>Commissioned AC Capacity</th>
+                            <th>Commissioned DC Capacity</th>
                         </tr>
 
                         <?php $__currentLoopData = $bidderProjectLocationData; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bidder): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <?php $commissionedData = json_decode($bidder->commissioned_details, true);
+                        $solarprojectname="NA";
+                        if(($commissionedData['have_solar_project'] ?? '')=='Yes'){
+                        $solarprojectname=$commissionedData['solar_park_name'];
+                        }
                         ?>
 
                         <tr>
@@ -358,6 +367,12 @@
                             <td><?php echo e($commissionedData['substation_voltage'] ?? 'NA'); ?></td>
                             <td><?php echo e($commissionedData['feeder_name'] ?? 'NA'); ?></td>
                             <td><?php echo e($commissionedData['feeder_voltage'] ?? 'NA'); ?></td>
+                            <td><?php echo e($commissionedData['have_solar_project'] ?? 'NA'); ?><br> Project Name :
+                                <?php echo e($solarprojectname); ?>
+
+                            </td>
+                            <td><?php echo e($commissionedData['ac_voltage'] ?? 'NA'); ?></td>
+                            <td><?php echo e($commissionedData['dc_voltage'] ?? 'NA'); ?></td>
                         </tr>
 
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

@@ -34,6 +34,10 @@
                                 <th>Action</th>
                             </tr>
                             <?php $__currentLoopData = $tenderList; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tender): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <?php
+                            $countLocations=\App\Models\SelectedBidderProject::where('tender_id',$tender->id)->count();
+                            $countCommissionedLocations=\App\Models\SelectedBidderProject::where('tender_id',$tender->id)->whereNotNull('commissioned_details')->count();
+                            ?>
                             <tr>
                                 <td><?php echo e($loop->iteration); ?></td>
                                 <td><?php echo e($tender->tender_no); ?></td>
@@ -51,17 +55,25 @@
                                     <?php elseif($tender->tender_status==3): ?>
                                     <span class="badge bg-primary">Implemented</span>
                                     <?php elseif($tender->tender_status==4): ?>
+                                    <?php if($countLocations>$countCommissionedLocations): ?> <span class="badge bg-success">
+                                        Partially Commissioned</span>
+                                    <?php else: ?>
                                     <span class="badge bg-success">Commissioned</span>
+                                    <?php endif; ?>
+
                                     <?php elseif($tender->tender_status==5): ?>
                                     <span class="badge bg-danger">Cancelled</span>
                                     <?php else: ?>
 
                                     <?php endif; ?>
 
+
                                 </td>
-                                <td><?php if($tender->tender_status !=4): ?><a
+                                <td>
+                                    <?php if($tender->tender_status !=4 || $countLocations>$countCommissionedLocations): ?><a
                                         href=" <?php echo e(URL::to(Auth::getDefaultDriver().'/Tenders/Edit/'.$tender->id)); ?>">Edit</a>
                                     |<?php endif; ?>
+
                                     <a
                                         href=" <?php echo e(URL::to(Auth::getDefaultDriver().'/TenderPreview/'.base64_encode($tender->id))); ?>">View</a>
                                 </td>
@@ -74,7 +86,7 @@
 
                 </div>
             </div>
-            <span id="exceldata" style="display:none1;"></span>
+            <span id="exceldata" style="display:none;"></span>
     </main>
 </section>
 <!-- </section> -->
@@ -95,7 +107,7 @@ $('#reportExcel').on('click', function() {
                 $('#exceldata').html('Error');
             } else {
                 $('#exceldata').html(data.result);
-                // ExportToExcel('xlsx');
+                ExportToExcel('xlsx');
             }
         }
     });

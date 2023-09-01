@@ -332,12 +332,13 @@ class TenderController extends Controller
                 'cancel_date'=>'required',
                 'cancel_type'=>'required',
                 'cancel_capacity'=>'required_if:cancel_type,Partial',
+                'cancel_remark'=>'required',
             ]
             );
             if ($validation->fails()){  //check all validations are fine, if not then redirect and show error messages
                 return response()->json(['status'=>'verror','data'=>$validation->errors()]);
             }
-            $cancel_type=$request->input('cancel_type');
+            $cancel_type=$request->cancel_type;
             if($cancel_type=='Full'){
                 $cancel_capacity = 0;
                 $capacity =$request->input('cap_awarded_full');
@@ -351,6 +352,7 @@ class TenderController extends Controller
             $canceltender->cancel_date= $request->input('cancel_date');
             $canceltender->cancel_capacity=$cancel_capacity;
             $canceltender->cancel_type= $request->input('cancel_type');
+            $canceltender->cancel_remark= $request->input('cancel_remark');
             $canceltender->capacity= $capacity;
             $canceltender->save();
 
@@ -822,7 +824,7 @@ class TenderController extends Controller
                         <th>Village</th>
                         <th>Latitude </th>
                         <th>Longitude  </th>
-                        <th>Project Location Date  </th>
+                        <th>LOA/LOI Date  </th>
                     </tr>';
                 foreach($selectedBidderProjectDetails as $data){
                     $result.='<tr>
@@ -1062,9 +1064,14 @@ class TenderController extends Controller
                 <th>Active/Remaining Capacity(MW)</th>
                 <td>'.$canceldetails->capacity.'</td> 
             </tr>
+            
             <tr>
                 <th>Submitted On</th>
                 <td>'.date("d M Y",strtotime($canceldetails->entry_date)).'</td> 
+            </tr>
+            <tr>
+                <th>Remarks</th>
+                <td colspan="3">'.$canceldetails->cancel_remark.'</td> 
             </tr>';
         }
         return $result;
