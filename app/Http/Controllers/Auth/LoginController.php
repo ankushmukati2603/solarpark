@@ -179,8 +179,8 @@ class LoginController extends Controller
                         $user1 =Gecd::where('contact_no', $request->contact_no)->first();
                         $user1->password=$pass;
                         $user1->save();
-                        $url=urlencode($this->redirectTo);
-                        return response()->json(['status' => 'success','message'=>'Login Successful','url'=>$url,'redirect'=>'yes']); 
+                        // $url=urlencode($this->redirectTo);
+                        // return response()->json(['status' => 'success','message'=>'Login Successful','url'=>$url,'redirect'=>'yes']); 
                         return redirect($this->redirectTo);
                     }
                 } 

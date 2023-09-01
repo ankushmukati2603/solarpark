@@ -44,6 +44,7 @@ class MainController extends Controller
     public function index(){
         $dashboard = new Dashboard();
         $data = $dashboard->getSNADashboardData();
+        // dd($data);
         $auditData = array('action_type'=>'1','description'=>'SNA viewed Dashboard  ','user_type'=>'2');
         $this->auditTrail($auditData);
         return view('backend.state-implementing-agency.dashboard', compact('data'));

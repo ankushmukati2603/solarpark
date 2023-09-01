@@ -1,6 +1,7 @@
+@inject('general', 'App\Http\Controllers\Backend\Mnre\MainController')
 @extends('layouts.masters.backend')
 @section('content')
-@section('title', 'Received Report')
+@section('title', 'Solar Park Received Reports')
 @php $docBaseUrl =Auth::getDefaultDriver().'/preview-docs/'.Auth::id().'/'.$id.'/';
 @endphp
 <section class="section dashboard">
@@ -24,14 +25,14 @@
                 </th>
             </tr>
             <tr>
-                <th colspan="4" class="heading bg-green text-light">
+                <th colspan="4" class="heading bg-success text-light">
                     General
                 </th>
             </tr>
             <tr>
-                <th>Park Name</th>
+                <th width="20%">Park Name</th>
                 <td>{{$previewData->park_name }}</td>
-                <th>State</th>
+                <th width="20%">State</th>
                 <td>{{$previewData->state ?? ''}}</td>
 
             </tr>
@@ -78,17 +79,17 @@
                 <td>{{$previewData['general']['mobile_number'] ?? ''}}</td>
             </tr>
             <tr>
-                <th colspan="4" class="heading bg-green text-light">
+                <th colspan="4" class="heading bg-success text-light">
                     Internal Infrastructure
                 </th>
             </tr>
             <tr>
                 <th>DPR Status</th>
-                <td> @if($previewData['internal_infrastructure']['dpr_status'] == 'A')
+                <td> @if($previewData['general']['dpr_status'] == 'A')
                     <span>DPR Under Preparation</span>
-                    @elseif($previewData['internal_infrastructure']['dpr_status'] == 'B')
+                    @elseif($previewData['general']['dpr_status'] == 'B')
                     <span>DPR Submitted</span>
-                    @elseif($previewData['internal_infrastructure']['dpr_status'] == 'C')
+                    @elseif($previewData['general']['dpr_status'] == 'C')
                     <span> DPR Under Revision</span>
                     @else
                     <span>DPR Approved</span>
@@ -111,82 +112,83 @@
             </tr>
             <tr>
                 <th>Land Acquired (In Acres)</th>
-                <td>{{$previewData['internal_infrastructure']['land_acquired_acres'] ?? ''}}</td>
+                <td>{{$previewData['internal_infrastructure']['land_acquired_acres'] ?? '--'}}</td>
                 <th>Government Land</th>
                 <td>
-                    @if($previewData['internal_infrastructure']['govt_land'] == 'A')
-                    <span>Land Identified</span>
 
-                    @else($previewData['internal_infrastructure']['govt_land'] == 'B' )
-                    <span>Land Acquired</span>
-                    @endif
+                    <span>Land Identified (In Acres) :
+                        {{$previewData['internal_infrastructure']['govt_land_identified'] ?? '--'}}</span> <br>
+
+                    <span>Land Acquired (In Acres) : {{ $previewData['internal_infrastructure']['govt_land_acquired']
+                        ?? '--'}}</span>
+
                 </td>
             </tr>
 
             <tr>
                 <th>Private Land</th>
-                <td>@if($previewData['internal_infrastructure']['private_land'] == 'A')
-                    <span>Land Identified</span>
+                <td>
+                    <span>Land Identified (In Acres) :
+                        {{ $previewData['internal_infrastructure']['private_land_identified'] ?? '--'}}</span> <br>
 
-                    @else($previewData['internal_infrastructure']['private_land'] == 'B' )
-                    <span>Land Acquired</span>
-                    @endif
+                    <span>Land Acquired (In Acres) :
+                        {{ $previewData['internal_infrastructure']['private_land_acquired'] ?? '--'}}</span>
                 </td>
                 <th>Any Others</th>
-                <td>{{$previewData['internal_infrastructure']['others'] ?? ''}}</td>
+                <td>{{$previewData['internal_infrastructure']['others'] ?? '--'}}</td>
             </tr>
 
             <tr>
-                <th colspan="4" class="heading bg-green text-light">
+                <th colspan="4" class="heading bg-success text-light">
                     Road
                 </th>
             </tr>
 
             <tr>
                 <th>Approach road to the park Status of Road</th>
-                <td> @if($previewData['road']['road_status'] == 'A')
+                <td> @if($previewData['internal_infrastructure']['road_status'] == 'A')
                     <span>Already available</span>
-                    @elseif($previewData['road']['road_status'] == 'B')
+                    @elseif($previewData['internal_infrastructure']['road_status'] == 'B')
                     <span>New road to be developed</span>
-                    @else($previewData['road']['road_status'] == 'C')
+                    @else($previewData['internal_infrastructure']['road_status'] == 'C')
                     <span>Only rework/modification of road</span>
                     @endif
                 </td>
                 <th>Length of approach road up to the park boundary (in km)</th>
-                <td>{{$previewData['road']['park_boundary'] ?? ''}}
+                <td>{{$previewData['internal_infrastructure']['park_boundary'] ?? ''}}
                 </td>
             </tr>
             <tr>
                 <th>Length of access road to each plot inside the park (in km)</th>
-                <td>{{$previewData['road']['road_distance'] ?? ''}}</td>
+                <td>{{$previewData['internal_infrastructure']['road_distance'] ?? ''}}</td>
                 <th>Status </th>
-                <td>{{$previewData['road']['work_status'] ?? ''}}</td>
+                <td>{{$previewData['internal_infrastructure']['work_status'] ?? ''}}</td>
             </tr>
 
 
 
             <tr>
-                <th colspan="4" class="heading bg-green text-light">
+                <th colspan="4" class="heading bg-success text-light">
                     Water Facilities
                 </th>
             </tr>
             <!-- {{$previewData['water_facilities']['source_water'] ?? ''}} -->
             <tr>
                 <th>Source of water for park</th>
-                <td>{{$previewData['water_facilities']['source_water'] ?? ''}}</td>
+                <td>{{$previewData['internal_infrastructure']['source_water'] ?? ''}}</td>
                 <th>Details of water requirements</th>
-                <td>{{$previewData['water_facilities']['required_water'] ?? ''}}
+                <td>{{$previewData['internal_infrastructure']['required_water'] ?? ''}}
                 </td>
             </tr>
             <tr>
                 <th>Proposed system and progress made so far</th>
-                <td>{{$previewData['water_facilities']['proposed_system'] ?? ''}}</td>
+                <td>{{$previewData['internal_infrastructure']['proposed_system'] ?? ''}}</td>
                 <th>Status </th>
-                <td>{{$previewData['water_facilities']['status'] ?? ''}}</td>
+                <td>{{$previewData['internal_infrastructure']['status'] ?? ''}}</td>
             </tr>
 
             <tr>
-                <th colspan="4" class="heading bg-green text-light">
+                <th colspan="4" class="heading bg-success text-light">
                     Drainage Facility
                 </th>
             </tr>
@@ -194,13 +196,13 @@
 
             <tr>
                 <th>Details of proposed drainage system (including length in km)</th>
-                <td>{{$previewData['drainage_system']['drainage_system_details'] ?? ''}}</td>
+                <td>{{$previewData['internal_infrastructure']['drainage_system_details'] ?? ''}}</td>
                 <th>Status </th>
-                <td>{{$previewData['drainage_system']['tender_status'] ?? ''}}</td>
+                <td>{{$previewData['internal_infrastructure']['tender_status'] ?? ''}}</td>
             </tr>
 
             <tr>
-                <th colspan="4" class="heading bg-green text-light">
+                <th colspan="4" class="heading bg-success text-light">
                     Fencing
                 </th>
             </tr>
@@ -208,26 +210,26 @@
 
             <tr>
                 <th>Details of of fencing/boundary (including length)</th>
-                <td> {{$previewData['fencing_boundary']['fencing_details'] ?? ''}}</td>
+                <td> {{$previewData['internal_infrastructure']['fencing_details'] ?? ''}}</td>
                 <th>Status </th>
-                <td>{{$previewData['fencing_boundary']['fencing_status']  ?? ''}}</td>
+                <td>{{$previewData['internal_infrastructure']['fencing_status']  ?? ''}}</td>
             </tr>
 
             <tr>
-                <th colspan="4" class="heading bg-green text-light">
+                <th colspan="4" class="heading bg-success text-light">
                     Telecommunication Facilities
                 </th>
             </tr>
 
             <tr>
                 <th>Details of telecommunication facilities</th>
-                <td> {{$previewData['telecommunication_facilities']['tele_facility_details'] ?? ''}}</td>
+                <td> {{$previewData['internal_infrastructure']['tele_facility_details'] ?? ''}}</td>
                 <th>Status </th>
-                <td>{{$previewData['telecommunication_facilities']['tender_progress_status']  ?? ''}}</td>
+                <td>{{$previewData['internal_infrastructure']['tender_progress_status']  ?? ''}}</td>
             </tr>
 
             <tr>
-                <th colspan="4" class="heading bg-green text-light">
+                <th colspan="4" class="heading bg-success text-light">
                     Internal Transmission System
                 </th>
             </tr>
@@ -265,29 +267,29 @@
             </tr>
 
             <tr>
-                <th colspan="4" class="heading bg-green text-light">
+                <th colspan="4" class="heading bg-success text-light">
                     External Transmission System
                 </th>
             </tr>
 
             <tr>
                 <th> Responsibility for external transmission system</th>
-                <td> @if($previewData['external_transmission_system']['ext_responsibility'] == 'A')
+                <td> @if($previewData['internal_transmission_system']['ext_responsibility'] == 'A')
                     <span>CTU</span>
-                    @else($previewData['external_transmission_system']['ext_responsibility'] == 'B')
+                    @else($previewData['internal_transmission_system']['ext_responsibility'] == 'B')
                     <span>STU</span>
                     @endif
                 </td>
                 <th>Details of external transmission system</th>
-                <td> {{$previewData['external_transmission_system']['external_details'] ?? ''}}</td>
+                <td> {{$previewData['internal_transmission_system']['external_details'] ?? ''}}</td>
             </tr>
             <tr>
                 <th>Status</th>
-                <td colspan="3">{{$previewData['external_transmission_system']['external_status']  ?? ''}}</td>
+                <td colspan="3">{{$previewData['internal_transmission_system']['external_status']  ?? ''}}</td>
             </tr>
 
             <tr>
-                <th colspan="4" class="heading bg-green text-light">
+                <th colspan="4" class="heading bg-success text-light">
                     Solar Projects
                 </th>
             </tr>
@@ -333,7 +335,7 @@
                 <td>{{$previewData['solar_projects']['capacity_loa']  ?? ''}}</td>
             </tr>
             <tr>
-                <th colspan="4" class="heading bg-green text-light">
+                <th colspan="4" class="heading bg-success text-light">
                     Financial Closure
                 </th>
             </tr>
@@ -344,7 +346,7 @@
         <td>{{$previewData['financial_closure']['financial_closure_remarks']  ?? ''}}</td> -->
             </tr>
             <tr>
-                <th colspan="4" class="heading bg-green text-light">
+                <th colspan="4" class="heading bg-success text-light">
                     Award of Work
                 </th>
             </tr>
@@ -369,7 +371,7 @@
             </tr>
 
             <tr>
-                <th colspan="4" class="heading bg-green text-light">
+                <th colspan="4" class="heading bg-success text-light">
                     Solar park Completion
                 </th>
             </tr>
@@ -392,7 +394,7 @@
                 <td> {{$previewData['solar_park_completion']['SPC_delay'] ?? ''}}</td>
             </tr>
             <tr>
-                <th colspan="4" class="heading bg-green text-light">
+                <th colspan="4" class="heading bg-success text-light">
                     External Power Evacuation System
                 </th>
             </tr>
@@ -403,7 +405,7 @@
                 <td> {{$previewData['external_power_evacuation_system']['delay_external_transmission'] ?? ''}}</td>
             </tr>
             <tr>
-                <th colspan="4" class="heading bg-green text-light">
+                <th colspan="4" class="heading bg-success text-light">
                     Solar Project Completion
                 </th>
             </tr>
@@ -414,7 +416,7 @@
                 <td> {{$previewData['solar_project_completion']['delay_solar_project'] ?? ''}}</td>
             </tr>
             <tr>
-                <th colspan="4" class="heading bg-green text-light">
+                <th colspan="4" class="heading bg-success text-light">
                     Attachments
                 </th>
             </tr>
@@ -426,7 +428,7 @@
                     @php $i=0;@endphp
                     @foreach($previewData['attachments']['site_photo'][$i] as $value)
                     @php $i++; @endphp
-                    <a href="{{URL::to($docBaseUrl.$value)}}" target="_blank" style='float: right;'>View File</a>
+                    <a href="{{URL::to($docBaseUrl.$value)}}" target="_blank" class="badge bg-primary">View File</a>
                     @endforeach
                     @endif
                 </td>
@@ -436,7 +438,7 @@
                     @php $j=0; @endphp
                     @foreach($previewData['attachments']['road_photo'][$j] as $value)
                     @php $j++; @endphp
-                    <a href="{{URL::to($docBaseUrl.$value)}}" target="_blank" style='float: right;'>View File</a>
+                    <a href="{{URL::to($docBaseUrl.$value)}}" target="_blank" class="badge bg-primary">View File</a>
                     @endforeach
                     @endif
                 </td>
@@ -449,7 +451,7 @@
                     @php $l=0; @endphp
                     @foreach($previewData['attachments']['ipes_photo'][$l] as $value)
                     @php $l++; @endphp
-                    <a href="{{URL::to($docBaseUrl.$value)}}" target="_blank" style='float: right;'>View File</a>
+                    <a href="{{URL::to($docBaseUrl.$value)}}" target="_blank" class="badge bg-primary">View File</a>
                     @endforeach
                     @endif
                 </td>
@@ -461,7 +463,7 @@
                     @php $m=0; @endphp
                     @foreach($previewData['attachments']['exts_photo'][$m] as $value)
                     @php $m++; @endphp <a href="{{URL::to($docBaseUrl.$value)}}" target="_blank"
-                        style='float: right;'>View
+                        class="badge bg-primary">View
                         File</a>
                     @endforeach
                     @endif
@@ -474,13 +476,13 @@
                     @php $n=0; @endphp
                     @foreach($previewData['attachments']['solar_project_photo'][$n] as $value)
                     @php $n++; @endphp
-                    <a href="{{URL::to($docBaseUrl.$value)}}" target="_blank" style='float: right;'>View File</a>
+                    <a href="{{URL::to($docBaseUrl.$value)}}" target="_blank" class="badge bg-primary">View File</a>
                     @endforeach
                     @endif
                 </td>
             </tr>
             <tr>
-                <th colspan="4" class="heading bg-green text-light">
+                <th colspan="4" class="heading bg-success text-light">
                     Additional Information
                 </th>
             </tr>
@@ -490,20 +492,20 @@
                     @if($previewData['additional_information']!='')
 
                     <a href=" {{URL::to($docBaseUrl.$previewData['additional_information'])}}" target="_blank"
-                        style='float: right;'>View File</a>
+                        class="badge bg-primary">View File</a>
                     @endif
                 </td>
             <tr>
                 <td colspan="4"><button type="button" class="btn btn-primary" data-bs-toggle="modal"
                         data-bs-target="#exampleModal">
-                        Remarks
+                        MNRE Remarks
                     </button>
                     <!-- <button type="button" class="btn btn-lg btn-primary"> Remarks</button> -->
                 </td>
 
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
-                    <form action="{{ URL::to(Auth::getDefaultDriver().'/mnreRemark') }}" id="formFileAjax"
+                    <form action="{{ URL::to(Auth::getDefaultDriver().'/mnreRemarkSolarPark') }}" id="formFileAjax"
                         method="POST">
                         @csrf
                         <div class="row1 app_progrs_rprt1">
@@ -516,7 +518,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="dropdown">
-                                            <label for="">Select Status</label>
+                                            <label for="">Select Status <span class="text-danger">*</span></label>
                                             <select class="form-control" aria-label="Default select example"
                                                 name="status">
                                                 <option value=''>Select</option>
@@ -525,14 +527,15 @@
                                                 <option value="3">Reject</option>
                                             </select>
                                         </div> <br>
-                                        <label for=""> Remark</label>
+                                        <label for=""> Remark <span class="text-danger">*</span></label>
                                         <textarea name="mnreremarks" class="form-control" id="" cols="5"
                                             rows="3"></textarea>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                             data-bs-dismiss="modal">Close</button>
-                                        <input type="hidden" name="editId" value="{{$previewData->id}}">
+                                        <input type="hidden" name="editId"
+                                            value="{{$general->encodeid($previewData->id)}}">
                                         <button type="submit" id="submit" class="btn btn-primary">Save</button>
                                     </div>
                                 </div>
@@ -542,9 +545,6 @@
                     </form>
                 </div>
 
-            </tr>
-            <tr>
-                <td><br><br><br></td>
             </tr>
         </table>
     </main>

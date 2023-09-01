@@ -1,6 +1,6 @@
-@inject('general', 'App\Http\Controllers\Backend\Mnre\MainController')
-@extends('layouts.masters.backend')
-@section('content')
+<?php $general = app('App\Http\Controllers\Backend\Mnre\MainController'); ?>
+
+<?php $__env->startSection('content'); ?>
 
 <section class="section dashboard">
 
@@ -13,13 +13,13 @@
                     <div class="pagetitle col-xl-12">
 
                         <h1>Green Energy Coridor (GEC Phase II)</h1>
-                        <a href="{{URL::to('/'.Auth::getDefaultDriver().'/new-gec-progress-report')}}"
+                        <a href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/new-gec-progress-report')); ?>"
                             class="btn btn-success" style="float: right;"><i class="fa fa-plus"
                                 aria-hidden="true"></i>Progress
                             Report</a>
 
                         <hr style="color: #959595;">
-                        <form action="{{url(Auth::getDefaultDriver().'/progress-report')}}" method="post">@csrf
+                        <form action="<?php echo e(url(Auth::getDefaultDriver().'/progress-report')); ?>" method="post"><?php echo csrf_field(); ?>
                             <div class="row col-md-12 ">
                                 <div class="col-md-6">
                                     <label>Submitted On<span class="error">*</span></label>
@@ -27,7 +27,7 @@
                                         <input type="date" class="form-control alldatepicker "
                                             id="txtdate_commissioning" placeholder="MM-DD-YYYY" name="date" value="">
                                     </div>
-                                    <span class="text-danger">{{ $errors->first('date') }}</span>
+                                    <span class="text-danger"><?php echo e($errors->first('date')); ?></span>
                                 </div>
                                 <div class="col-md-4"><br>
                                     <button class="btn btn-md btn-info" type="submit">Search</button>
@@ -55,56 +55,56 @@
                                 <th>Remarks by MNRE</th>
                                 <th>Action</th>
                             </tr>
-                            @if(!Empty($progressDetails))
-                            @php $generalData='' @endphp
-                            @foreach($progressDetails as $progressData)
+                            <?php if(!Empty($progressDetails)): ?>
+                            <?php $generalData='' ?>
+                            <?php $__currentLoopData = $progressDetails; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $progressData): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr>
-                                <td>{{$loop->iteration}}</td>
-                                <td>{{$progressData['month'] .'/'. $progressData['year']}}</td>
+                                <td><?php echo e($loop->iteration); ?></td>
+                                <td><?php echo e($progressData['month'] .'/'. $progressData['year']); ?></td>
                                 <td>
-                                    @if($progressData['project_type']==1)
+                                    <?php if($progressData['project_type']==1): ?>
                                     Line
-                                    @elseif($progressData['project_type']==2)
+                                    <?php elseif($progressData['project_type']==2): ?>
                                     SS
-                                    @elseif($progressData['project_type']==3)
+                                    <?php elseif($progressData['project_type']==3): ?>
                                     Bays
-                                    @elseif($progressData['project_type']==4)
+                                    <?php elseif($progressData['project_type']==4): ?>
                                     Reactors
-                                    @elseif($progressData['project_type']==5)
+                                    <?php elseif($progressData['project_type']==5): ?>
                                     Procurement work
-                                    @else
+                                    <?php else: ?>
                                     Other
-                                    @endif
+                                    <?php endif; ?>
 
                                 </td>
-                                <td>{{$progressData['mnre_sanction_date'] ?? '--' }}</td>
-                                <td>{{$progressData['tender_notice_date'] ?? '--' }}</td>
-                                <td>{{$progressData['dpr_cost'] ?? '--' }}</td>
-                                <td>{{$progressData['awarded_cost'] ?? '--' }}</td>
-                                <td>{{$progressData['entry_date'] ?? '--' }}</td>
-                                <td>@if($progressData['status']==1)
+                                <td><?php echo e($progressData['mnre_sanction_date'] ?? '--'); ?></td>
+                                <td><?php echo e($progressData['tender_notice_date'] ?? '--'); ?></td>
+                                <td><?php echo e($progressData['dpr_cost'] ?? '--'); ?></td>
+                                <td><?php echo e($progressData['awarded_cost'] ?? '--'); ?></td>
+                                <td><?php echo e($progressData['entry_date'] ?? '--'); ?></td>
+                                <td><?php if($progressData['status']==1): ?>
                                     Reviewd
-                                    @else
+                                    <?php else: ?>
                                     Pending
-                                    @endif</td>
-                                <td>{{$progressData['gecmnre_remark'] ?? 'NA' }}</td>
-                                <td>@if($progressData->final_submission ==0)
-                                    <a href="{{URL::to(Auth::getDefaultDriver().'/application/progress_report/'.$general->encodeid($progressData['id']))}}"
+                                    <?php endif; ?></td>
+                                <td><?php echo e($progressData['gecmnre_remark'] ?? 'NA'); ?></td>
+                                <td><?php if($progressData->final_submission ==0): ?>
+                                    <a href="<?php echo e(URL::to(Auth::getDefaultDriver().'/application/progress_report/'.$general->encodeid($progressData['id']))); ?>"
                                         class="btn btn-primary"><i class="fa fa-pencil"></i></a>
 
-                                    @else
-                                    <a href="{{URL::to(Auth::getDefaultDriver().'/preview-progress-report/'.$general->encodeid($progressData['id']))}}"
+                                    <?php else: ?>
+                                    <a href="<?php echo e(URL::to(Auth::getDefaultDriver().'/preview-progress-report/'.$general->encodeid($progressData['id']))); ?>"
                                         class="btn btn-primary"><i class="fa fa-eye"></i></a>
 
-                                    @endif
+                                    <?php endif; ?>
                                 </td>
                             </tr>
-                            @endforeach
-                            @else
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            <?php else: ?>
                             <tr>
                                 <td colspan="11">No Record Found</td>
                             </tr>
-                            @endif
+                            <?php endif; ?>
                         </table>
                     </div>
 
@@ -120,10 +120,11 @@
     }
     </style>
 </section>
-@endsection
+<?php $__env->stopSection(); ?>
 <style>
 .error {
     color: red
 }
 </style>
-<script src="{{asset('public/js/custom.js')}}"></script>
+<script src="<?php echo e(asset('public/js/custom.js')); ?>"></script>
+<?php echo $__env->make('layouts.masters.backend', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp\htdocs\solar_park\resources\views/backend/gecdeveloper/progress_report/myProgressReport.blade.php ENDPATH**/ ?>

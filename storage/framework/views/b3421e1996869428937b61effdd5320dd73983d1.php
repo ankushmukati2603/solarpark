@@ -41,14 +41,14 @@
         <?php if(Auth::guard('mnre')->check()): ?>
 
 
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a class="nav-link <?php if($query_str1 == 'progress-report'): ?>active <?php endif; ?>"
                 href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/progress-report')); ?>">
                 <i class="fa-solid fa-user-check"></i>
                 <span>Recieved Report</span>
             </a>
         </li>
-        <!-- <li class="nav-item">
+       <li class="nav-item">
             <a class="nav-link <?php if($query_str1 == 'mnredeveloper-list'): ?>active <?php endif; ?>"
                 href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/mnredeveloper-list')); ?>">
                 <i class="fa-solid fa-user-check"></i>
@@ -96,14 +96,14 @@
                     </a>
                 </li>
             </ul>
-        </li> -->
+        </li> 
         <li class="nav-item">
             <a class="nav-link <?php if($query_str1 == 'agency-archive-report'): ?>active <?php endif; ?>"
                 href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/view-agency-archive-report')); ?>">
                 <i class="fa-solid fa-user-check"></i>
                 <span>Agencies Archive Report</span>
             </a>
-        </li>
+        </li>-->
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#tables-users" data-bs-toggle="collapse" href="#">
                 <i class="fa-solid fa-table-list"></i><span>Users</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -119,6 +119,20 @@
                         <i class="fa-regular fa-circle"></i><span>SPPD's User</span>
                     </a>
                 </li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#tables-reports" data-bs-toggle="collapse" href="#">
+                <i class="fa-solid fa-table-list"></i><span>Reports</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="tables-reports" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li class=" <?php if($query_str1 == 'sna-list'): ?> active <?php endif; ?>">
+                    <a class="nav-link collapsed"
+                        href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/solar-park-reports')); ?>">
+                        <i class="fa-regular fa-circle"></i><span>Solar Parks Reports</span>
+                    </a>
+                </li>
+
             </ul>
         </li>
         <!-- <li class="nav-item">

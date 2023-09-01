@@ -1,6 +1,6 @@
-@extends('layouts.masters.backend')
-@section('content')
-@section('title', 'Received Report')
+
+<?php $__env->startSection('content'); ?>
+<?php $__env->startSection('title', 'Received Report'); ?>
 
 <section class="section dashboard">
 
@@ -19,81 +19,81 @@
                         <table class="table table-bordered">
                             <tr>
                                 <th width="25%">Report Date (Month/Year)</th>
-                                <td>{{$gecReportData->month}}/{{$gecReportData->year}}</td>
+                                <td><?php echo e($gecReportData->month); ?>/<?php echo e($gecReportData->year); ?></td>
                             </tr>
                             <tr>
                                 <th>Package Name</th>
-                                <td>{{$gecReportData->package_name ?? '--'}}</td>
+                                <td><?php echo e($gecReportData->package_name ?? '--'); ?></td>
                             </tr>
                             <tr>
                                 <th>Project Type</th>
                                 <td>
-                                    @if($gecReportData->project_type==1)
+                                    <?php if($gecReportData->project_type==1): ?>
                                     Line
-                                    @elseif($gecReportData->project_type==2)
+                                    <?php elseif($gecReportData->project_type==2): ?>
                                     SS
-                                    @elseif($gecReportData->project_type==3)
+                                    <?php elseif($gecReportData->project_type==3): ?>
                                     Bays
-                                    @elseif($gecReportData->project_type==4)
+                                    <?php elseif($gecReportData->project_type==4): ?>
                                     Reactors
-                                    @elseif($gecReportData->project_type==5)
+                                    <?php elseif($gecReportData->project_type==5): ?>
                                     Procurement work
-                                    @else
+                                    <?php else: ?>
                                     Other
-                                    @endif
+                                    <?php endif; ?>
                                 </td>
                             </tr>
                             <tr>
                                 <th>Project Under Package</th>
-                                <td>{{$gecReportData->project_under_package ?? '--'}}</td>
+                                <td><?php echo e($gecReportData->project_under_package ?? '--'); ?></td>
                             </tr>
                             <tr>
                                 <th>Mnre Sanction Date</th>
-                                <td>{{$gecReportData->mnre_sanction_date ?? '--'}}</td>
+                                <td><?php echo e($gecReportData->mnre_sanction_date ?? '--'); ?></td>
                             </tr>
                             <tr>
                                 <th>Tender Notice Date</th>
-                                <td>{{$gecReportData->tender_notice_date ?? '--'}}</td>
+                                <td><?php echo e($gecReportData->tender_notice_date ?? '--'); ?></td>
                             </tr>
                             <tr>
                                 <th>Last Submission Date</th>
-                                <td>{{$gecReportData->last_submission_date ?? '--'}}</td>
+                                <td><?php echo e($gecReportData->last_submission_date ?? '--'); ?></td>
                             </tr>
                             <tr>
                                 <th>Technical Bid Opening Date</th>
-                                <td>{{$gecReportData->technical_bid_opening_date ?? '--'}}</td>
+                                <td><?php echo e($gecReportData->technical_bid_opening_date ?? '--'); ?></td>
                             </tr>
                             <tr>
                                 <th>Financial Bid Opening Date</th>
-                                <td>{{$gecReportData->financial_bid_opening_date ?? '--'}}</td>
+                                <td><?php echo e($gecReportData->financial_bid_opening_date ?? '--'); ?></td>
                             </tr>
                             <tr>
                                 <th>Award Package Date</th>
-                                <td>{{$gecReportData->award_package_date ?? '--'}}</td>
+                                <td><?php echo e($gecReportData->award_package_date ?? '--'); ?></td>
                             </tr>
                             <tr>
                                 <th>DPR Cost(In Cr.)</th>
-                                <td>{{$gecReportData->dpr_cost ?? '--'}}</td>
+                                <td><?php echo e($gecReportData->dpr_cost ?? '--'); ?></td>
                             </tr>
                             <tr>
                                 <th>Awarded Cost(In Cr.)</th>
-                                <td>{{$gecReportData->awarded_cost ?? '--'}}</td>
+                                <td><?php echo e($gecReportData->awarded_cost ?? '--'); ?></td>
                             </tr>
                             <tr>
                                 <th>Package Expenditure Cost</th>
-                                <td>{{$gecReportData->package_expenditure ?? '--'}}</td>
+                                <td><?php echo e($gecReportData->package_expenditure ?? '--'); ?></td>
                             </tr>
                             <tr>
                                 <th>Financial Progress</th>
-                                <td>{{$gecReportData->financial_progress ?? '--'}}</td>
+                                <td><?php echo e($gecReportData->financial_progress ?? '--'); ?></td>
                             </tr>
                             <tr>
                                 <th>Land Details</th>
-                                <td>{{$gecReportData->land_detail ?? '--'}}</td>
+                                <td><?php echo e($gecReportData->land_detail ?? '--'); ?></td>
                             </tr>
                             <tr>
                                 <th>Forest Clearance Details</th>
-                                <td>{{$gecReportData->forest_clearance_details ?? '--'}}</td>
+                                <td><?php echo e($gecReportData->forest_clearance_details ?? '--'); ?></td>
                             </tr>
                         </table>
                     </div>
@@ -105,4 +105,5 @@
 
 </section>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.masters.backend', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp\htdocs\solar_park\resources\views/backend/gecdeveloper/progress_report/previewProgressReport.blade.php ENDPATH**/ ?>

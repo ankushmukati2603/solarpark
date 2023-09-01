@@ -43,7 +43,7 @@
                                 </div>
                                 <input type="hidden" name="user_type" id="user_type" value="MNRE" />
                                 <div class="form-group">
-                                    <!-- <div class="row" style="display:none">
+                                    <!-- <div class="row">
                                         <div class="col-lg-12">
                                             <label for="name"><strong>Select User Type </strong></label>
                                             <select name="" class="form-control required mb-15" id=""

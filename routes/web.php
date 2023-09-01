@@ -54,6 +54,9 @@ Route::group(['prefix' => 'gecdeveloper', 'as' => 'gecdeveloper.', 'namespace' =
     Route::match(['post', 'get'],'application/progress_report/{id}', 'MainController@application');
     Route::match(['post', 'get'], 'new-gec-progress-report', 'MainController@newProgressReport');
     Route::match(['post', 'get'], 'progress-report', 'MainController@ProgressReport');
+    Route::match(['post', 'get'],'preview-progress-report/{id}', 'MainController@previewProgressReport');
+    
+    
 });
 Route::group(['prefix' => 'gecmnre', 'as' => 'gecmnre.', 'namespace' => 'Backend\GECMNRE', 'middleware' => 'auth:gecmnre'], function () {
     Route::get('/', 'MainController@index')->name('dashboard');
@@ -91,9 +94,11 @@ Route::group(['prefix' => 'mnre', 'as' => 'mnre.', 'namespace' => 'Backend\Mnre'
     Route::get('/', 'MainController@index')->name('dashboard');
     Route::get('preview-docs/{folder}/{subfolder}/{file}', 'MainController@previewDocs');
 
-    Route::match(['post', 'get'], 'progress-report', 'MainController@progressReport');
-    Route::get('/preview-progress-report/{id}', 'MainController@previewProgressReport');
-    Route::post('mnreRemark', 'MainController@mnreRemark');
+    Route::match(['post', 'get'], 'solar-park-reports', 'MainController@solarParkProgressReport');
+    Route::get('/preview-solar-park-reports/{id}', 'MainController@previewSolarParkProgressReport');
+    Route::post('mnreRemarkSolarPark', 'MainController@mnreRemarkSolarPark');
+    
+    
     Route::match(['get', 'post'], '/edit-profile', 'MainController@editProfile');
     Route::match(['get', 'post'], '/change-password', 'MainController@changePassword');
 

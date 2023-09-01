@@ -1,5 +1,6 @@
-@extends('layouts.masters.backend')
-@section('content')
+<?php $general = app('App\Http\Controllers\Backend\Mnre\MainController'); ?>
+
+<?php $__env->startSection('content'); ?>
 <section class="section dashboard">
 
     <main id="main" class="main">
@@ -15,7 +16,7 @@
                         </h1>
 
                         <hr style="color: #959595;">
-                        <form action="{{url(Auth::getDefaultDriver().'/progress-report')}}" method="post">@csrf
+                        <form action="<?php echo e(url(Auth::getDefaultDriver().'/solar-park-reports')); ?>" method="post"><?php echo csrf_field(); ?>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="col-md-3">
@@ -23,16 +24,17 @@
                                         <select class="form-control  select" id="txtState" name="state"
                                             onchange="getDistrictByState(this.value,'')">
                                             <option disabled selected>Select State</option>
-                                            @foreach($states as $state)
-                                            <option value="{{$state->code }}" @if(isset($generalData['general']['state']
+                                            <?php $__currentLoopData = $states; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $state): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <option value="<?php echo e($state->code); ?>" <?php if(isset($generalData['general']['state']
                                                 ) && $state->
-                                                code==$generalData['general']['state'])selected
-                                                @endif>
-                                                {{$state->name }}
+                                                code==$generalData['general']['state']): ?>selected
+                                                <?php endif; ?>>
+                                                <?php echo e($state->name); ?>
+
                                             </option>
-                                            @endforeach
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </select>
-                                        <span class="text-danger">{{ $errors->first('state') }}</span>
+                                        <span class="text-danger"><?php echo e($errors->first('state')); ?></span>
                                     </div>
                                     <div class="col-md-3">
                                         <label>District<span class="error"></span></label>
@@ -40,7 +42,7 @@
                                             onchange="getSubDistrictByDistrict(this.value,'') ; getBlockByDistricts(this.value,'')">
                                             <option value="" selected>Select District</option>
                                         </select>
-                                        <span class="text-danger">{{ $errors->first('district_id') }}</span>
+                                        <span class="text-danger"><?php echo e($errors->first('district_id')); ?></span>
                                     </div>
                                     <div class="col-md-3">
                                         <label>Submitted On</label>
@@ -49,21 +51,21 @@
                                                 id="txtdate_commissioning" placeholder="MM-DD-YYYY" name="date"
                                                 value="">
                                         </div>
-                                        <span class="text-danger">{{ $errors->first('date') }}</span>
+                                        <span class="text-danger"><?php echo e($errors->first('date')); ?></span>
                                     </div>
                                 </div>
                                 <div class="clearfix"></div><br>
                                 <div class="col-md-3 col-sm-12">
                                     <label>Park Name<span class="text-danger">*</span></label>
                                     <input type="text" name="park_name" placeholder="Name" id="txtName"
-                                        class="form-control " value="{{$generalData['general']['park_name'] ?? ''}}">
-                                    <span class="text-danger">{{ $errors->first('park_name') }}</span>
+                                        class="form-control " value="<?php echo e($generalData['general']['park_name'] ?? ''); ?>">
+                                    <span class="text-danger"><?php echo e($errors->first('park_name')); ?></span>
                                 </div>
                                 <div class="col-md-3 col-sm-12">
                                     <label>Approved Capacity (in MW)<span class="error"></span></label>
                                     <input type="number" step="any" min="0" name="capacity" id="txtgeneralLatitude"
                                         class="form-control" value="">
-                                    <span class="text-danger">{{ $errors->first('capacity') }}</span>
+                                    <span class="text-danger"><?php echo e($errors->first('capacity')); ?></span>
                                 </div>
                                 <div class="col-md-2 pb-3"><br>
                                     <button class="btn btn-md btn-info pull-right" type="submit">Search</button>
@@ -90,49 +92,46 @@
                                 <th>Remarks by MNRE</th>
                                 <th>Action</th>
                             </tr>
-                            @if(!Empty($progressDetails))
-                            @php $generalData='' @endphp
-                            @foreach($progressDetails as $progressData)
-                            @php $generalData=json_decode($progressData['general']); @endphp
+                            <?php if(!Empty($progressDetails)): ?>
+                            <?php $generalData='' ?>
+                            <?php $__currentLoopData = $progressDetails; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $progressData): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <?php $generalData=json_decode($progressData['general']); ?>
                             <tr>
-                                <td>{{$loop->iteration}}</td>
-                                <td>{{ $progressData['park_name'] }}</td>
+                                <td><?php echo e($loop->iteration); ?></td>
+                                <td><?php echo e($progressData['park_name']); ?></td>
                                 <td>
-                                    {{date("F", mktime(0, 0, 0, $progressData['month'], 10))}},
-                                    {{$progressData['year']}}
+                                    <?php echo e(date("F", mktime(0, 0, 0, $progressData['month'], 10))); ?>,
+                                    <?php echo e($progressData['year']); ?>
+
                                 </td>
-                                <td>{{ $progressData['state_name'] }}</td>
-                                <td>{{ $progressData['district_name'] }}</td>
-                                <td>{{ $generalData->park_developer_name }}</td>
-                                <td>{{ $generalData->email ?? ''}}</td>
-                                <td>{{ $generalData->mobile_number }}</td>
-                                <td>{{ $progressData['submitted_on'] }}</td>
-                                <td> @if($progressData['final_submission'] == '1')
+                                <td><?php echo e($progressData['state_name']); ?></td>
+                                <td><?php echo e($progressData['district_name']); ?></td>
+                                <td><?php echo e($generalData->park_developer_name); ?></td>
+                                <td><?php echo e($generalData->email ?? ''); ?></td>
+                                <td><?php echo e($generalData->mobile_number); ?></td>
+                                <td><?php echo e($progressData['submitted_on']); ?></td>
+                                <td> <?php if($progressData['final_submission'] == '1'): ?>
                                     <span>Submitted</span>
-                                    @else
+                                    <?php else: ?>
                                     <span>Draft</span>
-                                    @endif
+                                    <?php endif; ?>
                                 </td>
-                                <td></td>
-                                <td>@if($progressData['final_submission']==0)
-                                    <a href="{{URL::to(Auth::getDefaultDriver().'/application/progress_report/'.$progressData['id'])}}"
-                                        class="btn btn-primary"><i class="fa fa-pencil"></i></a>
-
-                                    @else
-                                    <a href="{{URL::to(Auth::getDefaultDriver().'/preview-progress-report/'.$progressData['id'])}}"
+                                <td><?php echo e($progressData['remarks'] ?? 'No Reviewed'); ?></td>
+                                <td><?php if($progressData['final_submission']==1): ?>
+                                    <a target="_blank"
+                                        href="<?php echo e(URL::to(Auth::getDefaultDriver().'/preview-solar-park-reports/'.$general->encodeid($progressData['id']))); ?>"
                                         class="btn btn-primary"><i class="fa fa-eye"></i></a>
-
-                                    @endif
+                                    <?php endif; ?>
                                 </td>
                             </tr>
-                            @endforeach
-                            @else
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            <?php else: ?>
                             <tr>
                                 <td colspan="11">No Record Found</td>
                             </tr>
-                            @endif
+                            <?php endif; ?>
 
-                            <!-- <a href=" {{URL::to('developerData')}}">Form</a> -->
+                            <!-- <a href=" <?php echo e(URL::to('developerData')); ?>">Form</a> -->
                         </table>
                     </div>
 
@@ -148,5 +147,6 @@
     }
     </style>
 </section>
-@endsection
-<script src="{{asset('public/js/custom.js')}}"></script>
+<?php $__env->stopSection(); ?>
+<script src="<?php echo e(asset('public/js/custom.js')); ?>"></script>
+<?php echo $__env->make('layouts.masters.backend', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp\htdocs\solar_park\resources\views/backend/mnre/solarParkProgressReport.blade.php ENDPATH**/ ?>

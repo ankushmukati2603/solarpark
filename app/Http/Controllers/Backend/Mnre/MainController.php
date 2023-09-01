@@ -198,7 +198,7 @@ class MainController extends Controller
         //     return redirect()->back()->with("error","Server Error !");
         // }
     }
-    public function progressReport(Request $request){
+    public function solarParkProgressReport(Request $request){
         if($request->isMethod('post')){
 
             $validatedData = $request->validate([
@@ -256,7 +256,7 @@ class MainController extends Controller
                 $auditData = array('action_type'=>'1','description'=>'User Search Progress Report Data','user_type'=>'1');
                 $this->auditTrail($auditData);
                 $states = State::orderby('name')->get();
-                return view('backend.mnre.myProgressReport',compact('progressDetails','states'));
+                return view('backend.mnre.solarParkProgressReport',compact('progressDetails','states'));
             // }
         } catch (\Throwable $th) {
             //throw $th;
@@ -267,21 +267,11 @@ class MainController extends Controller
         $this->auditTrail($auditData);
         // dd($auditData);
         $progressDetails=array();
-        // $i=0;
-            // $progressData= ProgressReport::where('final_submission',0)->orderBy("id",'DESC')->get()->toArray();
-            // foreach($progressData as $data){$i++;
-            //     $decodeData=json_decode($data['general'],true);
-            //     $progressDetails[$i] = $data; 
-            //     $progressDetails[$i]['state_name'] =State::where('code',$decodeData['state'])->first()['name'];
-            //     $progressDetails[$i]['district_name'] =District::where('code',$decodeData['district'])->first()['name'];
-            // }
-            $states = State::orderby('name')->get();
-        return view('backend.mnre.myProgressReport',compact('progressDetails','states'));
+        $states = State::orderby('name')->get();
+        return view('backend.mnre.solarParkProgressReport',compact('progressDetails','states'));
     }
-    public function previewProgressReport(Request $request , $id){
-        if($request->isMethod('post')){
-            
-        }
+    public function previewSolarParkProgressReport(Request $request , $id){
+        $id=$this->decodeid($id);
         $progressDetailspreview=ProgressReport::where('id',$id)->first();
         $previewData=array();
         $previewData=$progressDetailspreview;
@@ -312,10 +302,11 @@ class MainController extends Controller
         $previewData['village']=$village;
         $auditData = array('action_type'=>'1','description'=>'User view Preview Progress Report','user_type'=>'1');
         $this->auditTrail($auditData);
+        // dd($previewData);
         // $previousprogressReport=ProgressReport::select($type)->where('month',($month-1))->where('year',$year)->where('user_id',Auth::id())->first();
-        return view('backend.mnre.previewProgressReport',compact('progressDetailspreview','previewData','id'));
+        return view('backend.mnre.solarParkProgressReportPreview',compact('progressDetailspreview','previewData','id'));
     }
-    public function mnreRemark(Request $request){
+    public function mnreRemarkSolarPark(Request $request){
 
         $validation = Validator::make($request->all(), [
         'status'=>'required|regex:/^[a-zA-Z.,-_ ]+$/u',
@@ -326,13 +317,14 @@ class MainController extends Controller
             return response()->json(['status'=>'verror','data'=>$validation->errors()]);
         }
         if($request->editId){
-            $data= ProgressReport::where('id',$request->editId)->update([
+            $id=$this->decodeid($request->editId);
+            $data= ProgressReport::where('id',$id)->update([
                 'status'=>$request->input('status'),
                 'remarks'=>$request->input('mnreremarks'),
             ]);
             $auditData = array('action_type'=>'3','description'=>'MNRE Update Progress Report Status and Remark','user_type'=>'1'); $this->auditTrail($auditData);
-            $url = urlencode('/'.Auth::getDefaultDriver().'/progress-report');
-            return response()->json(['status' => 'success','message'=>'Remark save successfuly!','url'=>$url,'redirect'=>'yes']);
+            $url = urlencode('/'.Auth::getDefaultDriver().'/solar-park-reports');
+            return response()->json(['status' => 'success','message'=>'Remark saved successfuly!','url'=>$url,'redirect'=>'yes']);
         }
 
     }

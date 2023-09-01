@@ -41,72 +41,70 @@ class MainController extends Controller
         return view('auth.preview', compact('filePath'));
     }
     public function application(Request $request, $id=NULL){
-        
+        $id=$this->decodeid($id);
         if($request->isMethod('post'))
         {
            
-                $validation = Validator::make($request->all(), [
-                    'package_no'=>'required',
-                    'package_name'=>'required|regex:/^[a-zA-Z ]+$/u',
-                    'project_under_package'=>'required|regex:/^[a-zA-Z ]+$/u',
-                    'project_type'=>'required|in:1,2,3,4,5,6|gte:0|lte:6',
-                    'mnre_sanction_date'=>'required|before:yesterday',
-                    'tender_notice_date'=>'required|before:yesterday',
-                    'last_submission_date'=>'required|before:yesterday',
-                    'technical_bid_opening_date'=>'required|before:yesterday',
-                    'financial_bid_opening_date'=>'required|before:yesterday',
-                    'award_package_date'=>'required|before:yesterday',
-                    'comm_date_award_letter'=>'required|before:yesterday',
-                    'dpr_cost'=>'required|lte:100|gte:0',
-                    'awarded_cost'=>'required|lte:100|gte:0',
-                    'physical_progess'=>'required|regex:/^[a-zA-Z ]+$/u',
-                    'package_expenditure'=>'required|lte:100|gte:0',
-                    'financial_progress'=>'required|lte:100|gte:0',
-                    'land_detail'=>'required|regex:/^[a-zA-Z.,-_ ]+$/u',
-                    'forest_clearance_details'=>'required|regex:/^[a-zA-Z.,-_ ]+$/u',
-                ]);
-                if ($validation->fails()){  //check all validations are fine, if not then redirect and show error messages
-                    return response()->json(['status'=>'verror','data'=>$validation->errors()]);
-                }
-                $generaldata=array();
-               
-                if($request->editId){
-                    $final_submission=0;
-                    $message="Details Saved Successfuly";
-                            //condition m agr button per click krega to final submission 1 hoga
-                    if($request->submit_type==1){
-                        $final_submission=1;
-                            // Final Submission button ki value hain  final_submission=name hai bustton ka
-                        $message="Application Submitted";
-                    } 
-                    $generaldata=GecReport::findOrFail($request->editId);
-                    $generaldata->package_no=$request->package_no;
-                    $generaldata->package_name=$request->package_name;
-                    $generaldata->project_under_package=$request->project_under_package;
-                    $generaldata->project_type=$request->project_type;
-                    $generaldata->financial_progress=$request->financial_progress;
-                    $generaldata->mnre_sanction_date=$request->mnre_sanction_date;
-                    $generaldata->tender_notice_date=$request->tender_notice_date;
-                    $generaldata->last_submission_date=$request->last_submission_date;
-                    $generaldata->technical_bid_opening_date=$request->technical_bid_opening_date;
-                    $generaldata->financial_bid_opening_date=$request->financial_bid_opening_date;
-                    $generaldata->award_package_date=$request->award_package_date;
-                    $generaldata->comm_date_award_letter=$request->comm_date_award_letter;
-                    $generaldata->dpr_cost=$request->dpr_cost;
-                    $generaldata->awarded_cost=$request->awarded_cost;
-                    $generaldata->physical_progess=$request->physical_progess;
-                    $generaldata->package_expenditure=$request->package_expenditure;
-                    $generaldata->land_detail=$request->land_detail;
-                    $generaldata->forest_clearance_details=$request->forest_clearance_details;
-                    $generaldata->remark=$request->remark;
-                    $generaldata->final_submission=$final_submission;
-
-                    $generaldata->save();
-                    
-                    $auditData = array('action_type'=>'3','description'=>'GEC User Submited GEC Progress Data','user_type'=>'7'); $this->auditTrail($auditData);
-                    $url=urlencode('/'.Auth::getDefaultDriver().'/progress-report');
-                    return response()->json(['status' => 'success','message'=>$message,'next'=>$request->next,'url'=>$url,'redirect'=>'yes']); 
-                }  
+            $validation = Validator::make($request->all(), [
+                'package_no'=>'required',
+                'package_name'=>'required|regex:/^[a-zA-Z ]+$/u',
+                'project_under_package'=>'required|regex:/^[a-zA-Z ]+$/u',
+                'project_type'=>'required|in:1,2,3,4,5,6|gte:0|lte:6',
+                'mnre_sanction_date'=>'required|before:yesterday',
+                'tender_notice_date'=>'required|before:yesterday',
+                'last_submission_date'=>'required|before:yesterday',
+                'technical_bid_opening_date'=>'required|before:yesterday',
+                'financial_bid_opening_date'=>'required|before:yesterday',
+                'award_package_date'=>'required|before:yesterday',
+                'comm_date_award_letter'=>'required|before:yesterday',
+                'dpr_cost'=>'required|lte:100|gte:0',
+                'awarded_cost'=>'required|lte:100|gte:0',
+                'physical_progess'=>'required|regex:/^[a-zA-Z ]+$/u',
+                'package_expenditure'=>'required|lte:100|gte:0',
+                'financial_progress'=>'required|lte:100|gte:0',
+                'land_detail'=>'required|regex:/^[a-zA-Z.,-_ ]+$/u',
+                'forest_clearance_details'=>'required|regex:/^[a-zA-Z.,-_ ]+$/u',
+            ]);
+            if ($validation->fails()){  //check all validations are fine, if not then redirect and show error messages
+                return response()->json(['status'=>'verror','data'=>$validation->errors()]);
+            }
+            $generaldata=array();
+            $id=$this->decodeid($request->editId);
+            if($id){
+                $final_submission=0;
+                $message="Details Saved Successfuly";
+                if($request->submit_type==1){
+                    $final_submission=1;
+                    $message="Application Submitted";
+                } 
+                $generaldata=GecReport::findOrFail($id);
+                $generaldata->package_no=$request->package_no;
+                $generaldata->package_name=$request->package_name;
+                $generaldata->project_under_package=$request->project_under_package;
+                $generaldata->project_type=$request->project_type;
+                $generaldata->financial_progress=$request->financial_progress;
+                $generaldata->mnre_sanction_date=$request->mnre_sanction_date;
+                $generaldata->tender_notice_date=$request->tender_notice_date;
+                $generaldata->last_submission_date=$request->last_submission_date;
+                $generaldata->technical_bid_opening_date=$request->technical_bid_opening_date;
+                $generaldata->financial_bid_opening_date=$request->financial_bid_opening_date;
+                $generaldata->award_package_date=$request->award_package_date;
+                $generaldata->comm_date_award_letter=$request->comm_date_award_letter;
+                $generaldata->dpr_cost=$request->dpr_cost;
+                $generaldata->awarded_cost=$request->awarded_cost;
+                $generaldata->physical_progess=$request->physical_progess;
+                $generaldata->package_expenditure=$request->package_expenditure;
+                $generaldata->land_detail=$request->land_detail;
+                $generaldata->forest_clearance_details=$request->forest_clearance_details;
+                $generaldata->remark=$request->remark;
+                $generaldata->final_submission=$final_submission;
+                // dd($generaldata);
+                $generaldata->save();
+                
+                $auditData = array('action_type'=>'3','description'=>'GEC User Submitted GEC Progress Data','user_type'=>'7'); $this->auditTrail($auditData);
+                $url=urlencode('/'.Auth::getDefaultDriver().'/progress-report');
+                return response()->json(['status' => 'success','message'=>$message,'next'=>$request->next,'url'=>$url,'redirect'=>'yes']); 
+            }  
         }
         $auditData = array('action_type'=>'1','description'=>'GEC User view Data','user_type'=>'7');
         $this->auditTrail($auditData);
@@ -116,8 +114,7 @@ class MainController extends Controller
             if($data->final_submission==1){
                 $auditData = array('action_type'=>'1','description'=>'GEC User visit New Progress Report Page','user_type'=>'7');
                 $this->auditTrail($auditData);
-                return redirect()->back()->with('error', 'Report already submitted');   
-                return redirect(Auth::getDefaultDriver().'/new-gec-progress-report');
+                return redirect()->back()->with('error', 'Report already submitted');  
             }
         }
         if($data!=null){
@@ -159,7 +156,7 @@ class MainController extends Controller
             $id=$newGecData->id;
             $auditData = array('action_type'=>'2','description'=>'GEC User Insert New Progress Report Data','user_type'=>'7');
             $this->auditTrail($auditData);
-            $url=urlencode('/'.Auth::getDefaultDriver().'/application/progress_report/'.$id);
+            $url=urlencode('/'.Auth::getDefaultDriver().'/application/progress_report/'.$this->encodeid($id));
             return response()->json(['status' => 'success','message'=>"Please wait...",'url'=>$url,'redirect'=>'yes']); 
             //return redirect(Auth::getDefaultDriver().'/application/progress_report/'.$id);
         }
@@ -179,18 +176,25 @@ class MainController extends Controller
             $park_name=$request->input("park_name");
             $capacity=$request->input("capacity");
             $progressDetails=array();
-            $progressDetails= GecReport::where('user_id',Auth::id())->orderBy("submitted_on",'DESC')->get()->toArray();
+            $progressDetails= GecReport::where('user_id',Auth::id())->orderBy("entry_date",'DESC')->get();
             
             $auditData = array('action_type'=>'1','description'=>'GEC User Search Progress Report Data','user_type'=>'7');
             $this->auditTrail($auditData);
             $states = State::orderby('name')->get();
-            return view('backend.gecdeveloper.progress_report.ProgressReport',compact('progressDetails','states'));
+            // dd($progressDetails);
+            return view('backend.gecdeveloper.progress_report.myProgressReport',compact('progressDetails','states'));
         }
             $auditData = array('action_type'=>'1','description'=>'GEC User Visit Progress Report Page','user_type'=>'7');
             $this->auditTrail($auditData);
             $progressDetails=array();
             $states = State::orderby('name')->get();
         return view('backend.gecdeveloper.progress_report.myProgressReport',compact('progressDetails','states'));
+    }
+    public function previewProgressReport(Request $request, $id=NULL){
+        $id=$this->decodeid($id);
+        $gecReportData= GecReport::where('user_id',Auth::id())->where('id',$id)->first();
+        return view('backend.gecdeveloper.progress_report.previewProgressReport' , compact('gecReportData','id'));
+        //dd($gecReportData);
     }
 
 }
