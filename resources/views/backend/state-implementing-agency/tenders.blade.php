@@ -15,7 +15,6 @@
                             style="margin-right: 5px;float:right"><i class="fa fa-plus" aria-hidden="true"></i>
                             Add Tender</a>
 
-
                         <h1>Tender Management</h1>
 
                         <hr style="color: #959595;">

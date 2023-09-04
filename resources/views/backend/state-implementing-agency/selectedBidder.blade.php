@@ -41,8 +41,9 @@
                                                 <span name="bidder_id.0"></span>
                                             </td>
                                             <td width="40%"> <input type="number" step="any" min="0"
-                                                    name="select_bidders_capacity[]" id="txtgeneralLatitude"
-                                                    class="form-control" value="">
+                                                    name="select_bidders_capacity[]" id="capacity_alloted_0"
+                                                    class="form-control capacity_alloted" value=""
+                                                    onkeyup="checlTotalCapacity();">
                                                 <span name="select_bidders_capacity.0"></span>
                                             </td>
                                             <!-- <td width="30%"> <input type="date" name="bidder_selected_date[]"
@@ -77,6 +78,25 @@
 @endsection
 @push('backend-js')
 <script>
+function checlTotalCapacity() {
+    var totalCapacity = $('#tender_capacity').html();
+    // alert(totalCapacity);
+    var sum = 0;
+    $(".capacity_alloted").each(function() {
+
+        //add only if the value is number
+        if (!isNaN(this.value) && this.value.length != 0) {
+            sum += parseFloat(this.value);
+        }
+        if (parseInt(totalCapacity) < sum) {
+            alert('Assign capacity should not be greater than Tender capacity i.e ' + totalCapacity + ' MW');
+            this.value = '';
+            return false;
+        }
+    });
+
+}
+
 function checkDuplicate(dt) {
     var id = $(dt).val();
     let count = $('#tbody tr').length;
@@ -111,8 +131,8 @@ $(document).ready(function() {
             </td>
             
             <td> <input type="number" step="any" min="0" name="select_bidders_capacity[]"
-                    id="txtgeneralLatitude" class="form-control"
-                    value="">
+                    id="capacity_alloted_${rowIdx}" class="form-control capacity_alloted"
+                    value="" onkeyup="checlTotalCapacity();">
                     <span name="select_bidders_capacity.${rowIdx}"></span>
             </td>
             <td class="text-center">

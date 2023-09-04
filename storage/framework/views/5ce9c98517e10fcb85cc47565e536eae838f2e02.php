@@ -15,7 +15,6 @@
                             style="margin-right: 5px;float:right"><i class="fa fa-plus" aria-hidden="true"></i>
                             Add Tender</a>
 
-
                         <h1>Tender Management</h1>
 
                         <hr style="color: #959595;">
@@ -81,12 +80,11 @@
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </table>
                     </div>
-
                     <?php echo e($tenderList->links()); ?>
 
                 </div>
             </div>
-            <span id="exceldata" style="display:none1;"></span>
+            <span id="exceldata" style="display:none;"></span>
     </main>
 </section>
 <!-- </section> -->
@@ -107,7 +105,7 @@ $('#reportExcel').on('click', function() {
                 $('#exceldata').html('Error');
             } else {
                 $('#exceldata').html(data.result);
-                // ExportToExcel('xlsx');
+                ExportToExcel('xlsx');
             }
         }
     });

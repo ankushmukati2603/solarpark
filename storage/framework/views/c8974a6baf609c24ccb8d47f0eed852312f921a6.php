@@ -9,6 +9,7 @@
         <section class="section dashboard">
             <form action="<?php echo e(URL::to(Auth::getDefaultDriver().'/ProjectLocation')); ?>" method="POST">
                 <?php echo csrf_field(); ?>
+
                 <table class="table table-bordered">
                     <tbody>
                         <tr>
@@ -206,6 +207,7 @@ $(document).ready(function() {
 $('#tender_id').on('change', function() {
     var tender = $('#tender_id').val();
     $('#loading-bg-ajax').removeClass('hide');
+    $('#ppaData').html('');
     if (tender) {
         $.ajax({
             type: 'GET',
