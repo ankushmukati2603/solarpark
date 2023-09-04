@@ -807,8 +807,8 @@ class TenderController extends Controller
         }
         return response()->json(['status' => 'error','result'=>'Bidder Not Found!']);
     }
-    public function getSelectedBidderProjectData($id,$tender_id){
-        $selectedBidderProjectDetails=SelectedBidderProject::getSelectedBidderProjectLocationData($id,$tender_id);
+    public function getSelectedBidderProjectData($bidder_id,$tender_id){
+        $selectedBidderProjectDetails=SelectedBidderProject::getSelectedBidderProjectLocationData($bidder_id,$tender_id);
         if($selectedBidderProjectDetails->isNotEmpty()){
             $result='<table class="table table-bordered" id="ppaTbale">
                     <tr class="bg-primary text-light">
@@ -844,8 +844,9 @@ class TenderController extends Controller
         return response()->json(['status' => 'error','result'=>0]);
 
     }
-    public function getSelectedBidderPSAData($id,$tender_id){
-        $selectedBidderProjectData=SelectedBidderProject::getSelectedBidderProjectData($id,$tender_id);
+    public function getSelectedBidderPSAData($bidder_id,$tender_id){
+        $selectedBidderProjectData=SelectedBidderProject::getSelectedBidderProjectData($bidder_id,$tender_id);
+        $getMaxCapacity=SelectedBidder::select('capacity')->where('tender_id',base64_decode($tender_id))->where('bidder_id',$bidder_id)->first()['capacity'];
         $result='';
         if($selectedBidderProjectData->isNotEmpty()){
             $i=0;
@@ -865,7 +866,7 @@ class TenderController extends Controller
                         </th>
                         <th>Per Unit cost of electricity as per said PSA <span class="text-danger">*</span></th>
                         <th>Duration of PSA(In Years) <span class="text-danger">*</span></th>
-                        
+                        <span id="maxCapacity" style="display:none">'.$getMaxCapacity.'</span>
                     </tr>';
                 foreach($selectedBidderProjectData as $data){$i++;
                     if($data->ppa_psa_capacity==''){
@@ -880,8 +881,8 @@ class TenderController extends Controller
                             </td>
 
                             <td> <input type="text" placeholder="Enter Capacity(MW)"
-                                    name="ppa_psa_capacity[]" id="ppa_psa_capacity" class="form-control "
-                                    value="">
+                                    name="ppa_psa_capacity[]" id="ppa_psa_capacity" class="form-control capacity_psa"
+                                    value="" onkeyup="checkMaxCapacity();">
                                 <span name="ppa_psa_capacity.'.($i-1).'"></span>
                             </td>
                             <td> <select name="ppa_psa_signed_state[]" id="ppa_psa_signed_state"
@@ -936,8 +937,9 @@ class TenderController extends Controller
         return response()->json(['status' => 'success','result'=>$result]);
 
     }
-    public function getSelectedBidderPPAData($id,$tender_id){
-        $selectedBidderProjectData=SelectedBidderProject::getSelectedBidderProjectData($id,$tender_id);
+    public function getSelectedBidderPPAData($bidder_id,$tender_id){
+        $selectedBidderProjectData=SelectedBidderProject::getSelectedBidderProjectData($bidder_id,$tender_id);
+        $getMaxCapacity=SelectedBidder::select('capacity')->where('tender_id',base64_decode($tender_id))->where('bidder_id',$bidder_id)->first()['capacity'];
         $result='';
         if($selectedBidderProjectData->isNotEmpty()){
             $i=0;
@@ -954,7 +956,7 @@ class TenderController extends Controller
                         <th width="20%">Capacity (MW) <span class="text-danger">*</span></th>
                         <th width="20%">Per Unit cost of electricity as per said PPA <span class="text-danger">*</span></th>
                         <th width="20%">Duration of PPA(In Years) <span class="text-danger">*</span></th>
-                        
+                        <span id="maxCapacity" style="display:none">'.$getMaxCapacity.'</span>
                     </tr>';
                 foreach($selectedBidderProjectData as $data){$i++;
                     if($data->ppa_capacity==''){
@@ -969,8 +971,8 @@ class TenderController extends Controller
                             </td>
 
                             <td> <input type="text" placeholder="Enter Capacity(MW)"
-                                    name="ppa_capacity[]" id="ppa_capacity" class="form-control "
-                                    value="">
+                                    name="ppa_capacity[]" id="ppa_capacity" class="form-control capacity_ppa"
+                                    value="" onkeyup="checkMaxCapacity();">
                                 <span name="ppa_capacity.'.($i-1).'"></span>
                             </td>
                             

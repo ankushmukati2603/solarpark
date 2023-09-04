@@ -59,6 +59,7 @@ class SelectedBidderProject extends Model
 
     static function getSelectedBidderProjectData($bidder_id,$tender_id){
         return self::select('tbl_selected_bidder_project.*','tbl_master_bidder.bidder_name','states.name as ppa_psa_signed_state')
+                    // ->leftjoin('tbl_selected_bidder','tbl_selected_bidder.bidder_id','tbl_selected_bidder_project.bidder_id')
                     ->join('tbl_master_bidder', 'tbl_selected_bidder_project.bidder_id', 'tbl_master_bidder.id')
                     ->leftjoin('states','states.code','tbl_selected_bidder_project.ppa_psa_signed_state')
                     ->where('tbl_selected_bidder_project.tender_id', base64_decode($tender_id) )

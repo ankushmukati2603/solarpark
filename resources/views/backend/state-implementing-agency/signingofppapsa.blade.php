@@ -60,6 +60,24 @@
 @push('backend-js')
 
 <script>
+function checkMaxCapacity() {
+    var totalCapacity = $('#maxCapacity').html();
+    // alert(totalCapacity);
+    var sum = 0;
+    $(".capacity_psa").each(function() {
+
+        //add only if the value is number
+        if (!isNaN(this.value) && this.value.length != 0) {
+            sum += parseFloat(this.value);
+        }
+        if (parseInt(totalCapacity) < sum) {
+            alert('Capacity should not be greater than assigned capacity i.e ' + totalCapacity + ' MW');
+            this.value = '';
+            return false;
+        }
+    });
+
+}
 $('#tender_id').on('change', function() {
     var tender = $('#tender_id').val();
     $('#loading-bg-ajax').removeClass('hide');
