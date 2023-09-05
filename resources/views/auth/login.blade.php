@@ -51,8 +51,8 @@
                                                 <option value="STATEIMPLEMENTINGAGENCY" selected>State Implementing
                                                     Agency ( SIA )
                                                 </option>
-                                                <option value="SECI">Solar Energy Corporation of India Limited ( SECI )
-                                                </option>
+                                                <!-- <option value="SECI">Solar Energy Corporation of India Limited ( SECI )
+                                                </option> -->
                                                 <option value="REIA">REIA's</option>
                                                 <option value="STU">STUs/CTUs</option>
                                             </select>

@@ -37,8 +37,6 @@
                             <?php
                             $countLocations=\App\Models\SelectedBidderProject::where('tender_id',$tender->id)->count();
                             $countCommissionedLocations=\App\Models\SelectedBidderProject::where('tender_id',$tender->id)->whereNotNull('commissioned_details')->count();
-                            $checkComissionedStatus=$general->checkCommissionedData($tender->id);
-                            
                             
                             ?>
                             <tr>
@@ -51,28 +49,7 @@
                                 <td><?php echo e(date("d M Y",strtotime($tender->pre_bid_meeting_date))); ?></td>
                                 <td><?php echo e(date("d M Y",strtotime($tender->bid_submission_date))); ?></td>
                                 <td><?php echo e(date("d M Y",strtotime($tender->nit_date))); ?></td>
-                                <td><?php if($tender->tender_status ==1): ?>
-                                    <span class="badge bg-primary">Draft Tender</span>
-                                    <?php elseif($tender->tender_status ==2): ?>
-                                    <span class="badge bg-info">Under Implementation</span>
-                                    <?php elseif($tender->tender_status==3): ?>
-                                    <span class="badge bg-primary">Implemented</span>
-                                    <?php elseif($tender->tender_status==4): ?>
-                                    <?php if($countLocations>$countCommissionedLocations && $countCommissionedLocations!=0 &&
-                                    $checkComissionedStatus=='sucess'): ?>
-                                    <span class="badge bg-success">
-                                        Partially Commissioned</span>
-                                    <?php else: ?>
-                                    <span class="badge bg-success">Commissioned</span>
-                                    <?php endif; ?>
-
-                                    <?php elseif($tender->tender_status==5): ?>
-                                    <span class="badge bg-danger">Cancelled</span>
-                                    <?php else: ?>
-
-                                    <?php endif; ?>
-
-                                </td>
+                                <td><?php echo e($general->tenderStatus($tender->tender_status,$tender->id)); ?></td>
                                 <td>
                                     <?php if($tender->tender_status !=4 || $countLocations>$countCommissionedLocations ): ?><a
                                         href=" <?php echo e(URL::to(Auth::getDefaultDriver().'/Tenders/Edit/'.$tender->id)); ?>">Edit</a>
