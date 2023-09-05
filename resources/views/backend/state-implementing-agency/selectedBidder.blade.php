@@ -89,7 +89,7 @@ function checlTotalCapacity() {
             sum += parseFloat(this.value);
         }
         if (parseInt(totalCapacity) < sum) {
-            alert('Assign capacity should not be greater than Tender capacity i.e ' + totalCapacity + ' MW');
+            alert('Total capacity should not be greater than Tender capacity i.e ' + totalCapacity + ' MW');
             this.value = '';
             return false;
         }

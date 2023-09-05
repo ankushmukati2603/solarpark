@@ -1,3 +1,4 @@
+<?php $general = app('App\Http\Controllers\Backend\SNA\MainController'); ?>
 
 <?php $__env->startSection('content'); ?>
 <section class="section dashboard">
@@ -36,6 +37,9 @@
                             <?php
                             $countLocations=\App\Models\SelectedBidderProject::where('tender_id',$tender->id)->count();
                             $countCommissionedLocations=\App\Models\SelectedBidderProject::where('tender_id',$tender->id)->whereNotNull('commissioned_details')->count();
+                            $checkComissionedStatus=$general->checkCommissionedData($tender->id);
+                            
+                            
                             ?>
                             <tr>
                                 <td><?php echo e($loop->iteration); ?></td>
@@ -54,7 +58,9 @@
                                     <?php elseif($tender->tender_status==3): ?>
                                     <span class="badge bg-primary">Implemented</span>
                                     <?php elseif($tender->tender_status==4): ?>
-                                    <?php if($countLocations>$countCommissionedLocations): ?> <span class="badge bg-success">
+                                    <?php if($countLocations>$countCommissionedLocations && $countCommissionedLocations!=0 &&
+                                    $checkComissionedStatus=='sucess'): ?>
+                                    <span class="badge bg-success">
                                         Partially Commissioned</span>
                                     <?php else: ?>
                                     <span class="badge bg-success">Commissioned</span>
@@ -66,10 +72,9 @@
 
                                     <?php endif; ?>
 
-
                                 </td>
                                 <td>
-                                    <?php if($tender->tender_status !=4 || $countLocations>$countCommissionedLocations): ?><a
+                                    <?php if($tender->tender_status !=4 || $countLocations>$countCommissionedLocations ): ?><a
                                         href=" <?php echo e(URL::to(Auth::getDefaultDriver().'/Tenders/Edit/'.$tender->id)); ?>">Edit</a>
                                     |<?php endif; ?>
 

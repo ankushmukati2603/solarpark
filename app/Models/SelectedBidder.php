@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class SelectedBidder extends Model
 {
@@ -13,6 +14,7 @@ class SelectedBidder extends Model
     protected $fillable = [
         'ppa_psa_date', 'ppa_psa_capacity', 'ppa_psa_signed_state','discom_name','electricity_per_unit_cost','duration_ppa','loi_loa_date'
     ];
+    
     
     static function getSelectedBidderDetails($tender_id){
         return self::select('tbl_selected_bidder.*','tbl_master_bidder.bidder_name','tbl_master_agency.agency_name','tbl_reverse_auction.ra_date')

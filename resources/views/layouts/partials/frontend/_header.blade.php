@@ -75,26 +75,13 @@
                         </a>
 
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="{{URL::to('/log-in')}}">SPPD-Solar Park Project</a></li>
-                            <li><a class="dropdown-item" href="{{url('login')}}">State/Central Agencies</a></li>
-                            <li><a class="dropdown-item" href="{{url('gec-login')}}">GEC Developer</a></li>
+                            <li><a class="dropdown-item" href="{{URL::to('/log-in')}}">SPPD's</a></li>
+                            <li><a class="dropdown-item" href="{{url('login')}}">SNA/SIA, REIA, CTU/STU</a></li>
+
                             <li><a class="dropdown-item" href="{{URL::to('/admin-log-in')}}">MNRE</a></li>
-<!--                            <li><a class="dropdown-item" href="{{URL::to('/gec-admin-log-in')}}">GEC MNRE</a></li>-->
-                            <!-- <li><a class="dropdown-item" href="{{URL::to('/secilog-in')}}">SECI</a></li> -->
                         </ul>
                     </li>
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="{{URL::to('/login-type')}}"><button type="button"
-                                class="btn btn-link"> <i class=" fa-solid fa-arrow-right-to-bracket"></i>
-                                <div>LOGIN</div>
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" href="{{URL::to('/log-in')}}">DEVELOPER LOGIN</a></li>
-                                <li><a class="dropdown-item" href="{{url('login')}}">ADMIN LOGIN</a></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
-                        </a>
-                    </li> -->
+
                     <li class="nav-item">
                         <a class="nav-link @if(Request::segment(1) == 'user-registration')bg-active @endif"
                             href="{{URL('user-registration')}}"><button type="button"
@@ -103,12 +90,7 @@
                                 <div>REGISTER</div>
                             </button></a>
                     </li>
-                    <!-- <li>
-                <a class="nav-link" href=""> <button type="button" class="btn btn-success">Register</button></a>
-              </li>
-              <li>
-                <a class="nav-link" href=""> <button type="button" class="btn btn-outline-success">Login</button></a>
-              </li> -->
+
                 </ul>
 
             </div>

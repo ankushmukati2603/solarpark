@@ -354,6 +354,7 @@ class UnderImplementationController extends Controller
                 }
                 else{
                     $commissionedData=json_decode($data->commissioned_details,true);
+                    // dd($commissionedData);
                     $solarprojectname="NA";
                     if($commissionedData['have_solar_project']=='Yes'){
                         $solarprojectname=$commissionedData['solar_park_name'];

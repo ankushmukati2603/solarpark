@@ -1,3 +1,4 @@
+@inject('general', 'App\Http\Controllers\Backend\SNA\MainController')
 @extends('layouts.masters.backend')
 @section('content')
 <section class="section dashboard">
@@ -36,6 +37,9 @@
                             <?php
                             $countLocations=\App\Models\SelectedBidderProject::where('tender_id',$tender->id)->count();
                             $countCommissionedLocations=\App\Models\SelectedBidderProject::where('tender_id',$tender->id)->whereNotNull('commissioned_details')->count();
+                            $checkComissionedStatus=$general->checkCommissionedData($tender->id);
+                            
+                            
                             ?>
                             <tr>
                                 <td>{{$loop->iteration}}</td>
@@ -54,7 +58,9 @@
                                     @elseif($tender->tender_status==3)
                                     <span class="badge bg-primary">Implemented</span>
                                     @elseif($tender->tender_status==4)
-                                    @if($countLocations>$countCommissionedLocations) <span class="badge bg-success">
+                                    @if($countLocations>$countCommissionedLocations && $countCommissionedLocations!=0 &&
+                                    $checkComissionedStatus=='sucess')
+                                    <span class="badge bg-success">
                                         Partially Commissioned</span>
                                     @else
                                     <span class="badge bg-success">Commissioned</span>
@@ -66,10 +72,9 @@
 
                                     @endif
 
-
                                 </td>
                                 <td>
-                                    @if($tender->tender_status !=4 || $countLocations>$countCommissionedLocations)<a
+                                    @if($tender->tender_status !=4 || $countLocations>$countCommissionedLocations )<a
                                         href=" {{URL::to(Auth::getDefaultDriver().'/Tenders/Edit/'.$tender->id)}}">Edit</a>
                                     |@endif
 

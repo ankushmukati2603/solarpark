@@ -8,6 +8,9 @@ use App\Models\Tenders;
 use App\Models\Agency;
 use App\Models\TenderTimeLine;
 use App\Models\ActionNotification;
+use App\Models\SelectedBidder;
+use App\Models\SelectedBidderProject;
+
 use Illuminate\Support\Facades\Crypt;
 use DB, File, Mail, Log, Auth;
 use Illuminate\Support\Facades\Storage;
@@ -245,5 +248,17 @@ trait General
     }
     public function dateFormat($date){
         return date('d M Y',strtotime($date));
+    }
+    public function checkCommissionedData($tender_id){
+        $arrayData=array();$i=0;
+        $data = SelectedBidder::where('tender_id',$tender_id)->get();
+        $status='success';
+        foreach($data as $dt){
+            $cnt=SelectedBidderProject::where('bidder_id',$dt->bidder_id)->where('tender_id',$tender_id)->count();
+            if($cnt==0){
+                $status='error';
+            }
+        }
+        return $status;
     }
 }

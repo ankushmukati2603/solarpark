@@ -191,7 +191,6 @@ Route::group(['prefix' => 'state-implementing-agency', 'as' => 'state-implementi
     Route::match(['post', 'get'], 'TenderReport', 'TenderController@tenderReport');
     Route::match(['post', 'get'], 'ReportView/{id}/{tender_id}', 'TenderController@reportView');
 
-    
 
     // Download Report 
     Route::get('DownloadReport/{id}/{tender_id}', 'TenderController@downloadPdf');
@@ -310,10 +309,3 @@ Route::get('deleteDeveloperData/Delete/{delete_id}','ResetPassController@deleteD
 /*********************2nd form***********************/
 Route::match(['post', 'get'],'solarProjectData','ResetPassController@solarProjectData');
 Route::get('viewsolarData','ResetPassController@viewsolarData');
-
-
-
-// ALTER TABLE `gec_report` ADD INDEX(`id`);
-// ALTER TABLE `gec_report` CHANGE `id` `id` INT(11) NOT NULL AUTO_INCREMENT, add PRIMARY KEY (`id`);
-// ALTER TABLE `gec_report` CHANGE `gecmnre_remark` `gecmnre_remark` VARCHAR(150) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL;
-// ALTER TABLE `tbl_selected_bidder_project` ADD `interconnection_vol_level` VARCHAR(100) NULL AFTER `status_transmisison_line`;

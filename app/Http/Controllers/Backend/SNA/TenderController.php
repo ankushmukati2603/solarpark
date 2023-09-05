@@ -36,6 +36,7 @@ class TenderController extends Controller
         $tenderList=Tenders::where('sna_id',Auth::id())->paginate(5);
         return view('backend.state-implementing-agency.tenders',compact('tenderList'));
     }
+    
     public function addEditTender(Request $request, $id=NULL){
         if($request->isMethod('post')){
             $validation = Validator::make($request->all(), [
@@ -381,41 +382,53 @@ class TenderController extends Controller
     }
     public function selectedBidder(Request $request){
         if($request->isMethod('post')){
-            $validation = Validator::make($request->all(), [
-                'bidder_id.*'=>'required',
-                'select_bidders_capacity.*'=>'required',
-                // 'bidder_selected_date.*'=>'required'
-            ],
-            [
-                'bidder_id.*.required'=>'This field is required',
-                'select_bidders_capacity.*.required'=>'This field is required',
-                // 'bidder_selected_date.*.required'=>'This field is required',
-            ]
-            );
-            if ($validation->fails()){  //check all validations are fine, if not then redirect and show error messages
-                return response()->json(['status'=>'verror','data'=>$validation->errors()]);
-            }
-            for($i=0;$i<count($request->input('bidder_id'));$i++){
-                $selectedBidder=new SelectedBidder();
-                $selectedBidder->tender_id = base64_decode($request->input('tender'));
-                $selectedBidder->bidder_id = $request->bidder_id[$i];
-                $selectedBidder->capacity=$request->select_bidders_capacity[$i];
-                $selectedBidder->bidder_selected_date=NULL;
-                $selectedBidder->entry_date=$this->getCurruntDate();
-                $selectedBidder->save();
-                //Tender Timeline
-                $get_bidder_selected_date=ReverseAuction::where('tender_id',base64_decode($request->input('tender')))->first()['ra_date'];
-                $tenderTimeline = array('tender_id'=>base64_decode($request->input('tender')),'action_description'=>'Bidders Participated',
-                'action_type'=>'bidder','action_date'=>$get_bidder_selected_date);
-                $this->tenderTimeline($tenderTimeline);
+            try {
+                $validation = Validator::make($request->all(), [
+                    'bidder_id.*'=>'required',
+                    'select_bidders_capacity.*'=>'required',
+                    // 'bidder_selected_date.*'=>'required'
+                ],
+                [
+                    'bidder_id.*.required'=>'This field is required',
+                    'select_bidders_capacity.*.required'=>'This field is required',
+                    // 'bidder_selected_date.*.required'=>'This field is required',
+                ]
+                );
+                if ($validation->fails()){  //check all validations are fine, if not then redirect and show error messages
+                    return response()->json(['status'=>'verror','data'=>$validation->errors()]);
+                }
+                $get_bidder_selected_date=ReverseAuction::where('tender_id',base64_decode($request->input('tender')))->first();
+                if($get_bidder_selected_date==null){
+                    return response()->json(['status' => 'error','message'=>'Please add Reverse Auction Details!','url'=>'',]);
+                }
+                for($i=0;$i<count($request->input('bidder_id'));$i++){
+                    $selectedBidder=new SelectedBidder();
+                    $selectedBidder->tender_id = base64_decode($request->input('tender'));
+                    $selectedBidder->bidder_id = $request->bidder_id[$i];
+                    $selectedBidder->capacity=$request->select_bidders_capacity[$i];
+                    $selectedBidder->bidder_selected_date=$this->getCurruntDate();
+                    $selectedBidder->entry_date=$this->getCurruntDate();
+                    $selectedBidder->save();
+                    
+                    //Tender Timeline
+                    
+                    $tenderTimeline = array('tender_id'=>base64_decode($request->input('tender')),'action_description'=>'Bidders Participated',
+                    'action_type'=>'bidder','action_date'=>$get_bidder_selected_date->ra_date);
+                    $this->tenderTimeline($tenderTimeline);
+                }
+                // dd($selectedBidder);
+                
+                $auditData = array('action_type'=>'3','description'=>'SNA Add Tender Bidders Details successfuly','user_type'=>'2'); 
+                $this->auditTrail($auditData);
+                 
+    
+                $url=urlencode('/'.Auth::getDefaultDriver().'/SelectedBidder');
+                return response()->json(['status' => 'success','message'=>'Tender Bidders Details saved successfuly!','url'=>$url,'redirect'=>'yes']);
+            } catch (\Throwable $th) {
+                //throw $th;
+                dd($th->getMessage());
             }
             
-            $auditData = array('action_type'=>'3','description'=>'SNA Add Tender Bidders Details successfuly','user_type'=>'2'); 
-            $this->auditTrail($auditData);
-             
-
-            $url=urlencode('/'.Auth::getDefaultDriver().'/SelectedBidder');
-            return response()->json(['status' => 'success','message'=>'Tender Bidders Details saved successfuly!','url'=>$url,'redirect'=>'yes']);
         }
         $page='sb';
         $auditData = array('action_type'=>'1','description'=>'SNA Visit Selected Bidder Page','user_type'=>'2');
@@ -710,7 +723,11 @@ class TenderController extends Controller
                 $addCommissionedData->save();
                 
             }
-            Tenders::where('id',base64_decode($request->tender))->update(['tender_status' => 2]);
+            $tenderStatus=Tenders::Select('tender_status')->where('id',base64_decode($request->input('tender')))->first();
+            if($tenderStatus->tender_status<2){
+                Tenders::where('id',base64_decode($request->tender))->update(['tender_status' => 2]);
+            }
+            
             //Tender Timeline
             $tenderTimeline = array('tender_id'=>base64_decode($request->input('tender')),'action_description'=>'Commissioning Details Submitted',
             'action_type'=>'commissioned','action_date'=>$request->schedule_commissiong_date);
@@ -735,6 +752,7 @@ class TenderController extends Controller
         // dd($selectedBidderData);
         return view('backend.state-implementing-agency.previewTender',compact('tender','selectedBidderData','bidderProjectLocationData','commissioningData'));
     }
+    
     public function getTenderDetailById($page,$id){
         $tender=Tenders::where('id',base64_decode($id))->first();
         $reverseauction='';
