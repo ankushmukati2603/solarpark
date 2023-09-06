@@ -10,6 +10,7 @@ use App\Models\TenderTimeLine;
 use App\Models\ActionNotification;
 use App\Models\SelectedBidder;
 use App\Models\SelectedBidderProject;
+use App\Models\Bidder;
 
 use Illuminate\Support\Facades\Crypt;
 use DB, File, Mail, Log, Auth;
@@ -267,6 +268,7 @@ trait General
         $countLocations=SelectedBidderProject::where('tender_id',$tender_id)->count();
         $countCommissionedLocations=SelectedBidderProject::where('tender_id',$tender_id)->whereNotNull('commissioned_details')->count();
         $checkLocationFilledByBidderStatus=$this->checkCommissionedData($tender_id);
+
         if($status==1){
             $stateCode='<span class="badge bg-primary">Draft Tender</span>';
         }elseif($status==2){
@@ -274,7 +276,7 @@ trait General
         }elseif($status==3){
             $stateCode='<span class="badge bg-warning">Implemented</span>';
         }elseif($status==4){
-            if($countLocations>$countCommissionedLocations && $countCommissionedLocations!=0 && $checkLocationFilledByBidderStatus=='success'){
+            if($countLocations>$countCommissionedLocations && $countCommissionedLocations!=0 && $checkLocationFilledByBidderStatus=='error'){
                 // checkComissionedStatus=='success' Means all location filled by bidder to check for partial commissioned status   
                 $stateCode='<span class="badge bg-success">Partially Commissioned</span>';
             }else{
@@ -282,9 +284,12 @@ trait General
             }
         }elseif($status==5){
             $stateCode='<span class="badge bg-danger">Cancelled</span>';
-        }elseif($status==6){
-            $stateCode='<span class="badge bg-success">Partially Commissioned</span>';
         }
         echo $stateCode;
+    }
+    public function getBidderName($id){
+        $name= Bidder::select('bidder_name')->where('id',$id)->first();
+        return $name->bidder_name;
+
     }
 }

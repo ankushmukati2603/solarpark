@@ -1,5 +1,4 @@
-@extends('layouts.masters.backend')
-@section('content')
+<?php $__env->startSection('content'); ?>
 <section class="section dashboard form_sctn">
 
     <main id="main" class="main">
@@ -11,8 +10,8 @@
                     <div class="pagetitle col-xl-12">
                         <h1 class="text-center">Monthly Progress Report For REIAs/States </h1>
                         <hr style="color: #959595;">
-                        @include('layouts.partials.backend._flash')
-                        <form action="{{url(Auth::getDefaultDriver().'/progress-report')}}" method="post">@csrf
+                        <?php echo $__env->make('layouts.partials.backend._flash', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                        <form action="<?php echo e(url(Auth::getDefaultDriver().'/progress-report')); ?>" method="post"><?php echo csrf_field(); ?>
                             <div class="row col-md-12">
                                 <div class="col-md-3">
 
@@ -20,7 +19,7 @@
                                     <div class="input-group date">
                                         <input type="date" class="form-control pull-right alldatepicker "
                                             id="created_date" placeholder="MM-DD-YYYY" name="filter[from_date]"
-                                            value="{{$filters['from_date']??''}}">
+                                            value="<?php echo e($filters['from_date']??''); ?>">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
@@ -28,7 +27,7 @@
                                     <div class="input-group date">
                                         <input type="date" class="form-control pull-right alldatepicker "
                                             id="created_date" placeholder="MM-DD-YYYY" name="filter[to_date]"
-                                            value="{{$filters['to_date']??''}}">
+                                            value="<?php echo e($filters['to_date']??''); ?>">
                                     </div>
                                 </div><!-- comment -->
                                 <div class="col-md-3">
@@ -37,10 +36,10 @@
                                         <select class="form-control" id="state_id" name="filter[state_id]"
                                             onchange="getDistrictByState(this.value, '')">
                                             <option value="">Select</option>
-                                            @foreach($states as $state)
-                                            <option @if($state['code']==@$filters['state_id']) selected @endif
-                                                value="{{$state->code}}">{{$state->name}}</option>
-                                            @endforeach
+                                            <?php $__currentLoopData = $states; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $state): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <option <?php if($state['code']==@$filters['state_id']): ?> selected <?php endif; ?>
+                                                value="<?php echo e($state->code); ?>"><?php echo e($state->name); ?></option>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </select>
                                     </div>
                                 </div><!-- comment -->
@@ -58,7 +57,7 @@
                                     <div class="input-group date">
                                         <input type="date" class="form-control pull-right alldatepicker "
                                             id="tender_date" placeholder="MM-DD-YYYY" name="filter[tender_date]"
-                                            value="{{$filters['tender_date']??''}}">
+                                            value="<?php echo e($filters['tender_date']??''); ?>">
                                     </div>
                                 </div><!-- comment -->
 
@@ -67,9 +66,9 @@
                                     <div class="input-group date">
                                         <select class="form-control" id="scheme_name" name="filter[scheme_name]">
                                             <option value="">Select</option>
-                                            @foreach($schemes as $sc)
-                                            <option value="{{$sc->id}}">{{$sc->scheme_name}}</option>
-                                            @endforeach
+                                            <?php $__currentLoopData = $schemes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sc): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <option value="<?php echo e($sc->id); ?>"><?php echo e($sc->scheme_name); ?></option>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </select>
 
                                     </div>
@@ -79,7 +78,7 @@
                                     <div>
                                         <button class="btn btn-sm btn-md btn-info pull-right"
                                             type="submit">Search</button>
-                                        <a id="reseta" href="{{Request::fullUrl()}}"
+                                        <a id="reseta" href="<?php echo e(Request::fullUrl()); ?>"
                                             class="btn btn-sm btn-flat btn-danger pull-right">Reset</a>
                                     </div>
                                 </div>
@@ -88,12 +87,14 @@
                         </form>
 
 
-                        <a href="{{URL::to('/'.Auth::getDefaultDriver().'/add-progress-report')}}"
+                        <a href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/add-progress-report')); ?>"
                             class="btn btn-success" style="float: right;"><i class="fa fa-plus"
                                 aria-hidden="true"></i>Progress
                             Report</a>
 
-
+                        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" />
+                        <link rel="stylesheet"
+                            href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.dataTables.min.css" />
                         <br><br>
                         <table class="table table-bordered display nowrap" id="example">
                             <thead>
@@ -107,44 +108,58 @@
                                     <th>Type of Project</th>
                                     <th>Tender Capacity (MW)</th>
                                     <th>Submitted Date </th>
-                                    <th>Present Status</th>
-                                    <th>MNRE Remarks</th>
+                                    <th>Remark</th>
+                                    <!-- <th>Status</th> -->
                                     <th>Action</th>
                                 </tr>
 
                             </thead>
                             <tbody>
-                                @foreach($progressDetails as $progressData)
+                                <?php $__currentLoopData = $progressDetails; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $progressData): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr>
-                                    <td style="display: none;">{{$progressData->id}}</td>
-                                    <td>{{ date("F", mktime(0, 0, 0, $progressData->month, 1 ))}}</td>
-                                    <td>{{$progressData->year}}</td>
-                                    <td>{{$progressData->scheme_name}}</td>
-                                    <td>{{$progressData->state_name}}</td>
-                                    <td>{{$progressData->district_name}}</td>
-                                    <td>{{$progressData->project_type}}</td>
-                                    <td>{{$progressData->tender_capacity}}</td>
+                                    <td style="display: none;"><?php echo e($progressData->id); ?></td>
+                                    <td><?php echo e(date("F", mktime(0, 0, 0, $progressData->month, 1 ))); ?></td>
+                                    <td><?php echo e($progressData->year); ?></td>
+                                    <td><?php echo e($progressData->scheme_name); ?></td>
+                                    <td><?php echo e($progressData->state_name); ?></td>
+                                    <td><?php echo e($progressData->district_name); ?></td>
+                                    <td><?php echo e($progressData->project_type); ?></td>
+                                    <td><?php echo e($progressData->tender_capacity); ?></td>
                                     <td>
-                                        @if($progressData['final_submission'] == 1)
-                                        {{date('d-m-Y', strtotime($progressData->created_date))}}
-                                        @else
+                                        <?php if($progressData['final_submission'] == 1): ?>
+                                        <?php echo e(date('d-m-Y', strtotime($progressData->created_date))); ?>
+
+                                        <?php else: ?>
                                         <span class="text-danger">Saved As Draft</span>
-                                        @endif
+                                        <?php endif; ?>
                                     </td>
-                                    <td>{{$progressData->remark ?? 'NA'}}</td>
-                                    <td>{{$progressData->mnre_remarks  ?? 'NA'}}</td>
-                                    <td>@if($progressData['final_submission'] == 0)
+                                    <td><?php echo e($progressData->remark); ?></td>
+                                    <!-- <td> 
+                <?php if($progressData['final_submission'] == '1'): ?>
+            <span>Submit</span>
+            <?php else: ?> if($progressData['final_submission'] == '0')
+            <span>Draft</span>
+            <?php endif; ?>
+            </td> -->
+                                    <td><?php if($progressData['final_submission'] == 0): ?>
                                         <a
-                                            href="{{URL::to(Auth::getDefaultDriver().'/new-reia-progress-report/'.base64_encode($progressData->id))}}">Edit</a>
+                                            href="<?php echo e(URL::to(Auth::getDefaultDriver().'/new-reia-progress-report/'.base64_encode($progressData->id))); ?>">Edit</a>
                                         |
-                                        @endif
-                                        <a href="{{URL::to(Auth::getDefaultDriver().'/previewprogressreport/'.base64_encode($progressData->id))}}"
+                                        <?php endif; ?>
+                                        <a href="<?php echo e(URL::to(Auth::getDefaultDriver().'/previewprogressreport/'.base64_encode($progressData->id))); ?>"
                                             target="_blank">View</a>
                                     </td>
                                 </tr>
-                                @endforeach
+                                <!-- "<?php echo e(URL::to(Auth::getDefaultDriver().'/previewprogressreport/'.base64_encode($progressData->id))); ?>" -->
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </tbody>
+
                         </table>
+
+
+
+
+
                     </div>
                 </div>
             </div>
@@ -152,16 +167,26 @@
     </main>
 </section>
 
-@endsection
-@push('backend-js')
-<link rel="stylesheet" href="{{asset('public/datatable/jquery.dataTables.min.css')}}" />
-<link rel="stylesheet" href="{{asset('public/datatable/buttons.dataTables.min.css')}}" />
-<script src="{{asset('public/datatable/jquery.dataTables.min.js')}}"></script>
-<script src="{{asset('public/datatable/dataTables.buttons.min.js')}}"></script>
-<script src="{{asset('public/datatable/pdfmake.min.js')}}"></script>
-<script src="{{asset('public/datatable/vfs_fonts.js')}}"></script>
-<script src="{{asset('public/datatable/buttons.html5.min.js')}}"></script>
+<?php $__env->stopSection(); ?>
+<?php $__env->startPush('backend-js'); ?>
+
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
 <script>
+//    $(document).ready(function() {
+//     $('#example').DataTable( {
+//         dom: 'Bfrtip',
+//         buttons: [
+//             'csv', 'excel', 'pdf', 'print'
+
+//         ]
+//     } );
+// } );
+
+
 $(document).ready(function() {
     var oTable = $('#example').DataTable({
         // ordering: 'desc',
@@ -195,10 +220,11 @@ $(document).ready(function() {
 
 });
 </script>
-@endpush
+<?php $__env->stopPush(); ?>
 <style>
 .error {
     color: red
 }
 </style>
-<script src="{{asset('public/js/custom.js')}}"></script>
+<script src="<?php echo e(asset('public/js/custom.js')); ?>"></script>
+<?php echo $__env->make('layouts.masters.backend', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp\htdocs\solar_park\resources\views/backend/reia/progress_report/myProgressReport.blade.php ENDPATH**/ ?>

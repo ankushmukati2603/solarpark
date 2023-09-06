@@ -1,6 +1,6 @@
-@extends('layouts.masters.backend')
-@section('title', 'Dashboard')
-@section('content')
+
+<?php $__env->startSection('title', 'Dashboard'); ?>
+<?php $__env->startSection('content'); ?>
 <section class="section dashboard">
 
     <main id="main" class="main">
@@ -23,7 +23,7 @@
                             <div class="card info-card sales-card">
                                 <div class="card-body grdnt1">
                                     <div class="postn_reltv">
-                                        <img src="{{ URL::asset('public/images/circle.svg')}}" class="circle_img">
+                                        <img src="<?php echo e(URL::asset('public/images/circle.svg')); ?>" class="circle_img">
                                         <div class="card-icon   card1 ">
                                             <div class="number_stng "><span>0</span></div>
                                         </div>
@@ -40,7 +40,7 @@
                             <div class="card info-card sales-card">
                                 <div class="card-body grdnt2">
                                     <div class="postn_reltv">
-                                        <img src="{{ URL::asset('public/images/circle.svg')}}" class="circle_img">
+                                        <img src="<?php echo e(URL::asset('public/images/circle.svg')); ?>" class="circle_img">
                                         <div class="card-icon   card2">
                                             <div class="number_stng "><span>0</span></div>
                                         </div>
@@ -57,7 +57,7 @@
                             <div class="card info-card sales-card">
                                 <div class="card-body grdnt3">
                                     <div class="postn_reltv">
-                                        <img src="{{ URL::asset('public/images/circle.svg')}}" class="circle_img">
+                                        <img src="<?php echo e(URL::asset('public/images/circle.svg')); ?>" class="circle_img">
                                         <div class="card-icon   card3">
                                             <div class="number_stng "><span>0</span></div>
                                         </div>
@@ -74,7 +74,7 @@
                             <div class="card info-card sales-card">
                                 <div class="card-body grdnt4">
                                     <div class="postn_reltv">
-                                        <img src="{{ URL::asset('public/images/circle.svg')}}" class="circle_img">
+                                        <img src="<?php echo e(URL::asset('public/images/circle.svg')); ?>" class="circle_img">
                                         <div class="card-icon   card4">
                                             <div class="number_stng "><span>0</span></div>
                                         </div>
@@ -91,7 +91,7 @@
                             <div class="card info-card sales-card">
                                 <div class="card-body grdnt5">
                                     <div class="postn_reltv">
-                                        <img src="{{ URL::asset('public/images/circle.svg')}}" class="circle_img">
+                                        <img src="<?php echo e(URL::asset('public/images/circle.svg')); ?>" class="circle_img">
                                         <div class="card-icon   card5">
                                             <div class="number_stng "><span>0</span></div>
                                         </div>
@@ -108,7 +108,7 @@
                             <div class="card info-card sales-card">
                                 <div class="card-body grdnt6">
                                     <div class="postn_reltv">
-                                        <img src="{{ URL::asset('public/images/circle.svg')}}" class="circle_img">
+                                        <img src="<?php echo e(URL::asset('public/images/circle.svg')); ?>" class="circle_img">
                                         <div class="card-icon   card6">
                                             <div class="number_stng "><span>0</span></div>
                                         </div>
@@ -125,7 +125,7 @@
                             <div class="card info-card sales-card">
                                 <div class="card-body grdnt7">
                                     <div class="postn_reltv">
-                                        <img src="{{ URL::asset('public/images/circle.svg')}}" class="circle_img">
+                                        <img src="<?php echo e(URL::asset('public/images/circle.svg')); ?>" class="circle_img">
                                         <div class="card-icon card7">
                                             <div class="number_stng "><span>0</span></div>
                                         </div>
@@ -143,7 +143,7 @@
 
                                 <div class="card-body grdnt8">
                                     <div class="postn_reltv">
-                                        <img src="{{ URL::asset('public/images/circle.svg')}}" class="circle_img">
+                                        <img src="<?php echo e(URL::asset('public/images/circle.svg')); ?>" class="circle_img">
                                         <div class="card-icon   card8">
                                             <div class="number_stng "><span>0</span></div>
                                         </div>
@@ -163,4 +163,5 @@
         </section>
 
 </section>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.masters.backend', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp\htdocs\solar_park\resources\views/backend/reia/dashboard.blade.php ENDPATH**/ ?>

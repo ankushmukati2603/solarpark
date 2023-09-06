@@ -93,11 +93,6 @@ Route::group(['prefix' => 'developer', 'as' => 'beneficiary.', 'namespace' => 'B
 Route::group(['prefix' => 'mnre', 'as' => 'mnre.', 'namespace' => 'Backend\Mnre', 'middleware' => 'auth:mnre'], function () {
     Route::get('/', 'MainController@index')->name('dashboard');
     Route::get('preview-docs/{folder}/{subfolder}/{file}', 'MainController@previewDocs');
-
-    Route::match(['post', 'get'], 'solar-park-reports', 'MainController@solarParkProgressReport');
-    Route::get('/preview-solar-park-reports/{id}', 'MainController@previewSolarParkProgressReport');
-    Route::post('mnreRemarkSolarPark', 'MainController@mnreRemarkSolarPark');
-    
     
     Route::match(['get', 'post'], '/edit-profile', 'MainController@editProfile');
     Route::match(['get', 'post'], '/change-password', 'MainController@changePassword');
@@ -133,6 +128,15 @@ Route::group(['prefix' => 'mnre', 'as' => 'mnre.', 'namespace' => 'Backend\Mnre'
     Route::get('sppd-list', 'MainController@sppdList');
     Route::post('SppdApproveReject','MainController@sppdApproveReject');
 
+    // REIA Report
+    Route::get('Reia-Reports', 'ReportController@reiaReports');
+    Route::match(['post', 'get'], 'Preview-Reia-Report/{id}', 'ReportController@reiareportpreview');  
+    Route::post('submitRemarkReia', 'ReportController@mnreRemarkReia');
+
+    // Recieved Report Development of Solar Parks and Ultra Mega Solar Power Projects
+    Route::match(['post', 'get'], 'solar-park-reports', 'ReportController@solarParkProgressReport');
+    Route::get('/preview-solar-park-reports/{id}', 'ReportController@previewSolarParkProgressReport');
+    Route::post('mnreRemarkSolarPark', 'ReportController@mnreRemarkSolarPark');
    
 });
 
@@ -256,20 +260,26 @@ Route::group(['prefix' => 'ajax'], function () {
 Route::group(['prefix' => 'reia', 'as' => 'reia.', 'namespace' => 'Backend\REIA', 'middleware' => 'auth:reia'], function () {
     Route::get('/', 'MainController@index')->name('dashboard');
     Route::match(['post', 'get'], 'new-reia-progress-report', 'MainController@newProgressReport');
+    Route::match(['post', 'get'], 'new-reia-progress-report/{id}', 'MainController@newProgressReport');
+    
     Route::match(['post', 'get'], 'reia-progress-report/edit/{any}', 'MainController@editReiaProgressReport');
     Route::match(['post', 'get'], 'progress-report', 'MainController@ProgressReport');
+    Route::match(['post', 'get'], 'add-progress-report', 'MainController@addProgressReport');
+    //Route::match(['post', 'get'], 'add-progress-report/{id}', 'MainController@addProgressReport');
+    Route::match(['get', 'post'], '/change-password', 'MainController@changePassword');
     Route::match(['post', 'get'], 'schemes', 'MainController@schemes');
     Route::match(['post', 'get'], 'add-scheme', 'MainController@addScheme');
     Route::match(['post', 'get'], 'scheme/edit/{any}', 'MainController@addScheme');
     Route::match(['post', 'get'], 'schemes_status', 'MainController@Changeschemesstatus');
     Route::match(['get', 'post'], '/feedback', 'MainController@feedback');
     Route::match(['get', 'post'], '/edit-profile', 'MainController@editProfile');
+    Route::match(['get', 'post'], '/view-profile', 'MainController@vieweditProfile');
 
     Route::match(['post', 'get'], 'bidder', 'MainController@bidder');
     Route::match(['post', 'get'], 'add-bidder', 'MainController@addBidder');
     Route::match(['post', 'get'], 'bidder/edit/{any}', 'MainController@addBidder');
     Route::match(['post', 'get'], 'bidders_status', 'MainController@Changebidderstatus');
-    Route::match(['post', 'get'], 'previewprogressreport/{id}', 'MainController@progressreportpreview');
+    Route::match(['post', 'get'], 'previewprogressreport/{id}', 'MainController@progressreportpreview');   
 });
 
 

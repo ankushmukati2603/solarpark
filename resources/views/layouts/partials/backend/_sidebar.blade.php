@@ -132,6 +132,11 @@
                         <i class="fa-regular fa-circle"></i><span>Solar Parks Reports</span>
                     </a>
                 </li>
+                <li class=" @if($query_str1 == 'sna-list') active @endif">
+                    <a class="nav-link collapsed" href="{{URL::to('/'.Auth::getDefaultDriver().'/Reia-Reports')}}">
+                        <i class="fa-regular fa-circle"></i><span>REIA'S Reports</span>
+                    </a>
+                </li>
 
             </ul>
         </li>

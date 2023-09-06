@@ -1,3 +1,4 @@
+@inject('general', 'App\Http\Controllers\Backend\Mnre\ReportController')
 @extends('layouts.masters.backend')
 @section('content')
 <section class="section dashboard form_sctn">
@@ -84,20 +85,11 @@
                                     </div>
                                 </div>
                             </div>
-
                         </form>
-
-
-                        <a href="{{URL::to('/'.Auth::getDefaultDriver().'/add-progress-report')}}"
-                            class="btn btn-success" style="float: right;"><i class="fa fa-plus"
-                                aria-hidden="true"></i>Progress
-                            Report</a>
-
-
                         <br><br>
                         <table class="table table-bordered display nowrap" id="example">
                             <thead>
-                                <tr class="bg-dark text-dark">
+                                <tr class="bg-success text-light">
                                     <th style="display: none;">S.No</th>
                                     <th>Report Month</th>
                                     <th>Report Year</th>
@@ -111,36 +103,23 @@
                                     <th>MNRE Remarks</th>
                                     <th>Action</th>
                                 </tr>
-
                             </thead>
                             <tbody>
-                                @foreach($progressDetails as $progressData)
+                                @foreach($reiaProgressReportData as $progressData)
                                 <tr>
                                     <td style="display: none;">{{$progressData->id}}</td>
                                     <td>{{ date("F", mktime(0, 0, 0, $progressData->month, 1 ))}}</td>
                                     <td>{{$progressData->year}}</td>
-                                    <td>{{$progressData->scheme_name}}</td>
-                                    <td>{{$progressData->state_name}}</td>
-                                    <td>{{$progressData->district_name}}</td>
+                                    <td>{{$progressData->scheme_id}}</td>
+                                    <td>{{$progressData->state_id}}</td>
+                                    <td>{{$progressData->district_id}}</td>
                                     <td>{{$progressData->project_type}}</td>
                                     <td>{{$progressData->tender_capacity}}</td>
-                                    <td>
-                                        @if($progressData['final_submission'] == 1)
-                                        {{date('d-m-Y', strtotime($progressData->created_date))}}
-                                        @else
-                                        <span class="text-danger">Saved As Draft</span>
-                                        @endif
-                                    </td>
+                                    <td>{{date('d-m-Y', strtotime($progressData->created_date))}}</td>
                                     <td>{{$progressData->remark ?? 'NA'}}</td>
-                                    <td>{{$progressData->mnre_remarks  ?? 'NA'}}</td>
-                                    <td>@if($progressData['final_submission'] == 0)
-                                        <a
-                                            href="{{URL::to(Auth::getDefaultDriver().'/new-reia-progress-report/'.base64_encode($progressData->id))}}">Edit</a>
-                                        |
-                                        @endif
-                                        <a href="{{URL::to(Auth::getDefaultDriver().'/previewprogressreport/'.base64_encode($progressData->id))}}"
-                                            target="_blank">View</a>
-                                    </td>
+                                    <td>{{$progressData->mnre_remarks ?? 'NA'}}</td>
+                                    <td><a href="{{URL::to(Auth::getDefaultDriver().'/Preview-Reia-Report/'.$general->encodeid($progressData->id))}}"
+                                            target="_blank">View</a></td>
                                 </tr>
                                 @endforeach
                             </tbody>

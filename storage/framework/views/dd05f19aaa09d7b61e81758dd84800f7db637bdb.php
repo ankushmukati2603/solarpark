@@ -1,5 +1,4 @@
-@extends('layouts.masters.backend')
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <section class="section dashboard">
 
@@ -31,10 +30,10 @@
                         <div class="col-xxl-12 section-tittle">
                             <div class="register_hdng_text"></div>
                         </div>
-                        @include('layouts.partials.backend._flash')
-                        <form action="{{URL::to(Auth::getDefaultDriver().'/new-reia-progress-report/')}}"
+                        <?php echo $__env->make('layouts.partials.backend._flash', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                        <form action="<?php echo e(URL::to(Auth::getDefaultDriver().'/new-reia-progress-report/')); ?>"
                               method="post">
-                            @csrf
+                            <?php echo csrf_field(); ?>
                             
                             <div class="row ">
                                 <div class="col-md-12 progress_report_form" style="background: #f7f7f7; border: 1px solid #dedede; padding-top: 20px; padding-bottom: 20px; border-radius: 8px;box-shadow: 0 0 15px #0000001f;">
@@ -43,9 +42,9 @@
                                     <label class="pb-2" for="name"><strong>Name of Scheme <span class="text-danger">*</span></strong></label>
                                     <select class="form-control" id="scheme_id" name="scheme_id">
                                         <option value="">Select Scheme</option>
-                                        @foreach($schemes as $scheme)
-                                        <option value="{{$scheme->id}}" @if($reia->scheme_id == $scheme->id) selected @endif>{{$scheme->scheme_name}}</option>
-                                        @endforeach
+                                        <?php $__currentLoopData = $schemes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $scheme): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <option value="<?php echo e($scheme->id); ?>" <?php if($reia->scheme_id == $scheme->id): ?> selected <?php endif; ?>><?php echo e($scheme->scheme_name); ?></option>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
                                 </div>
                                 
@@ -53,9 +52,9 @@
                                     <label class="pb-2" for="name"><strong>State <span class="text-danger">*</span></strong></label>
                                     <select class="form-control" id="state_id" name="state_id" onchange="getDistrictByState(this.value, '')">
                                         <option value="">Select State</option>
-                                        @foreach($states as $state)
-                                        <option value="{{$state->code}}"  @if($reia->state_id == $state->code) selected @endif>{{$state->name}}</option>
-                                        @endforeach
+                                        <?php $__currentLoopData = $states; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $state): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <option value="<?php echo e($state->code); ?>"  <?php if($reia->state_id == $state->code): ?> selected <?php endif; ?>><?php echo e($state->name); ?></option>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
                                 </div>
                                 <div class="form-group col-xl-3 col-lg-4 col-md-6  pb-3">
@@ -69,9 +68,9 @@
                                     <label class="pb-2" for="name"><strong>Type of Project <span class="text-danger">*</span></strong></label>
                                     <select class="form-control" id="project_type" name="project_type" >
                                         <option value="">Select Project</option>
-                                        <option value="Solar"  @if($reia->project_type == 'Solar') selected @endif>Solar</option>
-                                        <option value="Wind"  @if($reia->project_type == 'Wind') selected @endif>Wind</option>
-                                        <option value="Hybrid"  @if($reia->project_type == 'Hybrid') selected @endif>Hybrid</option> 
+                                        <option value="Solar"  <?php if($reia->project_type == 'Solar'): ?> selected <?php endif; ?>>Solar</option>
+                                        <option value="Wind"  <?php if($reia->project_type == 'Wind'): ?> selected <?php endif; ?>>Wind</option>
+                                        <option value="Hybrid"  <?php if($reia->project_type == 'Hybrid'): ?> selected <?php endif; ?>>Hybrid</option> 
                                     </select>
                                 </div>
                                 
@@ -80,7 +79,7 @@
                                     <div style="position: relative;">
                                         <input placeholder="Tender Capacity ( MW )" name="tender_capacity"
                                                id="tender_capacity" type="number" class="form-control"
-                                               value="{{$reia->tender_capacity ?? ''}}">
+                                               value="<?php echo e($reia->tender_capacity ?? ''); ?>">
                                     </div>
                                 </div>
 
@@ -89,7 +88,7 @@
                                         </strong></label>
                                     <div style="position: relative;">
                                         <input name="tender_date" id="tender_date" type="date"
-                                               class="form-control" value="{{$reia->tender_date ?? ''}}">
+                                               class="form-control" value="<?php echo e($reia->tender_date ?? ''); ?>">
                                     </div>
                                 </div>
                                 <div class="form-group col-xl-3 col-lg-4 col-md-6  pb-3">
@@ -98,7 +97,7 @@
                                     <div style="position: relative;">
                                         <input placeholder="Date of LOA" name="loa_date"
                                                id="loa_date" type="date" class="form-control"
-                                               value="{{ $reia->loa_date ?? ''}}">
+                                               value="<?php echo e($reia->loa_date ?? ''); ?>">
                                     </div>
                                 </div> 
                                
@@ -107,7 +106,7 @@
                                         </strong></label>
                                     <div style="position: relative;">
                                         <input placeholder="Date of Notice inviting Tender" name="scod"
-                                               id="scod" type="date" class="form-control" value="{{ $reia->scod ?? ''}}" >
+                                               id="scod" type="date" class="form-control" value="<?php echo e($reia->scod ?? ''); ?>" >
                                     </div>
                                 </div>
 
@@ -116,7 +115,7 @@
                                         </strong></label>
                                     <div style="position: relative;">
                                     <textarea type="text" placeholder="remark" name="remark"
-                                               id="remark" type="text" class="form-control" value="{{ $reia->remark ?? ''}}"></textarea>
+                                               id="remark" type="text" class="form-control" value="<?php echo e($reia->remark ?? ''); ?>"></textarea>
                                     </div>
                                 </div>
                                 
@@ -133,18 +132,18 @@
                                     </tr>
                                 </thead>
                                 <tbody id="tbody">
-                                    @if($reia['ppa_capacity']!=null)
-                                    @for($i=0;$i < count($reia['bidder_id']);$i++)
+                                    <?php if($reia['ppa_capacity']!=null): ?>
+                                    <?php for($i=0;$i < count($reia['bidder_id']);$i++): ?>
 
                                     <tr id="">
                                         <td width="" class="row-index">
                                             <select name="bidder_id[]" id="bidder_id" class="form-control  number">
                                                 <option value="">Choose Bidder</option>
-                                                @foreach($bidders as $bidder)
+                                                <?php $__currentLoopData = $bidders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bidder): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                
-                                        <option value="{{$bidder->id}}" @if($reia['bidder_id'][$i] == $bidder->id) selected @endif>{{$bidder->bidder_name}}</option>
+                                        <option value="<?php echo e($bidder->id); ?>" <?php if($reia['bidder_id'][$i] == $bidder->id): ?> selected <?php endif; ?>><?php echo e($bidder->bidder_name); ?></option>
                                    
-                                        @endforeach
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             </select>
                                             <span name="bidder_id.0"></span>
                                         </td>
@@ -152,41 +151,41 @@
                                         <td width="">
                                              <input type="number" step="any" min="0"  
                                                 name="select_bidders_capacity[]" id="txtgeneralLatitude"
-                                                class="form-control" value="{{ $reia['select_bidders_capacity'][$i]}}">
+                                                class="form-control" value="<?php echo e($reia['select_bidders_capacity'][$i]); ?>">
                                                
                                             <span name="select_bidders_capacity.0"></span>
                                             
                                         </td>
                                         <td width="" class="row-index">
                                         <input placeholder="Date of Notice inviting Tender" name="ppa_date[]"  id="ppa_date" type="date" 
-                                        class="form-control" value="{{ $reia['ppa_date'][$i]}}" >
+                                        class="form-control" value="<?php echo e($reia['ppa_date'][$i]); ?>" >
                                             <span name="ppa_date.0"></span>
                                         </td>
 
                                         <td width=""> <input placeholder="Date of Notice inviting Tender (MW)" name="ppa_capacity[]"  
-                                        id="ppa_capacity" type="number" class="form-control" value="{{ $reia['ppa_capacity'][$i]}}" >
+                                        id="ppa_capacity" type="number" class="form-control" value="<?php echo e($reia['ppa_capacity'][$i]); ?>" >
                                             <span name="ppa_capacity.0"></span>
                                         </td>
                                         <td class="text-center">
-                                            @if($i==0)
+                                            <?php if($i==0): ?>
                                             <button class="btn btn-md btn-primary" id="addBtn" type="button">
                                                 Add new Row
                                             </button>
-                                            @else
+                                            <?php else: ?>
                                             <button class="btn btn-danger remove" type="button">Remove</button>
-                                            @endif
+                                            <?php endif; ?>
                                         </td>
                                     </tr>
-                                    @endfor
-                                    @else
+                                    <?php endfor; ?>
+                                    <?php else: ?>
 
                                     <tr id="">
                                         <td width="" class="row-index">
                                             <select name="bidder_id[]" id="bidder_id" class="form-control  number">
                                                 <option value="">Choose Bidder</option>
-                                                @foreach($bidders as $bidder)
-                                        <option value="{{$bidder->id}}">{{$bidder->bidder_name}}</option>
-                                        @endforeach
+                                                <?php $__currentLoopData = $bidders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bidder): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <option value="<?php echo e($bidder->id); ?>"><?php echo e($bidder->bidder_name); ?></option>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             </select>
                                             <span name="bidder_id.0"></span>
                                         </td>
@@ -215,7 +214,7 @@
                                             </button>
                                         </td>
                                     </tr>
-                                    @endif
+                                    <?php endif; ?>
                                 </tbody>
                             </table>
                             
@@ -224,7 +223,7 @@
                                 <input type="button" name="submit" class="mt-1 btn btn-success" value="Submit" onclick="submitMe(this)">
                             
 
-                                <input type="hidden" name="editId" value="{{ $id ?? ''}}">
+                                <input type="hidden" name="editId" value="<?php echo e($id ?? ''); ?>">
                                 <input type="hidden" name="final" id="final" value="0">
                                 <input type="submit" id="submit" name="save" style="display:none;">
                                   
@@ -239,12 +238,12 @@
         </div>
     </main>
 </section>
-@endsection
-@section('scripts')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('scripts'); ?>
 
-@push('backend-js')
-<script type="text/javascript" src="{{asset('public/js/form_custom.js')}}"></script>
-<script type="text/javascript" src="{{asset('public/js/custom.js')}}"></script>
+<?php $__env->startPush('backend-js'); ?>
+<script type="text/javascript" src="<?php echo e(asset('public/js/form_custom.js')); ?>"></script>
+<script type="text/javascript" src="<?php echo e(asset('public/js/custom.js')); ?>"></script>
 <script>
 $(document).ready(function() {
     var rowIdx = 0;
@@ -255,9 +254,9 @@ $(document).ready(function() {
          <td class="row-index">
          <select name="bidder_id[]" id="bidder_id" class="form-control  number">
                     <option value="">Choose Bidder</option>
-                    @foreach($bidders as $bidder)
-                                        <option value="{{$bidder->id}}">{{$bidder->bidder_name}}</option>
-                                        @endforeach
+                    <?php $__currentLoopData = $bidders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bidder): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <option value="<?php echo e($bidder->id); ?>"><?php echo e($bidder->bidder_name); ?></option>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </select>
                 <span name="bidder_id.${rowIdx}"></span>
             </td>
@@ -308,17 +307,17 @@ function submitMe(dt){
 
 $(document).ready(function() {
     //alert('hi');
-    getDistrictByState('{{$reia->state_id}}', '{{$reia->district_id}}');
-    getSubDistrictByDistrict('{{ $reia->district_id }}',
-        '{{$reia->sub_district_id }}');
+    getDistrictByState('<?php echo e($reia->state_id); ?>', '<?php echo e($reia->district_id); ?>');
+    getSubDistrictByDistrict('<?php echo e($reia->district_id); ?>',
+        '<?php echo e($reia->sub_district_id); ?>');
 
 });
 
 
 </script>
-@endpush
-@endsection
-@section('styles')
+<?php $__env->stopPush(); ?>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('styles'); ?>
 <style>
     label.error {
         bottom: initial;
@@ -334,6 +333,8 @@ $(document).ready(function() {
     box-shadow: 0 0 15px #0000001f;
 }
 </style>
-@endsection
+<?php $__env->stopSection(); ?>
 
 
+
+<?php echo $__env->make('layouts.masters.backend', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp\htdocs\solar_park\resources\views/backend/reia/progress_report/progressReport.blade.php ENDPATH**/ ?>

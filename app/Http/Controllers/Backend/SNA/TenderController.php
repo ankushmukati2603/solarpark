@@ -33,7 +33,7 @@ class TenderController extends Controller
     public function tender(){
         $auditData = array('action_type'=>'1','description'=>'SNA View Tender List','user_type'=>'2');
         $this->auditTrail($auditData);
-        $tenderList=Tenders::where('sna_id',Auth::id())->paginate(5);
+        $tenderList=Tenders::where('sna_id',Auth::id())->orderby('entry_date','DESC')->paginate(10);
         return view('backend.state-implementing-agency.tenders',compact('tenderList'));
     }
     

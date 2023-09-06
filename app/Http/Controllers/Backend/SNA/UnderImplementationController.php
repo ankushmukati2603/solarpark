@@ -225,7 +225,7 @@ class UnderImplementationController extends Controller
                 }
             } 
             // Updating Tender Status
-            Tenders::where('id',base64_decode($request->tender))->update(['tender_status' => 6]);  //Partialy Commissioned     
+            Tenders::where('id',base64_decode($request->tender))->update(['tender_status' => 4]);  //Partialy Commissioned     
 
             $auditData = array('action_type'=>'3','description'=>'SNA Add Commissioned Details successfuly','user_type'=>'2'); 
             $this->auditTrail($auditData);

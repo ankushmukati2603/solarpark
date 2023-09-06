@@ -1,5 +1,4 @@
-@extends('layouts.masters.backend')
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <section class="section dashboard">
 
@@ -22,15 +21,15 @@
             <h1></h1> -->
             <!-- <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{URL::to(Auth::getDefaultDriver().'/')}}">Home</a>/</li>
+                    <li class="breadcrumb-item"><a href="<?php echo e(URL::to(Auth::getDefaultDriver().'/')); ?>">Home</a>/</li>
                        <li class="breadcrumb-item"><a href="#">New Reia Report</a></li>
                 </ol>
             </nav> -->        </div>
         <section class="section dashboard">
-            @include('layouts.partials.backend._flash')
+            <?php echo $__env->make('layouts.partials.backend._flash', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
-            <form action="{{url(Auth::getDefaultDriver().'/add-progress-report')}}" method="POST">
-                @csrf
+            <form action="<?php echo e(url(Auth::getDefaultDriver().'/add-progress-report')); ?>" method="POST">
+                <?php echo csrf_field(); ?>
                 <div class="row">
                     <table class="table table-bordered">
                         <tr>
@@ -56,7 +55,7 @@
                             <td><button type="submit" value="Submit" id="submit" name="submit"
                                     class="btn btn-flat btn-success">Add
                                     Report</button>
-                                <input type="hidden" name="editId" value="{{$progressData->id ?? ''}}">
+                                <input type="hidden" name="editId" value="<?php echo e($progressData->id ?? ''); ?>">
                             </td>
                         </tr>
                     </table>
@@ -64,10 +63,11 @@
             </form>
     </main>
 </section>
-@endsection
-@push('backend-js')
-<script type="text/javascript" src="{{asset('public/js/form_custom.js')}}"></script>
-<script type="text/javascript" src="{{asset('public/js/custom.js')}}"></script>
+<?php $__env->stopSection(); ?>
+<?php $__env->startPush('backend-js'); ?>
+<script type="text/javascript" src="<?php echo e(asset('public/js/form_custom.js')); ?>"></script>
+<script type="text/javascript" src="<?php echo e(asset('public/js/custom.js')); ?>"></script>
 <!-- <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script> -->
 
-@endpush
+<?php $__env->stopPush(); ?>
+<?php echo $__env->make('layouts.masters.backend', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp\htdocs\solar_park\resources\views/backend/reia/progress_report/newProgressReport.blade.php ENDPATH**/ ?>
