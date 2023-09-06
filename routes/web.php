@@ -128,15 +128,23 @@ Route::group(['prefix' => 'mnre', 'as' => 'mnre.', 'namespace' => 'Backend\Mnre'
     Route::get('sppd-list', 'MainController@sppdList');
     Route::post('SppdApproveReject','MainController@sppdApproveReject');
 
+    
+    // Recieved Report Development of Solar Parks and Ultra Mega Solar Power Projects
+    Route::match(['post', 'get'], 'solar-park-reports', 'ReportController@solarParkProgressReport');
+    Route::get('/preview-solar-park-reports/{id}', 'ReportController@previewSolarParkProgressReport');
+    Route::post('mnreRemarkSolarPark', 'ReportController@mnreRemarkSolarPark');
+
     // REIA Report
     Route::get('Reia-Reports', 'ReportController@reiaReports');
     Route::match(['post', 'get'], 'Preview-Reia-Report/{id}', 'ReportController@reiareportpreview');  
     Route::post('submitRemarkReia', 'ReportController@mnreRemarkReia');
 
-    // Recieved Report Development of Solar Parks and Ultra Mega Solar Power Projects
-    Route::match(['post', 'get'], 'solar-park-reports', 'ReportController@solarParkProgressReport');
-    Route::get('/preview-solar-park-reports/{id}', 'ReportController@previewSolarParkProgressReport');
-    Route::post('mnreRemarkSolarPark', 'ReportController@mnreRemarkSolarPark');
+
+    // STU-CTU Report Preview-Stu-Report
+    Route::match(['post', 'get'], 'Stu-Reports', 'ReportController@stuReports');
+    Route::match(['post', 'get'], 'Preview-Stu-Report/{id}', 'ReportController@stureportpreview');
+    Route::post('submitRemarkStu', 'ReportController@mnreRemarkStu');
+    // ALTER TABLE `stu_report` ADD `mnre_status` INT(1) NOT NULL DEFAULT '0' AFTER `remark`, ADD `mnre_remark` VARCHAR(355) NULL AFTER `mnre_status`;
    
 });
 
@@ -298,13 +306,18 @@ Route::group(['prefix' => 'stu-users', 'as' => 'stu-users.', 'namespace' => 'Bac
     Route::match(['post', 'get'],'new-stu-progress_report', 'MainController@newStuProgressReport');
     Route::match(['post', 'get'],'new-stu-progress_report/{id}', 'MainController@newStuProgressReport');
     Route::match(['post', 'get'], 'new-stu-progress_report/edit/{any}', 'MainController@editStuProgressReport');
-
+    //edit View Profile & change password
+    Route::match(['get', 'post'], '/edit-profile', 'MainController@editProfile');
+    Route::match(['get', 'post'], '/view-profile', 'MainController@vieweditProfile');
+    Route::match(['get', 'post'], '/change-password', 'MainController@changePassword');
+    Route::match(['get', 'post'], '/feedback', 'MainController@feedback');
     //Manage STUs/CTUs Project
     Route::match(['get', 'post'], '/add-stu-project', 'MainController@addstuproject');
     Route::match(['get', 'post'], '/add-stu-project/{id}', 'MainController@addstuproject');
     Route::match(['get', 'post'], '/stu-project-list', 'MainController@stuProjectList');
     Route::match(['post', 'get'], 'previewprogressreport/{id}', 'MainController@progressreportpreview');
 });
+
 
 /************************testing*******************/
 Route::match(['post', 'get'], 'reset-user-password','ResetPassController@sendOtpToUser')->name('reset.password');

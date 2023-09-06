@@ -13,6 +13,7 @@ use App\Models\SubDistrict;
 use App\Models\Village;
 use App\Models\ReiaReport;
 use App\Models\ProgressReport;
+use App\Models\StuReport;
 use App\Utils\EmailSmsNotifications;
 use App\Http\Controllers\Controller;
 use DB, URL, Auth, Hash, Storage, Validator, Config;
@@ -238,5 +239,92 @@ class ReportController extends Controller
             return response()->json(['status' => 'success','message'=>'Remark saved successfuly!','url'=>$url,'redirect'=>'yes']);
         }
 
+    }
+
+    // STu-CTU Report
+
+    public function stuReports(Request $request){ 
+
+        $from_date = NULL; $to_date = NULL;$state_id = NULL;$district_id = NULL;$developer_name = NULL;$filters=[];
+        if ($request->isMethod('post')) {
+            if(!empty($request->filter['from_date'])) $from_date = $request->filter['from_date'];
+            if(!empty($request->filter['to_date'])) $to_date = $request->filter['to_date'];
+            if(!empty($request->filter['state_id'])) $state_id = $request->filter['state_id'];
+            if(!empty($request->filter['district_id'])) $district_id = $request->filter['district_id'];
+            if(!empty($request->filter['developer_name'])) $developer_name = $request->filter['developer_name'];
+            // if(!empty($request->filter['scheme_name'])) $scheme_name = $request->filter['scheme_name'];
+            //$filters = $request->filter;
+
+            $query = StuReport::select('stu_report.*','states.name as state_name','districts.name as district_name')
+            ->where('user_id',Auth::id());
+
+            if ($request->filter['from_date']) {
+                $query->where('stu_report.created_date', '>', $from_date);
+            }
+            if ($request->filter['to_date']){
+                $query->where('stu_report.created_date', '<', $to_date);
+            }
+            if ($request->filter['state_id']) {
+                $query->where('stu_report.state_id',  $state_id);
+                // $query->leftjoin('states','states.code',$state_id)
+            }
+            if ($request->filter['district_id']) {
+                $query->where('stu_report.district_id',  $district_id);
+            }
+            if ($request->filter['developer_name']) {
+                $query->where('stu_report.developer_name', $developer_name);
+            }
+            // if ($request->filter['scheme_name']){
+            //     $query->where('gec_report.scheme_id',$scheme_name);
+            // }
+            $query->leftjoin('states','states.code','stu_report.state_id')
+            ->leftjoin('districts','districts.code','stu_report.district_id');
+            //  ->leftjoin('schemes','schemes.id','gec_report.scheme_id');
+            $progressDetails=$query->get();
+            $states = State::orderby('name')->get();
+            // $schemes = DB::table('schemes')->where('status', 1)->get();
+            return view('backend.stu.progress_report.myProgressReport', compact('progressDetails', 'states'));
+          
+        }
+        $auditData = array('action_type'=>'1','description'=>'GEC User Visit Progress Report Page','user_type'=>'7');
+        $this->auditTrail($auditData);
+        $states = State::orderby('name')->get();
+
+        // $progressDetails=array();
+        $stuReportDetails=StuReport::getAllStuReports();
+        return view('backend.mnre.StuReport.ProgressReport',compact('stuReportDetails','states'));
+    }
+    public function stureportpreview($id){
+        try {
+            //code...
+            $stu_id =  $this->decodeid($id);
+            $stuData=StuReport::getStuReportById($stu_id);
+            // dd($stuData);
+            return view('backend.mnre.StuReport.PreviewStuProgressReport',compact('stuData'));
+        } catch (\Throwable $th) {
+            dd($th->getMessage());
+        }
+        
+    }
+
+    public function mnreRemarkStu(Request $request){
+        $validation = Validator::make($request->all(), [
+            'mnre_status'=>'required',
+            'mnre_remark'=>'required',
+        
+        ]);
+        if ($validation->fails()){   //check all validations are fine, if not then redirect and show error messages
+            return response()->json(['status'=>'verror','data'=>$validation->errors()]);
+        }
+        if($request->editId){
+            $id=$this->decodeid($request->editId);
+            $data= StuReport::where('id',$id)->update([
+                'mnre_status'=>$request->input('status'),
+                'mnre_remark'=>$request->input('mnre_remark'),
+            ]);
+            $auditData = array('action_type'=>'3','description'=>'MNRE Update STU/CTU Report Status and Remarks','user_type'=>'1'); $this->auditTrail($auditData);
+            $url = urlencode('/'.Auth::getDefaultDriver().'/Stu-Reports');
+            return response()->json(['status' => 'success','message'=>'Remark saved successfuly!','url'=>$url,'redirect'=>'yes']);
+        }
     }
 }

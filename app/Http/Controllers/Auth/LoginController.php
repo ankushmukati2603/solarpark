@@ -261,7 +261,7 @@ class LoginController extends Controller
                 break;
             case 'STU':
                 $rules = [
-                    'email'    => 'required|email|exists:stu-users|min:5|max:191',
+                    'email'    => 'required|email|exists:stu_users|min:5|max:191',
                     'password' => 'required|string|min:4|max:255',
                     'user_type' => 'required',
                 ];

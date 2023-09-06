@@ -132,9 +132,14 @@
                         <i class="fa-regular fa-circle"></i><span>Solar Parks Reports</span>
                     </a>
                 </li>
-                <li class=" @if($query_str1 == 'sna-list') active @endif">
+                <li class=" @if($query_str1 == 'Reia-Reports') active @endif">
                     <a class="nav-link collapsed" href="{{URL::to('/'.Auth::getDefaultDriver().'/Reia-Reports')}}">
                         <i class="fa-regular fa-circle"></i><span>REIA'S Reports</span>
+                    </a>
+                </li>
+                <li class=" @if($query_str1 == 'Stu-Reports') active @endif">
+                    <a class="nav-link collapsed" href="{{URL::to('/'.Auth::getDefaultDriver().'/Stu-Reports')}}">
+                        <i class="fa-regular fa-circle"></i><span>STU's/CTU's Reports</span>
                     </a>
                 </li>
 

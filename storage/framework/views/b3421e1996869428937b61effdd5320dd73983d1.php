@@ -132,9 +132,14 @@
                         <i class="fa-regular fa-circle"></i><span>Solar Parks Reports</span>
                     </a>
                 </li>
-                <li class=" <?php if($query_str1 == 'sna-list'): ?> active <?php endif; ?>">
+                <li class=" <?php if($query_str1 == 'Reia-Reports'): ?> active <?php endif; ?>">
                     <a class="nav-link collapsed" href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/Reia-Reports')); ?>">
                         <i class="fa-regular fa-circle"></i><span>REIA'S Reports</span>
+                    </a>
+                </li>
+                <li class=" <?php if($query_str1 == 'Stu-Reports'): ?> active <?php endif; ?>">
+                    <a class="nav-link collapsed" href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/Stu-Reports')); ?>">
+                        <i class="fa-regular fa-circle"></i><span>STU's/CTU's Reports</span>
                     </a>
                 </li>
 
