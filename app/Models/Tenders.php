@@ -10,7 +10,7 @@ class Tenders extends Model
     protected $table="tbl_master_tender";
     public $timestamps = false;
     protected $fillable = [
-        'tender_status', 
+        'tender_status', 'mnre_status','mnre_remarks'
     ];
     public static function getTenderDetailsById($tender_id){
         return self::select(
@@ -66,5 +66,9 @@ class Tenders extends Model
             ->leftjoin('states','states.code','tbl_master_agency.state')
             ->where('tbl_master_tender.id',$tender_id)
             ->first()->toArray();
+    }
+
+    public static function getAllSNAReports(){
+        
     }
 }

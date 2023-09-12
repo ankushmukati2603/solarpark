@@ -19,7 +19,7 @@
             <tr>
                 <th colspan="4">
                     <h1 class="text-center">Tender ID : <?php echo e($tender->tender_no ?? '--'); ?></h1>
-                    <a href="<?php echo e(URL::to(Auth::getDefaultDriver().'/Tenders')); ?>" class="btn btn-success"
+                    <a href="<?php echo e(URL::to(Auth::getDefaultDriver().'/Sna-Reports')); ?>" class="btn btn-success"
                         style="float:right">Back</a>
                 </th>
             </tr>
@@ -380,11 +380,61 @@
                 </td>
             </tr>
             <?php endif; ?>
+            <tr>
+                <th colspan="4">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        MNRE Remarks
+                    </button>
+                </th>
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <form action="<?php echo e(URL::to(Auth::getDefaultDriver().'/mnreRemarkSna')); ?>" id="formFileAjax"
+                        method="POST">
+                        <?php echo csrf_field(); ?>
+                        <div class="row1 app_progrs_rprt1">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Remarks</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="dropdown">
+                                            <label for="">Select Status <span class="text-danger">*</span></label>
+                                            <select class="form-control" aria-label="Default select example"
+                                                name="mnre_status">
+                                                <option value=''>Select</option>
+                                                <option value="1">Approve</option>
+                                                <option value="2">Partial Approve</option>
+                                                <option value="3">Reject</option>
+                                            </select>
+                                        </div> <br>
+                                        <label for=""> Remark <span class="text-danger">*</span></label>
+                                        <textarea name="mnre_remarks" class="form-control" id="" cols="5"
+                                            rows="3"></textarea>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Close</button>
+                                        <input type="hidden" name="editId" value="<?php echo e($general->encodeid($tender_id)); ?>">
+                                        <button type="submit" id="submit" class="btn btn-primary">Save</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
+                    </form>
+                </div>
+
+            </tr>
 
 
         </table>
     </main>
 </section>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.masters.backend', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp\htdocs\solar_park\resources\views/backend/state-implementing-agency/previewTender.blade.php ENDPATH**/ ?>
+<?php $__env->startPush('backend-js'); ?>
+<script type="text/javascript" src="<?php echo e(asset('public/js/form_custom.js')); ?>"></script>
+<?php $__env->stopPush(); ?>
+<?php echo $__env->make('layouts.masters.backend', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp\htdocs\solar_park\resources\views/backend/mnre/SnaReport/PreviewSnaProgressReport.blade.php ENDPATH**/ ?>

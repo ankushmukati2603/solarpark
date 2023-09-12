@@ -125,8 +125,10 @@ $(function () {
                     printErrorMsg(response.data);
                     $("#submit").attr("disabled", false);
                 } else if (response.status == 'ExError') {
+                    alert('System Error : Please contact concern team');
                     ExceptionError(response.message);
-                    //printErrorMsg (response.data);
+                    location.reload();
+                    // printErrorMsg(response.data);
                 } else if (response.url == '' && response.status == 'error') {
                     responseMsg(response.status, response.message);
                     $('#loading-bg-ajax').addClass('hide');

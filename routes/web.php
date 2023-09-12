@@ -140,12 +140,17 @@ Route::group(['prefix' => 'mnre', 'as' => 'mnre.', 'namespace' => 'Backend\Mnre'
     Route::post('submitRemarkReia', 'ReportController@mnreRemarkReia');
 
 
-    // STU-CTU Report Preview-Stu-Report
+    // STU-CTU Report
     Route::match(['post', 'get'], 'Stu-Reports', 'ReportController@stuReports');
     Route::match(['post', 'get'], 'Preview-Stu-Report/{id}', 'ReportController@stureportpreview');
     Route::post('submitRemarkStu', 'ReportController@mnreRemarkStu');
-    // ALTER TABLE `stu_report` ADD `mnre_status` INT(1) NOT NULL DEFAULT '0' AFTER `remark`, ADD `mnre_remark` VARCHAR(355) NULL AFTER `mnre_status`;
-   
+
+    
+    // SNA Report 
+    Route::match(['post', 'get'], 'Sna-Reports', 'ReportController@snaReports');
+    Route::match(['post', 'get'], 'Preview-Sna-Report/{id}', 'ReportController@snareportpreview');
+    Route::post('mnreRemarkSna', 'ReportController@mnreRemarkSna');
+    
 });
 
 /****************13/dec/2022****************** */

@@ -129,7 +129,7 @@
                 <li class=" <?php if($query_str1 == 'sna-list'): ?> active <?php endif; ?>">
                     <a class="nav-link collapsed"
                         href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/solar-park-reports')); ?>">
-                        <i class="fa-regular fa-circle"></i><span>Solar Parks Reports</span>
+                        <i class="fa-regular fa-circle"></i><span>Solar Parks Reports (SPPD's)</span>
                     </a>
                 </li>
                 <li class=" <?php if($query_str1 == 'Reia-Reports'): ?> active <?php endif; ?>">
@@ -140,6 +140,11 @@
                 <li class=" <?php if($query_str1 == 'Stu-Reports'): ?> active <?php endif; ?>">
                     <a class="nav-link collapsed" href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/Stu-Reports')); ?>">
                         <i class="fa-regular fa-circle"></i><span>STU's/CTU's Reports</span>
+                    </a>
+                </li>
+                <li class=" <?php if($query_str1 == 'Sna-Reports'): ?> active <?php endif; ?>">
+                    <a class="nav-link collapsed" href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/Sna-Reports')); ?>">
+                        <i class="fa-regular fa-circle"></i><span>SNA Reports</span>
                     </a>
                 </li>
 

@@ -292,4 +292,6 @@ trait General
         return $name->bidder_name;
 
     }
+
+    
 }

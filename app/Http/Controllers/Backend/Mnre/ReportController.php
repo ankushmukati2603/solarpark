@@ -14,9 +14,13 @@ use App\Models\Village;
 use App\Models\ReiaReport;
 use App\Models\ProgressReport;
 use App\Models\StuReport;
+use App\Models\Tenders;
+use App\Models\SelectedBidderProject;
+use App\Models\Commissioning;
+use App\Models\SelectedBidder;
 use App\Utils\EmailSmsNotifications;
 use App\Http\Controllers\Controller;
-use DB, URL, Auth, Hash, Storage, Validator, Config;
+use DB, URL, Auth, Hash, Storage, Validator, Config, Log;
 class ReportController extends Controller
 {
     use General;
@@ -25,6 +29,8 @@ class ReportController extends Controller
         $this->emailSmsNotifications = new EmailSmsNotifications();
         //dd(Auth::user());
     }
+    
+    // SPPD Reports
     public function solarParkProgressReport(Request $request){
         if($request->isMethod('post')){
 
@@ -67,7 +73,7 @@ class ReportController extends Controller
                 $reportQuery->orWhere('capacity',$capacity);
             }
             $reportQuery->orderBy("submitted_on",'DESC');
-            $progressData=$reportQuery->get();
+            $progressData=$reportQuery->paginate(20);
             // dd(\DB::getQueryLog()); 
 
             // if($progressData['final_submission']==1){
@@ -143,16 +149,24 @@ class ReportController extends Controller
         if ($validation->fails()){   //check all validations are fine, if not then redirect and show error messages
             return response()->json(['status'=>'verror','data'=>$validation->errors()]);
         }
-        if($request->editId){
-            $id=$this->decodeid($request->editId);
-            $data= ProgressReport::where('id',$id)->update([
-                'status'=>$request->input('status'),
-                'remarks'=>$request->input('mnreremarks'),
-            ]);
-            $auditData = array('action_type'=>'3','description'=>'MNRE Update Progress Report Status and Remark','user_type'=>'1'); $this->auditTrail($auditData);
-            $url = urlencode('/'.Auth::getDefaultDriver().'/solar-park-reports');
-            return response()->json(['status' => 'success','message'=>'Remark saved successfuly!','url'=>$url,'redirect'=>'yes']);
+        try {
+            //code...
+            if($request->editId){
+                $id=$this->decodeid($request->editId);
+                $data= ProgressReport::where('id',$id)->update([
+                    'status'=>$request->input('status'),
+                    'remarks'=>$request->input('mnreremarks'),
+                ]);
+                $auditData = array('action_type'=>'3','description'=>'MNRE Update Progress Report Status and Remark','user_type'=>'1'); $this->auditTrail($auditData);
+                $url = urlencode('/'.Auth::getDefaultDriver().'/solar-park-reports');
+                return response()->json(['status' => 'success','message'=>'Remark saved successfuly!','url'=>$url,'redirect'=>'yes']);
+            }
+        } catch (\Throwable $th) {
+            //throw $th;
+            Log::info($th->getMessage());
+            return response()->json(['status' => 'ExError','message'=>$th->getMessage()]);
         }
+        
 
     }
 
@@ -286,7 +300,7 @@ class ReportController extends Controller
             return view('backend.stu.progress_report.myProgressReport', compact('progressDetails', 'states'));
           
         }
-        $auditData = array('action_type'=>'1','description'=>'GEC User Visit Progress Report Page','user_type'=>'7');
+        $auditData = array('action_type'=>'1','description'=>'GEC User Visit Progress Report Page','user_type'=>'1');
         $this->auditTrail($auditData);
         $states = State::orderby('name')->get();
 
@@ -316,15 +330,125 @@ class ReportController extends Controller
         if ($validation->fails()){   //check all validations are fine, if not then redirect and show error messages
             return response()->json(['status'=>'verror','data'=>$validation->errors()]);
         }
-        if($request->editId){
-            $id=$this->decodeid($request->editId);
-            $data= StuReport::where('id',$id)->update([
-                'mnre_status'=>$request->input('status'),
-                'mnre_remark'=>$request->input('mnre_remark'),
-            ]);
-            $auditData = array('action_type'=>'3','description'=>'MNRE Update STU/CTU Report Status and Remarks','user_type'=>'1'); $this->auditTrail($auditData);
-            $url = urlencode('/'.Auth::getDefaultDriver().'/Stu-Reports');
-            return response()->json(['status' => 'success','message'=>'Remark saved successfuly!','url'=>$url,'redirect'=>'yes']);
+        try {
+            //code...
+            if($request->editId){
+                $id=$this->decodeid($request->editId);
+                $data= StuReport::where('id',$id)->update([
+                    'mnre_status'=>$request->input('status'),
+                    'mnre_remark'=>$request->input('mnre_remark'),
+                ]);
+                $auditData = array('action_type'=>'3','description'=>'MNRE Update STU/CTU Report Status and Remarks','user_type'=>'1'); $this->auditTrail($auditData);
+                $url = urlencode('/'.Auth::getDefaultDriver().'/Stu-Reports');
+                return response()->json(['status' => 'success','message'=>'Remark saved successfuly!','url'=>$url,'redirect'=>'yes']);
+            }
+        } catch (\Throwable $th) {
+            //throw $th;
+            Log::info($th->getMessage());
+            return response()->json(['status' => 'ExError','message'=>$th->getMessage()]);
         }
+        
     }
+
+
+    // SNA Report
+
+    public function snaReports(Request $request){ 
+        
+        $from_date = NULL; $to_date = NULL;$state_id = NULL;$district_id = NULL;$developer_name = NULL;$filters=[];
+        if ($request->isMethod('post')) {
+            if(!empty($request->filter['from_date'])) $from_date = $request->filter['from_date'];
+            if(!empty($request->filter['to_date'])) $to_date = $request->filter['to_date'];
+            if(!empty($request->filter['state_id'])) $state_id = $request->filter['state_id'];
+            if(!empty($request->filter['district_id'])) $district_id = $request->filter['district_id'];
+            if(!empty($request->filter['developer_name'])) $developer_name = $request->filter['developer_name'];
+            // if(!empty($request->filter['scheme_name'])) $scheme_name = $request->filter['scheme_name'];
+            //$filters = $request->filter;
+
+            $query = StuReport::select('stu_report.*','states.name as state_name','districts.name as district_name')
+            ->where('user_id',Auth::id());
+
+            if ($request->filter['from_date']) {
+                $query->where('stu_report.created_date', '>', $from_date);
+            }
+            if ($request->filter['to_date']){
+                $query->where('stu_report.created_date', '<', $to_date);
+            }
+            if ($request->filter['state_id']) {
+                $query->where('stu_report.state_id',  $state_id);
+                // $query->leftjoin('states','states.code',$state_id)
+            }
+            if ($request->filter['district_id']) {
+                $query->where('stu_report.district_id',  $district_id);
+            }
+            if ($request->filter['developer_name']) {
+                $query->where('stu_report.developer_name', $developer_name);
+            }
+            // if ($request->filter['scheme_name']){
+            //     $query->where('gec_report.scheme_id',$scheme_name);
+            // }
+            $query->leftjoin('states','states.code','stu_report.state_id')
+            ->leftjoin('districts','districts.code','stu_report.district_id');
+            //  ->leftjoin('schemes','schemes.id','gec_report.scheme_id');
+            $progressDetails=$query->get();
+            $states = State::orderby('name')->get();
+            // $schemes = DB::table('schemes')->where('status', 1)->get();
+            return view('backend.stu.progress_report.myProgressReport', compact('progressDetails', 'states'));
+          
+        }
+        $auditData = array('action_type'=>'1','description'=>'MNRE User Visit Progress Report Page','user_type'=>'1');
+        $this->auditTrail($auditData);
+        $snaReportDetails=Tenders::where('tender_status',4)->orderby('entry_date','DESC')->paginate(20);
+        return view('backend.mnre.SnaReport.snaProgressReport',compact('snaReportDetails'));
+    }
+
+    public function snareportpreview($id){
+        try {
+            //code...
+            $tender_id =  $this->decodeid($id);
+            $tender=Tenders::getTenderDetailsById($tender_id);
+            $bidderProjectLocationData=SelectedBidderProject::getSelectedBidderProjectDetails($tender_id);
+            $commissioningData=Commissioning::getCommissionedDataByTenderId($tender_id);
+            $selectedBidderData=SelectedBidder::getSelectedBidderDetails($tender_id);
+            // dd($selectedBidderData);
+            return view('backend.mnre.SnaReport.PreviewSnaProgressReport',compact('tender','selectedBidderData','bidderProjectLocationData','commissioningData','tender_id'));
+        } catch (\Throwable $th) {
+            Log::info($th->getMessage());
+            // return response()->json(['status' => 'ExError','message'=>$th->getMessage()]);
+        }
+        
+    }
+
+    public function mnreRemarkSna(Request $request){
+        $validation = Validator::make($request->all(), [
+            'mnre_status'=>'required',
+            'mnre_remarks'=>'required',
+        
+        ]);
+        if ($validation->fails()){   //check all validations are fine, if not then redirect and show error messages
+            return response()->json(['status'=>'verror','data'=>$validation->errors()]);
+        }
+        try {
+            //code...
+            if($request->editId){
+                $id=$this->decodeid($request->editId);
+                $data= Tenders::where('id1',$id)->update([
+                    'mnre_status'=>$request->input('mnre_status'),
+                    'mnre_remarks'=>$request->input('mnre_remarks'),
+                ]);
+                $auditData = array('action_type'=>'3','description'=>'MNRE Update SNA Report Status and Remarks','user_type'=>'1'); $this->auditTrail($auditData);
+                $url = urlencode('/'.Auth::getDefaultDriver().'/Sna-Reports');
+                return response()->json(['status' => 'success','message'=>'Remark saved successfuly!','url'=>$url,'redirect'=>'yes']);
+            }
+        } catch (\Throwable $th) {
+            Log::info($th->getMessage());
+            return response()->json(['status' => 'ExError','message'=>$th->getMessage()]);
+
+        }
+        
+    }
+
+
+
+
 }

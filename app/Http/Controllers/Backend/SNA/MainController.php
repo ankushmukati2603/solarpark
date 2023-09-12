@@ -607,6 +607,7 @@ class MainController extends Controller
         } 
        
     }
+    
     public function selectreporttype(Request $request){
         if($request->isMethod('post')){
             // dd($request);

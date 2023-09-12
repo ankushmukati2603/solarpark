@@ -211,4 +211,4 @@ $(document).ready(function() {
 });
 </script>
 <?php $__env->stopPush(); ?>
-<?php echo $__env->make('layouts.masters.backend', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp_new\htdocs\solar_park\resources\views/backend/beneficiary/progress_report/myProgressReport.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.masters.backend', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp\htdocs\solar_park\resources\views/backend/beneficiary/progress_report/myProgressReport.blade.php ENDPATH**/ ?>
