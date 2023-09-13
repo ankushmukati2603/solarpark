@@ -364,7 +364,6 @@ class ReportController extends Controller
             if(!empty($request->filter['developer_name'])) $developer_name = $request->filter['developer_name'];
             // if(!empty($request->filter['scheme_name'])) $scheme_name = $request->filter['scheme_name'];
             //$filters = $request->filter;
-
             $query = StuReport::select('stu_report.*','states.name as state_name','districts.name as district_name')
             ->where('user_id',Auth::id());
 
