@@ -405,7 +405,7 @@ class ReportController extends Controller
     public function snareportpreview($id){
         try {
             //code...
-            $tender_id =  $this->decodeid($id);
+            $tender_id = $this->decodeid($id);
             $tender=Tenders::getTenderDetailsById($tender_id);
             $bidderProjectLocationData=SelectedBidderProject::getSelectedBidderProjectDetails($tender_id);
             $commissioningData=Commissioning::getCommissionedDataByTenderId($tender_id);
