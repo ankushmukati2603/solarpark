@@ -88,6 +88,7 @@ Route::group(['prefix' => 'developer', 'as' => 'beneficiary.', 'namespace' => 'B
     Route::match(['get', 'post'], '/add-solar-park', 'MainController@addSolarPark');
     Route::match(['get', 'post'], '/add-solar-park/{id}', 'MainController@addSolarPark');
     Route::match(['get', 'post'], '/solar-park-list', 'MainController@solarParkList');
+    Route::match(['get', 'post'], '/feedback', 'MainController@feedback');
 
 });
 Route::group(['prefix' => 'mnre', 'as' => 'mnre.', 'namespace' => 'Backend\Mnre', 'middleware' => 'auth:mnre'], function () {
@@ -239,6 +240,8 @@ Route::group(['prefix' => 'state-implementing-agency', 'as' => 'state-implementi
     // Commissioned
     Route::match(['post', 'get'], 'Commissioned', 'UnderImplementationController@commissioned');
     Route::get('ajaxSelectedBidderRecordsImplemented/{id}/{tender_id}', 'UnderImplementationController@getSelectedBidderRecordsByImplemented');
+
+    Route::match(['get', 'post'], '/feedback', 'MainController@feedback');
 
 });
 Route::group(['prefix' => 'ajax'], function () {

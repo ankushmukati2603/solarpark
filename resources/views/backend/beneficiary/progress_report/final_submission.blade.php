@@ -32,6 +32,6 @@
     <div class="clearfix"><br><br></div>
     <div class="col-md-12 pb-4">
         <input type="checkbox" id="" name="authorize" value="1">
-        <label for="vehicle1"> I authorize that entered information in proposal are correct and verified</label> <br>
+        <label for="vehicle1">I confirm that the entered information in the report is correct and verified</label> <br>
     </div>
 </div>

@@ -27,6 +27,7 @@ use App\Models\MaintenanceRegistry;
 use App\Models\SiaInspectorAssociation;
 use App\Models\SiaInstallerAssociation;
 use App\Models\PasswordHistoryLog;
+use App\Models\Feedback;
 use App\Http\Controllers\Controller;
 use App\Utils\Dictionary;
 use App\Utils\Dashboard;
@@ -1339,5 +1340,45 @@ class MainController extends Controller
         // }
         // return response()->json(['status' => 'error','message'=>'error!']);
         // dd($previousprogressReport->$type);
+    }
+    public function feedback(Request $request) {
+        
+        $url='/'.Auth::getDefaultDriver().'/feedback';
+        if ($request->isMethod('post')) {
+            $validation = Validator::make($request->all(), [
+                        'message' => 'required',
+            ],
+            [
+                'message.required'=>'Feedback field is required'
+            ]
+            );
+            if ($validation->fails()) {  //check all validations are fine, if not then redirect and show error messages
+                return response()->json(['status' => 'verror', 'data' => $validation->errors()]);
+            } 
+            try {
+                //code...
+                $data = New Feedback();
+                $data->user_id = Auth::user()->id;
+                $data->name = Auth::user()->name;
+                $data->contact_no = Auth::user()->phone;
+                $data->email = Auth::user()->email;
+                $data->scheme_type=1; //1- Solar Park,
+                $data->subject="Feedback From SNA";
+                $data->feedback_type=1; //1-Feedback,
+                $data->message = $request->input('message');
+                $data->user_type = 'sna';
+                $data->save();
+                
+                $auditData = array('action_type' => '2', 'description' => 'Feedback sent successfuly', 'user_type' => '2');
+                $this->auditTrail($auditData);
+                return response()->json(['status' => 'success', 'message' => 'Feedback sent successfuly!', 'url' => $url,'redirect' => 'yes']);
+            } catch (\Throwable $th) {
+                //throw $th;
+                dd($th->getMessage());
+            }
+            
+        }
+        $getFeedback=Feedback::select('message')->where('user_id',Auth::user()->id)->where('user_type','sna')->first();
+        return view('backend.state-implementing-agency.feedback', compact('url','getFeedback'));
     }
 } 

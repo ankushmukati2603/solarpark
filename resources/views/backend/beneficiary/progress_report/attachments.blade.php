@@ -124,8 +124,8 @@
 
 
     <div class="col-md-12 pb-4">
-        <label>Upload Additional Documents (If Any)<span class="text-primary">(Please
-                Upload Signned and Stamped Document by Head Approved)</span><span class="text-danger">*</span></label>
+        <label>Upload Additional Documents (If Any)<span class="text-primary">(Please upload documents duly signed and
+                stamped by the approved head)</span></label>
         <input type="file" name="additional_documents[]" class="form-control" multiple>
         <span name="additional_documents"></span>
         <label for="" class="text-primary"></label>

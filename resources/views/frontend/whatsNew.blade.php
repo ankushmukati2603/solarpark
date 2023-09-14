@@ -15,10 +15,9 @@
                 <br>
                 <div class="row text-center contact_bg">
                     <div><label for="">
-                            <h3>See Details On</h3>
+                            <!-- <h3>See Details On</h3> -->
                         </label><br> <a class="text-primary" target="_blank"
-                            href="https://mnre.gov.in/solar/schemes/">Click On
-                            Link</a> </div>
+                            href="https://mnre.gov.in/solar/schemes/">See details on Link</a> </div>
                     <br><br><br><br><br><br><br><br><br><br><br>
                 </div>
 

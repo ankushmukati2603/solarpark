@@ -5,11 +5,11 @@
 <section class="section dashboard form_sctn">
     <main id="main" class="main">
         <div class="pagetitle">
-            <h1>Dashboard</h1>
+
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{URL::to(Auth::getDefaultDriver().'/')}}">Home</a></li>
-                    <li class="breadcrumb-item active">Progress Report Data</li>
+                    <li class="breadcrumb-item active">Progress Report</li>
                 </ol>
             </nav>
         </div>
@@ -158,8 +158,7 @@
 
                             @endif
                         </tbody>
-                        <!-- <a href=" {{URL::to('developerData')}}">Form</a> -->
-                    </table>
+                    </table><br>
                     <span class="text-center"><a href="{{URL::to('/'.Auth::getDefaultDriver().'/new-progress-report')}}"
                             class="btn btn-success" style="margin-right:5px;"><i class="fa fa-plus"
                                 aria-hidden="true"></i>Progress Report</a></span>
@@ -167,43 +166,9 @@
             </div>
         </div>
 
-
-
-
-
-
-
-        <style>
-        .col-md-3 {
-            display: inline-block;
-        }
-
-        .col-md-2 {
-            display: inline-block;
-        }
-        </style>
     </main>
 </section>
 
 @endsection
-<style>
-.error {
-    color: red
-}
-</style>
+
 <script src="{{asset('public/js/custom.js')}}"></script>
-@push('backend-js')
-
-<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
-<script>
-$(document).ready(function() {
-    $('#example').DataTable({
-
-    });
-});
-</script>
-@endpush

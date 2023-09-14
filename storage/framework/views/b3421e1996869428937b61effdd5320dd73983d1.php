@@ -8,102 +8,44 @@
 
 <aside id="sidebar" class="sidebar dashboard3">
     <ul class="sidebar-nav" id="sidebar-nav">
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a class="nav-link  <?php if($query_str1 == ''): ?>active <?php endif; ?>" href="<?php echo e(URL::to('/'.Auth::getDefaultDriver())); ?>">
                 <i class="fa-solid fa-table-cells-large"></i>
                 <span>Dashboard</span>
             </a>
-        </li>
+        </li> -->
         <?php if(Auth::guard('developer')->check()): ?>
         <li class="nav-item">
             <a class="nav-link <?php if($query_str1 == 'solar-park-list'): ?>active <?php endif; ?>"
                 href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/solar-park-list')); ?>">
-                <i class="fa-solid fa-users"></i>
+                <i class="fa-solid fa-sun"></i>
                 <span>Manage Solar Park</span>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link <?php if($query_str1 == 'my-progress-report'): ?>active <?php endif; ?>"
                 href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/my-progress-report')); ?>">
-                <i class="fa-solid fa-users"></i>
+                <i class="fa-solid fa-file"></i>
                 <span>Progress Report</span>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link <?php if($query_str1 == 'consolidate-report'): ?>active <?php endif; ?>"
                 href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/consolidate-report')); ?>">
-                <i class="fa-solid fa-users"></i>
+                <i class="fa-solid fa-file-lines"></i>
                 <span>Consolidate Report</span>
             </a>
         </li>
-
+        <li class="nav-item">
+            <a class="nav-link <?php if($query_str1 == 'feedback'): ?>active <?php endif; ?>"
+                href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/feedback')); ?>">
+                <i class="fa-solid fa-folder-open"></i>
+                <span>Feedback</span>
+            </a>
+        </li>
         <?php endif; ?>
         <?php if(Auth::guard('mnre')->check()): ?>
 
-
-        <!-- <li class="nav-item">
-            <a class="nav-link <?php if($query_str1 == 'progress-report'): ?>active <?php endif; ?>"
-                href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/progress-report')); ?>">
-                <i class="fa-solid fa-user-check"></i>
-                <span>Recieved Report</span>
-            </a>
-        </li>
-       <li class="nav-item">
-            <a class="nav-link <?php if($query_str1 == 'mnredeveloper-list'): ?>active <?php endif; ?>"
-                href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/mnredeveloper-list')); ?>">
-                <i class="fa-solid fa-user-check"></i>
-                <span>Developer</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link <?php if($query_str1 == 'agency-list'): ?>active <?php endif; ?>"
-                href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/agency-list')); ?>">
-                <i class="fa-solid fa-user-check"></i>
-                <span>Agency</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link <?php if($query_str1 == 'mnre-list'): ?>active <?php endif; ?>"
-                href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/mnre-list')); ?>">
-                <i class="fa-solid fa-user-check"></i>
-                <span>MNRE</span>
-            </a>
-        </li> -->
-
-
-        <!-- <li class="nav-item">
-            <a class="nav-link <?php if($query_str1 == 'archive-mnre'): ?>active <?php endif; ?>"
-                href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/')); ?>" role="button" data-bs-toggle="dropdown">
-                <i class="fa-solid fa-user-check"></i>
-                <span>Archive Report</span>
-            </a>
-
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li class="nav-item">
-                    <a class="nav-link <?php if($query_str1 == 'mnre-list'): ?>active <?php endif; ?>"
-                        href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/')); ?>" role="button" data-bs-toggle="dropdown">
-                        <i class="fa-solid fa-user-check"></i>
-                        <span>Developer</span>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link <?php if($query_str1 == 'agency-archive-report'): ?>active <?php endif; ?>"
-                        href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/agency-archive-report')); ?>" role="button"
-                        data-bs-toggle="dropdown">
-                        <i class="fa-solid fa-user-check"></i>
-                        <span>Agencies Archive Report</span>
-                    </a>
-                </li>
-            </ul>
-        </li> 
-        <li class="nav-item">
-            <a class="nav-link <?php if($query_str1 == 'agency-archive-report'): ?>active <?php endif; ?>"
-                href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/view-agency-archive-report')); ?>">
-                <i class="fa-solid fa-user-check"></i>
-                <span>Agencies Archive Report</span>
-            </a>
-        </li>-->
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#tables-users" data-bs-toggle="collapse" href="#">
                 <i class="fa-solid fa-table-list"></i><span>Users</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -150,13 +92,7 @@
 
             </ul>
         </li>
-        <!-- <li class="nav-item">
-            <a class="nav-link <?php if($query_str1 == 'developer-archive-report'): ?>active <?php endif; ?>"
-                href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/developer-archive-report')); ?>">
-                <i class="fa-solid fa-user-check"></i>
-                <span>Developer</span>
-            </a>
-        </li> -->
+
         <?php endif; ?>
         <?php if(Auth::guard('state-implementing-agency')->check()): ?>
         <!-- <li>
@@ -171,78 +107,81 @@
         <ul class="sidebar-nav" id="sidebar-nav">
 
 
-
+            <li class="nav-item">
+                <a class="nav-link  <?php if($query_str1 == ''): ?>active <?php endif; ?>"
+                    href="<?php echo e(URL::to('/'.Auth::getDefaultDriver())); ?>">
+                    <i class="fa-solid fa-table-cells-large"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#tables-nav22" data-bs-toggle="collapse" href="#">
-                    <i class="fa-solid fa-table-list"></i><span>Users</span><i class="bi bi-chevron-down ms-auto"></i>
+                    <i class="fa-solid fa-users"></i><span>Users</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="tables-nav22" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li class=" <?php if($query_str1 == 'Agency'): ?> active <?php endif; ?>">
                         <a class="nav-link collapsed" href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/Agency')); ?>">
-                            <i class="fa-regular fa-circle"></i><span>Agencies</span>
+                            <i class="fa-solid fa-circle"></i><span>Agencies</span>
                         </a>
                     </li>
                     <li class="nav-item  <?php if($query_str1 == 'Sub-Agency'): ?> active <?php endif; ?>">
                         <a class="nav-link collapsed" href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/Sub-Agency')); ?>">
-                            <i class="fa-regular fa-circle"></i><span>SPD's</span>
+                            <i class="fa-solid fa-circle"></i><span>SPDs</span>
                         </a>
                     </li>
                     <li class="nav-item   <?php if($query_str1 == 'Agency'): ?> Bidder <?php endif; ?>">
                         <a class="nav-link collapsed" href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/Bidder')); ?>">
-                            <i class="fa-regular fa-circle"></i><span>Bidders</span>
-                        </a>
-                    </li>
-                    <li class="nav-item  <?php if($query_str1 == 'TenderReport'): ?> active <?php endif; ?>">
-                        <a class="nav-link collapsed" href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/TenderReport')); ?>">
-                            <i class="fa-regular fa-circle"></i><span>Tender Report</span>
+                            <i class="fa-solid fa-circle"></i><span>Bidders</span>
                         </a>
                     </li>
 
+
                 </ul>
             </li>
+
             <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#tables-nav21" data-bs-toggle="collapse" href="#">
-                    <i class="fa-solid fa-table-list"></i><span>Tendering</span><i
+                    <i class="fa-solid fa-file-lines"></i><span>Tendering</span><i
                         class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="tables-nav21" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li class="nav-item <?php if($query_str1 == 'Tenders'): ?> active <?php endif; ?>">
                         <a href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/Tenders')); ?>" class="nav-link collapsed">
-                            <i class="fa-regular fa-circle"></i><span>Submitted Tender's</span>
+                            <i class="fa-solid fa-circle"></i><span>Submitted Tenders</span>
                         </a>
                     </li>
 
                     <li class="nav-item <?php if($query_str1 == 'Tenders'): ?> active <?php endif; ?>">
                         <a href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/Tenders/Add')); ?>" class="nav-link collapsed">
-                            <i class="fa-regular fa-circle"></i><span>Add Tender</span>
+                            <i class="fa-solid fa-circle"></i><span>Add Tender</span>
                         </a>
                     </li>
 
                     <li class="nav-item <?php if($query_str1 == 'ReverseAuction'): ?> active <?php endif; ?>">
                         <a href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/ReverseAuction')); ?>"
                             class="nav-link collapsed">
-                            <i class="fa-regular fa-circle"></i><span>Reverse Auction</span>
+                            <i class="fa-solid fa-circle"></i><span>Reverse Auction</span>
                         </a>
                     </li>
 
                     <li class="nav-item <?php if($query_str1 == 'SelectedBidder'): ?> active <?php endif; ?>">
                         <a href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/SelectedBidder')); ?>"
                             class="nav-link collapsed">
-                            <i class="fa-regular fa-circle"></i><span>Selected Bidders</span>
+                            <i class="fa-solid fa-circle"></i><span>Selected Bidders</span>
                         </a>
                     </li>
 
                     <li class="nav-item <?php if($query_str1 == 'ProjectLocation'): ?> active <?php endif; ?>">
                         <a href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/ProjectLocation')); ?>"
                             class="nav-link collapsed">
-                            <i class="fa-regular fa-circle"></i><span>Project Location</span>
+                            <i class="fa-solid fa-circle"></i><span>Project Location</span>
                         </a>
                     </li>
 
                     <li class="nav-item">
                         <a class="nav-link collapsed" data-bs-target="#tables-nav222" data-bs-toggle="collapse"
                             href="#">
-                            <i class="fa-regular fa-circle"></i><span>Signing Of PPA/PSA</span><i
+                            <i class="fa-solid fa-circle"></i><span>Signing Of PPA/PSA</span><i
                                 class="bi bi-chevron-down ms-auto"></i>
                         </a>
                         <ul id="tables-nav222" class="nav-content collapse " data-bs-parent="#sidebar-nav1"
@@ -252,14 +191,14 @@
                             <li class="nav-item  <?php if($query_str1 == 'SigningOfPSA'): ?> active <?php endif; ?>">
                                 <a href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/SigningOfPSA')); ?>"
                                     class="nav-link collapsed">
-                                    <i class="fa-regular fa-circle"></i><span>Signing Of PSA</span>
+                                    <i class="fa-solid fa-circle"></i><span>Signing Of PSA</span>
                                 </a>
                             </li>
 
                             <li class="nav-item   <?php if($query_str1 == 'SigningOfPPA'): ?> active <?php endif; ?>">
                                 <a href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/SigningOfPPA')); ?>"
                                     class="nav-link collapsed">
-                                    <i class="fa-regular fa-circle"></i><span>Signing Of PPA</span>
+                                    <i class="fa-solid fa-circle"></i><span>Signing Of PPA</span>
                                 </a>
                             </li>
 
@@ -268,18 +207,18 @@
 
                     <li class="nav-item <?php if($query_str1 == 'LOA-LOI'): ?> active <?php endif; ?> ">
                         <a href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/LOA-LOI')); ?>" class="nav-link collapsed">
-                            <i class="fa-regular fa-circle"></i><span>LOI/LOA</span>
+                            <i class="fa-solid fa-circle"></i><span>LOI/LOA</span>
                         </a>
                     </li>
                     <li class="nav-item <?php if($query_str1 == 'CancelTender'): ?> active <?php endif; ?> ">
                         <a href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/CancelTender')); ?>" class="nav-link collapsed">
-                            <i class="fa-regular fa-circle"></i><span>Cancel Tender</span>
+                            <i class="fa-solid fa-circle"></i><span>Cancel Tender</span>
                         </a>
                     </li>
                     <li class="nav-item <?php if($query_str1 == 'TenderCommissioning'): ?>active <?php endif; ?>">
                         <a href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/TenderCommissioning')); ?>"
                             class="nav-link collapsed">
-                            <i class="fa-regular fa-circle"></i><span>Commissioning</span>
+                            <i class="fa-solid fa-circle"></i><span>Commissioning</span>
                         </a>
                     </li>
                 </ul>
@@ -294,23 +233,35 @@
                     <li class=" <?php if($query_str1 == 'Agency'): ?> active <?php endif; ?>">
                         <a class="nav-link collapsed"
                             href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/Under-Implementation')); ?>">
-                            <i class="fa-regular fa-circle"></i><span>Add Implementation Details</span>
+                            <i class="fa-solid fa-circle"></i><span>Add Implementation Details</span>
                         </a>
                     </li>
                 </ul>
             </li>
             <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#tables-commissioned" data-bs-toggle="collapse" href="#">
-                    <i class="fa-solid fa-table-list"></i><span>Commissioned Details</span><i
+                    <i class="fa-solid fa-truck-fast"></i><span>Commissioned Details</span><i
                         class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="tables-commissioned" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li class=" <?php if($query_str1 == 'Agency'): ?> active <?php endif; ?>">
                         <a class="nav-link collapsed" href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/Commissioned')); ?>">
-                            <i class="fa-regular fa-circle"></i><span>Add Commissioned Details</span>
+                            <i class="fa-solid fa-circle"></i><span>Add Commissioned Details</span>
                         </a>
                     </li>
                 </ul>
+            </li>
+            <li class=" <?php if($query_str1 == 'TenderReport'): ?> active <?php endif; ?>">
+                <a class="nav-link collapsed" href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/TenderReport')); ?>">
+                    <i class="fa-solid fa-file"></i><span>Tender Report</span>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link <?php if($query_str1 == 'feedback'): ?>active <?php endif; ?>"
+                    href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/feedback')); ?>">
+                    <i class="fa-solid fa-folder-open"></i>
+                    <span>Feedback</span>
+                </a>
             </li>
 
         </ul>

@@ -12,6 +12,7 @@ use App\Models\Village;
 use App\Utils\Dashboard;
 use App\Models\AuditTrail;
 use App\Models\ProgressReport;
+use App\Models\Feedback;
 
 use Illuminate\Http\Request;
 use Auth , Storage ,Validator,DB,PDF,URL,Hash;
@@ -411,7 +412,7 @@ class MainController extends Controller
             if($request->type == 'solar_park_completion'){
                 $validation = Validator::make($request->all(), [
                 'developement_activities'=>'required|in:A,B',
-                'date_inprincuple_approval'=>'required|after:yesterday',
+                'date_inprincuple_approval'=>'required',
                 'solarPark_work_details'=>'required|max:1000',
                 'SPC_delay'=>'required|max:255',
                 'SPC_remarks'=>'max:500',
@@ -593,7 +594,7 @@ class MainController extends Controller
                     'solar_project_photo'=>'required',
                     // 'solar_project_photo.*'=>'required|mimetypes:image/jpeg,image/png',
                     // 'solar_project_photo.*' => 'mimes:jpg,png,jpeg|max:10024',
-                    'additional_documents'=>'required',
+                    // 'additional_documents'=>'required',
                 ],[
                     'site_photo.required'=>'This field is required',
                     'site_photo.*.mimetypes'=>'Please select valid files',
@@ -605,7 +606,7 @@ class MainController extends Controller
                     'exts_photo.*.mimetypes'=>'Please select valid files',
                     'solar_project_photo.required'=>'This field is required',
                     'solar_project_photo.*.mimetypes'=>'Please select valid files',
-                    'additional_documents.required'=>'This field is required',
+                    // 'additional_documents.required'=>'This field is required',
                 ]);
                 if ($validation->fails())   //check all validations are fine, if not then redirect and show error messages
                 {
@@ -659,13 +660,16 @@ class MainController extends Controller
                     }
                     array_push($attachments['solar_project_photo'], $solar_project_photo);
                     $additional_documents = [];
-                    foreach($request->file('additional_documents') as $image)
-                    {
-                        $rd=rand(6,778798);    
-                        $filename=$this->uploadFile($image, $dir_path,'ADDITIONAL_DOCUMENTS_'.$rd.'_');     
-                        array_push($additional_documents, $filename['name']);
+                    if(is_array($request->file('additional_documents')) && count($request->file('additional_documents'))>0){
+                        foreach($request->file('additional_documents') as $image)
+                        {
+                            $rd=rand(6,778798);    
+                            $filename=$this->uploadFile($image, $dir_path,'ADDITIONAL_DOCUMENTS_'.$rd.'_');     
+                            array_push($additional_documents, $filename['name']);
+                        }
+                        array_push($attachments['additional_documents'], $additional_documents);
                     }
-                    array_push($attachments['additional_documents'], $additional_documents);
+                    
                     if($request->editId){
                         ProgressReport::where('id',$request->editId)->update(['attachments'=>$attachments]);
                         $auditData = array('action_type'=>'3','description'=>'User Update Attachements Data','user_type'=>'0');
@@ -1296,6 +1300,46 @@ class MainController extends Controller
         $auditData = array('action_type'=>'1','description'=>'User View Solar Park List','user_type'=>'0');
         $this->auditTrail($auditData);
         return view('backend.beneficiary.solarParkList',compact('mnreuserDetail'));
+    }
+    public function feedback(Request $request) {
+        
+        $url='/'.Auth::getDefaultDriver().'/feedback';
+        if ($request->isMethod('post')) {
+            $validation = Validator::make($request->all(), [
+                        'message' => 'required',
+            ],
+            [
+                'message.required'=>'Feedback field is required'
+            ]
+            );
+            if ($validation->fails()) {  //check all validations are fine, if not then redirect and show error messages
+                return response()->json(['status' => 'verror', 'data' => $validation->errors()]);
+            } 
+            try {
+                //code...
+                $data = New Feedback();
+                $data->user_id = Auth::user()->id;
+                $data->name = Auth::user()->name;
+                $data->contact_no = Auth::user()->contact_no;
+                $data->email = Auth::user()->email;
+                $data->scheme_type=1; //1- Solar Park,
+                $data->subject="Feedback From Developer";
+                $data->feedback_type=1; //1-Feedback,
+                $data->message = $request->input('message');
+                $data->user_type = 'developer';
+                $data->save();
+                
+                $auditData = array('action_type' => '2', 'description' => 'Feedback sent successfuly', 'user_type' => '2');
+                $this->auditTrail($auditData);
+                return response()->json(['status' => 'success', 'message' => 'Feedback sent successfuly!', 'url' => $url,'redirect' => 'yes']);
+            } catch (\Throwable $th) {
+                //throw $th;
+                dd($th->getMessage());
+            }
+            
+        }
+        $getFeedback=Feedback::select('message')->where('user_id',Auth::user()->id)->where('user_type','developer')->first();
+        return view('backend.beneficiary.feedback', compact('url','getFeedback'));
     }
 }
 

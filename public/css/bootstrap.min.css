@@ -4652,7 +4652,7 @@ fieldset:disabled .btn {
     .navbar-expand-lg .navbar-nav .dropdown-menu {
         position: absolute;
         float: right;
-        right: 3%;
+        right: 9%;
         top: 80%;
     }
 

@@ -78,7 +78,7 @@
                                 <div class="form-group col-lg-12" style="min-height: 100px;">
                                     <label for="subject"><strong>Summary</strong></label>
                                     <textarea name="message" class="form-control "
-                                        placeholder="Write Somethings..."></textarea>
+                                        placeholder="Write Something..."></textarea>
                                     <span class="text-danger"></span>
                                 </div>
 
@@ -122,6 +122,9 @@
     </div>
 </section>
 @endsection
+@push('backend-js')
+<script type="text/javascript" src="{{asset('public/js/form_custom.js')}}"></script>
+@endpush
 @section('scripts')
 
 <script>

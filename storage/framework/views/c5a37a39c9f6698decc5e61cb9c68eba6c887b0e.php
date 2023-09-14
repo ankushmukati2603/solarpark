@@ -26,7 +26,26 @@ var validator = '';
 
 
 <!-- <script src="<?php echo e(asset('public/js/main.js')); ?>"></script> -->
+<script>
+$(document).ready(function() {
+    $('#example').DataTable({
 
+    });
+});
+</script>
+<style>
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    padding: 0.3em 0.5em !important;
+
+}
+
+li.paginate_button.active a {
+    background-color: #e5e5e5;
+    padding: 3px 7px;
+    /* border-radius: 10px; */
+    border: 1px solid #ccc;
+}
+</style>
 
 <script>
 $('#tender').on('change', function() {

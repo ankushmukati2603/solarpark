@@ -33,29 +33,30 @@
                                         <table class="table dflt_table table-bordered" style="background:white">
                                             <tbody>
                                                 <tr class="text-center">
-                                                    <td colspan="2"><strong>National Solar Mission Division(NSM)</strong>, Ministry of
+                                                    <td colspan="2"><strong>National Solar Mission
+                                                            Division(NSM)</strong>, Ministry of
                                                         New
                                                         and Renewable Energy, Atal Akshay Urja Bhawan, Opp. CGO Complex,
                                                         Lodhi Road, New Delhi-110003
                                                         <!-- <p>MNRE Email for Solar Power:-->
 
-                                                            <!-- <a href="mailto:biogas.mnre[at]gov[dot]in">biogas.mnre[at]gov[dot]in</a> -->
+                                                        <!-- <a href="mailto:biogas.mnre[at]gov[dot]in">biogas.mnre[at]gov[dot]in</a> -->
                                                         </p>
                                                     </td>
                                                 </tr>
-                                                <!-- <tr>
+                                                <tr>
                                                     <td>
-                                                        <p> <br>Email: <a href="abc[at]nic[dot]in">
-                                                                <span style="color:#0042D9">abc[at]nic[dot]in</span>
-                                                            </a> +91 8888888888</p>
+                                                        <p class="text-center">
+                                                            <span style="font-weight: 600">For any assistance please
+                                                                contact <br></span>
+
+                                                            Email: nsm.mnre@gmail.com, sk.gupta81@gov.in ,
+                                                            rshyammnre@gmail.com <br>Tele/Fax: 011 24360764 | Ext.
+                                                            1901/1923, 9929205059
+                                                        </p>
                                                     </td>
-                                                    <td>
-                                                        <p><br>Email: <a href="xyz[at]mnre[at]gov[dot]in">
-                                                                <span
-                                                                    style="color:#0042D9">xyz[at]mnre[at]gov[dot]in</span>
-                                                            </a> +91 9999999999</p>
-                                                    </td>
-                                                </tr> -->
+
+                                                </tr>
                                             </tbody>
                                         </table>
                                     </div>

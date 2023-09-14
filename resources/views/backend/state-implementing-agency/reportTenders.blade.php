@@ -1,16 +1,7 @@
 @extends('layouts.masters.backend')
 @section('content')
 <section class="section dashboard">
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-    <link href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" rel="stylesheet">
-    <link href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" rel="stylesheet">
-    <!-- <style>
-    div#reportTable_filter label {
-        float: right !important;
-        width: 33% !important;
-    }
-    </style> -->
+
     <main id="main" class="main">
         <div class="pagetitle">
             <h1>Tender Report</h1>
@@ -128,17 +119,6 @@
                     @endforeach
                     @endif
                 </tbody>
-                <!-- <tfoot>
-                    <tr>
-                        <th width="5%">S.No</th>
-                        <th width="15%">Tender ID</th>
-                        <th width="10%">State</th>
-                        <th width="30%">Bidders Agency</th>
-                        <th width="15%">Description</th>
-                        <th width="10%">Submitted On</th>
-                        <th width="5%">Action</th>
-                    </tr>
-                </tfoot> -->
             </table>
 
 
@@ -159,12 +139,6 @@ $(document).ready(function() {
         ],
     });
 });
-// let currentTime = new Date().getTime();
-// let birthDateTime = new Date('2005-01-01').getTime();
-// let difference = (currentTime - birthDateTime);
-// var ageInYears = difference / (1000 * 60 * 60 * 24 * 365);
 </script>
-<!-- <script type="text/javascript" src="{{asset('public/js/form_custom.js')}}"></script>
-<script src="{{asset('public/js/custom.js')}}"></script> -->
 
 @endpush

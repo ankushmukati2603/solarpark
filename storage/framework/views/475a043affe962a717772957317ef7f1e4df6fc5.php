@@ -29,9 +29,9 @@
                                     <div style="position: relative;">
                                         <select name="usertype" id="usertype" class="form-control">
                                             <option value="">Select Type</option>
-                                            <option value="1">SNA's </option>
-                                            <option value="2">STU's </option>
-                                            <option value="3">SPPD's </option>
+                                            <option value="1">SNA </option>
+                                            <option value="2">STU </option>
+                                            <option value="3">SPPD </option>
 
                                         </select>
                                     </div>
@@ -144,7 +144,7 @@
 
                                 <input type="submit" class="btn btn-success btn-lg" id='submit' value="Register Now">
                             </div>
-                            <div class="pt-3" style="text-align:center;">User already have an account?<a
+                            <div class="pt-3 text-primary" style="text-align:center;">User already have an account?<a
                                     href="<?php echo e(URL::to('/log-in')); ?>">
                                     Login</a></div>
                         </form>

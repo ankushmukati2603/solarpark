@@ -46,14 +46,8 @@
                                                         class="text-danger">*</span></strong></label>
                                             <select name="user_type" class="form-control required mb-15" id="user_type"
                                                 required>
-                                                <!-- <option>Select User Type</option>
-                                                <option value="MNRE">MNRE</option> -->
-                                                <option value="STATEIMPLEMENTINGAGENCY" selected>State Implementing
-                                                    Agency ( SIA )
-                                                </option>
-                                                <!-- <option value="SECI">Solar Energy Corporation of India Limited ( SECI )
-                                                </option> -->
-                                                <option value="REIA">REIA's</option>
+                                                <option value="STATEIMPLEMENTINGAGENCY" selected>SNA/SIA</option>
+                                                <option value="REIA">REIA</option>
                                                 <option value="STU">STUs/CTUs</option>
                                             </select>
                                         </div>

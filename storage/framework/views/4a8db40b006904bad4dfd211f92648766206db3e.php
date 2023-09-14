@@ -28,14 +28,7 @@
                                 <div>HOME</div>
                             </button></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link <?php if(Request::segment(1) == 'contact-us'): ?>bg-active <?php endif; ?>" aria-current="page"
-                            href="<?php echo e(url('contact-us')); ?>"><button type="button"
-                                class="btn btn-link <?php if(Request::segment(1) == 'contact-us'): ?>active <?php endif; ?>"> <i
-                                    class=" fa-solid fa-address-card"></i>
-                                <div>CONTACT US</div>
-                            </button></a>
-                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link  <?php if(Request::segment(1) == 'feedback'): ?>bg-active <?php endif; ?>" href="
                             <?php echo e(url('feedback')); ?>"><button type="button"
@@ -57,7 +50,7 @@
                             href="<?php echo e(url('whatsNew')); ?>"><button type="button"
                                 class="btn btn-link <?php if(Request::segment(1) == 'whatsNew'): ?>active <?php endif; ?>"> <i
                                     class=" fa-solid fa-bell"></i>
-                                <div>WHATS'S NEW</div>
+                                <div>WHAT'S NEW</div>
                             </button></a>
                     </li>
 
@@ -75,7 +68,7 @@
                         </a>
 
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="<?php echo e(URL::to('/log-in')); ?>">SPPD's</a></li>
+                            <li><a class="dropdown-item" href="<?php echo e(URL::to('/log-in')); ?>">SPPD</a></li>
                             <li><a class="dropdown-item" href="<?php echo e(url('login')); ?>">SNA/SIA, REIA, CTU/STU</a></li>
 
                             <li><a class="dropdown-item" href="<?php echo e(URL::to('/admin-log-in')); ?>">MNRE</a></li>
@@ -88,6 +81,14 @@
                                 class="btn btn-link <?php if(Request::segment(1) == 'user-registration'): ?>active <?php endif; ?>"> <i
                                     class=" fa-solid fa-file-signature"></i>
                                 <div>REGISTER</div>
+                            </button></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?php if(Request::segment(1) == 'contact-us'): ?>bg-active <?php endif; ?>" aria-current="page"
+                            href="<?php echo e(url('contact-us')); ?>"><button type="button"
+                                class="btn btn-link <?php if(Request::segment(1) == 'contact-us'): ?>active <?php endif; ?>"> <i
+                                    class=" fa-solid fa-address-card"></i>
+                                <div>CONTACT US</div>
                             </button></a>
                     </li>
 

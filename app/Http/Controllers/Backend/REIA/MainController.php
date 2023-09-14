@@ -386,22 +386,39 @@ class MainController extends Controller {
         if ($request->isMethod('post')) {
             $validation = Validator::make($request->all(), [
                         'message' => 'required',
-                ]
+            ],
+            [
+                'message.required'=>'Feedback field is required'
+            ]
             );
             if ($validation->fails()) {  //check all validations are fine, if not then redirect and show error messages
                 return response()->json(['status' => 'verror', 'data' => $validation->errors()]);
             } 
-            $auditMsg = "Feedback sent successfuly";
-            $data = New Feedback();
-            $data->message = $request->input('message');
-            $data->user_id = Auth::user()->id;
-            $data->user_type = 'reia';
-            $data->save();
-            $auditData = array('action_type' => '2', 'description' => $auditMsg, 'user_type' => '2');
-            $this->auditTrail($auditData);
-            return response()->json(['status' => 'success', 'message' => 'Feedback sent successfuly!', 'url' => $url,'user','redirect' => 'yes']);
+            try {
+                //code...
+                $data = New Feedback();
+                $data->user_id = Auth::user()->id;
+                $data->name = Auth::user()->name;
+                $data->contact_no = Auth::user()->phone;
+                $data->email = Auth::user()->email;
+                $data->scheme_type=1; //1- Solar Park,
+                $data->subject="Feedback From REIA";
+                $data->feedback_type=1; //1-Feedback,
+                $data->message = $request->input('message');
+                $data->user_type = 'reia';
+                $data->save();
+                
+                $auditData = array('action_type' => '2', 'description' => 'Feedback sent successfuly', 'user_type' => '2');
+                $this->auditTrail($auditData);
+                return response()->json(['status' => 'success', 'message' => 'Feedback sent successfuly!', 'url' => $url,'redirect' => 'yes']);
+            } catch (\Throwable $th) {
+                //throw $th;
+                dd($th->getMessage());
+            }
+            
         }
-        return view('backend.reia.feedback', compact('url'));
+        $getFeedback=Feedback::select('message')->where('user_id',Auth::user()->id)->where('user_type','developer')->first();
+        return view('backend.reia.feedback', compact('url','getFeedback'));
     }
     public function editProfile(Request $request) {
         $url='/'.Auth::getDefaultDriver().'/edit-profile';
