@@ -92,7 +92,7 @@
                     1000 Characters)</small></span></label>
         <textarea name="external_details" id="" cols="10" class="form-control"
             rows="3">{{$generalData['internal_transmission_system']['external_details'] ?? ''}}</textarea>
-        <label for="" class="text-primary"> Please mention,requirement of transformers,length of lines,pooling
+        <label for="" class="text-primary"> Please mention requirement of transformers,length of lines,pooling
             substation
             details, LILO, distance from STU/CTU, or any other arrangement of proposed system and progress made so
             far</label>

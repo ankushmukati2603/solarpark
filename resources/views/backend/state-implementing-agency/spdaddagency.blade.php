@@ -7,7 +7,7 @@
             <div class="col-xxl-12 col-xl-12 custm_cmn_form_stng">
                 <div class="row ">
                     <div class="pagetitle col-xl-12">
-                        <h1>Add SPD's Agency</h1>
+                        <h1>Add Agency</h1>
                         <hr style="color: #959595;">
 
                     </div>

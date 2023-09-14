@@ -243,6 +243,10 @@ Route::group(['prefix' => 'state-implementing-agency', 'as' => 'state-implementi
 
     Route::match(['get', 'post'], '/feedback', 'MainController@feedback');
 
+    Route::get('/TenderCancelled', 'MainController@tenderCancelled');
+
+    
+
 });
 Route::group(['prefix' => 'ajax'], function () {
     Route::get('fetchCities/{state}', 'AjaxController@getDistrictsByState');

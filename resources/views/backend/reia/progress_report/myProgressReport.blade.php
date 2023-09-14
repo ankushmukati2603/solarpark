@@ -9,7 +9,7 @@
             <div class="col-xxl-12 col-xl-12 custm_cmn_form_stng">
                 <div class="row ">
                     <div class="pagetitle col-xl-12">
-                        <h1 class="text-center">Monthly Progress Report For REIAs/States </h1>
+                        <h1 class="text-center">Monthly Progress Report For REIAs </h1>
                         <hr style="color: #959595;">
                         @include('layouts.partials.backend._flash')
                         <form action="{{url(Auth::getDefaultDriver().'/progress-report')}}" method="post">@csrf
@@ -133,13 +133,17 @@
                                     </td>
                                     <td>{{$progressData->remark ?? 'NA'}}</td>
                                     <td>{{$progressData->mnre_remarks  ?? 'NA'}}</td>
-                                    <td>@if($progressData['final_submission'] == 0)
-                                        <a
-                                            href="{{URL::to(Auth::getDefaultDriver().'/new-reia-progress-report/'.base64_encode($progressData->id))}}">Edit</a>
-                                        |
-                                        @endif
+                                    <td>
                                         <a href="{{URL::to(Auth::getDefaultDriver().'/previewprogressreport/'.base64_encode($progressData->id))}}"
-                                            target="_blank">View</a>
+                                            target="_blank" class="btn btn-primary"> <i class="fa-solid fa-eye"></i>
+                                        </a>
+                                        @if($progressData['final_submission'] == 0)
+                                        <a href="{{URL::to(Auth::getDefaultDriver().'/new-reia-progress-report/'.base64_encode($progressData->id))}}"
+                                            class="btn btn-danger">
+                                            <i class="fa-solid fa-pencil"></i></a>
+
+                                        @endif
+
                                     </td>
                                 </tr>
                                 @endforeach
@@ -154,7 +158,7 @@
 
 @endsection
 @push('backend-js')
-<link rel="stylesheet" href="{{asset('public/datatable/jquery.dataTables.min.css')}}" />
+<!-- <link rel="stylesheet" href="{{asset('public/datatable/jquery.dataTables.min.css')}}" />
 <link rel="stylesheet" href="{{asset('public/datatable/buttons.dataTables.min.css')}}" />
 <script src="{{asset('public/datatable/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('public/datatable/dataTables.buttons.min.js')}}"></script>
@@ -194,7 +198,7 @@ $(document).ready(function() {
     });
 
 });
-</script>
+</script> -->
 @endpush
 <style>
 .error {

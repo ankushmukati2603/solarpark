@@ -38,9 +38,9 @@
                                 <td id="ra_capacity_total">
                                 </td>
                             </tr>
-                            <tr style="display:none" id="cap_remark">
+                            <tr style="display:none1" id="cap_remark">
 
-                                <th> <span class="cap_awd" style="display:none">Remarks <span
+                                <th> <span class="cap_awd" style="display:none1">Remarks <span
                                             class="text-danger">*</span></span> </th>
                                 <td colspan="3">
                                     <textarea name="cancel_remark" id="cancel_remark" class="form-control" cols="30"
@@ -81,7 +81,8 @@ $('#cancel_type').on('change', function() {
         $('#capacity_awarded').val('');
     } else {
         $('#submit_form').show();
-
+        $('.cap_awd').show();
+        $('#cap_remark').show();
         $('#ra_capacity_total').html($('#tender_capacity').text());
     }
 });

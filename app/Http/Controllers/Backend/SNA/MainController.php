@@ -28,6 +28,9 @@ use App\Models\SiaInspectorAssociation;
 use App\Models\SiaInstallerAssociation;
 use App\Models\PasswordHistoryLog;
 use App\Models\Feedback;
+use App\Models\CancelTender;
+
+
 use App\Http\Controllers\Controller;
 use App\Utils\Dictionary;
 use App\Utils\Dashboard;
@@ -49,35 +52,6 @@ class MainController extends Controller
         $auditData = array('action_type'=>'1','description'=>'SNA viewed Dashboard  ','user_type'=>'2');
         $this->auditTrail($auditData);
         return view('backend.state-implementing-agency.dashboard', compact('data'));
-    }
-    public function editProfile_bk(Request $request){
-        try { 
-            $user = Auth::user();
-            $states = State::orderby('name')->get();
-            if($request->isMethod('get')){
-                return view('backend.state-implementing-agency.editProfile', compact('user','states'));
-            }
-            $user->name = $request->name;
-            // $user->name_of_solar_park = $request->name_of_solar_park;
-            $user->phone = $request->phone;
-            $user->state_id = $request->state_id;
-            $user->district_id = $request->district_id;
-            $user->sub_district_id = $request->sub_district_id;
-            $user->village = $request->village;
-            $user->latitude = $request->latitude;
-            $user->longitude = $request->longitude;
-            //dd($user);
-             $user->save();
-            //dd($user);
-            $auditData = array('action_type'=>'7','description'=>' SNA Edit Profile','user_type'=>'2');
-            $this->auditTrail($auditData);
-            if($isSaved){
-
-                return redirect()->back()->with("status","Profile edited successfully !");
-            }
-        } catch (\Throwable $th) {
-            return redirect()->back()->with("error","Server Error !");
-        }
     }
     public function editProfile(Request $request) {
         $url='/'.Auth::getDefaultDriver().'/edit-profile';
@@ -120,54 +94,6 @@ class MainController extends Controller
         $states = State::orderby("name")->get();
         return view('backend.state-implementing-agency.editProfile', compact('user', 'states','url'));
 
-    }
-    public function changePassword_bk(Request $request){
-        // try {
-            if($request->isMethod('get')){
-                $submitUrl = URL::to('/state-implementing-agency/change-password');
-                
-                $auditData = array('action_type'=>'3','description'=>' MNRE User  Change Password ','user_type'=>'2');
-                $this->auditTrail($auditData);
-               
-                return view('backend.state-implementing-agency.changePassword',compact('submitUrl'));
-            }
-            if (!(Hash::check($request->current_password, Auth::user()->password))) {
-                // dd($request->current_password);
-                 /*************************Audit Trail Start**********************************/
-                 $auditData = array('action_type'=>'1','description'=>' MNRE User  Match Password ','user_type'=>'2');
-                 $this->auditTrail($auditData);
-                 /*************************Audit Trail Start**********************************/
-                // The passwords matches
-                return redirect()->back()->with("error","Your current password does not matches with the password you provided. Please try again.");
-            }
-            if(!$this->passwordPolicyTest($request->new_password)){
-                $error = 'Failed strong password policy!';
-                /*************************Audit Trail Start**********************************/
-                $auditData = array('action_type'=>'1','description'=>' MNRE User Test password Policy  ','user_type'=>'2');
-                $this->auditTrail($auditData);
-                /*************************Audit Trail Start**********************************/
-                return redirect()->back()->with("error", $error);
-            }
-            if(strcmp($request->current_password, $request->new_password) == 0){
-                 /*************************Audit Trail Start**********************************/
-                 $auditData = array('action_type'=>'1','description'=>' MNRE User verify condition currunt and new password not same  ','user_type'=>'2');
-                 $this->auditTrail($auditData);
-                 /*************************Audit Trail Start**********************************/
-                //Current password and new password are same
-                return redirect()->back()->with("error","New Password cannot be same as your current password. Please choose a different password.");
-            }
-            //Change Password
-                $user = Auth::user();
-                $user->password = bcrypt($request->new_password);
-                $user->save();
-                /*************************Audit Trail Start**********************************/
-                $auditData = array('action_type'=>'2','description'=>' MNRE User Inserted new password  ','user_type'=>'2');
-                $this->auditTrail($auditData);
-             /*************************Audit Trail Start**********************************/
-            return redirect()->back()->with("status","Password changed successfully !");
-        // } catch (\Throwable $th) {
-        //     return redirect()->back()->with("error","Server Error !");
-        // }
     }
     public function changePassword(Request $request) {
         try {
@@ -1380,5 +1306,12 @@ class MainController extends Controller
         }
         $getFeedback=Feedback::select('message')->where('user_id',Auth::user()->id)->where('user_type','sna')->first();
         return view('backend.state-implementing-agency.feedback', compact('url','getFeedback'));
+    }
+    public function tenderCancelled(Request $request) {
+        $cancelTenderList = CancelTender::getAllCancelTenderDetailsById(Auth::user()->id);
+        // dd($cancelTenderList);
+        $auditData = array('action_type'=>'1','description'=>'SNA viewed Cancelled Tender list  ','user_type'=>'2');
+        $this->auditTrail($auditData);
+        return view('backend.state-implementing-agency.__tenderCancelled', compact('cancelTenderList'));
     }
 } 

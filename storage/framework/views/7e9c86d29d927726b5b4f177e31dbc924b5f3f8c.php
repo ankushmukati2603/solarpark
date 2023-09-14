@@ -99,7 +99,7 @@
                                 <th>Month, Year</th>
                                 <th>State</th>
                                 <th>District</th>
-                                <th>Solar Power Park Developer</th>
+                                <th>SPPD</th>
                                 <th>Email ID</th>
                                 <th>Mobile Number</th>
                                 <th>Submitted On</th>

@@ -42,17 +42,17 @@
                                 </div>
                                 <div class="col-xl-12 col-lg-12 col-md-12 pb-3">
                                     <div class=""><label>Feedback <span class="text-danger">*</span></label></div>
-                                    <div class=""><textarea class="form-control" rows="5" name="message" id="message"
-                                            <?php if(($getFeedback->message ?? '')!=''): ?> readonly <?php endif; ?>><?php echo e($getFeedback->message ?? ''); ?></textarea>
+                                    <div class=""><textarea class="form-control" rows="5" name="message"
+                                            id="message"><?php echo e($getFeedback->message ?? ''); ?></textarea>
                                     </div>
                                 </div>
                                 <div class="col-xl-12">
                                     <div class=" pt-4 text-center">
-                                        <?php if(($getFeedback->message ?? '')==''): ?>
+
                                         <input type="submit" name="submit" class="btn btn-success" value="Save" />
                                         <a href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/feedback')); ?>"
                                             class="btn btn-danger">Reset</a>
-                                        <?php endif; ?>
+
 
 
                                     </div>

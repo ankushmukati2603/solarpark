@@ -6,7 +6,6 @@
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Dashboard</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{URL::to(Auth::getDefaultDriver().'/')}}">Home</a></li>
@@ -82,10 +81,11 @@
                         </div>
 
                         <p>If you want to change your password <a
-                                href="{{URL::to('/'.Auth::getDefaultDriver().'/change-password')}}">Click
+                                href="{{URL::to('/'.Auth::getDefaultDriver().'/change-password')}}"
+                                class="text-primary">Click
                                 Here</a>
                         </p>
-                        <input type="submit" class="mt-1 btn btn-primary" id="submit" value="Submit">
+                        <input type=" submit" class="mt-1 btn btn-primary" id="submit" value="Submit">
                     </form>
                 </div>
             </div>

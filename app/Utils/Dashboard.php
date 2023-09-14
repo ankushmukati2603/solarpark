@@ -27,8 +27,8 @@ class Dashboard
     public function getSNADashboardData()
     {
         $response = [
-            'total_tenders' => Tenders::count(),
-            'tender_cancelled' => Tenders::where('tender_status',4)->count(),
+            'total_tenders' => Tenders::where('sna_id',Auth::user()->id)->count(),
+            'tender_cancelled' => Tenders::where('tender_status',5)->where('sna_id',Auth::user()->id)->count(),
             'reverse_auction' => ReverseAuction::count(),
             'bidders' => Bidder::count(),
             'ppapsa'=>SelectedBidderProject::whereNotNull('ppa_psa_date')->count(),

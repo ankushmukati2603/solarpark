@@ -49,7 +49,7 @@
                                                 required>
                                                 <option value="STATEIMPLEMENTINGAGENCY" selected>SNA/SIA</option>
                                                 <option value="REIA">REIA</option>
-                                                <option value="STU">STUs/CTUs</option>
+                                                <option value="STU">STU/CTU</option>
                                             </select>
                                         </div>
                                     </div>

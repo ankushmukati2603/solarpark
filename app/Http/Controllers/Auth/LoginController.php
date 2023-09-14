@@ -89,7 +89,7 @@ class LoginController extends Controller
                 $this->redirectTo = '/state-implementing-agency';
                 break;
             case 'REIA':
-                $this->redirectTo = '/reia';
+                $this->redirectTo = '/reia/progress-report';
                 break;
             case 'BENEFICIARY_EMAIL':
                 $this->redirectTo = '/developer/my-progress-report';
@@ -107,7 +107,7 @@ class LoginController extends Controller
                 $this->redirectTo = '/gecdeveloper';
                 break;
             case 'STU':
-                $this->redirectTo = '/stu-users';
+                $this->redirectTo = '/stu-users/progress-report';
                 break;
             default:
                 $this->redirectTo = '/home';

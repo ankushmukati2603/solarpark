@@ -42,17 +42,17 @@
                                 </div>
                                 <div class="col-xl-12 col-lg-12 col-md-12 pb-3">
                                     <div class=""><label>Feedback <span class="text-danger">*</span></label></div>
-                                    <div class=""><textarea class="form-control" rows="5" name="message" id="message"
-                                            @if(($getFeedback->message ?? '')!='') readonly @endif>{{ $getFeedback->message ?? ''}}</textarea>
+                                    <div class=""><textarea class="form-control" rows="5" name="message"
+                                            id="message"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-xl-12">
                                     <div class=" pt-4 text-center">
-                                        @if(($getFeedback->message ?? '')=='')
+
                                         <input type="submit" name="submit" class="btn btn-success" value="Save" />
                                         <a href="{{URL::to('/'.Auth::getDefaultDriver().'/feedback')}}"
                                             class="btn btn-danger">Reset</a>
-                                        @endif
+
 
 
                                     </div>

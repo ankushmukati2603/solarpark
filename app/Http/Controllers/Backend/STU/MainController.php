@@ -16,6 +16,7 @@ use App\Models\ProgressReport;
 use App\Models\Gecd;
 use App\Models\StuReport;
 use App\Models\ManageStuProject;
+use App\Models\Feedback;
 
 use App\Models\mediumBiogasPlantBelow10KW;
 use App\Models\mediumBiogasPlantAbove10KW;
@@ -97,33 +98,49 @@ class MainController extends Controller
             $validation = Validator::make($request->all(), [
                 'month'=>'required',
                 'year'=>'required',
+                'project_id'=>'required'
+            ],[
+                'project_id.required'=>'Please select project'
             ]);
             if ($validation->fails()){  //check all validations are fine, if not then redirect and show error messages
                 return response()->json(['status'=>'verror','data'=>$validation->errors()]);
             }
-            $month=$request->month;
-            $year=$request->year;
-
+            
+            $checkExistingReport = StuReport::where('month',$request->month)->where('year',$request->year)
+                                ->where('project_id',$request->project_id)
+                                ->where('user_id',Auth::user()->id)->first();
+            if($checkExistingReport!=null){
+                if($checkExistingReport->final_submission==1){
+                    $url_r=urlencode('/'.Auth::getDefaultDriver().'/add-progress-report');
+                    return response()->json(['status' => 'success','message'=>"Report already submitted",'url'=>$url_r,'redirect'=>'yes']); 
+                }else{
+                    $url=urlencode('/'.Auth::getDefaultDriver().'/new-stu-progress_report/'.$this->encodeid($checkExistingReport->id));
+                    return response()->json(['status' => 'success','message'=>"Please wait...",'url'=>$url,'redirect'=>'yes']); 
+                }
+            }
+            
             $newProgressData=new StuReport();
             $newProgressData->month=$request->month;
             $newProgressData->year=$request->year;
+            $newProgressData->project_id=$request->project_id;
             $newProgressData->user_id=Auth::id();
             $newProgressData->save();
             $id=$newProgressData->id;
             
-            $url=urlencode('/'.Auth::getDefaultDriver().'/new-stu-progress_report/'.$id);
+            $url=urlencode('/'.Auth::getDefaultDriver().'/new-stu-progress_report/'.$this->encodeid($id));
             return response()->json(['status' => 'success','message'=>"Please wait...",'url'=>$url,'redirect'=>'yes']); 
-        //    return redirect(Auth::getDefaultDriver().'/application/progress_report/'.$id);
         }
-        // $stuproject_name=ManageStuProject::where('user_id', Auth::id())->get();
+        $projectList=ManageStuProject::select('id','project_name')->where('user_id', Auth::id())->get();
         $auditData = array('action_type'=>'1','description'=>'visit New Progress Report Page','user_type'=>'0');
         $this->auditTrail($auditData);
-        return view('backend.stu.progress_report.StuProjectReportMonthYear');
+        return view('backend.stu.progress_report.StuProjectReportMonthYear',compact('projectList'));
     } 
 
     public function newStuProgressReport(Request $request,$id=NULL){
         //dd("yes");   
-       
+        if($id!=NULL){
+            $id=$this->decodeid($id);
+        }
         if($request->isMethod('post')){
             // dd($request); 
             $this->validate($request,[
@@ -150,7 +167,7 @@ class MainController extends Controller
             }
 
             $newGecData=array();
-            $newGecData = StuReport::find($request->editId);
+            $newGecData = StuReport::find($this->decodeid($request->editId));
             // $newGecData=new GecReport();
              //dd($newGecData);
             $newGecData->state_id = $request->state_id;
@@ -171,9 +188,9 @@ class MainController extends Controller
             $newGecData->save();
             
             // dd( $newGecData);
-            $id=$newGecData->id;
             if($request->editId){
-                StuReport::where('id',$request->editId)->update([
+                $editId=$this->decodeid($request->editId);
+                StuReport::where('id',$editId)->update([
                     'state_id' => $request->state_id,
                     'district_id' => $request->district_id,
                 ]);
@@ -275,18 +292,12 @@ class MainController extends Controller
 
     public function progressreportpreview(Request $request,$id)
     {
-        $studata=StuReport::select('stu_report.*','states.name as state_name','districts.name as district_name')
+        $data=StuReport::select('stu_report.*','states.name as state_name','districts.name as district_name')
         ->join('states','states.code','stu_report.state_id')
         ->join('districts','districts.code','stu_report.district_id')
         ->orderBy('stu_report.entry_date', 'desc')
-        ->where('stu_report.id', $id)
+        ->where('stu_report.id', $this->decodeid($id))
         ->first();
-        $data = array(); 
-        if ($studata) {
-            $data=$studata;
-        }
-        //dd($GecReportdata);
-        // dd($data);
         return view('backend.stu.progress_report.PreviewProgressReport',compact('data'));
     }
 
@@ -403,27 +414,44 @@ class MainController extends Controller
         }
 
         public function feedback(Request $request) {
-        
             $url='/'.Auth::getDefaultDriver().'/feedback';
             if ($request->isMethod('post')) {
                 $validation = Validator::make($request->all(), [
                             'message' => 'required',
-                    ]
+                ],
+                [
+                    'message.required'=>'Feedback field is required'
+                ]
                 );
                 if ($validation->fails()) {  //check all validations are fine, if not then redirect and show error messages
                     return response()->json(['status' => 'verror', 'data' => $validation->errors()]);
                 } 
-                $auditMsg = "Feedback sent successfuly";
-                $data = New Feedback();
-                $data->message = $request->input('message');
-                $data->user_id = Auth::user()->id;
-                $data->user_type = 'stu-users';
-                $data->save();
-                $auditData = array('action_type' => '2', 'description' => $auditMsg, 'user_type' => '2');
-                $this->auditTrail($auditData);
-                return response()->json(['status' => 'success', 'message' => 'Feedback sent successfuly!', 'url' => $url,'user','redirect' => 'yes']);
+                try {
+                    //code...
+                    $data = New Feedback();
+                    $data->user_id = Auth::user()->id;
+                    $data->name = Auth::user()->name;
+                    $data->contact_no = Auth::user()->phone;
+                    $data->email = Auth::user()->email;
+                    $data->scheme_type=1; //1- Solar Park,
+                    $data->subject="Feedback From STU";
+                    $data->feedback_type=1; //1-Feedback,
+                    $data->message = $request->input('message');
+                    $data->user_type = 'stu';
+                    $data->save();
+                    
+                    $auditData = array('action_type' => '2', 'description' => 'Feedback sent successfuly', 'user_type' => '2');
+                    $this->auditTrail($auditData);
+                    return response()->json(['status' => 'success', 'message' => 'Feedback sent successfuly!', 'url' => $url,'redirect' => 'yes']);
+                } catch (\Throwable $th) {
+                    //throw $th;
+                    dd($th->getMessage());
+                }
+                
             }
-            return view('backend.stu.feedback', compact('url'));
+            $getFeedback=Feedback::select('message')->where('user_id',Auth::user()->id)->where('user_type','sna')->first();
+            return view('backend.stu.feedback', compact('url','getFeedback'));
+
         }
 
 	 

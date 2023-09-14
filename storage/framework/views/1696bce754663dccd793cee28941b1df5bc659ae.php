@@ -3,42 +3,67 @@
 <section class="section dashboard">
 
     <main id="main" class="main">
-
         <div class="pagetitle">
-            <h1>Feedback</h1>
+
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="<?php echo e(URL::to(Auth::getDefaultDriver().'/')); ?>">Home</a></li>
+                    <li class="breadcrumb-item active">Feedback</li>
+                </ol>
+            </nav>
         </div>
-        <section class="section dashboard">
-            <form action="<?php echo e(URL::to(Auth::getDefaultDriver().'/feedback')); ?>" method="post">
-                <?php echo csrf_field(); ?>
-                <table class="table table-bordered">
-                  
-                     <tr>
-                        <th width="20%">Name</th>
-                        <td width="30%"><input type="text"class="form-control" readonly="" value="<?php echo e(Auth::user()->name); ?>"> </td>
-                      <th width="20%">Email ID</th>
-                        <td width="30%"><input type="text"class="form-control" readonly="" value="<?php echo e(Auth::user()->email); ?>"> </td>
-                    </tr>
-                    <tr>
-                        <th width="20%">Contact Number <span class="text-danger">*</span></th>
-                        <td width="30%"><input type="text"  class="form-control" readonly="" placeholder="Enter Contact Person"  value="<?php echo e(Auth::user()->phone); ?>"> </td>
-                  <th width="20%">Message</th>
-                  <td width="30%"><textarea class="form-control" name="message" id="message"></textarea>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="4">
-                            <input type="submit" name="submit" class="btn btn-success" value="Save" />
-                            <input type="reset" class="btn btn-danger" value="Cancel" />
-                        </td>
-                    </tr>
-                </table>
-            </form>
+        <section class="section dashboard form_sctn">
+            <div class="col-xxl-12 col-xl-12 custm_cmn_form_stng">
+                <div class="row ">
+                    <div class="pagetitle col-xl-12">
+                        <h1>Feedback</h1>
+
+                        <hr style="color: #959595;">
+                        <form action="<?php echo e(URL::to(Auth::getDefaultDriver().'/feedback')); ?>" method="post">
+                            <?php echo csrf_field(); ?>
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-12 pb-3">
+                                    <div class=""><label>Name</label></div>
+                                    <div class=""><input type="text" class="form-control" readonly
+                                            value="<?php echo e(Auth::user()->name ?? ''); ?>">
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-12 pb-3">
+                                    <div class=""><label>Email ID</label></div>
+                                    <div class=""><input type="text" class="form-control" readonly
+                                            value="<?php echo e(Auth::user()->email ?? ''); ?>">
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-12 pb-3">
+                                    <div class=""><label>Contact Number</label></div>
+                                    <div class=""><input type="text" class="form-control" readonly
+                                            value="<?php echo e(Auth::user()->phone ?? ''); ?>">
+                                    </div>
+                                </div>
+                                <div class="col-xl-12 col-lg-12 col-md-12 pb-3">
+                                    <div class=""><label>Feedback <span class="text-danger">*</span></label></div>
+                                    <div class=""><textarea class="form-control" rows="5" name="message"
+                                            id="message"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-xl-12">
+                                    <div class=" pt-4 text-center">
+
+                                        <input type="submit" name="submit" class="btn btn-success" value="Save" />
+                                        <a href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/feedback')); ?>"
+                                            class="btn btn-danger">Reset</a>
 
 
-        </section>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
     </main>
 </section>
-<!-- </section> -->
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startPush('backend-js'); ?>

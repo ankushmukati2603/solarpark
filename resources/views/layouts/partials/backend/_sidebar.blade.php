@@ -29,13 +29,13 @@
                 <span>Progress Report</span>
             </a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a class="nav-link @if($query_str1 == 'consolidate-report')active @endif"
                 href="{{URL::to('/'.Auth::getDefaultDriver().'/consolidate-report')}}">
                 <i class="fa-solid fa-file-lines"></i>
                 <span>Consolidate Report</span>
             </a>
-        </li>
+        </li> -->
         <li class="nav-item">
             <a class="nav-link @if($query_str1 == 'feedback')active @endif"
                 href="{{URL::to('/'.Auth::getDefaultDriver().'/feedback')}}">
@@ -292,13 +292,13 @@
             </a>
         </li>
 
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a class="nav-link @if($query_str1 == 'reports')active @endif"
                 href="{{URL::to('/'.Auth::getDefaultDriver().'/Agency')}}">
                 <i class="fa-solid fa-building"></i>
                 <span>Report</span>
             </a>
-        </li>
+        </li> -->
         <li class="nav-item">
             <a class="nav-link @if($query_str1 == 'feedback')active @endif"
                 href="{{URL::to('/'.Auth::getDefaultDriver().'/feedback')}}">
@@ -306,7 +306,7 @@
                 <span>Feedback</span>
             </a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a class="nav-link @if($query_str1 == 'notifications')active @endif"
                 href="{{URL::to('/'.Auth::getDefaultDriver().'/notifications')}}">
                 <i class="fa-solid fa-bell"></i>
@@ -319,7 +319,7 @@
                 <i class="fa-regular fa-address-card"></i>
                 <span>My Profile</span>
             </a>
-        </li>
+        </li> -->
         @endif
 
         @if (Auth::guard('stu-users')->check())
@@ -327,23 +327,31 @@
         <li class="nav-item">
             <a class="nav-link @if($query_str1 == 'progress-report')active @endif"
                 href="{{URL::to('/'.Auth::getDefaultDriver().'/progress-report')}}">
-                <i class="fa-solid fa-users"></i>
-                <span>Month Progress Report</span>
+                <i class="fa-solid fa-list-check"></i>
+                <span>Monthly Progress Report</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link @if($query_str1 == 'stu-project-list')active @endif"
+                href="{{URL::to('/'.Auth::getDefaultDriver().'/stu-project-list')}}">
+                <i class="fa-solid fa-diagram-project"></i>
+                <span>Manage Project</span>
             </a>
         </li>
 
-        <li class="nav-item">
-            <a class="nav-link @if($query_str1 == 'reports')active @endif"
-                href="{{URL::to('/'.Auth::getDefaultDriver().'/Agency')}}">
-                <i class="fa-solid fa-building"></i>
-                <span>Report</span>
-            </a>
-        </li>
         <li class="nav-item">
             <a class="nav-link @if($query_str1 == 'feedback')active @endif"
                 href="{{URL::to('/'.Auth::getDefaultDriver().'/feedback')}}">
                 <i class="fa-solid fa-folder-open"></i>
                 <span>Feedback</span>
+            </a>
+        </li>
+        <!-- 
+            <li class="nav-item">
+            <a class="nav-link @if($query_str1 == 'reports')active @endif"
+                href="{{URL::to('/'.Auth::getDefaultDriver().'/Agency')}}">
+                <i class="fa-solid fa-building"></i>
+                <span>Report</span>
             </a>
         </li>
         <li class="nav-item">
@@ -359,15 +367,9 @@
                 <i class="fa-regular fa-address-card"></i>
                 <span>My Profile</span>
             </a>
-        </li>
+        </li> -->
 
-        <li class="nav-item">
-            <a class="nav-link @if($query_str1 == 'stu-project-list')active @endif"
-                href="{{URL::to('/'.Auth::getDefaultDriver().'/stu-project-list')}}">
-                <i class="fa-solid fa-users"></i>
-                <span>Manage STUs/CTUs Project</span>
-            </a>
-        </li>
+
 
         @endif
 

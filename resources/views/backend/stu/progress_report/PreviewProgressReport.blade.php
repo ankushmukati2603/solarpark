@@ -6,7 +6,7 @@
     <main id="main" class="main">
 
         <strong>
-            <h4 class="text-center">Monthly Progress Report Preview For STUs/CTUs</h4>
+            <h4 class="text-center">Monthly Progress Report Preview</h4>
         </strong>
 
         <table border="1" cellspacing="0" cellpadding="5" class="table table-bordered table-striped text-left">

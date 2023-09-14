@@ -46,14 +46,15 @@
                                     </div>
                                     <div class=" pb-3">
                                         <h6>Tender Cancelled</h6>
-                                        <a href="#"><span class="more_info small pt-2 ps-1">more info <i
+                                        <a href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/TenderCancelled')); ?>"><span
+                                                class="more_info small pt-2 ps-1">more info <i
                                                     class="fa-solid fa-angle-right"></i></span></a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xxl-3 col-md-6 col-12 dashbord_blocks">
+                    <div class="col-xxl-3 col-md-6 col-12 dashbord_blocks hide">
                         <div class="card info-card sales-card">
                             <div class="card-body grdnt3">
                                 <div class="postn_reltv">
@@ -70,7 +71,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xxl-3 col-md-6 col-12 dashbord_blocks">
+                    <div class="col-xxl-3 col-md-6 col-12 dashbord_blocks hide">
                         <div class="card info-card sales-card">
                             <div class="card-body grdnt4">
                                 <div class="postn_reltv">
@@ -88,7 +89,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xxl-3 col-md-6 col-12 dashbord_blocks">
+                    <div class="col-xxl-3 col-md-6 col-12 dashbord_blocks hide">
                         <div class="card info-card sales-card">
                             <div class="card-body grdnt5">
                                 <div class="postn_reltv">
@@ -105,7 +106,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xxl-3 col-md-6 col-12 dashbord_blocks">
+                    <div class="col-xxl-3 col-md-6 col-12 dashbord_blocks hide">
                         <div class="card info-card sales-card">
                             <div class="card-body grdnt6">
                                 <div class="postn_reltv">
@@ -139,7 +140,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xxl-3 col-md-6 col-12 dashbord_blocks">
+                    <div class="col-xxl-3 col-md-6 col-12 dashbord_blocks hide">
                         <div class="card info-card sales-card">
 
                             <div class="card-body grdnt8">
@@ -179,7 +180,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xxl-3 col-md-6 col-12 dashbord_blocks">
+                    <div class="col-xxl-3 col-md-6 col-12 dashbord_blocks hide">
                         <div class="card info-card sales-card">
                             <div class="card-body grdnt7">
                                 <div class="postn_reltv">

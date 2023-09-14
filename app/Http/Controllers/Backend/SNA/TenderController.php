@@ -359,7 +359,7 @@ class TenderController extends Controller
 
             Tenders::where('id',base64_decode($request->tender))->first()
                 ->update([
-                'tender_status' => 4, //Marked as Cancelled
+                'tender_status' => 5, //Marked as Cancelled
             ]);
 
             //Tender Timeline

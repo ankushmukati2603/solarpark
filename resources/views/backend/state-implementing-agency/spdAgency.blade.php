@@ -9,8 +9,8 @@
                     <div class="pagetitle col-xl-12">
                         <a href="{{URL::to('/'.Auth::getDefaultDriver().'/Sub-Agency/Add')}}" class="btn btn-success"
                             style="float: right;"><i class="fa fa-plus" aria-hidden="true"></i>
-                            Add SPD's Agency</a>
-                        <h1>SPD's Agency Management</h1>
+                            Add Agency</a>
+                        <h1>Agency Management</h1>
 
                         <hr style="color: #959595;">
                         <table class="table table-bordered">

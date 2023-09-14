@@ -50,7 +50,7 @@
     <div class="col-md-12 pb-4">
         <label>Upload document<span class="text-primary"></span><span class="text-danger">*</span> (<small for=""
                 class="text-primary">Upload only in
-                kml and Excel
+                kml and csv
                 format </small>)</label>
         <input type="file" name="upload_file" class="form-control" multiple>
         <span name="upload_file"></span>

@@ -46,7 +46,7 @@
                                                 <tr>
                                                     <td>
                                                         <p class="text-center">
-                                                            <span style="font-weight: 600">For any assistance pls
+                                                            <span style="font-weight: 600">For any assistance please
                                                                 contact <br></span>
 
                                                             Email: nsm.mnre@gmail.com, sk.gupta81@gov.in ,
