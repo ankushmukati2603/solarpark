@@ -1,6 +1,6 @@
-<?php $general = app('App\Http\Controllers\Backend\Mnre\MainController'); ?>
-
-<?php $__env->startSection('content'); ?>
+@inject('general', 'App\Http\Controllers\Backend\Mnre\MainController')
+@extends('layouts.masters.backend')
+@section('content')
 <section class="section dashboard">
 
     <main id="main" class="main">
@@ -10,10 +10,10 @@
             <div class="col-xxl-12 col-xl-12 custm_cmn_form_stng">
                 <div class="row ">
                     <div class="pagetitle col-xl-12">
-                        <!-- <a href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/Agency/Add')); ?>" class="btn btn-success"
+                        <!-- <a href="{{URL::to('/'.Auth::getDefaultDriver().'/Agency/Add')}}" class="btn btn-success"
                             style="float: right;"><i class="fa fa-plus" aria-hidden="true"></i>
-                            Add New SPPD</a> -->
-                        <h1>SPPD Users</h1>
+                            Add Agency</a> -->
+                        <h1>STU Users</h1>
 
                         <hr style="color: #959595;">
 
@@ -21,45 +21,41 @@
                             <thead>
                                 <tr class=" bg-dark text-dark">
                                     <th>S.No</th>
-                                    <th>Name</th>
+                                    <th>SNA Name</th>
+                                    <th>Contact Number</th>
                                     <th>Email ID</th>
-                                    <th>Mobile Number</th>
-                                    <th>PAN Number</th>
+                                    <th width="30%">Office Addess</th>
                                     <th>State</th>
                                     <th>District</th>
                                     <th>Status</th>
-                                    <th width="10%">Registered On</th>
                                     <th>Action</th>
-                                    <!-- <th>Action</th> -->
                                 </tr>
-
                             </thead>
-                            <tbody><?php $__currentLoopData = $sppdList; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sppd): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <tbody>
+                                @foreach($stuDetail as $stu)
                                 <tr>
-                                    <td><?php echo e($loop->iteration); ?></td>
-                                    <td><?php echo e($sppd->name); ?></td>
-                                    <td><?php echo e($sppd->email); ?></td>
-                                    <td><?php echo e($sppd->contact_no); ?></td>
-                                    <td><?php echo e('******' . substr( $sppd->pan_no, - 4)); ?></td>
-                                    <td><?php echo e($sppd->state_name); ?></td>
-                                    <td><?php echo e($sppd->district_name); ?></td>
-                                    <td>
-                                        <?php if($sppd->isApproved==0): ?>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{ $stu->name }}</td>
+                                    <td>{{ $stu->phone}}</td>
+                                    <td>{{ $stu->email}}</td>
+                                    <td>{{ $stu->address }}</td>
+                                    <td>{{ $stu->state_name }}</td>
+                                    <td>{{ $stu->district_name }}</td>
+                                    <td>@if($stu->isApproved==0)
                                         <b class="text-warning">Pending</b>
-                                        <?php elseif($sppd->isApproved==1): ?>
+                                        @elseif($stu->isApproved==1)
                                         <b class="text-success">Approved</b>
-                                        <?php else: ?>
+                                        @else
                                         <b class="text-danger">Rejected</b><br>
-                                        <a href="javascript:;" data-bs-target="#sppdRemarkModal<?php echo e($sppd->id); ?>"
+                                        <a href="javascript:;" data-bs-target="#stuRemarkModal{{$stu->id}}"
                                             data-bs-toggle="modal" class="badge bg-success">Remarks</a>
-                                        <div class="modal fade" id="sppdRemarkModal<?php echo e($sppd->id); ?>" tabindex="-1"
+                                        <div class="modal fade" id="stuRemarkModal{{$stu->id}}" tabindex="-1"
                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
 
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel"><?php echo e($sppd->name); ?>
-
+                                                        <h5 class="modal-title" id="exampleModalLabel">{{ $stu->name }}
                                                         </h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                             aria-label="Close"></button>
@@ -68,8 +64,7 @@
                                                         <div class="row">
                                                             <div class="col-md-12">
                                                                 <label for="">Remark: </label><br>
-                                                                <?php echo e($sppd->remarks); ?>
-
+                                                                {{ $stu->remarks }}
                                                             </div>
 
                                                         </div>
@@ -83,26 +78,23 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <?php endif; ?>
+                                        @endif
                                     </td>
-                                    <td><?php echo e($sppd->created_at); ?></td>
-                                    <!--<td><a href=" <?php echo e(URL::to(Auth::getDefaultDriver().'/developer-mnre/Edit/'.$sppd->id)); ?>"
-                                        class="btn btn-primary">Edit</a> </td>-->
+
                                     <td><a data-bs-toggle="modal" href="javascript:;"
-                                            data-bs-target="#sppdModal<?php echo e($sppd->id); ?>" class="badge bg-success">Action</a>
+                                            data-bs-target="#stuModal{{$stu->id}}" class="badge bg-success">Action</a>
                                         <!-- Model -->
-                                        <div class="modal fade" id="sppdModal<?php echo e($sppd->id); ?>" tabindex="-1"
+                                        <div class="modal fade" id="stuModal{{$stu->id}}" tabindex="-1"
                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <form
-                                                        action="<?php echo e(URL::to(Auth::getDefaultDriver().'/SppdApproveReject')); ?>"
+                                                        action="{{URL::to(Auth::getDefaultDriver().'/StuApproveReject')}}"
                                                         method="POST">
-                                                        <?php echo csrf_field(); ?>
+                                                        @csrf
                                                         <div class="modal-header">
                                                             <h5 class="modal-title" id="exampleModalLabel">
-                                                                <?php echo e($sppd->name); ?>
-
+                                                                {{ $stu->name }}
                                                             </h5>
                                                             <button type="button" class="btn-close"
                                                                 data-bs-dismiss="modal" aria-label="Close"></button>
@@ -129,7 +121,7 @@
                                                         </div>
                                                         <div class="modal-footer">
                                                             <input type="hidden" name="id" id="id"
-                                                                value="<?php echo e($general->encodeid($sppd->id)); ?>">
+                                                                value="{{$general->encodeid($stu->id)}}">
                                                             <button type="submit" id="submit"
                                                                 class="btn btn-primary">Save
                                                                 changes</button>
@@ -141,10 +133,12 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                     </td>
                                 </tr>
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                @endforeach
                             </tbody>
+
 
                         </table>
                     </div>
@@ -154,8 +148,8 @@
 
     </main>
 </section>
-<?php $__env->stopSection(); ?>
-<?php $__env->startPush('backend-js'); ?>
-<script type="text/javascript" src="<?php echo e(asset('public/js/form_custom.js')); ?>"></script>
-<?php $__env->stopPush(); ?>
-<?php echo $__env->make('layouts.masters.backend', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp\htdocs\solar_park\resources\views/backend/mnre/sppdList.blade.php ENDPATH**/ ?>
+@endsection
+@push('backend-js')
+<script type="text/javascript" src="{{asset('public/js/form_custom.js')}}"></script>
+<script src="{{asset('public/js/custom.js')}}"></script>
+@endpush

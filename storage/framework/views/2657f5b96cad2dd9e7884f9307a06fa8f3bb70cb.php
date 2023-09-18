@@ -139,4 +139,4 @@
     </main>
 </section>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.masters.backend', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp\htdocs\solar_park\resources\views/backend/mnre/solarParkReport/solarParkProgressReport.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.masters.backend', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp\htdocs\solar_park\resources\views/backend/mnre/SolarParkReport/solarParkProgressReport.blade.php ENDPATH**/ ?>

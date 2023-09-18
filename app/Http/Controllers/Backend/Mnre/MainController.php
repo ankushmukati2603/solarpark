@@ -26,13 +26,18 @@ use App\Models\InstallationCapacity;
 use App\Models\Inspection;
 use App\Models\ProgressReport;
 use App\Models\AuditTrail;
+use App\Models\StuUser;
+use App\Models\PasswordHistoryLog;
+use App\Models\ManageSolarPark;
+use App\Models\Tenders;
+use App\Models\CancelTender;
 
 use App\Utils\Dashboard;
 use App\Utils\EmailSmsNotifications;
 use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
 use Symfony\Component\Console\Input\Input;
-use DB, URL, Auth, Hash, Storage, Validator, Config;
+use DB, URL, Auth, Hash, Storage, Validator, Config, Session;
 class MainController extends Controller
 {
     use General;
@@ -82,6 +87,38 @@ class MainController extends Controller
         $auditData = array('action_type'=>'3','description'=>'SNA Status Updated','user_type'=>'2'); $this->auditTrail($auditData);
         $url=urlencode('/'.Auth::getDefaultDriver().'/sna-list');
         return response()->json(['status' => 'success','message'=>'SNA '.$status.' successfuly!','url'=>$url,'redirect'=>'yes']);
+    }
+
+    // STU List
+    public function stuList(){
+        $stuDetail=StuUser::getStuUsers();
+        $auditData = array('action_type'=>'3','description'=>'MNRE View Stu User List','user_type'=>'1'); $this->auditTrail($auditData);
+        return view('backend.mnre.stuList',compact('stuDetail'));
+    }
+    public function StuApproveReject(Request $request){
+        $validation = Validator::make($request->all(), [
+            'isApproved'=>'required',
+            'remarks'=>'required',
+        ],[
+            'isApproved.required'=>'This field is required',
+            'remarks.required'=>'This field is required',
+        ]
+        );                                                        
+        if ($validation->fails()){  //check all validations are fine, if not then redirect and show error messages
+            return response()->json(['status'=>'verror','data'=>$validation->errors()]);
+        }
+        $status="Rejected";
+        if($request->isApproved==1){
+            $status="Approved";
+        }
+        $id=$this->decodeid($request->id);
+        $snaData=StuUser::find($id);
+        $snaData->isApproved = $request->isApproved;
+        $snaData->remarks = $request->remarks;
+        $snaData->save();
+        $auditData = array('action_type'=>'3','description'=>'STU Status Updated','user_type'=>'2'); $this->auditTrail($auditData);
+        $url=urlencode('/'.Auth::getDefaultDriver().'/stu-list');
+        return response()->json(['status' => 'success','message'=>'STU '.$status.' successfuly!','url'=>$url,'redirect'=>'yes']);
     }
 
     public function sppdList(){
@@ -134,69 +171,143 @@ class MainController extends Controller
             if($request->isMethod('get')){
                 return view('backend.mnre.editProfile', compact('user','states'));
             }
+            $validation = Validator::make($request->all(), [
+                'email'=>'required',
+                'name'=>'required',
+                'contact_no'=>'required',
+                'state'=>'required',
+                'district_id'=>'required',
+            ],[
+                'district_id.required'=>'This field is required',
+                'state.required'=>'This field is required',
+                'contact_no.required'=>'This field is required',
+            ]
+            );                                                        
+            if ($validation->fails()){  //check all validations are fine, if not then redirect and show error messages
+                return response()->json(['status'=>'verror','data'=>$validation->errors()]);
+            }
             $user->name = $request->name;
-            $user->user_code = $request->user_code;
             $user->email = $request->email;
-          
-             $user->save();
+            $user->contact_no = $request->contact_no;
+            $user->state = $request->state;
+            $user->district_id = $request->district_id;
+            $isSaved=$user->save();
             //dd($user);
-            $auditData = array('action_type'=>'7','description'=>' MNRE User Edit User Profile','user_type'=>'1');
+            $auditData = array('action_type'=>'7','description'=>' MNRE User updte Profile','user_type'=>'1');
             $this->auditTrail($auditData);
             if($isSaved){
-
-                return redirect()->back()->with("status","Profile edited successfully !");
+                $url=urlencode('/'.Auth::getDefaultDriver().'/edit-profile');
+                return response()->json(['status' => 'success','message'=>'Profile updated successfuly!','url'=>$url,'redirect'=>'yes']);
+               
             }
         } catch (\Throwable $th) {
             return redirect()->back()->with("error","Server Error !");
         }
     }
     public function changePassword(Request $request){
-        // try {
-            if($request->isMethod('get')){
-                $submitUrl = URL::to('/mnre/change-password');
-                
-                $auditData = array('action_type'=>'3','description'=>' MNRE User  Change Password ','user_type'=>'1');
+        try {
+            if ($request->isMethod('get')) {
+                $submitUrl = URL::to(Auth::getDefaultDriver().'/change-password');
+                $auditData = array('action_type' => '3', 'description' => ' MNRE User  Change Password ', 'user_type' => '2');
                 $this->auditTrail($auditData);
-               
-                return view('backend.mnre.changePassword',compact('submitUrl'));
+                return view('backend.mnre.changePassword', compact('submitUrl'));
             }
-            if (!(Hash::check($request->current_password, Auth::user()->password))) {
-                // dd($request->current_password);
-                 /*************************Audit Trail Start**********************************/
-                 $auditData = array('action_type'=>'1','description'=>' MNRE User  Match Password ','user_type'=>'1');
-                 $this->auditTrail($auditData);
-                 /*************************Audit Trail Start**********************************/
+            $validation = Validator::make($request->all(), [
+            'current_password'=>'required',
+            'new_password'=>'required',
+            'new_password_confirmation'=>'required',
+            
+            ]
+            );
+            if ($validation->fails()){  //check all validations are fine, if not then redirect and show error messages
+                return redirect()->back()->with("error", "Please filled all details. Please try again.");
+                return response()->json(['status'=>'verror','data'=>$validation->errors()]);
+            }
+            // Decrypt Password
+            $random_session_id1 = Session::get('random_session_id1');
+            $random_session_id2 = Session::get('random_session_id2');
+            $key = hex2bin("0123456789abcdef0123456789abcdef");
+            $iv = hex2bin("abcdef9876543210abcdef9876543210");
+
+            $current_password = openssl_decrypt($request->current_password, 'AES-128-CBC', $key, OPENSSL_ZERO_PADDING, $iv);
+            $current_password = trim($current_password);
+            $current_password = str_replace($random_session_id1, "", $current_password);
+            $current_password = str_replace($random_session_id2, "", $current_password);
+
+            $new_password = openssl_decrypt($request->new_password, 'AES-128-CBC', $key, OPENSSL_ZERO_PADDING, $iv);
+            $new_password = trim($new_password);
+            $new_password = str_replace($random_session_id1, "", $new_password);
+            $new_password = str_replace($random_session_id2, "", $new_password);
+
+            $new_password_confirmation = openssl_decrypt($request->new_password_confirmation, 'AES-128-CBC', $key, OPENSSL_ZERO_PADDING, $iv);
+            $new_password_confirmation = trim($new_password_confirmation);
+            $new_password_confirmation = str_replace($random_session_id1, "", $new_password_confirmation);
+            $new_password_confirmation = str_replace($random_session_id2, "", $new_password_confirmation);
+
+            if (!(Hash::check($current_password, Auth::user()->password))) {
+                /*                 * ***********************Audit Trail Start********************************* */
+                $auditData = array('action_type' => '1', 'description' => ' MNRE User  Match Password ', 'user_type' => '1');
+                $this->auditTrail($auditData);
+                /*                 * ***********************Audit Trail Start********************************* */
                 // The passwords matches
-                return redirect()->back()->with("error","Your current password does not matches with the password you provided. Please try again.");
+                // return response()->json(['status' => 'error','message'=>'Your current password does not matches with the password you provided. Please try again.']);
+                return redirect()->back()->with("error", "Your current password does not matches with the password you provided. Please try again.");
             }
-            if(!$this->passwordPolicyTest($request->new_password)){
-                $error = 'Failed strong password policy!';
-                /*************************Audit Trail Start**********************************/
-                $auditData = array('action_type'=>'1','description'=>' MNRE User Test password Policy  ','user_type'=>'1');
+
+            if ($new_password != $new_password_confirmation) {
+                $error = 'New Password and Confirm Password not match';
+                /*                 * ***********************Audit Trail Start********************************* */
+                $auditData = array('action_type' => '1', 'description' => 'New Password and Confirm Password not match', 'user_type' => '1');
                 $this->auditTrail($auditData);
-                /*************************Audit Trail Start**********************************/
+                /*                 * ***********************Audit Trail Start********************************* */
+                // return response()->json(['status' => 'error','message'=>'New Password and Confirm Password not match']);
                 return redirect()->back()->with("error", $error);
             }
-            if(strcmp($request->current_password, $request->new_password) == 0){
-                 /*************************Audit Trail Start**********************************/
-                 $auditData = array('action_type'=>'1','description'=>' MNRE User verify condition currunt and new password not same  ','user_type'=>'1');
-                 $this->auditTrail($auditData);
-                 /*************************Audit Trail Start**********************************/
-                //Current password and new password are same
-                return redirect()->back()->with("error","New Password cannot be same as your current password. Please choose a different password.");
+            if ((strpos($new_password, Auth::user()->name) !== false)) {
+                // return response()->json(['status' => 'error','message'=>'Password not match as well as name']);
+                return redirect()->back()->with("error", "Password not match as well as name");
             }
-            //Change Password
-                $user = Auth::user();
-                $user->password = bcrypt($request->new_password);
-                $user->save();
-                /*************************Audit Trail Start**********************************/
-                $auditData = array('action_type'=>'2','description'=>' MNRE User Inserted new password  ','user_type'=>'1');
+            $user_type = Auth::getDefaultDriver();
+            $user_id = Auth::user()->id;
+
+            $histories = PasswordHistoryLog::select('password')->where('user_id', $user_id)->where('user_type', 'sna')->get();
+            foreach ($histories as $history) {
+                if ((Hash::check($new_password, $history->password))) {
+                    // return response()->json(['status' => 'error','message'=>'This password already used previously']);
+                    return redirect()->back()->with("error", "This password already used previously");
+                }
+            }
+            if (!$this->passwordPolicyTest($new_password)) {
+                $error = 'Failed strong password policy!';
+                /*                 * ***********************Audit Trail Start********************************* */
+                $auditData = array('action_type' => '1', 'description' => ' MNRE User Test password Policy  ', 'user_type' => '1');
                 $this->auditTrail($auditData);
-             /*************************Audit Trail Start**********************************/
-            return redirect()->back()->with("status","Password changed successfully !");
-        // } catch (\Throwable $th) {
-        //     return redirect()->back()->with("error","Server Error !");
-        // }
+                /*                 * ***********************Audit Trail Start********************************* */
+                // return response()->json(['status' => 'error','message'=>$error]);
+                return redirect()->back()->with("error", $error);
+            }
+
+            //Change Password
+            $user = Auth::user();
+            $user->password = Hash::make($new_password);
+            $user->save();
+            $passwordLog = new PasswordHistoryLog();
+            $passwordLog->user_type = 'sna';
+            $passwordLog->user_id = Auth::user()->id;
+            $passwordLog->password = Hash::make($new_password);
+            $passwordLog->created_by = Auth::user()->id;
+            $passwordLog->save();
+            /*************************Audit Trail Start********************************* */
+            $auditData = array('action_type' => '2', 'description' => ' SNA User Inserted new password  ', 'user_type' => '1');
+            $this->auditTrail($auditData);
+            $url = urlencode('/'.Auth::getDefaultDriver().'/change-password');
+            /*************************Audit Trail Start********************************* */
+            // return response()->json(['status' => 'success','message'=>'Password changed successfully !','url'=>$url,'redirect'=>'yes']);
+            return redirect()->back()->with("status", "Password changed successfully !");
+        } catch (Exception $e) {
+            echo 'Message: ' . $e->getMessage();
+            die;
+        }
     }
     
     //Created By Raushan
@@ -528,5 +639,30 @@ class MainController extends Controller
         $developerparkDetail=DeveloperArchiveReport::select('solar_park_name','id')->get();
         $auditData = array('action_type'=>'3','description'=>'MNRE(admin) View MNRE User List','user_type'=>'1'); $this->auditTrail($auditData);
         return view('backend.mnre.developerArchiveReport',compact('developerDetail','developerparkDetail'));
+    }
+
+    public function solarPark(){
+        try {
+            //code...
+            $solarparkList=ManageSolarPark::getAllSolarPrk();
+            $auditData = array('action_type'=>'3','description'=>'MNRE(admin) View Solar park List','user_type'=>'1'); $this->auditTrail($auditData);
+            return view('backend.mnre.solarparkList',compact('solarparkList'));
+        } catch (\Throwable $th) {
+            //throw $th;
+            dd($th->getMessage());
+        }
+        
+    }
+    public function tenderList(){
+        $tenderList=Tenders::getCapacityTenderedList();
+        $auditData = array('action_type'=>'1','description'=>'MNRE View capacity Tendered List','user_type'=>'2');
+        $this->auditTrail($auditData);
+        return view('backend.mnre.capacitytenders',compact('tenderList'));
+    }
+    public function cancelledtenderList(){
+        $cancelledtenderList=CancelTender::getAllCancelTenderList();
+        $auditData = array('action_type'=>'1','description'=>'MNRE View Cancelled Tender List','user_type'=>'2');
+        $this->auditTrail($auditData);
+        return view('backend.mnre.cancelledtender',compact('cancelledtenderList'));
     }
 }

@@ -34,5 +34,22 @@ class StuUser extends Authenticatable
         'password',
         'date_of_reg'
     ];
+
+    public static function getStuUsers(){
+   
+        $data=self::select(
+            'stu_users.*',
+            'states.name as state_name',
+            'districts.name as district_name',
+            
+        )
+        ->join('states','states.code','stu_users.state_id')
+        ->join('districts','districts.code','stu_users.district_id')
+        // ->join('sub_districts','sub_districts.code','state_implementing_agency_users.sub_district_id')
+        // ->join('villages','villages.code','state_implementing_agency_users.village')
+        ->get();
+    
+        return $data;
+    } 
     
 }

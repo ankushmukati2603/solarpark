@@ -18,41 +18,39 @@
                         <hr style="color: #959595;">
                         <form action="{{url(Auth::getDefaultDriver().'/solar-park-reports')}}" method="post">@csrf
                             <div class="row">
-                                <div class="col-md-12">
-                                    <div class="col-md-3">
-                                        <label>State<span class="error"></span></label>
-                                        <select class="form-control  select" id="txtState" name="state"
-                                            onchange="getDistrictByState(this.value,'')">
-                                            <option disabled selected>Select State</option>
-                                            @foreach($states as $state)
-                                            <option value="{{$state->code }}" @if(isset($generalData['general']['state']
-                                                ) && $state->
-                                                code==$generalData['general']['state'])selected
-                                                @endif>
-                                                {{$state->name }}
-                                            </option>
-                                            @endforeach
-                                        </select>
-                                        <span class="text-danger">{{ $errors->first('state') }}</span>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label>District<span class="error"></span></label>
-                                        <select class="form-control  select" id="district_id" name="district_id"
-                                            onchange="getSubDistrictByDistrict(this.value,'') ; getBlockByDistricts(this.value,'')">
-                                            <option value="" selected>Select District</option>
-                                        </select>
-                                        <span class="text-danger">{{ $errors->first('district_id') }}</span>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label>Submitted On</label>
-                                        <div class="input-group date">
-                                            <input type="date" class="form-control pull-right alldatepicker "
-                                                id="txtdate_commissioning" placeholder="MM-DD-YYYY" name="date"
-                                                value="">
-                                        </div>
-                                        <span class="text-danger">{{ $errors->first('date') }}</span>
-                                    </div>
+                                <div class="col-md-3 col-sm-12">
+                                    <label>State<span class="error"></span></label>
+                                    <select class="form-control  select" id="txtState" name="state"
+                                        onchange="getDistrictByState(this.value,'')">
+                                        <option disabled selected>Select State</option>
+                                        @foreach($states as $state)
+                                        <option value="{{$state->code }}" @if(isset($generalData['general']['state'] )
+                                            && $state->
+                                            code==$generalData['general']['state'])selected
+                                            @endif>
+                                            {{$state->name }}
+                                        </option>
+                                        @endforeach
+                                    </select>
+                                    <span class="text-danger">{{ $errors->first('state') }}</span>
                                 </div>
+                                <div class="col-md-3 col-sm-12">
+                                    <label>District<span class="error"></span></label>
+                                    <select class="form-control  select" id="district_id" name="district_id"
+                                        onchange="getSubDistrictByDistrict(this.value,'') ; getBlockByDistricts(this.value,'')">
+                                        <option value="" selected>Select District</option>
+                                    </select>
+                                    <span class="text-danger">{{ $errors->first('district_id') }}</span>
+                                </div>
+                                <div class="col-md-3 col-sm-12">
+                                    <label>Submitted On</label>
+                                    <div class="input-group date">
+                                        <input type="date" class="form-control pull-right alldatepicker "
+                                            id="txtdate_commissioning" placeholder="MM-DD-YYYY" name="date" value="">
+                                    </div>
+                                    <span class="text-danger">{{ $errors->first('date') }}</span>
+                                </div>
+
                                 <div class="clearfix"></div><br>
                                 <div class="col-md-3 col-sm-12">
                                     <label>Park Name<span class="text-danger">*</span></label>
@@ -75,61 +73,61 @@
                         <div class="clearfix"></div><br>
 
 
-                        <table class="table table-bordered">
-                            <tr class=" bg-primary">
-                                <th>S.No</th>
-                                <th>Park Name</th>
-                                <th width="15%">Progress Report (Month , Year)</th>
-                                <th>State</th>
-                                <th>District</th>
-                                <th>Solar Power Park Developer</th>
-                                <th>Email ID</th>
-                                <th>Mobile Number</th>
-                                <!-- <th>Approved Capacity (in MW)</th> -->
-                                <th>Submitted On</th>
-                                <th>Status</th>
-                                <th>Remarks by MNRE</th>
-                                <th>Action</th>
-                            </tr>
-                            @if(!Empty($progressDetails))
-                            @php $generalData='' @endphp
-                            @foreach($progressDetails as $progressData)
-                            @php $generalData=json_decode($progressData['general']); @endphp
-                            <tr>
-                                <td>{{$loop->iteration}}</td>
-                                <td>{{ $progressData['park_name'] }}</td>
-                                <td>
-                                    {{date("F", mktime(0, 0, 0, $progressData['month'], 10))}},
-                                    {{$progressData['year']}}
-                                </td>
-                                <td>{{ $progressData['state_name'] }}</td>
-                                <td>{{ $progressData['district_name'] }}</td>
-                                <td>{{ $generalData->park_developer_name }}</td>
-                                <td>{{ $generalData->email ?? ''}}</td>
-                                <td>{{ $generalData->mobile_number }}</td>
-                                <td>{{ $progressData['submitted_on'] }}</td>
-                                <td> @if($progressData['final_submission'] == '1')
-                                    <span>Submitted</span>
-                                    @else
-                                    <span>Draft</span>
-                                    @endif
-                                </td>
-                                <td>{{ $progressData['remarks'] ?? 'No Reviewed' }}</td>
-                                <td>@if($progressData['final_submission']==1)
-                                    <a target="_blank"
-                                        href="{{URL::to(Auth::getDefaultDriver().'/preview-solar-park-reports/'.$general->encodeid($progressData['id']))}}"
-                                        class="btn btn-primary"><i class="fa fa-eye"></i></a>
-                                    @endif
-                                </td>
-                            </tr>
-                            @endforeach
-                            @else
-                            <tr>
-                                <td colspan="11">No Record Found</td>
-                            </tr>
-                            @endif
+                        <table class="table table-bordered" id="example">
+                            <thead>
+                                <tr>
+                                    <th>S.No</th>
+                                    <th>Park Name</th>
+                                    <th width="15%">Progress Report (Month , Year)</th>
+                                    <th>State</th>
+                                    <th>District</th>
+                                    <th>Solar Power Park Developer</th>
+                                    <th>Email ID</th>
+                                    <th>Mobile Number</th>
+                                    <!-- <th>Approved Capacity (in MW)</th> -->
+                                    <th>Submitted On</th>
+                                    <th>Status</th>
+                                    <th>Remarks by MNRE</th>
+                                    <th>Action</th>
+                                </tr>
 
-                            <!-- <a href=" {{URL::to('developerData')}}">Form</a> -->
+                            </thead>
+                            <tbody>
+                                @if(!Empty($progressDetails))
+                                @php $generalData='' @endphp
+                                @foreach($progressDetails as $progressData)
+                                @php $generalData=json_decode($progressData['general']); @endphp
+                                <tr>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{ $progressData['park_name'] }}</td>
+                                    <td>
+                                        {{date("F", mktime(0, 0, 0, $progressData['month'], 10))}},
+                                        {{$progressData['year']}}
+                                    </td>
+                                    <td>{{ $progressData['state_name'] }}</td>
+                                    <td>{{ $progressData['district_name'] }}</td>
+                                    <td>{{ $generalData->park_developer_name }}</td>
+                                    <td>{{ $generalData->email ?? ''}}</td>
+                                    <td>{{ $generalData->mobile_number }}</td>
+                                    <td>{{ $progressData['submitted_on'] }}</td>
+                                    <td> @if($progressData['final_submission'] == '1')
+                                        <span>Submitted</span>
+                                        @else
+                                        <span>Draft</span>
+                                        @endif
+                                    </td>
+                                    <td>{{ $progressData['remarks'] ?? 'No Reviewed' }}</td>
+                                    <td>@if($progressData['final_submission']==1)
+                                        <a target="_blank"
+                                            href="{{URL::to(Auth::getDefaultDriver().'/preview-solar-park-reports/'.$general->encodeid($progressData['id']))}}"
+                                            class="btn btn-primary"><i class="fa fa-eye"></i></a>
+                                        @endif
+                                    </td>
+                                </tr>
+                                @endforeach
+
+                                @endif
+                            </tbody>
                         </table>
                     </div>
 
@@ -137,13 +135,5 @@
             </div>
 
     </main>
-    <style>
-    .col-md-3 {
-        flex: 0 0 auto;
-        width: 25%;
-        display: inline-block !important;
-    }
-    </style>
 </section>
 @endsection
-<script src="{{asset('public/js/custom.js')}}"></script>

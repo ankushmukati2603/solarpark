@@ -126,7 +126,7 @@
 </section>
 @endsection
 @push('backend-js')
-<link rel="stylesheet" href="{{asset('public/datatable/jquery.dataTables.min.css')}}" />
+<!-- <link rel="stylesheet" href="{{asset('public/datatable/jquery.dataTables.min.css')}}" />
 <link rel="stylesheet" href="{{asset('public/datatable/buttons.dataTables.min.css')}}" />
 <script src="{{asset('public/datatable/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('public/datatable/dataTables.buttons.min.js')}}"></script>
@@ -166,7 +166,7 @@ $(document).ready(function() {
     });
 
 });
-</script>
+</script> -->
 @endpush
 <style>
 .error {

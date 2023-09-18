@@ -10,7 +10,7 @@
             <div class="col-xxl-12 col-xl-12 custm_cmn_form_stng">
                 <div class="row ">
                     <div class="pagetitle col-xl-12">
-                        <h1 class="text-center">Monthly Progress Report For REIAs/States </h1>
+                        <h1 class="text-center">Monthly Progress Report For REIA </h1>
                         <hr style="color: #959595;">
                         <?php echo $__env->make('layouts.partials.backend._flash', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                         <form action="<?php echo e(url(Auth::getDefaultDriver().'/progress-report')); ?>" method="post"><?php echo csrf_field(); ?>
@@ -132,53 +132,4 @@
 </section>
 
 <?php $__env->stopSection(); ?>
-<?php $__env->startPush('backend-js'); ?>
-<link rel="stylesheet" href="<?php echo e(asset('public/datatable/jquery.dataTables.min.css')); ?>" />
-<link rel="stylesheet" href="<?php echo e(asset('public/datatable/buttons.dataTables.min.css')); ?>" />
-<script src="<?php echo e(asset('public/datatable/jquery.dataTables.min.js')); ?>"></script>
-<script src="<?php echo e(asset('public/datatable/dataTables.buttons.min.js')); ?>"></script>
-<script src="<?php echo e(asset('public/datatable/pdfmake.min.js')); ?>"></script>
-<script src="<?php echo e(asset('public/datatable/vfs_fonts.js')); ?>"></script>
-<script src="<?php echo e(asset('public/datatable/buttons.html5.min.js')); ?>"></script>
-<script>
-$(document).ready(function() {
-    var oTable = $('#example').DataTable({
-        // ordering: 'desc',
-        // ordering: true,
-        order: [
-            [0, 'desc']
-        ],
-        dom: 'Blfrtip',
-        buttons: [{
-                extend: 'pdf',
-                footer: true,
-                exportOptions: {
-                    columns: [0, 1, 2, 3, 4, 5, 6, 7]
-                }
-            },
-            {
-                extend: 'csv',
-                footer: true,
-                exportOptions: {
-                    columns: [0, 1, 2, 3, 4, 5, 6, 7]
-                }
-            },
-            {
-                extend: 'excel',
-                footer: false
-            }
-
-
-        ]
-    });
-
-});
-</script>
-<?php $__env->stopPush(); ?>
-<style>
-.error {
-    color: red
-}
-</style>
-<script src="<?php echo e(asset('public/js/custom.js')); ?>"></script>
 <?php echo $__env->make('layouts.masters.backend', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp\htdocs\solar_park\resources\views/backend/mnre/ReiaReport/progressReport.blade.php ENDPATH**/ ?>

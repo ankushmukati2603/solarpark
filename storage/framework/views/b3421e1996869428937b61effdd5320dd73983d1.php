@@ -45,54 +45,76 @@
         </li>
         <?php endif; ?>
         <?php if(Auth::guard('mnre')->check()): ?>
-
+        <li class="nav-item">
+            <a class="nav-link  <?php if($query_str1 == ''): ?>active <?php endif; ?>" href="<?php echo e(URL::to('/'.Auth::getDefaultDriver())); ?>">
+                <i class="fa-solid fa-table-cells-large"></i>
+                <span>Dashboard</span>
+            </a>
+        </li>
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#tables-users" data-bs-toggle="collapse" href="#">
-                <i class="fa-solid fa-table-list"></i><span>Users</span><i class="bi bi-chevron-down ms-auto"></i>
+                <i class="fa-solid fa-users"></i><span>Users</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="tables-users" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                <li class=" <?php if($query_str1 == 'sna-list'): ?> active <?php endif; ?>">
-                    <a class="nav-link collapsed" href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/sna-list')); ?>">
-                        <i class="fa-regular fa-circle"></i><span>SNA's User</span>
+                <li class=" ">
+                    <a class="nav-link collapsed <?php if($query_str1 == 'sna-list'): ?> active <?php endif; ?>"
+                        href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/sna-list')); ?>">
+                        <i class="fa-solid fa-user fa-2x"></i><span>SNAs User</span>
                     </a>
                 </li>
-                <li class=" <?php if($query_str1 == 'sppd'): ?> active <?php endif; ?>">
-                    <a class="nav-link collapsed" href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/sppd-list')); ?>">
-                        <i class="fa-regular fa-circle"></i><span>SPPD's User</span>
+                <li class="">
+                    <a class="nav-link collapsed <?php if($query_str1 == 'sppd-list'): ?> active <?php endif; ?>"
+                        href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/sppd-list')); ?>">
+                        <i class="fa-solid fa-user fa-2x"></i><span>SPPDs User</span>
+                    </a>
+                </li>
+                <li class="">
+                    <a class="nav-link collapsed <?php if($query_str1 == 'stu-list'): ?> active <?php endif; ?>"
+                        href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/stu-list')); ?>">
+                        <i class="fa-solid fa-user"></i><span>STUs User</span>
                     </a>
                 </li>
             </ul>
         </li>
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#tables-reports" data-bs-toggle="collapse" href="#">
-                <i class="fa-solid fa-table-list"></i><span>Reports</span><i class="bi bi-chevron-down ms-auto"></i>
+                <i class="fa-solid fa-file"></i><span>Reports</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="tables-reports" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                <li class=" <?php if($query_str1 == 'sna-list'): ?> active <?php endif; ?>">
-                    <a class="nav-link collapsed"
+                <li class="">
+                    <a class="nav-link collapsed <?php if($query_str1 == 'solar-park-reports'): ?> active <?php endif; ?>"
                         href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/solar-park-reports')); ?>">
-                        <i class="fa-regular fa-circle"></i><span>Solar Parks Reports (SPPD's)</span>
+                        <i class="fa-solid fa-circle"></i><span>SPPD Reports</span>
                     </a>
                 </li>
-                <li class=" <?php if($query_str1 == 'Reia-Reports'): ?> active <?php endif; ?>">
-                    <a class="nav-link collapsed" href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/Reia-Reports')); ?>">
-                        <i class="fa-regular fa-circle"></i><span>REIA'S Reports</span>
+                <li class="">
+                    <a class="nav-link collapsed <?php if($query_str1 == 'Reia-Reports'): ?> active <?php endif; ?>"
+                        href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/Reia-Reports')); ?>">
+                        <i class="fa-solid fa-circle"></i><span>REIA Reports</span>
                     </a>
                 </li>
-                <li class=" <?php if($query_str1 == 'Stu-Reports'): ?> active <?php endif; ?>">
-                    <a class="nav-link collapsed" href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/Stu-Reports')); ?>">
-                        <i class="fa-regular fa-circle"></i><span>STU's/CTU's Reports</span>
+                <li class="">
+                    <a class="nav-link collapsed <?php if($query_str1 == 'Stu-Reports'): ?> active <?php endif; ?>"
+                        href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/Stu-Reports')); ?>">
+                        <i class="fa-solid fa-circle"></i><span>STUs/CTU Reports</span>
                     </a>
                 </li>
-                <li class=" <?php if($query_str1 == 'Sna-Reports'): ?> active <?php endif; ?>">
-                    <a class="nav-link collapsed" href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/Sna-Reports')); ?>">
-                        <i class="fa-regular fa-circle"></i><span>SNA Reports</span>
+                <li class="">
+                    <a class="nav-link collapsed <?php if($query_str1 == 'Sna-Reports'): ?> active <?php endif; ?>"
+                        href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/Sna-Reports')); ?>">
+                        <i class="fa-solid fa-circle"></i><span>SNA Reports</span>
                     </a>
                 </li>
 
             </ul>
         </li>
-
+        <li class="nav-item">
+            <a class="nav-link  <?php if($query_str1 == 'solar-park'): ?>active <?php endif; ?>"
+                href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/solar-park')); ?>">
+                <i class="fa-solid fa-sun"></i>
+                <span>Solar Park</span>
+            </a>
+        </li>
         <?php endif; ?>
         <?php if(Auth::guard('state-implementing-agency')->check()): ?>
         <!-- <li>

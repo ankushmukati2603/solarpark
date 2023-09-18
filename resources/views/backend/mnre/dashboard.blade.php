@@ -25,12 +25,15 @@
                                     <div class="postn_reltv">
                                         <img src="{{ URL::asset('public/images/circle.svg')}}" class="circle_img">
                                         <div class="card-icon   card1 ">
-                                            <div class="number_stng "><span>0</span></div>
+                                            <div class="number_stng ">
+                                                <span>{{ $data['total_capacity_tendered']/1000 }} GW</span>
+                                            </div>
                                         </div>
                                         <div class=" pb-3">
-                                            <h6>Consumer <br> Interests Received</h6>
-                                            <a href="#"><span class="more_info small pt-2 ps-1">more info <i
-                                                        class="fa-solid fa-angle-right"></i></span></a>
+                                            <h6>Total <br> capacity tendered</h6>
+                                            <a href="{{URL::to(Auth::getDefaultDriver().'/capacity-tendered-list')}}"><span
+                                                    class="more_info small pt-2 ps-1">more
+                                                    info <i class="fa-solid fa-angle-right"></i></span></a>
                                         </div>
                                     </div>
                                 </div>
@@ -42,10 +45,12 @@
                                     <div class="postn_reltv">
                                         <img src="{{ URL::asset('public/images/circle.svg')}}" class="circle_img">
                                         <div class="card-icon   card2">
-                                            <div class="number_stng "><span>0</span></div>
+                                            <div class="number_stng ">
+                                                <span>{{ $data['total_capacity_under_implementation'] }}</span>
+                                            </div>
                                         </div>
                                         <div class=" pb-3">
-                                            <h6>System <br> Installations done</h6>
+                                            <h6>Total capacity <br> under implementation</h6>
                                             <a href="#"><span class="more_info small pt-2 ps-1">more info <i
                                                         class="fa-solid fa-angle-right"></i></span></a>
                                         </div>
@@ -59,10 +64,12 @@
                                     <div class="postn_reltv">
                                         <img src="{{ URL::asset('public/images/circle.svg')}}" class="circle_img">
                                         <div class="card-icon   card3">
-                                            <div class="number_stng "><span>0</span></div>
+                                            <div class="number_stng ">
+                                                <span>{{ $data['total_capacity_commissioned'] }}</span>
+                                            </div>
                                         </div>
                                         <div class=" pb-3">
-                                            <h6>Inspections <br> Completed</h6>
+                                            <h6>Total <br> capacity commissioned</h6>
                                             <a href="#"><span class="more_info small pt-2 ps-1">more info <i
                                                         class="fa-solid fa-angle-right"></i></span></a>
                                         </div>
@@ -76,11 +83,12 @@
                                     <div class="postn_reltv">
                                         <img src="{{ URL::asset('public/images/circle.svg')}}" class="circle_img">
                                         <div class="card-icon   card4">
-                                            <div class="number_stng "><span>0</span></div>
+                                            <div class="number_stng "><span>{{ $data['total_tenders'] }}</span></div>
                                         </div>
                                         <div class=" pb-3">
-                                            <h6>Systems/Projects <br> Approved</h6>
-                                            <a href="#"><span class="more_info small pt-2 ps-1">more info <i
+                                            <h6>Total <br> Tenders</h6>
+                                            <a href="{{URL::to(Auth::getDefaultDriver().'/capacity-tendered-list')}}"><span
+                                                    class="more_info small pt-2 ps-1">more info <i
                                                         class="fa-solid fa-angle-right"></i></span></a>
                                         </div>
                                     </div>
@@ -93,11 +101,13 @@
                                     <div class="postn_reltv">
                                         <img src="{{ URL::asset('public/images/circle.svg')}}" class="circle_img">
                                         <div class="card-icon   card5">
-                                            <div class="number_stng "><span>0</span></div>
+                                            <div class="number_stng "><span>{{ $data['cancelled_tenders'] }}</span>
+                                            </div>
                                         </div>
                                         <div class=" pb-3">
-                                            <h6>Inspections <br> Completed</h6>
-                                            <a href="#"><span class="more_info small pt-2 ps-1">more info <i
+                                            <h6>Cancelled <br> Tenders</h6>
+                                            <a href="{{URL::to(Auth::getDefaultDriver().'/cancelled-tender-list')}}"><span
+                                                    class="more_info small pt-2 ps-1">more info <i
                                                         class="fa-solid fa-angle-right"></i></span></a>
                                         </div>
                                     </div>
@@ -110,10 +120,12 @@
                                     <div class="postn_reltv">
                                         <img src="{{ URL::asset('public/images/circle.svg')}}" class="circle_img">
                                         <div class="card-icon   card6">
-                                            <div class="number_stng "><span>0</span></div>
+                                            <div class="number_stng ">
+                                                <span>{{ $data['tenders_under_implementation'] }}</span>
+                                            </div>
                                         </div>
                                         <div class=" pb-3">
-                                            <h6>Systems/Projects <br> Approved</h6>
+                                            <h6>Tenders <br> under Implementation</h6>
                                             <a href="#"><span class="more_info small pt-2 ps-1">more info <i
                                                         class="fa-solid fa-angle-right"></i></span></a>
                                         </div>
@@ -127,10 +139,11 @@
                                     <div class="postn_reltv">
                                         <img src="{{ URL::asset('public/images/circle.svg')}}" class="circle_img">
                                         <div class="card-icon card7">
-                                            <div class="number_stng "><span>0</span></div>
+                                            <div class="number_stng "><span>{{ $data['tenders_commissioned'] }}</span>
+                                            </div>
                                         </div>
                                         <div class=" pb-3">
-                                            <h6>Inspections <br> Completed</h6>
+                                            <h6>Tenders <br> commissioned</h6>
                                             <a href="#"><span class="more_info small pt-2 ps-1">more info <i
                                                         class="fa-solid fa-angle-right"></i></span></a>
                                         </div>
@@ -138,25 +151,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xxl-3 col-md-6 col-12 dashbord_blocks">
-                            <div class="card info-card sales-card">
 
-                                <div class="card-body grdnt8">
-                                    <div class="postn_reltv">
-                                        <img src="{{ URL::asset('public/images/circle.svg')}}" class="circle_img">
-                                        <div class="card-icon   card8">
-                                            <div class="number_stng "><span>0</span></div>
-                                        </div>
-                                        <div class=" pb-3">
-                                            <h6>Systems/Projects <br> Approved</h6>
-                                            <a href="#"><span class="more_info small pt-2 ps-1">more info <i
-                                                        class="fa-solid fa-angle-right"></i></span></a>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

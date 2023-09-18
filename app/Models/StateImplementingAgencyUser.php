@@ -95,7 +95,7 @@ class StateImplementingAgencyUser extends Authenticatable
         ->join('districts','districts.code','state_implementing_agency_users.district_id')
         // ->join('sub_districts','sub_districts.code','state_implementing_agency_users.sub_district_id')
         // ->join('villages','villages.code','state_implementing_agency_users.village')
-        ->paginate(5);
+        ->get();
     
         return $data;
     } 

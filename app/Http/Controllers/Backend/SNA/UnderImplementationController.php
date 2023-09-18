@@ -57,8 +57,14 @@ class UnderImplementationController extends Controller
                     'action_type'=>'under-implementation','action_date'=>$request->ltoa_date[$i]);
                     $this->tenderTimeline($tenderTimeline);
                 }
-            }      
-            Tenders::where('id',base64_decode($request->tender))->update(['tender_status' => 3]);  //Implemented   
+            }     
+            // Checking wheather all details of Under-Implementation has been filled by user to be mark as implemented 
+
+            // $countLocations=SelectedBidderProject::where('tender_id',$tender->id)->count();
+            // $countCommissionedLocations=SelectedBidderProject::where('tender_id',$tender->id)->whereNotNull('commissioned_details')->count();
+            
+            Tenders::where('id',base64_decode($request->tender))->update(['tender_status' => 3]);  //Implemented  
+             
             $auditData = array('action_type'=>'3','description'=>'SNA Add Under Implementation Details successfuly','user_type'=>'2'); 
             $this->auditTrail($auditData);
             $url=urlencode('/'.Auth::getDefaultDriver().'/Under-Implementation');

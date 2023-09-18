@@ -10,7 +10,7 @@
             <div class="col-xxl-12 col-xl-12 custm_cmn_form_stng">
                 <div class="row ">
                     <div class="pagetitle col-xl-12">
-                        <h1 class="text-center">Monthly Progress Report For REIAs/States </h1>
+                        <h1 class="text-center">Monthly Progress Report For REIA </h1>
                         <hr style="color: #959595;">
                         @include('layouts.partials.backend._flash')
                         <form action="{{url(Auth::getDefaultDriver().'/progress-report')}}" method="post">@csrf
@@ -132,52 +132,3 @@
 </section>
 
 @endsection
-@push('backend-js')
-<link rel="stylesheet" href="{{asset('public/datatable/jquery.dataTables.min.css')}}" />
-<link rel="stylesheet" href="{{asset('public/datatable/buttons.dataTables.min.css')}}" />
-<script src="{{asset('public/datatable/jquery.dataTables.min.js')}}"></script>
-<script src="{{asset('public/datatable/dataTables.buttons.min.js')}}"></script>
-<script src="{{asset('public/datatable/pdfmake.min.js')}}"></script>
-<script src="{{asset('public/datatable/vfs_fonts.js')}}"></script>
-<script src="{{asset('public/datatable/buttons.html5.min.js')}}"></script>
-<script>
-$(document).ready(function() {
-    var oTable = $('#example').DataTable({
-        // ordering: 'desc',
-        // ordering: true,
-        order: [
-            [0, 'desc']
-        ],
-        dom: 'Blfrtip',
-        buttons: [{
-                extend: 'pdf',
-                footer: true,
-                exportOptions: {
-                    columns: [0, 1, 2, 3, 4, 5, 6, 7]
-                }
-            },
-            {
-                extend: 'csv',
-                footer: true,
-                exportOptions: {
-                    columns: [0, 1, 2, 3, 4, 5, 6, 7]
-                }
-            },
-            {
-                extend: 'excel',
-                footer: false
-            }
-
-
-        ]
-    });
-
-});
-</script>
-@endpush
-<style>
-.error {
-    color: red
-}
-</style>
-<script src="{{asset('public/js/custom.js')}}"></script>

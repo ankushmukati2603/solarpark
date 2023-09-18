@@ -15,6 +15,7 @@ use App\Models\mediumBiogasPlantAbove10KW;
 use App\Models\Tenders;
 use App\Models\ReverseAuction;
 use App\Models\Bidder;
+use App\Models\CancelTender;
 use App\Models\SelectedBidderProject;
 use App\Models\Agency;
 use Auth;
@@ -44,10 +45,13 @@ class Dashboard
     public function getMNREDashboardData()
     {
         $response = [
-            'consumer_interests' => ProgressReport::count(),
-            'systems_installed' => 0,
-            'inspections_completed' => 0,
-            'systems_approved' => 0
+            'total_capacity_tendered' =>  Tenders::sum('capacity'),
+            'total_capacity_under_implementation' => 0,
+            'total_capacity_commissioned' => 0,
+            'total_tenders' => Tenders::count(),
+            'cancelled_tenders' => CancelTender::count(),
+            'tenders_under_implementation' => 0,
+            'tenders_commissioned' => 0
         ];
 
         return $response;

@@ -129,6 +129,8 @@ Route::group(['prefix' => 'mnre', 'as' => 'mnre.', 'namespace' => 'Backend\Mnre'
     Route::get('sppd-list', 'MainController@sppdList');
     Route::post('SppdApproveReject','MainController@sppdApproveReject');
 
+    Route::get('stu-list', 'MainController@stuList');
+    Route::post('StuApproveReject','MainController@StuApproveReject');
     
     // Recieved Report Development of Solar Parks and Ultra Mega Solar Power Projects
     Route::match(['post', 'get'], 'solar-park-reports', 'ReportController@solarParkProgressReport');
@@ -151,6 +153,14 @@ Route::group(['prefix' => 'mnre', 'as' => 'mnre.', 'namespace' => 'Backend\Mnre'
     Route::match(['post', 'get'], 'Sna-Reports', 'ReportController@snaReports');
     Route::match(['post', 'get'], 'Preview-Sna-Report/{id}', 'ReportController@snareportpreview');
     Route::post('mnreRemarkSna', 'ReportController@mnreRemarkSna');
+
+    // Solar Park View 
+    Route::match(['post', 'get'], 'solar-park', 'MainController@solarPark');
+    Route::match(['post', 'get'], 'Preview-solar-park/{id}', 'MainController@solarparkpreview');
+
+    Route::get('capacity-tendered-list', 'MainController@tenderList');
+    Route::get('cancelled-tender-list', 'MainController@cancelledtenderList');
+    
     
 });
 

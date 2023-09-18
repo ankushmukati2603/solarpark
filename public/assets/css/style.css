@@ -1262,6 +1262,13 @@ small.welcomeUser {
   padding-bottom: 20px;
 }
 
+
+a.nav-link.collapsed.active {
+  background: #ffffff !important;
+  color: #008000 !important;
+  border-radius: 4px !important;
+}
+
 .grdnt1 {
   background: hsla(139, 64%, 52%, 1);
 

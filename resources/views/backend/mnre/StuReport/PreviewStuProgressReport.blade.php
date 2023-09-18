@@ -73,11 +73,11 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <div class="dropdown">
+                                <div class="dropdown" style="display:none">
                                     <label for="">Select Status <span class="text-danger">*</span></label>
                                     <select class="form-control" aria-label="Default select example" name="mnre_status">
                                         <option value=''>Select</option>
-                                        <option value="1">Approve</option>
+                                        <option value="1" selected>Approve</option>
                                         <option value="2">Partial Approve</option>
                                         <option value="3">Reject</option>
                                     </select>

@@ -91,17 +91,17 @@ class ReportController extends Controller
                 $states = State::orderby('name')->get();
                 return view('backend.mnre.solarParkReport.solarParkProgressReport',compact('progressDetails','states'));
             // }
-        } catch (\Throwable $th) {
-            //throw $th;
-            dd($th->getMessage());
-        }
+            } catch (\Throwable $th) {
+                //throw $th;
+                dd($th->getMessage());
+            }
         }
         $auditData = array('action_type'=>'1','description'=>'User Visit Progress Report Page','user_type'=>'1');
         $this->auditTrail($auditData);
         // dd($auditData);
         $progressDetails=array();
         $states = State::orderby('name')->get();
-        return view('backend.mnre.solarParkReport.solarParkProgressReport',compact('progressDetails','states'));
+        return view('backend.mnre.SolarParkReport.solarParkProgressReport',compact('progressDetails','states'));
     }
     public function previewSolarParkProgressReport(Request $request , $id){
         $id=$this->decodeid($id);

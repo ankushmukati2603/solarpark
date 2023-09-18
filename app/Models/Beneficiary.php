@@ -25,7 +25,7 @@ public static function getMnreUsers(){
     // ->join('sub_districts','sub_districts.code','beneficiary.sub_district_id')
     // ->join('villages','villages.code','beneficiary.village')
     ->orderby('beneficiary.id','DESC')
-    ->paginate(5);
+    ->get();
    
     return $data;
 }

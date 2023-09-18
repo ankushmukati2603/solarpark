@@ -68,7 +68,12 @@ class Tenders extends Model
             ->first()->toArray();
     }
 
-    public static function getAllSNAReports(){
-        
+    public static function getCapacityTenderedList(){
+        return self::select(
+            'tbl_master_tender.*',
+            'state_implementing_agency_users.name as sna_name'
+        )
+        ->leftjoin('state_implementing_agency_users','state_implementing_agency_users.id','tbl_master_tender.sna_id')
+        ->get();
     }
 }

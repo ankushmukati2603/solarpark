@@ -24,4 +24,14 @@ class CancelTender extends Model
                     ->where('tbl_master_tender.tender_status',5)
                     ->get();
     }
+    public static function getAllCancelTenderList(){
+        return self::select(
+                'tbl_cancelled_tender.*','tbl_master_tender.tender_no','tbl_master_tender.nit_no',
+                'tbl_master_tender.scheme_type','tbl_master_tender.capacity','tbl_master_tender.tender_title',
+                'state_implementing_agency_users.name as sna_name'
+            )
+            ->leftjoin('tbl_master_tender','tbl_master_tender.id','tbl_cancelled_tender.tender_id')
+            ->leftjoin('state_implementing_agency_users','state_implementing_agency_users.id','tbl_master_tender.sna_id')
+            ->get();
+    }
 }
