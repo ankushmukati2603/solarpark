@@ -377,12 +377,25 @@
                 </td>
             </tr>
             @endif
+
+            @if($tender['mnre_remarks']!='')
             <tr>
-                <th colspan="4">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        MNRE Remarks
-                    </button>
+                <th colspan="4" class="heading bg-success text-light">
+                    MNRE Remark
                 </th>
+            </tr>
+            <tr>
+                <th colspan="2">Remark : {{ $tender['mnre_remarks'] ?? '' }}</th>
+                <th colspan="2">Date/Time : {{ $tender['mnre_remark_date'] ?? '' }}</th>
+
+            </tr>
+            @else
+            <tr>
+                <td colspan="4"><button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">
+                        Add Remarks
+                    </button>
+                </td>
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <form action="{{ URL::to(Auth::getDefaultDriver().'/mnreRemarkSna') }}" id="formFileAjax"
@@ -425,7 +438,7 @@
                 </div>
 
             </tr>
-
+            @endif
 
         </table>
     </main>

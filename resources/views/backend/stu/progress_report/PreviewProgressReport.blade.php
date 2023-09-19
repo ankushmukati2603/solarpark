@@ -52,9 +52,30 @@
             <tr>
                 <th>Cumulative Capacity Commissioned Date</th>
                 <td>{{date('d-m-Y', strtotime($data->cumulative_capacity_date ?? ''))}}</td>
-                <th>Remarks </th>
+                <th>Remarks/Issue </th>
                 <td>{{$data->remark ?? ''}}</td>
             </tr>
+            @if($data['mnre_remark']!='')
+            <tr>
+                <th colspan="4" class="heading bg-success text-light">
+                    MNRE Remark
+                </th>
+            </tr>
+            <tr>
+                <th colspan="2">Remark : {{ $data['mnre_remark'] ?? '' }}</th>
+                <th colspan="2">Date/Time : {{ $data['mnre_remark_date'] ?? '' }}</th>
+
+            </tr>
+            @else
+            <tr>
+                <td colspan="4"><button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">
+                        Add Remarks
+                    </button>
+                </td>
+
+            </tr>
+            @endif
         </table>
     </main>
 </section>

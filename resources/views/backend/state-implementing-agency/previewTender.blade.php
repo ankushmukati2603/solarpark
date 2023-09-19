@@ -378,7 +378,18 @@
             </tr>
             @endif
 
+            @if($tender['mnre_remarks']!='')
+            <tr>
+                <th colspan="4" class="heading bg-success text-light">
+                    MNRE Remark
+                </th>
+            </tr>
+            <tr>
+                <th colspan="2">Remark : {{ $tender['mnre_remarks'] ?? '' }}</th>
+                <th colspan="2">Date/Time : {{ $tender['mnre_remark_date'] ?? '' }}</th>
 
+            </tr>
+            @endif
 
         </table>
     </main>

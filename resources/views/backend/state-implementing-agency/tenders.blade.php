@@ -31,7 +31,8 @@
                                 <th>Last Date of Bid Submission</th>
                                 <th>Published Date</th>
                                 <th width="10%">Status</th>
-                                <th>Action</th>
+                                <th>MNRE Remarks</th>
+                                <th width="8%">Action</th>
                             </tr>
                             @foreach($tenderList as $tender)
                             <?php
@@ -50,13 +51,22 @@
                                 <td>{{ date("d M Y",strtotime($tender->bid_submission_date)) }}</td>
                                 <td>{{ date("d M Y",strtotime($tender->nit_date)) }}</td>
                                 <td>{{$general->tenderStatus($tender->tender_status,$tender->id)}}</td>
+                                <td>{{ $tender->mnre_remarks ?? '--' }}</td>
                                 <td>
                                     @if($tender->tender_status !=4 || $countLocations>$countCommissionedLocations )<a
-                                        href=" {{URL::to(Auth::getDefaultDriver().'/Tenders/Edit/'.$tender->id)}}">Edit</a>
-                                    |@endif
+                                        href=" {{URL::to(Auth::getDefaultDriver().'/Tenders/Edit/'.$tender->id)}}"
+                                        class="btn btn-danger" target="_blank"><i class="fa-solid fa-pencil"></i></a>
+                                    @endif
+                                    @if($tender->tender_status ==4)
+                                    <a href=" {{URL::to(Auth::getDefaultDriver().'/TenderPreview/'.base64_encode($tender->id))}}"
+                                        target="_blank" class="btn btn-primary"><i class="fa-solid fa-eye"></i></a>
+                                    @endif
 
-                                    <a
-                                        href=" {{URL::to(Auth::getDefaultDriver().'/TenderPreview/'.base64_encode($tender->id))}}">View</a>
+
+
+
+
+
                                 </td>
                             </tr>
                             @endforeach

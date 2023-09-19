@@ -1,3 +1,5 @@
+<?php $general = app('App\Http\Controllers\Backend\REIA\MainController'); ?>
+
 <?php $__env->startSection('content'); ?>
 <section class="section dashboard form_sctn">
 
@@ -134,11 +136,13 @@
                                     <td><?php echo e($progressData->remark ?? 'NA'); ?></td>
                                     <td><?php echo e($progressData->mnre_remarks  ?? 'NA'); ?></td>
                                     <td>
-                                        <a href="<?php echo e(URL::to(Auth::getDefaultDriver().'/previewprogressreport/'.base64_encode($progressData->id))); ?>"
+                                        <?php if($progressData['final_submission'] == 1): ?>
+                                        <a href="<?php echo e(URL::to(Auth::getDefaultDriver().'/previewprogressreport/'.$general->encodeid($progressData->id))); ?>"
                                             target="_blank" class="btn btn-primary"> <i class="fa-solid fa-eye"></i>
                                         </a>
+                                        <?php endif; ?>
                                         <?php if($progressData['final_submission'] == 0): ?>
-                                        <a href="<?php echo e(URL::to(Auth::getDefaultDriver().'/new-reia-progress-report/'.base64_encode($progressData->id))); ?>"
+                                        <a href="<?php echo e(URL::to(Auth::getDefaultDriver().'/new-reia-progress-report/'.$general->encodeid($progressData->id))); ?>"
                                             class="btn btn-danger">
                                             <i class="fa-solid fa-pencil"></i></a>
 

@@ -133,6 +133,10 @@
                                                             <button type="submit" id="submit"
                                                                 class="btn btn-primary">Save
                                                                 changes</button>
+                                                            <input type="hidden" name="email" id=""
+                                                                value="<?php echo e($general->encodeid($sppd->email)); ?>">
+                                                            <input type="hidden" name="name" id=""
+                                                                value="<?php echo e($general->encodeid($sppd->name)); ?>">
                                                             <button type="button" class="btn btn-secondary"
                                                                 data-bs-dismiss="modal">Close</button>
 

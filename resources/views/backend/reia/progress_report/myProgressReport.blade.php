@@ -1,3 +1,4 @@
+@inject('general', 'App\Http\Controllers\Backend\REIA\MainController')
 @extends('layouts.masters.backend')
 @section('content')
 <section class="section dashboard form_sctn">
@@ -134,11 +135,13 @@
                                     <td>{{$progressData->remark ?? 'NA'}}</td>
                                     <td>{{$progressData->mnre_remarks  ?? 'NA'}}</td>
                                     <td>
-                                        <a href="{{URL::to(Auth::getDefaultDriver().'/previewprogressreport/'.base64_encode($progressData->id))}}"
+                                        @if($progressData['final_submission'] == 1)
+                                        <a href="{{URL::to(Auth::getDefaultDriver().'/previewprogressreport/'.$general->encodeid($progressData->id))}}"
                                             target="_blank" class="btn btn-primary"> <i class="fa-solid fa-eye"></i>
                                         </a>
+                                        @endif
                                         @if($progressData['final_submission'] == 0)
-                                        <a href="{{URL::to(Auth::getDefaultDriver().'/new-reia-progress-report/'.base64_encode($progressData->id))}}"
+                                        <a href="{{URL::to(Auth::getDefaultDriver().'/new-reia-progress-report/'.$general->encodeid($progressData->id))}}"
                                             class="btn btn-danger">
                                             <i class="fa-solid fa-pencil"></i></a>
 

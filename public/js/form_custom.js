@@ -133,6 +133,7 @@ $(function () {
                     responseMsg(response.status, response.message);
                     $('#loading-bg-ajax').addClass('hide');
                     $('.text-danger').html('');
+                    $("#submit").attr("disabled", false);
                     return false;
                 } else {
                     if (response.status == 'sandes') {

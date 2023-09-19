@@ -6,7 +6,7 @@
     <main id="main" class="main">
 
         <strong>
-            <h4 class="text-center">Monthly Progress Report Preview For STUs/CTUs</h4>
+            <h4 class="text-center">Monthly Progress Report Preview</h4>
         </strong>
 
         <table border="1" cellspacing="0" cellpadding="5" class="table table-bordered table-striped text-left">
@@ -52,9 +52,30 @@
             <tr>
                 <th>Cumulative Capacity Commissioned Date</th>
                 <td><?php echo e(date('d-m-Y', strtotime($data->cumulative_capacity_date ?? ''))); ?></td>
-                <th>Remarks </th>
+                <th>Remarks/Issue </th>
                 <td><?php echo e($data->remark ?? ''); ?></td>
             </tr>
+            <?php if($data['mnre_remark']!=''): ?>
+            <tr>
+                <th colspan="4" class="heading bg-success text-light">
+                    MNRE Remark
+                </th>
+            </tr>
+            <tr>
+                <th colspan="2">Remark : <?php echo e($data['mnre_remark'] ?? ''); ?></th>
+                <th colspan="2">Date/Time : <?php echo e($data['mnre_remark_date'] ?? ''); ?></th>
+
+            </tr>
+            <?php else: ?>
+            <tr>
+                <td colspan="4"><button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">
+                        Add Remarks
+                    </button>
+                </td>
+
+            </tr>
+            <?php endif; ?>
         </table>
     </main>
 </section>

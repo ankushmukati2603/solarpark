@@ -11,7 +11,7 @@
                 <h1 class="text-center">Monthly Progress Report For STUs/CTUs </h1>
                 <hr style="color: #959595;">
                 @include('layouts.partials.backend._flash')
-                <form action="{{url(Auth::getDefaultDriver().'/progress-report')}}" method="post">@csrf
+                <form action="{{url(Auth::getDefaultDriver().'/Stu-Reports')}}" method="post">@csrf
                     <div class="row col-md-12">
                         <div class="col-md-3">
 

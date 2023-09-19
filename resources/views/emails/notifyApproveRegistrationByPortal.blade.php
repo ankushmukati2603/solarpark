@@ -3,7 +3,7 @@
     with remarks : {{$remarks}}
 </p>
 <p>
-    <b>Your default password is 123456 :</b> {{$password}} <br>
+    <b>Your default password is :</b> {{$password}} <br>
     <b>Note :</b> Please proceed to login and change password immediately.
 </p>
 <br>

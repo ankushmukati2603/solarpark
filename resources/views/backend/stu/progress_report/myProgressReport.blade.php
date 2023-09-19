@@ -97,7 +97,8 @@
                             <th>Capacity commissioned (MW)</th>
                             <th>Cumulative Capacity (MW)</th>
                             <th>Submitted Date </th>
-                            <th>Remarks</th>
+                            <th>Remarks / Issues</th>
+                            <th>MNRE Remarks</th>
                             <th width="8%">Action</th>
                         </tr>
                     </thead>
@@ -121,6 +122,7 @@
                                 @endif
                             </td>
                             <td>{{$progressData->remark}}</td>
+                            <td>{{$progressData->mnre_remark ?? '--'}}</td>
                             <td>
                                 @if($progressData['final_submission'] ==1)
                                 <a href="{{URL::to(Auth::getDefaultDriver().'/previewprogressreport/'.$general->encodeid($progressData->id))}}"

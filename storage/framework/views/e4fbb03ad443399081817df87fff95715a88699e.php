@@ -1,5 +1,4 @@
-@extends('layouts.masters.backend')
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <section class="section dashboard">
 
@@ -14,10 +13,10 @@
                         </div>
                     </div>
                     <section class="section dashboard">
-                        @include('layouts.partials.backend._flash')
+                        <?php echo $__env->make('layouts.partials.backend._flash', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
-                        <form action="{{url(Auth::getDefaultDriver().'/add-progress-report')}}" method="POST">
-                            @csrf
+                        <form action="<?php echo e(url(Auth::getDefaultDriver().'/add-progress-report')); ?>" method="POST">
+                            <?php echo csrf_field(); ?>
                             <div class="row">
                                 <table class="table table-bordered">
                                     <tr>
@@ -43,9 +42,9 @@
                                         <th><label>Scheme <span class="text-danger">*</span></label></th>
                                         <td><select name="scheme_id" id="scheme_id" class="form-control">
                                                 <option value="">Select Scheme</option>
-                                                @foreach($schemes as $scheme)
-                                                <option value="{{$scheme->id}}">{{$scheme->scheme_name}}</option>
-                                                @endforeach
+                                                <?php $__currentLoopData = $schemes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $scheme): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <option value="<?php echo e($scheme->id); ?>"><?php echo e($scheme->scheme_name); ?></option>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             </select>
                                         </td>
                                     </tr>
@@ -54,7 +53,7 @@
                                         <td><button type="submit" value="Submit" id="submit" name="submit"
                                                 class="btn btn-flat btn-success">Add
                                                 Report</button>
-                                            <input type="hidden" name="editId" value="{{$progressData->id ?? ''}}">
+                                            <input type="hidden" name="editId" value="<?php echo e($progressData->id ?? ''); ?>">
                                         </td>
                                     </tr>
                                 </table>
@@ -66,10 +65,11 @@
         </section>
     </main>
 </section>
-@endsection
-@push('backend-js')
-<script type="text/javascript" src="{{asset('public/js/form_custom.js')}}"></script>
-<script type="text/javascript" src="{{asset('public/js/custom.js')}}"></script>
+<?php $__env->stopSection(); ?>
+<?php $__env->startPush('backend-js'); ?>
+<script type="text/javascript" src="<?php echo e(asset('public/js/form_custom.js')); ?>"></script>
+<script type="text/javascript" src="<?php echo e(asset('public/js/custom.js')); ?>"></script>
 <!-- <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script> -->
 
-@endpush
+<?php $__env->stopPush(); ?>
+<?php echo $__env->make('layouts.masters.backend', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp\htdocs\solar_park\resources\views/backend/reia/progress_report/newProgressReport.blade.php ENDPATH**/ ?>

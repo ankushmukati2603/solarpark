@@ -77,6 +77,7 @@ class MainController extends Controller
         $status="Rejected";
         if($request->isApproved==1){
             $status="Approved";
+            
             // Email will shoot for Password
         }
         $id=$this->decodeid($request->id);
@@ -140,14 +141,23 @@ class MainController extends Controller
             return response()->json(['status'=>'verror','data'=>$validation->errors()]);
         }
         $status="Rejected";
+        $email=$this->decodeid($request->email);
+        $name=$this->decodeid($request->name);
         if($request->isApproved==1){
             $status="Approved";
-            // Email will shoot for Password
+            $password = $this->generateRandomString(10);
+            // $this->emailSmsNotifications->notifyApproveRegistrationByPortal($email, $password, $name, $request->remarks);
+            
+        }
+        if($request->isApproved==0){
+            $password='98-7-65-4-32-1';
+            // $this->emailSmsNotifications->notifyRejectRegistrationByPortal($email, $name, $request->remarks);
         }
         $id=$this->decodeid($request->id);
         $snaData=Beneficiary::find($id);
         $snaData->isApproved = $request->isApproved;
         $snaData->remarks = $request->remarks;
+        $snaData->password=Hash::make($password);
         $snaData->save();
         $auditData = array('action_type'=>'3','description'=>'SPPD Status Updated','user_type'=>'2'); $this->auditTrail($auditData);
         $url=urlencode('/'.Auth::getDefaultDriver().'/sppd-list');

@@ -1,6 +1,6 @@
-@inject('general', 'App\Http\Controllers\Backend\REIA\MainController')
-@extends('layouts.masters.backend')
-@section('content')
+<?php $general = app('App\Http\Controllers\Backend\REIA\MainController'); ?>
+
+<?php $__env->startSection('content'); ?>
 <section class="section dashboard form_sctn">
 
     <main id="main" class="main">
@@ -15,39 +15,39 @@
                         <table class="table table-bordered table-striped text-left">
                             <tr>
                                 <th colspan="4">
-                                    <h1>Application Detail : {{$data->month ?? ''}}, {{$data->year ?? ''}}</h1>
-                                    <a href="{{ URL::to(Auth::getDefaultDriver().'/progress-report')}}"
+                                    <h1>Application Detail : <?php echo e($data->month ?? ''); ?>, <?php echo e($data->year ?? ''); ?></h1>
+                                    <a href="<?php echo e(URL::to(Auth::getDefaultDriver().'/progress-report')); ?>"
                                         class="btn btn-success" style="float:right">Back</a>
                                 </th>
                             </tr>
                             <tr>
                                 <th>Name of Scheme</th>
-                                <td>{{$data['scheme_name']}}</td>
+                                <td><?php echo e($data['scheme_name']); ?></td>
                                 <th>State</th>
-                                <td>{{$data->state_name ?? ''}}</td>
+                                <td><?php echo e($data->state_name ?? ''); ?></td>
 
                             </tr>
                             <tr>
                                 <th>District</th>
-                                <td>{{$data->district_name ?? ''}}</td>
+                                <td><?php echo e($data->district_name ?? ''); ?></td>
                                 <th>Type of Project</th>
-                                <td>{{$data->project_type ?? ''}}</td>
+                                <td><?php echo e($data->project_type ?? ''); ?></td>
                             </tr>
                             <tr>
                                 <th>Tender Capacity (MW)</th>
-                                <td>{{$data->tender_capacity ?? ''}}</td>
+                                <td><?php echo e($data->tender_capacity ?? ''); ?></td>
                                 <th>Date of Tender</th>
-                                <td>{{date('d-m-Y', strtotime($data->tender_date ?? ''))}}</td>
+                                <td><?php echo e(date('d-m-Y', strtotime($data->tender_date ?? ''))); ?></td>
                             </tr>
                             <tr>
                                 <th>Date of LOA</th>
-                                <td>{{date('d-m-Y', strtotime($data->loa_date ?? ''))}}</td>
+                                <td><?php echo e(date('d-m-Y', strtotime($data->loa_date ?? ''))); ?></td>
                                 <th>SCoD</th>
-                                <td>{{date('d-m-Y', strtotime($data->scod ?? ''))}}</td>
+                                <td><?php echo e(date('d-m-Y', strtotime($data->scod ?? ''))); ?></td>
                             </tr>
                             <tr>
                                 <th>Present Status</th>
-                                <td>{{$data->remark ?? ''}}</td>
+                                <td><?php echo e($data->remark ?? ''); ?></td>
                                 <th></th>
                                 <td></td>
                             </tr>
@@ -66,28 +66,28 @@
                                             <th>PPA Capacity (MW)</th>
                                         </tr>
 
-                                        @for ($i = 0; $i < count($data['bidder_id']); $i++) <tr>
-                                            <td>{{$i+1}}</td>
-                                            <td>{{ $general->getBidderName($data['bidder_id'][$i]) }}</td>
-                                            <td>{{ $data['select_bidders_capacity'][$i] }}</td>
-                                            <td>{{ $data['ppa_date'][$i] }}</td>
-                                            <td>{{ $data['ppa_capacity'][$i] }}</td>
+                                        <?php for($i = 0; $i < count($data['bidder_id']); $i++): ?> <tr>
+                                            <td><?php echo e($i+1); ?></td>
+                                            <td><?php echo e($general->getBidderName($data['bidder_id'][$i])); ?></td>
+                                            <td><?php echo e($data['select_bidders_capacity'][$i]); ?></td>
+                                            <td><?php echo e($data['ppa_date'][$i]); ?></td>
+                                            <td><?php echo e($data['ppa_capacity'][$i]); ?></td>
                             </tr>
 
-                            @endfor
+                            <?php endfor; ?>
                         </table>
                         </td>
-                        @if($data->mnre_remarks!='')
+                        <?php if($data->mnre_remarks!=''): ?>
                         <tr class="bg-primary text-light">
                             <td colspan="4">
                                 <h3>MNRE Remark</h3>
                             </td>
                         </tr>
                         <tr>
-                            <th colspan="3">Present Status : {{$data->mnre_remarks ?? ''}}</th>
-                            <th colspan="2">Date/Time : {{$data->mnre_remark_date ?? ''}}</th>
+                            <th colspan="3">Present Status : <?php echo e($data->mnre_remarks ?? ''); ?></th>
+                            <th colspan="2">Date/Time : <?php echo e($data->mnre_remark_date ?? ''); ?></th>
                         </tr>
-                        @endif
+                        <?php endif; ?>
                         </table>
                     </div>
                 </div>
@@ -95,13 +95,14 @@
         </div>
     </main>
 </section>
-@endsection
-@push('backend-js')
+<?php $__env->stopSection(); ?>
+<?php $__env->startPush('backend-js'); ?>
 
-@endpush
+<?php $__env->stopPush(); ?>
 <style>
 .error {
     color: red
 }
 </style>
-<!-- <script src="{{asset('public/js/custom.js')}}"></script> -->
+<!-- <script src="<?php echo e(asset('public/js/custom.js')); ?>"></script> -->
+<?php echo $__env->make('layouts.masters.backend', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp\htdocs\solar_park\resources\views/backend/reia/progress_report/PreviewProgressReport.blade.php ENDPATH**/ ?>

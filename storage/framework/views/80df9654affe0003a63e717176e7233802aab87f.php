@@ -60,7 +60,7 @@
                                                             (MW)<span class="text-danger">*</span></strong></label>
                                                     <div class="input-group mb-3">
                                                         <input placeholder="Capacity for connectivity applied (MW)"
-                                                            name="capacity_connectivity" type="text"
+                                                            name="capacity_connectivity" type="number" step="any"
                                                             class="form-control"
                                                             value="<?php echo e($editProgressData->capacity_connectivity ?? ''); ?>">
                                                     </div>
@@ -172,7 +172,7 @@
                                                         <input
                                                             placeholder="Capacity commissioned in the current month(MW), if any"
                                                             name="capacity_commissioned" id="capacity_commissioned"
-                                                            type="number" class="form-control"
+                                                            type="number" step="any" class="form-control"
                                                             value="<?php echo e($editProgressData->capacity_commissioned ?? ''); ?>">
                                                     </div>
                                                     <span
@@ -187,7 +187,7 @@
                                                         <input
                                                             placeholder="Capacity commissioned in the current month(MW), if any"
                                                             name="cumulative_capacity" id="cumulative_capacity"
-                                                            type="number" class="form-control"
+                                                            type="number" step="any" class="form-control"
                                                             value="<?php echo e($editProgressData->cumulative_capacity ?? ''); ?>">
                                                     </div>
                                                     <span

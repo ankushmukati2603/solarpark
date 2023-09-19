@@ -156,6 +156,7 @@ class ReportController extends Controller
                 $data= ProgressReport::where('id',$id)->update([
                     'status'=>$request->input('status'),
                     'remarks'=>$request->input('mnreremarks'),
+                    'mnre_remark_date' =>$this->getCurruntDate(),
                 ]);
                 $auditData = array('action_type'=>'3','description'=>'MNRE Update Progress Report Status and Remark','user_type'=>'1'); $this->auditTrail($auditData);
                 $url = urlencode('/'.Auth::getDefaultDriver().'/solar-park-reports');
@@ -247,6 +248,7 @@ class ReportController extends Controller
             $data= ReiaReport::where('id',$id)->update([
                 'mnre_status'=>$request->input('status'),
                 'mnre_remarks'=>$request->input('mnre_remarks'),
+                'mnre_remark_date' =>$this->getCurruntDate(),
             ]);
             $auditData = array('action_type'=>'3','description'=>'MNRE Update REIA Report Status and Remarks','user_type'=>'1'); $this->auditTrail($auditData);
             $url = urlencode('/'.Auth::getDefaultDriver().'/Reia-Reports');
@@ -269,8 +271,7 @@ class ReportController extends Controller
             // if(!empty($request->filter['scheme_name'])) $scheme_name = $request->filter['scheme_name'];
             //$filters = $request->filter;
 
-            $query = StuReport::select('stu_report.*','states.name as state_name','districts.name as district_name')
-            ->where('user_id',Auth::id());
+            $query = StuReport::select('stu_report.*','states.name as state_name','districts.name as district_name');
 
             if ($request->filter['from_date']) {
                 $query->where('stu_report.created_date', '>', $from_date);
@@ -294,10 +295,11 @@ class ReportController extends Controller
             $query->leftjoin('states','states.code','stu_report.state_id')
             ->leftjoin('districts','districts.code','stu_report.district_id');
             //  ->leftjoin('schemes','schemes.id','gec_report.scheme_id');
-            $progressDetails=$query->get();
+            $query->where('stu_report.final_submission', 1);
+            $stuReportDetails=$query->get();
             $states = State::orderby('name')->get();
             // $schemes = DB::table('schemes')->where('status', 1)->get();
-            return view('backend.stu.progress_report.myProgressReport', compact('progressDetails', 'states'));
+            return view('backend.mnre.StuReport.ProgressReport', compact('stuReportDetails', 'states'));
           
         }
         $auditData = array('action_type'=>'1','description'=>'GEC User Visit Progress Report Page','user_type'=>'1');
@@ -337,6 +339,7 @@ class ReportController extends Controller
                 $data= StuReport::where('id',$id)->update([
                     'mnre_status'=>$request->input('status'),
                     'mnre_remark'=>$request->input('mnre_remark'),
+                    'mnre_remark_date' =>$this->getCurruntDate(),
                 ]);
                 $auditData = array('action_type'=>'3','description'=>'MNRE Update STU/CTU Report Status and Remarks','user_type'=>'1'); $this->auditTrail($auditData);
                 $url = urlencode('/'.Auth::getDefaultDriver().'/Stu-Reports');
@@ -431,9 +434,10 @@ class ReportController extends Controller
             //code...
             if($request->editId){
                 $id=$this->decodeid($request->editId);
-                $data= Tenders::where('id1',$id)->update([
+                $data= Tenders::where('id',$id)->update([
                     'mnre_status'=>$request->input('mnre_status'),
                     'mnre_remarks'=>$request->input('mnre_remarks'),
+                    'mnre_remark_date' =>$this->getCurruntDate(),
                 ]);
                 $auditData = array('action_type'=>'3','description'=>'MNRE Update SNA Report Status and Remarks','user_type'=>'1'); $this->auditTrail($auditData);
                 $url = urlencode('/'.Auth::getDefaultDriver().'/Sna-Reports');

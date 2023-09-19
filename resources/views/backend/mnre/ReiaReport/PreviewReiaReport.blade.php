@@ -7,7 +7,7 @@
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Monthly Progress Report Preview For REIAs/States</h1>
+            <h1>Monthly Progress Report Preview For REIAs</h1>
         </div>
         <table class="table table-bordered table-striped text-left">
             <tr>
@@ -73,9 +73,30 @@
             </tr>
             @endfor
         </table>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Add Remarks
-        </button>
+        </td>
+        </tr>
+        @if($data->mnre_remarks!='')
+        <tr class="bg-primary text-light">
+            <td colspan="4">
+                <h3>MNRE Remark</h3>
+            </td>
+        </tr>
+        <tr>
+            <th colspan="3">Present Status : {{$data->mnre_remarks ?? ''}}</th>
+            <th colspan="2">Date/Time : {{$data->mnre_remark_date ?? ''}}</th>
+        </tr>
+        @else
+        <tr>
+            <td colspan="4">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Add Remarks
+                </button>
+                @endif
+            </td>
+        </tr>
+        </table>
+
+
 
 
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

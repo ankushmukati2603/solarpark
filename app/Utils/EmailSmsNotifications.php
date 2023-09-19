@@ -30,6 +30,29 @@ class EmailSmsNotifications
             Log::info($e);
         }
     }
+    public function notifyApproveRegistrationByPortal($email, $password,$name,$remarks){
+        try {
+            //code...
+            $data['password'] = $password;
+            $data['name'] = $name;
+            $data['remarks'] = $remarks;
+            $this->sendMail('notifyApproveRegistrationByPortal', $data, $email, 'Solar Power : Your registration on the Solar Power Portal is approved');
+        } catch (\Throwable $th) {
+            //throw $th;
+            Log::info($th);
+        }
+    }
+    public function notifyRejectRegistrationByPortal($email,$name,$remarks){
+        try {
+            //code...
+            $data['name'] = $name;
+            $data['remarks'] = $remarks;
+            $this->sendMail('notifyRejectRegistrationByPortal', $data, $email, 'Solar Power : Your registration on the Solar Power Portal is rejected');
+        } catch (\Throwable $th) {
+            //throw $th;
+            Log::info($th);
+        }
+    }
     public function notifyInstallerRegistration($email, $password, $uniqueId, $name, $mobile)
     {
         try{

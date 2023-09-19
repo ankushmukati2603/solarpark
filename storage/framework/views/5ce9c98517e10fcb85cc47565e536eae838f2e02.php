@@ -31,7 +31,8 @@
                                 <th>Last Date of Bid Submission</th>
                                 <th>Published Date</th>
                                 <th width="10%">Status</th>
-                                <th>Action</th>
+                                <th>MNRE Remarks</th>
+                                <th width="8%">Action</th>
                             </tr>
                             <?php $__currentLoopData = $tenderList; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tender): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <?php
@@ -50,13 +51,22 @@
                                 <td><?php echo e(date("d M Y",strtotime($tender->bid_submission_date))); ?></td>
                                 <td><?php echo e(date("d M Y",strtotime($tender->nit_date))); ?></td>
                                 <td><?php echo e($general->tenderStatus($tender->tender_status,$tender->id)); ?></td>
+                                <td><?php echo e($tender->mnre_remarks ?? '--'); ?></td>
                                 <td>
                                     <?php if($tender->tender_status !=4 || $countLocations>$countCommissionedLocations ): ?><a
-                                        href=" <?php echo e(URL::to(Auth::getDefaultDriver().'/Tenders/Edit/'.$tender->id)); ?>">Edit</a>
-                                    |<?php endif; ?>
+                                        href=" <?php echo e(URL::to(Auth::getDefaultDriver().'/Tenders/Edit/'.$tender->id)); ?>"
+                                        class="btn btn-danger" target="_blank"><i class="fa-solid fa-pencil"></i></a>
+                                    <?php endif; ?>
+                                    <?php if($tender->tender_status ==4): ?>
+                                    <a href=" <?php echo e(URL::to(Auth::getDefaultDriver().'/TenderPreview/'.base64_encode($tender->id))); ?>"
+                                        target="_blank" class="btn btn-primary"><i class="fa-solid fa-eye"></i></a>
+                                    <?php endif; ?>
 
-                                    <a
-                                        href=" <?php echo e(URL::to(Auth::getDefaultDriver().'/TenderPreview/'.base64_encode($tender->id))); ?>">View</a>
+
+
+
+
+
                                 </td>
                             </tr>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

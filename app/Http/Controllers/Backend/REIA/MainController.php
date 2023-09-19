@@ -105,7 +105,6 @@ class MainController extends Controller {
     }
 
     public function ProgressReport(Request $request) { 
-    //dd($request);
         $from_date = NULL; $to_date = NULL;$state_id = NULL;$district_id = NULL;$tender_date = NULL;$scheme_name = NULL;$filters=[];
         if ($request->isMethod('post')) {
             if(!empty($request->filter['from_date'])) $from_date = $request->filter['from_date'];
@@ -156,58 +155,51 @@ class MainController extends Controller {
     }
 
     public function newProgressReport(Request $request, $id = NULL) {
-        $id=base64_decode($id);
+        $id=$this->decodeid($id);
         if ($request->isMethod('post')) {
 
             $validation = Validator::make($request->all(), [
-                        'scheme_id' => 'required',
-                        'state_id' => 'required',
-                        'district_id' => 'required',
-                        'project_type' => 'required',
-                        'tender_capacity' => 'required',
-                        'tender_date' => 'required',
-                        'loa_date' => 'required',
-                        'bidder_id' => 'required',
-                        'bidder_capacity.*' => 'required',
-                        'ppa_date.*' => 'required',
-                        'ppa_capacity.*' => 'required',
-                         'scod' => 'required',
-                        ],
-                        [
-                        'detail.required'=>'This fields is required',
-                        'scheme_id.required'=> 'This fields is required',
-                        'state_id.required'=> 'This fields is required',
-                        'district_id.required'=> 'This fields is required',
-                        'project_type.required'=> 'This fields is required',
-                        'tender_capacity.required'=> 'This fields is required',
-                        'tender_date.required'=>'This fields is required',
-                        'loa_date.required'=> 'This fields is required',
-                        'bidder_id.required'=> 'This fields is required',
-                        'bidder_capacity.required'=> 'This fields is required',
-                        'ppa_date.required'=> 'This fields is required',
-                        'ppa_capacity.required'=> 'This fields is required',
-                        'scod.required'=> 'This fields is required',
-                        ]);
-                        if ($validation->fails()) {  //check all validations are fine, if not then redirect and show error messages
-                            return response()->json(['status' => 'verror', 'data' => $validation->errors()]);
-                        }
-//            $existingGecData=Reia::select('*')->where('user_id', Auth::id())->where('month', $month)->where('year',$year)->where('package_no',$package_no)->first();
-//            if($existingGecData!=null && $existingGecData->final_submission==1){
-//                return response()->json(['status' => 'error','message'=>'Gec Report Existing for this Month!','url'=>'']);
-//            }
+            'scheme_id' => 'required',
+            'state_id' => 'required',
+            'district_id' => 'required',
+            'project_type' => 'required',
+            'tender_capacity' => 'required',
+            'tender_date' => 'required',
+            'loa_date' => 'required',
+            'bidder_id' => 'required',
+            'bidder_id.*' => 'required',
+            'select_bidders_capacity.*'=>'required',
+            // 'bidder_capacity.*' => 'required',
+            'ppa_date.*' => 'required',
+            'ppa_capacity.*' => 'required',
+            'scod' => 'required',
+            ],
+            [
+            'detail.required'=>'This fields is required',
+            'scheme_id.required'=> 'This fields is required',
+            'state_id.required'=> 'This fields is required',
+            'district_id.required'=> 'This fields is required',
+            'project_type.required'=> 'This fields is required',
+            'tender_capacity.required'=> 'This fields is required',
+            'tender_date.required'=>'This fields is required',
+            'loa_date.required'=> 'This fields is required',
+            'bidder_id.*.required'=> 'This fields is required',
+            // 'bidder_capacity.*.required'=> 'This fields is required',
+            'select_bidders_capacity.*.required'=> 'This fields is required',
+            'ppa_date.*.required'=> 'This fields is required',
+            'ppa_capacity.*.required'=> 'This fields is required',
+            'scod.required'=> 'This fields is required',
+            ]);
+            if ($validation->fails()) {  //check all validations are fine, if not then redirect and show error messages
+                return response()->json(['status' => 'verror', 'data' => $validation->errors()]);
+            }
 
             $final_submission = 1;
             if($request->final==0){
                 $final_submission = 0;
             }
-            // dd( $final_submission);
-            // $final_submission = 1;
-            // if ($request->has('name') && $request->input('save') === 'Save as draft') {
-            //     $final_submission = 0;
-            // }
-
             $reia=array();
-            $reia = ReiaReport::find($request->editId);
+            $reia = ReiaReport::find($this->decodeid($request->editId));
             $reia->scheme_id = $request->scheme_id;
             $reia->state_id = $request->state_id;
             $reia->district_id = $request->district_id;
@@ -223,35 +215,20 @@ class MainController extends Controller {
             $reia->remark = $request->remark;
             $reia->final_submission = $final_submission;
             $reia->reia_id = Auth::id();
-            //dd($reia);
             $reia->save();
-
-            // $application_id = '/'.($reia->id).'/'.date('Y');
-            // ReiaReport::where('id',$reia->id)->update(['id'=>$application_id]);
-             
-            if($request->editId){
-                ReiaReport::where('id',$request->editId)->update([
-                    'bidder_id'=>$request->bidder_id,
-                    'select_bidders_capacity'=>$request->select_bidders_capacity,
-                    'ppa_date'=>$request->ppa_date,
-                    'ppa_capacity'=>$request->ppa_capacity,
-                ]);
-            $auditData = array('action_type' => '2', 'description' => 'GEC User Insert New Progress Report Data', 'user_type' => '7');
+            $auditData = array('action_type' => '2', 'description' => 'REIA update New Progress Report Data', 'user_type' => '7');
             $this->auditTrail($auditData);
 
-            $url = urlencode('/'.Auth::getDefaultDriver().'/progress-report/');
-            return response()->json(['status' => 'success', 'message' => "Please wait...", 'url' => $url, 'redirect' => 'yes']);
+            $url = urlencode('/'.Auth::getDefaultDriver().'/progress-report');
+            return response()->json(['status' => 'success', 'message' => "Report details added successfully", 'url' => $url, 'redirect' => 'yes']);
+
         }
-    } 
-        $reia=array();
-        // dd( $reia); 
         $schemes = DB::table('schemes')->where('status', 1)->get();
         $states = State::orderby('name')->get();
         $bidders = DB::table('tbl_master_bidder')->where('status', 1)->get();
         $reia=array();
         if($id){
             $reia=ReiaReport::select('*')->where('id', $id)->first();
-            // dd( $reia);
             if($reia){
                
                 $reia=$reia;
@@ -259,59 +236,58 @@ class MainController extends Controller {
                 $reia['select_bidders_capacity']=json_decode($reia->select_bidders_capacity,true);
                 $reia['ppa_date']=json_decode($reia->ppa_date,true);
                 $reia['ppa_capacity']=json_decode($reia->ppa_capacity,true);
-                // dd( $reia); 
             }
         }
         $auditData = array('action_type' => '1', 'description' => 'REIA visit New Progress Report Page', 'user_type' => '7');
         $this->auditTrail($auditData);
         return view('backend.reia.progress_report.progressReport', compact('schemes', 'states','bidders', 'reia', 'id',));
-    }
-
+    } 
+        
+    
     public function addProgressReport(Request $request,$id=null){
         if($request->isMethod('post')){
 
             $validation = Validator::make($request->all(), [
                 'month'=>'required',
                 'year'=>'required',
-                // 'project_name'=>'required',
+                'scheme_id'=>'required',
             ]);
             if ($validation->fails()){  //check all validations are fine, if not then redirect and show error messages
                 return response()->json(['status'=>'verror','data'=>$validation->errors()]);
             }
-            $month=$request->month;
-            $year=$request->year;
-            // $existingProgressData=ReiaReport::select('*')->where('user_id', Auth::id())->where('month', $month)->where('year',$year)->first();
-            // dd($existingProgressData);
-            // if($existingProgressData!=null){
-            //     if($existingProgressData->final_submission==0){
-            //         $auditData = array('action_type'=>'1','description'=>'visit Progress Report Page','user_type'=>'0');
-            //         $this->auditTrail($auditData);
-            //         $url=urlencode('/'.Auth::getDefaultDriver().'/new-reia-progress-report/' .$existingProgressData->id);
-            //         return response()->json(['status' => 'success','message'=>"Please wait...",'url'=>$url,'redirect'=>'yes']);
-            //     }else{
-            //         return response()->json(['status' => 'error','message'=>'Progress Report Existing for the Month!','url'=>'']);
-            //     }
-            //     return redirect(Auth::getDefaultDriver().'/progress-report/' .$existingProgressData->id);
-            //     return response()->json(['error' => 'error','message'=>'Progress Report Existing for the Month!']);
-            //     return redirect()->back()->with("error",'Progress Report Existing for the Month');
-            // }
-
-            $newProgressData=new ReiaReport();
-            $newProgressData->month=$request->month;
-            $newProgressData->year=$request->year;
-            // $newProgressData->id=$request->project_name;
-            $newProgressData->user_id=Auth::id();
-            $newProgressData->save();
-            $id=$newProgressData->id;
-            // dd($id);
-            $url=urlencode('/'.Auth::getDefaultDriver().'/new-reia-progress-report/'.base64_encode($id));
-            return response()->json(['status' => 'success','message'=>"Please wait...",'url'=>$url,'redirect'=>'yes']); 
-        //    return redirect(Auth::getDefaultDriver().'/application/progress_report/'.$id);
+            try {
+                //code...
+                $existingProgressData=ReiaReport::select('*')->where('user_id', Auth::id())->where('month', $request->month)
+                                    ->where('year',$request->year)->where('scheme_id',$request->scheme_id)->first();
+                if($existingProgressData!=null){
+                    if($existingProgressData->final_submission==0){
+                        $auditData = array('action_type'=>'1','description'=>'visit Progress Report Page','user_type'=>'0');
+                        $this->auditTrail($auditData);
+                        $url=urlencode('/'.Auth::getDefaultDriver().'/new-reia-progress-report/' .$this->encodeid($existingProgressData->id));
+                        return response()->json(['status' => 'success','message'=>"Please wait...",'url'=>$url,'redirect'=>'yes']);
+                    }else{
+                        return response()->json(['status' => 'error','message'=>'Progress Report Existing for the Month!','url'=>'']);
+                    }
+                }
+                
+                $newProgressData=new ReiaReport();
+                $newProgressData->month=$request->month;
+                $newProgressData->year=$request->year;
+                $newProgressData->scheme_id=$request->scheme_id;
+                $newProgressData->user_id=Auth::id();
+                $newProgressData->save();
+                $url=urlencode('/'.Auth::getDefaultDriver().'/new-reia-progress-report/'.$this->encodeid($newProgressData->id));
+                return response()->json(['status' => 'success','message'=>"Please wait...",'url'=>$url,'redirect'=>'yes']); 
+            } catch (\Throwable $th) {
+                //throw $th;
+                dd($th->getMessage());
+            }
+            
         }
-        //$stuproject_name=ManageStuProject::where('user_id',Auth::id())->get();
+        $schemes=Scheme::all();
         $auditData = array('action_type'=>'1','description'=>'visit New Progress Report Page','user_type'=>'0');
         $this->auditTrail($auditData);
-        return view('backend.reia.progress_report.newProgressReport');
+        return view('backend.reia.progress_report.newProgressReport',compact('schemes'));
     } 
 
 
@@ -521,7 +497,7 @@ class MainController extends Controller {
 
     public function progressreportpreview(Request $request,$id)
     {
-        $id =  base64_decode($id);
+        $id =  $this->decodeid($id);
         $Reiadata=ReiaReport::select('reia_report.*','states.name as state_name','districts.name as district_name','schemes.scheme_name')
         ->join('states','states.code','reia_report.state_id')
         ->join('districts','districts.code','reia_report.district_id')

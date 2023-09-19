@@ -11,7 +11,7 @@
                 <h1 class="text-center">Monthly Progress Report For STUs/CTUs </h1>
                 <hr style="color: #959595;">
                 <?php echo $__env->make('layouts.partials.backend._flash', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-                <form action="<?php echo e(url(Auth::getDefaultDriver().'/progress-report')); ?>" method="post"><?php echo csrf_field(); ?>
+                <form action="<?php echo e(url(Auth::getDefaultDriver().'/Stu-Reports')); ?>" method="post"><?php echo csrf_field(); ?>
                     <div class="row col-md-12">
                         <div class="col-md-3">
 
@@ -126,7 +126,7 @@
 </section>
 <?php $__env->stopSection(); ?>
 <?php $__env->startPush('backend-js'); ?>
-<link rel="stylesheet" href="<?php echo e(asset('public/datatable/jquery.dataTables.min.css')); ?>" />
+<!-- <link rel="stylesheet" href="<?php echo e(asset('public/datatable/jquery.dataTables.min.css')); ?>" />
 <link rel="stylesheet" href="<?php echo e(asset('public/datatable/buttons.dataTables.min.css')); ?>" />
 <script src="<?php echo e(asset('public/datatable/jquery.dataTables.min.js')); ?>"></script>
 <script src="<?php echo e(asset('public/datatable/dataTables.buttons.min.js')); ?>"></script>
@@ -166,7 +166,7 @@ $(document).ready(function() {
     });
 
 });
-</script>
+</script> -->
 <?php $__env->stopPush(); ?>
 <style>
 .error {
