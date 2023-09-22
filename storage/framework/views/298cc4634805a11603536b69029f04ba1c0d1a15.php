@@ -1,12 +1,7 @@
 <?php $__env->startSection('content'); ?>
-
-
-
 <section class="section dashboard form_sctn">
     <main id="main" class="main">
-
         <div class="col-xxl-12 col-xl-12 custm_cmn_form_stng">
-            <!-- <div class="row "> -->
             <div class="pagetitle col-xl-12">
                 <h1>Manage Scheme <a href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/add-scheme')); ?>"
                         class="btn btn-success" style="float: right;"><i class="fa fa-plus" aria-hidden="true"></i>Add
@@ -20,7 +15,6 @@
                             <th>Name of Scheme</th>
                             <th width="10%">Action</th>
                             <th width="10%">Active/Inactive</th>
-
                         </tr>
                     </thead>
                     <tbody>
@@ -39,7 +33,6 @@
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         <?php endif; ?>
                     </tbody>
-
                 </table>
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
                 <script>
@@ -65,15 +58,8 @@
                 </script>
             </div>
         </div>
-
     </main>
 </section>
-
 <?php $__env->stopSection(); ?>
-<style>
-.error {
-    color: red
-}
-</style>
 <script src="<?php echo e(asset('public/js/custom.js')); ?>"></script>
 <?php echo $__env->make('layouts.masters.backend', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp\htdocs\solar_park\resources\views/backend/reia/scheme-list.blade.php ENDPATH**/ ?>

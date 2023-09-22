@@ -102,7 +102,7 @@
                 <li class="">
                     <a class="nav-link collapsed <?php if($query_str1 == 'Sna-Reports'): ?> active <?php endif; ?>"
                         href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/Sna-Reports')); ?>">
-                        <i class="fa-solid fa-circle"></i><span>SNA Reports</span>
+                        <i class="fa-solid fa-circle"></i><span>SNA Tenders</span>
                     </a>
                 </li>
 
@@ -113,6 +113,13 @@
                 href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/solar-park')); ?>">
                 <i class="fa-solid fa-sun"></i>
                 <span>Solar Park</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link  <?php if($query_str1 == 'solar-park'): ?>active <?php endif; ?>"
+                href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/Feedback')); ?>">
+                <i class="fa-solid fa-comment"></i>
+                <span>Feedback</span>
             </a>
         </li>
         <?php endif; ?>

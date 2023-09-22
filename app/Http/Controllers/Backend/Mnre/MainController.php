@@ -31,6 +31,7 @@ use App\Models\PasswordHistoryLog;
 use App\Models\ManageSolarPark;
 use App\Models\Tenders;
 use App\Models\CancelTender;
+use App\Models\Feedback;
 
 use App\Utils\Dashboard;
 use App\Utils\EmailSmsNotifications;
@@ -75,21 +76,27 @@ class MainController extends Controller
             return response()->json(['status'=>'verror','data'=>$validation->errors()]);
         }
         $status="Rejected";
+        $password = $this->generateRandomString(10);
+        $email=$this->decodeid($request->email);
+        $name=$this->decodeid($request->name);
         if($request->isApproved==1){
             $status="Approved";
-            
             // Email will shoot for Password
+            $this->emailSmsNotifications->notifyApproveRegistrationByPortal($email, $password, $name, $request->remarks);  
+        }
+        if($request->isApproved==2){
+            $this->emailSmsNotifications->notifyRejectRegistrationByPortal($email, $name, $request->remarks);
         }
         $id=$this->decodeid($request->id);
         $snaData=StateImplementingAgencyUser::find($id);
         $snaData->isApproved = $request->isApproved;
         $snaData->remarks = $request->remarks;
+        $snaData->password=Hash::make($password);
         $snaData->save();
         $auditData = array('action_type'=>'3','description'=>'SNA Status Updated','user_type'=>'2'); $this->auditTrail($auditData);
         $url=urlencode('/'.Auth::getDefaultDriver().'/sna-list');
         return response()->json(['status' => 'success','message'=>'SNA '.$status.' successfuly!','url'=>$url,'redirect'=>'yes']);
     }
-
     // STU List
     public function stuList(){
         $stuDetail=StuUser::getStuUsers();
@@ -109,13 +116,21 @@ class MainController extends Controller
             return response()->json(['status'=>'verror','data'=>$validation->errors()]);
         }
         $status="Rejected";
+        $email=$this->decodeid($request->email);
+        $name=$this->decodeid($request->name);
+        $password = $this->generateRandomString(10);
         if($request->isApproved==1){
             $status="Approved";
+             $this->emailSmsNotifications->notifyApproveRegistrationByPortal($email, $password, $name, $request->remarks);   
+        }
+        if($request->isApproved==2){
+            $this->emailSmsNotifications->notifyRejectRegistrationByPortal($email, $name, $request->remarks);
         }
         $id=$this->decodeid($request->id);
         $snaData=StuUser::find($id);
         $snaData->isApproved = $request->isApproved;
         $snaData->remarks = $request->remarks;
+        $snaData->password=Hash::make($password);
         $snaData->save();
         $auditData = array('action_type'=>'3','description'=>'STU Status Updated','user_type'=>'2'); $this->auditTrail($auditData);
         $url=urlencode('/'.Auth::getDefaultDriver().'/stu-list');
@@ -143,15 +158,13 @@ class MainController extends Controller
         $status="Rejected";
         $email=$this->decodeid($request->email);
         $name=$this->decodeid($request->name);
+        $password = $this->generateRandomString(10);
         if($request->isApproved==1){
-            $status="Approved";
-            $password = $this->generateRandomString(10);
-            // $this->emailSmsNotifications->notifyApproveRegistrationByPortal($email, $password, $name, $request->remarks);
-            
+            $status="Approved";            
+            $this->emailSmsNotifications->notifyApproveRegistrationByPortal($email, $password, $name, $request->remarks);   
         }
-        if($request->isApproved==0){
-            $password='98-7-65-4-32-1';
-            // $this->emailSmsNotifications->notifyRejectRegistrationByPortal($email, $name, $request->remarks);
+        if($request->isApproved==2){
+            $this->emailSmsNotifications->notifyRejectRegistrationByPortal($email, $name, $request->remarks);
         }
         $id=$this->decodeid($request->id);
         $snaData=Beneficiary::find($id);
@@ -674,5 +687,17 @@ class MainController extends Controller
         $auditData = array('action_type'=>'1','description'=>'MNRE View Cancelled Tender List','user_type'=>'2');
         $this->auditTrail($auditData);
         return view('backend.mnre.cancelledtender',compact('cancelledtenderList'));
+    }
+    public function feedback(){
+        try {
+            //code...
+            $feedbacklist=Feedback::orderby('created_date','desc')->get();
+            $auditData = array('action_type'=>'3','description'=>'MNRE(admin) View Feedback List','user_type'=>'1'); $this->auditTrail($auditData);
+            return view('backend.mnre.feedbacklist',compact('feedbacklist'));
+        } catch (\Throwable $th) {
+            //throw $th;
+            dd($th->getMessage());
+        }
+        
     }
 }

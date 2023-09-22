@@ -12,4 +12,6 @@ class Feedback extends Model
     protected $fillable = [
        
    ];
+
+  
 }

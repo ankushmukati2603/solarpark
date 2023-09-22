@@ -61,26 +61,25 @@ class beneficiaryRegisterController extends Controller
             }
           try {
                 $password = Hash::make('123456');
-            
                 
                 if($request->usertype==1){ //SNA
                     $developer=new StateImplementingAgencyUser();
                     $developer->program_id= $request->input('scheme_name'); 
                     $developer->phone=$request->input('contact_no');
-                    $message="Your Account Created Successfully. You will get Login details after approval on email.";   
+                      
                 }
                 if($request->usertype==2){ //STU
                     $developer=new StuUser();
                     $developer->phone=$request->input('contact_no');
-                    $message="Your Account Created Successfully. Please check Login details on your email.";   
+                    // $message="Your Account Created Successfully. Please check Login details on your email.";   
                 }
                 if($request->usertype==3){ //SPPD
                     $developer=new SolarBeneficiary();
                     $developer->pan_no= $request->input('pan_no');
                     $developer->contact_no=$request->input('contact_no');
-                    $message="Your Account Created Successfully. You will get Login details after approval on email.";   
+                    // $message="Your Account Created Successfully. You will get Login details after approval on email.";   
                 }
-                
+                $message="You have been registered successfully, account will be activated post approval from MNRE"; 
                 $developer->name= $request->input('name');
                 
                 $developer->address= $request->input('address');

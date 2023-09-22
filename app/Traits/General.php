@@ -47,13 +47,20 @@ trait General
 
     public function sendMail($emailFile, $data, $email, $subject)
     {
-        $data['mail_to'] = $email;
-        $data['subject'] = $subject;
-        Mail::send('emails.'.$emailFile, $data, function($mail) use ($data) {
-            $mail->to($data['mail_to'])
-                    ->subject($data['subject']);
-            $mail->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
-        });
+        try {
+            //code...
+            $data['mail_to'] = $email;
+            $data['subject'] = $subject;
+            Mail::send('emails.'.$emailFile, $data, function($mail) use ($data) {
+                $mail->to($data['mail_to'])
+                        ->subject($data['subject']);
+                $mail->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
+            });
+        } catch (\Throwable $th) {
+            //throw $th;
+            Log::info($th->getMessage());
+        }
+        
     }
 
     public function sendSms($message, $number)

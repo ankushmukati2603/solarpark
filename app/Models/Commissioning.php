@@ -31,7 +31,7 @@ class Commissioning extends Model
     }
 
     static function getCommissionedDataByTenderId($tender_id){
-        $commissionedData=array();$i=0;
+        $commissionedData=$projectData=array();$i=0;
         $data= SelectedBidderProject::select('id','bidder_id','project_title','state','schedule_commissiong_date','commissioned_capacity','revised_schedule_commissiong_date')->where('tender_id',$tender_id )->get()->toArray();
         if(count($data)>0){
             foreach($data as $dt){

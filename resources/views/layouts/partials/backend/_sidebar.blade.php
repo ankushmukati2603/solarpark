@@ -102,7 +102,7 @@
                 <li class="">
                     <a class="nav-link collapsed @if($query_str1 == 'Sna-Reports') active @endif"
                         href="{{URL::to('/'.Auth::getDefaultDriver().'/Sna-Reports')}}">
-                        <i class="fa-solid fa-circle"></i><span>SNA Reports</span>
+                        <i class="fa-solid fa-circle"></i><span>SNA Tenders</span>
                     </a>
                 </li>
 
@@ -113,6 +113,13 @@
                 href="{{URL::to('/'.Auth::getDefaultDriver().'/solar-park')}}">
                 <i class="fa-solid fa-sun"></i>
                 <span>Solar Park</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link  @if($query_str1 == 'solar-park')active @endif"
+                href="{{URL::to('/'.Auth::getDefaultDriver().'/Feedback')}}">
+                <i class="fa-solid fa-comment"></i>
+                <span>Feedback</span>
             </a>
         </li>
         @endif

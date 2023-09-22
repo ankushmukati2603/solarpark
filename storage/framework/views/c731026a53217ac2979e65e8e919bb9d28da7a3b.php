@@ -9,8 +9,8 @@
                     <div class="pagetitle col-xl-12">
                         <a href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/Sub-Agency/Add')); ?>" class="btn btn-success"
                             style="float: right;"><i class="fa fa-plus" aria-hidden="true"></i>
-                            Add Agency</a>
-                        <h1>Agency Management</h1>
+                            Add SPD</a>
+                        <h1>SPD Management</h1>
 
                         <hr style="color: #959595;">
                         <table class="table table-bordered">

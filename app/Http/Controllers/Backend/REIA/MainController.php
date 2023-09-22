@@ -284,7 +284,7 @@ class MainController extends Controller {
             }
             
         }
-        $schemes=Scheme::all();
+        $schemes=Scheme::where('status',1)->get();
         $auditData = array('action_type'=>'1','description'=>'visit New Progress Report Page','user_type'=>'0');
         $this->auditTrail($auditData);
         return view('backend.reia.progress_report.newProgressReport',compact('schemes'));

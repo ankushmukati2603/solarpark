@@ -44,6 +44,9 @@ class RedirectIfAuthenticated
                 case 'gecdeveloper':
                     return redirect()->intended(route('gecdeveloper.dashboard'));
                     break;
+                case 'stu-users':
+                    return redirect()->intended(route('stu-users.progress-report'));
+                    break;
                 default:
                     return redirect()->intended(RouteServiceProvider::HOME);
                     break;

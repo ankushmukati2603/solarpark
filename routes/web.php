@@ -36,7 +36,7 @@ Route::match(['get', 'post'],'/audit-trail','MainController@userAuditTrail')->na
 Route::match(['get', 'post'],'/action-notification','MainController@actionNotification')->name('action.notification');
 Route::get('/district/{stateId}','AjaxController@getDistrictsByState');
 Route::match(['get', 'post'],'/log-out','Auth\LoginController@logout')->name('log-out');
-
+Route::view('tabs','frontend.tabs')->name('tabs');
 // SECI Routes
 
 Route::group(['prefix' => 'seci', 'as' => 'seci.', 'namespace' => 'Backend\SECI', 'middleware' => 'auth:seci'], function () {
@@ -160,6 +160,8 @@ Route::group(['prefix' => 'mnre', 'as' => 'mnre.', 'namespace' => 'Backend\Mnre'
 
     Route::get('capacity-tendered-list', 'MainController@tenderList');
     Route::get('cancelled-tender-list', 'MainController@cancelledtenderList');
+
+    Route::get('Feedback', 'MainController@feedback');
     
     
 });
@@ -314,14 +316,14 @@ Route::group(['prefix' => 'reia', 'as' => 'reia.', 'namespace' => 'Backend\REIA'
 
 
 /************************Added By Roshan*******************/
-Route::group(['prefix' => 'stu-users', 'as' => 'stu-users.', 'namespace' => 'Backend\STU', 'middleware' => 'auth:stu-users'], function () {
+Route::group(['prefix' => 'stu-users', 'as' => 'stu-users.', 'namespace' => 'Backend\STU', 'middleware' => ['auth:stu-users']], function () {
     Route::get('/', 'MainController@index')->name('dashboard');
 
     Route::match(['post', 'get'],'application/progress_report', 'MainController@application');
     Route::match(['post', 'get'],'application/progress_report/{id}', 'MainController@application');
    
      //For Monthly Progress Report
-    Route::match(['post', 'get'], 'progress-report', 'MainController@ProgressReport');
+    Route::match(['post', 'get'], 'progress-report', 'MainController@ProgressReport')->name('progress-report');
     Route::match(['post', 'get'], 'progress-report/{id}', 'MainController@ProgressReport');
 
     Route::match(['post', 'get'], 'add-progress-report', 'MainController@addProgressReport');

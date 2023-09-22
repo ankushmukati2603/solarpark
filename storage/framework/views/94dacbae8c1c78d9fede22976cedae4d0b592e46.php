@@ -171,8 +171,7 @@
                                     </div>
                                     <div class=" pb-3">
                                         <h6>Under Implementation </h6>
-                                        <a href="<?php echo e(URL::to('/'.Auth::getDefaultDriver().'/Agency')); ?>"
-                                            target="_blank"><span class="more_info small pt-2 ps-1">more info <i
+                                        <a href="javascript:;"><span class="more_info small pt-2 ps-1">more info <i
                                                     class="fa-solid fa-angle-right"></i></span></a>
 
                                     </div>

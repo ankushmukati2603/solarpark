@@ -16,7 +16,7 @@
                     </div>
                     <div class="col-xl-7 right_blk">
                         <div class="col-xxl-12 section-tittle">
-                            <div class="register_hdng_text">REPD/SPPD Login</div>
+                            <div class="register_hdng_text">SPPD Login</div>
                         </div>
                         <form action="{{ route('login') }}" method="POST" autocomplete="off">
                             {{ csrf_field() }}

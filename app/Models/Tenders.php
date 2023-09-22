@@ -76,4 +76,34 @@ class Tenders extends Model
         ->leftjoin('state_implementing_agency_users','state_implementing_agency_users.id','tbl_master_tender.sna_id')
         ->get();
     }
+    public static function getTendersList(){
+        return self::select(
+                'tbl_master_tender.nit_date',
+                'tbl_master_tender.tender_title',
+                'tbl_master_tender.nit_no',
+                'tbl_master_tender.tender_no',
+                'tbl_master_tender.mnre_remarks',
+                'tbl_master_tender.id',
+                'tbl_master_tender.rfs_date',
+                'tbl_master_tender.pre_bid_meeting_date',
+                'tbl_master_tender.bid_submission_date',
+                'tbl_master_tender.id as tid',
+                'tbl_master_tender.scheme_type',
+                'tbl_master_tender.capacity',
+                'tbl_master_agency.agency_name',
+                'states.name as state',
+                // 'tbl_cancelled_tender.cancel_date',
+                'tbl_reverse_auction.ra_date',
+                'tbl_reverse_auction.ra_capacity',
+                'tbl_master_tender.capacity as tenderCapcity',
+                // 'tbl_cancelled_tender.capacity as c_capacity',
+                'tbl_master_tender.tender_status'
+            )
+            ->leftjoin('tbl_master_agency','tbl_master_agency.id','tbl_master_tender.agency_id')
+            ->leftjoin('states','states.code','tbl_master_agency.state')
+            // ->leftjoin('tbl_cancelled_tender','tbl_cancelled_tender.tender_id','tbl_master_tender.id')
+            ->leftjoin('tbl_reverse_auction','tbl_reverse_auction.tender_id','tbl_master_tender.id')
+            ->groupby('tbl_master_tender.id')
+            ->get();
+    }
 }

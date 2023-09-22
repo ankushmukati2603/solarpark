@@ -51,7 +51,7 @@ class Dashboard
             'total_tenders' => Tenders::count(),
             'cancelled_tenders' => CancelTender::count(),
             'tenders_under_implementation' => 0,
-            'tenders_commissioned' => 0
+            'tenders_commissioned' => Tenders::where('tender_status',4)->count()
         ];
 
         return $response;

@@ -10,12 +10,12 @@
                 <div class="row ">
                     <div class="pagetitle col-xl-12">
 
-                        <h1>SNA Progress Report</h1>
+                        <h1>SNA Tender Details</h1>
 
                         <hr style="color: #959595;">
                         <table class="table table-bordered" id="example">
                             <thead>
-                                <tr class=" bg-primary text-light">
+                                <tr class=" bg-success text-light">
                                     <th>S.No</th>
                                     <th>Tender No</th>
                                     <th width="15%">NIT No</th>
@@ -25,7 +25,6 @@
                                     <th>Pre Bid Meeting</th>
                                     <th>Last Date of Bid Submission</th>
                                     <th>Tender Published Date</th>
-                                    <th>MNRE Status</th>
                                     <th width="15%">MNRE Remarks</th>
                                     <th>Action</th>
                                 </tr>
@@ -42,17 +41,7 @@
                                     <td>{{ date("d M Y",strtotime($tender->pre_bid_meeting_date)) }}</td>
                                     <td>{{ date("d M Y",strtotime($tender->bid_submission_date)) }}</td>
                                     <td>{{ date("d M Y",strtotime($tender->nit_date)) }}</td>
-                                    <td>
-                                        @if($tender->mnre_status==1)
-                                        Approved
-                                        @elseif($tender->mnre_status==2)
-                                        Partially Approved
-                                        @elseif($tender->mnre_status==3)
-                                        Rejected
-                                        @else
-                                        Pending
-                                        @endif
-                                    </td>
+
                                     <td>{{ $tender->mnre_remarks ?? '--' }}</td>
                                     <td><a
                                             href=" {{URL::to(Auth::getDefaultDriver().'/Preview-Sna-Report/'.$general->encodeid($tender->id))}}">View</a>
